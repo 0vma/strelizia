@@ -1,1 +1,1 @@
-print('init');
+print('init baka prase');
