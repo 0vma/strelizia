@@ -1,3 +1,0 @@
-local Numbers = {}
-
-return Numbers

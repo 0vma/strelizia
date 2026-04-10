@@ -1,3 +1,0 @@
-local strings = {}
-
-return strings
