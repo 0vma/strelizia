@@ -1,35 +1,35 @@
 local a local aa,ab,ac,ad,ae,af,ag,ah,ai,aj,ak,al,am,an,ao,ap,aq,ar,as,at={
 function()local b,c,d=a(1)return(function(...)local e=d(c.Vinca)return e.new():
-Extend{Modules=c.Modules,RBXUtil=c.RBXUtil,Functions=c.Functions}end)()end,
-function()local b,c=a(2)return(function(...)return function(d)return d.new(d):
-Extend(d.Extensions.Children(c))end end)()end,function()local b,c,d=a(3)return(
-function(...)return function(e)local f=e.Services local g,h,i,j,k,l,m,n=f.
-RunService,f.HttpService,d(c.Lock)(e),d(c.Task)(e),e:Get'Functions/CreateGUID',e
-:Get'Functions/Time',3.333333333333333E-2,{Running=false,HeartbeatRunning=false,
-Connection=nil,LastHeartbeatRun=0,Tasks={}}n.Task=j n.Lock=i n.Begin=function()
-if n.Running then return end n.Running=true n.Connection=g.Heartbeat:Connect(
-function(o)if(not n.Running)or(n.HeartbeatRunning)then return end local p=l.now(
-)if(p-n.LastHeartbeatRun)<m then return end n.LastHeartbeatRun=p n.
-HeartbeatRunning=true debug.profilebegin'TaskManager'for q,r in n.Tasks do if(
-not r:CanRun())then continue end task.spawn(function()local s=r:Run()if(not s)or
-(not r.Interval)then n.RemoveTask(q)end end)end debug.profileend()n.
-HeartbeatRunning=false end)end n.Stop=function()if not n.Running then return end
-n.Running=false n.Connection:Disconnect()n.Connection=nil for o in n.Tasks do n.
-RemoveTask(o)end end n.AddTask=function(o)assert(o and j.is(o),
-'Task must be a Task object!')local p=k()n.Tasks[p]=o:SetIdentifier(p)return p
-end n.RemoveTask=function(o)local p=n.Tasks[o]if(not p)then return end n.Tasks[o
-]=nil p:Destroy()end n.GetTasksFromIndex=function(o)local p={}for q,r in n.Tasks
-do if r.Index~=o then continue end p[q]=r end return p end n.RemoveTasksByIndex=
-function(o)for p in n.GetTasksFromIndex(o)do n.RemoveTask(p)end end return n end
-end)()end,function()a(4)return(function(...)return function(b)local c={}c.
-__index=c local d,e,f,g,h,i,j=b:Get'Functions/Time',b:Get
-'Functions/OutputMessage',debug.setmemorycategory,debug.resetmemorycategory,
-debug.profilebegin,debug.profileend,coroutine.running c.new=function(k,l,m,n)
-assert(k~=nil and typeof(k)=='string','Index must be a string!')assert(l and
-typeof(l)=='function','Callback must be a function!')assert(m==nil or typeof(m)
-=='number','Interval must be a number!')return setmetatable({Index=k,Identifier=
-nil,Callback=l,Thread=nil,Running=false,Destroyed=false,Interval=m,CurrentStep=
-nil,Priority=1,Locks=n and{Groups={},Individual={}}or nil,ExecutionBegan=0,
+Extend(e.Extensions.Children(c))end)()end,function()local b,c=a(2)return(
+function(...)return function(d)return d.new(d):Extend(d.Extensions.Children(c))
+end end)()end,function()local b,c,d=a(3)return(function(...)return function(e)
+local f=e.Services local g,h,i,j,k,l,m,n=f.RunService,f.HttpService,d(c.Lock)(e)
+,d(c.Task)(e),e:Get'Functions/CreateGUID',e:Get'Functions/Time',
+3.333333333333333E-2,{Running=false,HeartbeatRunning=false,Connection=nil,
+LastHeartbeatRun=0,Tasks={}}n.Task=j n.Lock=i n.Begin=function()if n.Running
+then return end n.Running=true n.Connection=g.Heartbeat:Connect(function(o)if(
+not n.Running)or(n.HeartbeatRunning)then return end local p=l.now()if(p-n.
+LastHeartbeatRun)<m then return end n.LastHeartbeatRun=p n.HeartbeatRunning=true
+debug.profilebegin'TaskManager'for q,r in n.Tasks do if(not r:CanRun())then
+continue end task.spawn(function()local s=r:Run()if(not s)or(not r.Interval)then
+n.RemoveTask(q)end end)end debug.profileend()n.HeartbeatRunning=false end)end n.
+Stop=function()if not n.Running then return end n.Running=false n.Connection:
+Disconnect()n.Connection=nil for o in n.Tasks do n.RemoveTask(o)end end n.
+AddTask=function(o)assert(o and j.is(o),'Task must be a Task object!')local p=k(
+)n.Tasks[p]=o:SetIdentifier(p)return p end n.RemoveTask=function(o)local p=n.
+Tasks[o]if(not p)then return end n.Tasks[o]=nil p:Destroy()end n.
+GetTasksFromIndex=function(o)local p={}for q,r in n.Tasks do if r.Index~=o then
+continue end p[q]=r end return p end n.RemoveTasksByIndex=function(o)for p in n.
+GetTasksFromIndex(o)do n.RemoveTask(p)end end return n end end)()end,function()
+a(4)return(function(...)return function(b)local c={}c.__index=c local d,e,f,g,h,
+i,j=b:Get'Functions/Time',b:Get'Functions/OutputMessage',debug.setmemorycategory
+,debug.resetmemorycategory,debug.profilebegin,debug.profileend,coroutine.running
+c.new=function(k,l,m,n)assert(k~=nil and typeof(k)=='string',
+'Index must be a string!')assert(l and typeof(l)=='function',
+'Callback must be a function!')assert(m==nil or typeof(m)=='number',
+'Interval must be a number!')return setmetatable({Index=k,Identifier=nil,
+Callback=l,Thread=nil,Running=false,Destroyed=false,Interval=m,CurrentStep=nil,
+Priority=1,Locks=n and{Groups={},Individual={}}or nil,ExecutionBegan=0,
 LastFinishedExecution=0},c)end c.is=function(k)return typeof(k)=='table'and
 getmetatable(k)==c end c.SetPriority=function(k,l)assert(typeof(l)=='number',
 'Priority must be a number!')k.Priority=l return k end c.GetPriority=function(k)
@@ -2127,20 +2127,23 @@ Credits={{Name='vma',Role='lead developer'},{Name='felik',Role='lead developer'}
 '[+] Released'}}}end end)()end,[19]=function()local aa,ab=a(19)return(function(
 ...)return function(ac)return ac.new(ac):Extend(ac.Extensions.Children(ab))end
 end)()end,[20]=function()a(20)return(function(...)return function(aa)local ab={}
-ab.Dictionary=function(ac)local ad={}for ae,af in ac do ad[af]=true end return
-ad end ab.Filter=function(ac,ad)local ae,af={},ac[1]==nil for ag,ah in ac do
-local ai=ad(ah,ag)if(not ai)then continue end if af then ae[ag]=ah else table.
-insert(ae,ah)end end return ae end ab.Reconcile=function(ac,ad)for ae,af in ad
-do local ag,ah=ac[ae],typeof(af)if ag==nil or typeof(ag)~=ah then ac[ae]=af
-elseif ah=='table'then ab.Reconcile(ag,af)end end return ac end return ab end
-end)()end,[21]=function()a(21)return(function(...)return function(aa)local ab
-local ac=function(ac,...)local ad=ab ab=nil ac(...)ab=ad end local ad,ae=
-function()while true do ac(coroutine.yield())end end,{}ae.__index=ae ae.new=
-function(af,ag)return setmetatable({_connected=true,_signal=af,_fn=ag,_next=
-false},ae)end ae.Disconnect=function(af)af._connected=false if af._signal.
-_handlerListHead==af then af._signal._handlerListHead=af._next else local ag=af.
-_signal._handlerListHead while ag and ag._next~=af do ag=ag._next end if ag then
-ag._next=af._next end end end setmetatable(ae,{__index=function(af,ag)error((
+ab.IsDict=function(ac)return ac[1]==nil end ab.Dictionary=function(ac)local ad={
+}for ae,af in ac do ad[af]=true end return ad end ab.Filter=function(ac,ad)local
+ae,af={},ab.IsDict(ac)for ag,ah in ac do local ai=ad(ah,ag)if(not ai)then
+continue end if af then ae[ag]=ah else table.insert(ae,ah)end end return ae end
+ab.Reconcile=function(ac,ad)for ae,af in ad do local ag,ah=ac[ae],typeof(af)if
+ag==nil or typeof(ag)~=ah then ac[ae]=af elseif ah=='table'then ab.Reconcile(ag,
+af)end end return ac end ab.FullMap=function(ac,ad)local ae,af={},ab.IsDict(ac)
+for ag,ah in ac do local ai,aj=ad(ah,ag)if not(ai)then continue end if af then
+ae[aj]=ai else table.insert(ae,ai)end end return ae end return ab end end)()end,
+[21]=function()a(21)return(function(...)return function(aa)local ab local ac=
+function(ac,...)local ad=ab ab=nil ac(...)ab=ad end local ad,ae=function()while
+true do ac(coroutine.yield())end end,{}ae.__index=ae ae.new=function(af,ag)
+return setmetatable({_connected=true,_signal=af,_fn=ag,_next=false},ae)end ae.
+Disconnect=function(af)af._connected=false if af._signal._handlerListHead==af
+then af._signal._handlerListHead=af._next else local ag=af._signal.
+_handlerListHead while ag and ag._next~=af do ag=ag._next end if ag then ag.
+_next=af._next end end end setmetatable(ae,{__index=function(af,ag)error((
 'Attempt to get Connection::%s (not a valid member)'):format(tostring(ag)),2)end
 ,__newindex=function(af,ag,ah)error((
 'Attempt to set Connection::%s (not a valid member)'):format(tostring(ag)),2)end
@@ -2165,36 +2168,36 @@ Services local ac=ab.HttpService return function()return(ac:GenerateGUID(false):
 gsub('-','')):lower()end end end)()end,[24]=function()a(24)return(function(...)
 return function(aa)local ab=aa.Services local ac,ad,ae,af=ab.Workspace,aa:Get
 'Modules/t',aa:Get'RBXUtil/TableUtil',aa:Get'Functions/Numbers'local ag,ah=ad.
-numberMin(0),{}do ah.Constants={}ah.Second=1 ah.Minute=ah.Second ah.Hour=ah.
-Minute*60 ah.Day=ah.Hour*24 ah.Month=ah.Day*31 ah.Year=ah.Day*365 end ah.now=
-function()return ac:GetServerTimeNow()end ah.FormatTime=function(ai,aj)return
-DateTime.fromUnixTimestamp(ai):FormatLocalTime(aj,'en-us')end ah.FormatDuration=
-function(ai,aj)local ak,al,am,an=math.floor(ai/86400),math.floor((ai%86400)/3600
-),math.floor((ai%3600)/60),math.floor(ai%60)local ao={['%%d']=tostring(ak),[
-'%%h']=tostring(al),['%%m']=tostring(am),['%%s']=tostring(an)}return(aj:gsub(
-'%%[dhms]',ao))end do local ai=ae.FullMap(ah.Constants,function(ai,aj)return{
-Name=aj,Value=ai}end)table.sort(ai,function(aj,ak)return aj.Value>ak.Value end)
-ah.CompressTime=function(aj)assert(ad.number(aj))assert(ag(aj))aj=math.floor(aj)
-for ak,al in ipairs(ai)do local am,an=al.Name,al.Value local ao=math.max(0,math.
-floor(aj/an))if ao==0 then continue end return string.format('%s %s',tostring(af
-.CommaNumber(ao)),tostring(am..(ao>1 and's'or'')))end return'0 seconds'end end
-return ah end end)()end,[25]=function()a(25)return(function(...)return function(
-aa)local ab={Info='\u{1f535}',Warn='\u{1f7e0}',Success='\u{1f7e2}',Error=
-'\u{1f534}'}local ac=function(ac,ad)local ae=os.date'*t'string.format('%s:%s:%s'
-,ae.hour,ae.min,ae.sec)print(string.format('%s | [Library]: %s',ab[ac],ad))end
-return ac end end)()end,[26]=function()a(26)return(function(...)return function(
-aa)local ab=aa:Get'Modules/t'local ac,ad=ab.tuple(ab.number,ab.
-numberConstrained(0,8)),{}ad.Comma=function(ae)assert(ab.number(ae))local af=
-tostring(ae)local ag,ah,ai=af:match'^([^%d]*%d)(%d*)(.-)$'return ag..ah:reverse(
-):gsub('(%d%d%d)','%1,'):reverse()..ai end ad.DecimalRound=function(ae,af)
-assert(ac(ae,af))if ae%1==0 then return ae end return string.format(string.
-format('%%.%sf',tostring(af)),ae)end return ad end end)()end,[27]=function()a(27
-)return(function(...)return function(aa)local ab=aa:Get'Modules/t'local ac,ad=ab
-.tuple(ab.string,ab.numberMin(0),ab.optional(ab.string)),{}ad.Truncate=function(
-ae,af,ag)assert(ac(ae,af,ag))return ae:sub(1,af)..(ag or'')end return ad end end
-)()end,[28]=function()a(28)return(function(...)return function(aa)local ab,ac=(
-request or(http and http.request)or httprequest),aa.Services local ad=ac.
-HttpService return function(ae,af)if af then setclipboard(
+numberMin(0),{}do ah.Constants={}local ai=ah.Constants ai.Second=1 ai.Minute=ah.
+Second ai.Hour=ah.Minute*60 ai.Day=ah.Hour*24 ai.Month=ah.Day*31 ai.Year=ah.Day*
+365 end ah.now=function()return ac:GetServerTimeNow()end ah.FormatTime=function(
+ai,aj)return DateTime.fromUnixTimestamp(ai):FormatLocalTime(aj,'en-us')end ah.
+FormatDuration=function(ai,aj)local ak,al,am,an=math.floor(ai/86400),math.floor(
+(ai%86400)/3600),math.floor((ai%3600)/60),math.floor(ai%60)local ao={['%%d']=
+tostring(ak),['%%h']=tostring(al),['%%m']=tostring(am),['%%s']=tostring(an)}
+return(aj:gsub('%%[dhms]',ao))end do local ai=ae.FullMap(ah.Constants,function(
+ai,aj)return{Name=aj,Value=ai}end)table.sort(ai,function(aj,ak)return aj.Value>
+ak.Value end)ah.CompressTime=function(aj)assert(ad.number(aj))assert(ag(aj))aj=
+math.floor(aj)for ak,al in ipairs(ai)do local am,an=al.Name,al.Value local ao=
+math.max(0,math.floor(aj/an))if ao==0 then continue end return string.format(
+'%s %s',tostring(af.CommaNumber(ao)),tostring(am..(ao>1 and's'or'')))end return
+'0 seconds'end end return ah end end)()end,[25]=function()a(25)return(function(
+...)return function(aa)local ab={Info='\u{1f535}',Warn='\u{1f7e0}',Success=
+'\u{1f7e2}',Error='\u{1f534}'}local ac=function(ac,ad)local ae=os.date'*t'string
+.format('%s:%s:%s',ae.hour,ae.min,ae.sec)print(string.format(
+'%s | [Library]: %s',ab[ac],ad))end return ac end end)()end,[26]=function()a(26)
+return(function(...)return function(aa)local ab=aa:Get'Modules/t'local ac,ad=ab.
+tuple(ab.number,ab.numberConstrained(0,8)),{}ad.Comma=function(ae)assert(ab.
+number(ae))local af=tostring(ae)local ag,ah,ai=af:match'^([^%d]*%d)(%d*)(.-)$'
+return ag..ah:reverse():gsub('(%d%d%d)','%1,'):reverse()..ai end ad.DecimalRound
+=function(ae,af)assert(ac(ae,af))if ae%1==0 then return ae end return string.
+format(string.format('%%.%sf',tostring(af)),ae)end return ad end end)()end,[27]=
+function()a(27)return(function(...)return function(aa)local ab=aa:Get'Modules/t'
+local ac,ad=ab.tuple(ab.string,ab.numberMin(0),ab.optional(ab.string)),{}ad.
+Truncate=function(ae,af,ag)assert(ac(ae,af,ag))return ae:sub(1,af)..(ag or'')end
+return ad end end)()end,[28]=function()a(28)return(function(...)return function(
+aa)local ab,ac=(request or(http and http.request)or httprequest),aa.Services
+local ad=ac.HttpService return function(ae,af)if af then setclipboard(
 'https://www.discord.gg/'..ae)end if(not ab)then return false end ab{Url=
 'http://127.0.0.1:6463/rpc?v=1',Method='POST',Headers={['Content-Type']=
 'application/json',Origin='https://discord.com'},Body=ad:JSONEncode{cmd=
@@ -2229,14 +2232,14 @@ Loaded[ag]=ah return ah end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(
 ah,ai)end return af end ad.Get=function(af,ag)local ah=af for ai in string.
 gmatch(ag,'[^/]+')do if ad.is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah
 ~=nil,string.format('Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end
-return ah end return ad end)()end},{{1,2,{'Shared'},{{29,2,{'Constants'}},{30,2,
-{'Vinca'}},{22,2,{'Functions'},{{24,2,{'Time'}},{25,2,{'OutputMessage'}},{26,2,{
-'Numbers'}},{28,2,{'PromptDiscord'}},{27,2,{'Strings'}},{23,2,{'CreateGUID'}}}},
-{2,2,{'Modules'},{{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{7,2,{
-'t'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{8,2,{'Interface'},{{9,1,{'List'}
-,{{10,1,{'Obsidian'},{{12,2,{'SaveManager'}},{16,2,{'ThemeManager'}},{13,2,{
-'Tabs'},{{15,2,{'Settings'}},{14,2,{'Home'}}}},{11,2,{'Main'}}}}}}}},{6,2,{
-'Color'}}}},{19,2,{'RBXUtil'},{{20,2,{'TableUtil'}},{21,2,{'Signal'}}}}}}},
+return ah end return ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{6,2,{
+'Color'}},{3,2,{'TaskManager'},{{4,2,{'Task'}},{5,2,{'Lock'}}}},{7,2,{'t'}},{8,2
+,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{11,2
+,{'Main'}},{13,2,{'Tabs'},{{14,2,{'Home'}},{15,2,{'Settings'}}}},{12,2,{
+'SaveManager'}}}}}}}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}}}},{30,2,{'Vinca'}
+},{29,2,{'Constants'}},{19,2,{'RBXUtil'},{{21,2,{'Signal'}},{20,2,{'TableUtil'}}
+}},{22,2,{'Functions'},{{25,2,{'OutputMessage'}},{26,2,{'Numbers'}},{27,2,{
+'Strings'}},{24,2,{'Time'}},{28,2,{'PromptDiscord'}},{23,2,{'CreateGUID'}}}}}}},
 '0.4.2','strelizia.cc',string,task,setmetatable,error,next,table,unpack,
 coroutine,script,type,require,pcall,tostring,tonumber,_VERSION local au,av,aw,ax
 ,ay,az,aA=aj.insert,aj.remove,aj.freeze or function(au)return au end,al.wrap,ae.
