@@ -2205,147 +2205,147 @@ end local aq=S()for ar,as in u do if as.Type=='Dropdown'and as.SpecialType==
 'Team'then as:SetValues(aq)end end end z:GiveSignal(e.PlayerAdded:Connect(aq))z:
 GiveSignal(e.PlayerRemoving:Connect(aq))z:GiveSignal(j.ChildAdded:Connect(ar))z:
 GiveSignal(j.ChildRemoved:Connect(ar))l().Library=z return z end end)()end,[12]=
-function()a(12)return(function(...)local aa,ab=(cloneref or clonereference or
-function(aa)return aa end),(clonefunction or copyfunction or function(aa)return
-aa end)local ac,ad,ae,af=aa(game:GetService'HttpService'),isfolder,isfile,
-listfiles if typeof(ab)=='function'then local ag,ah,ai=ab(ad),ab(ae),ab(af)local
-aj,ak=pcall(function()return ag('test'..tostring(math.random(1000000,9999999)))
-end)if aj==false or typeof(ak)~='boolean'then ad=function(al)local am,an=pcall(
-ag,al)return((am and{an}or{false})[1])end ae=function(al)local am,an=pcall(ah,al
-)return((am and{an}or{false})[1])end af=function(al)local am,an=pcall(ai,al)
-return((am and{an}or{{}})[1])end end end local ag={}do ag.Folder=
-'ObsidianLibSettings'ag.SubFolder=''ag.Ignore={}ag.Library=nil ag.
-UseLoadingOrder=false ag.LoadingOrder={}ag.Parser={Toggle={Save=function(ah,ai)
-return{type='Toggle',idx=ah,value=ai.Value}end,Load=function(ah,ai)local aj=ag.
-Library.Toggles[ah]if aj and aj.Value~=ai.value then aj:SetValue(ai.value)end
-end},Slider={Save=function(ah,ai)return{type='Slider',idx=ah,value=tostring(ai.
-Value)}end,Load=function(ah,ai)local aj=ag.Library.Options[ah]if aj and aj.Value
-~=ai.value then aj:SetValue(ai.value)end end},Dropdown={Save=function(ah,ai)
-return{type='Dropdown',idx=ah,value=ai.Value,multi=ai.Multi}end,Load=function(ah
-,ai)local aj=ag.Library.Options[ah]if aj and aj.Value~=ai.value then aj:
-SetValue(ai.value)end end},ColorPicker={Save=function(ah,ai)return{type=
-'ColorPicker',idx=ah,value=ai.Value:ToHex(),transparency=ai.Transparency}end,
-Load=function(ah,ai)if ag.Library.Options[ah]then ag.Library.Options[ah]:
-SetValueRGB(Color3.fromHex(ai.value),ai.transparency)end end},KeyPicker={Save=
-function(ah,ai)return{type='KeyPicker',idx=ah,mode=ai.Mode,key=ai.Value,
-modifiers=ai.Modifiers}end,Load=function(ah,ai)if ag.Library.Options[ah]then ag.
-Library.Options[ah]:SetValue{ai.key,ai.mode,ai.modifiers}end end},Input={Save=
-function(ah,ai)return{type='Input',idx=ah,text=ai.Value}end,Load=function(ah,ai)
-local aj=ag.Library.Options[ah]if aj and aj.Value~=ai.text and type(ai.text)==
-'string'then ag.Library.Options[ah]:SetValue(ai.text)end end}}ag.SetLibrary=
-function(ah,ai)ah.Library=ai end ag.SetLoadingOrder=function(ah,ai,aj)ah.
-UseLoadingOrder=ai if typeof(aj)=='table'then ah.LoadingOrder=aj end end ag.
-IgnoreThemeSettings=function(ah)ah:SetIgnoreIndexes{'BackgroundColor',
+function()a(12)return(function(...)return function(aa)local ab,ac=(cloneref or
+clonereference or function(ab)return ab end),(clonefunction or copyfunction or
+function(ab)return ab end)local ad,ae,af,ag=ab(game:GetService'HttpService'),
+isfolder,isfile,listfiles if typeof(ac)=='function'then local ah,ai,aj=ac(ae),
+ac(af),ac(ag)local ak,al=pcall(function()return ah('test'..tostring(math.random(
+1000000,9999999)))end)if ak==false or typeof(al)~='boolean'then ae=function(am)
+local an,ao=pcall(ah,am)return((an and{ao}or{false})[1])end af=function(am)local
+an,ao=pcall(ai,am)return((an and{ao}or{false})[1])end ag=function(am)local an,ao
+=pcall(aj,am)return((an and{ao}or{{}})[1])end end end local ah={}do ah.Folder=
+'ObsidianLibSettings'ah.SubFolder=''ah.Ignore={}ah.Library=nil ah.
+UseLoadingOrder=false ah.LoadingOrder={}ah.Parser={Toggle={Save=function(ai,aj)
+return{type='Toggle',idx=ai,value=aj.Value}end,Load=function(ai,aj)local ak=ah.
+Library.Toggles[ai]if ak and ak.Value~=aj.value then ak:SetValue(aj.value)end
+end},Slider={Save=function(ai,aj)return{type='Slider',idx=ai,value=tostring(aj.
+Value)}end,Load=function(ai,aj)local ak=ah.Library.Options[ai]if ak and ak.Value
+~=aj.value then ak:SetValue(aj.value)end end},Dropdown={Save=function(ai,aj)
+return{type='Dropdown',idx=ai,value=aj.Value,multi=aj.Multi}end,Load=function(ai
+,aj)local ak=ah.Library.Options[ai]if ak and ak.Value~=aj.value then ak:
+SetValue(aj.value)end end},ColorPicker={Save=function(ai,aj)return{type=
+'ColorPicker',idx=ai,value=aj.Value:ToHex(),transparency=aj.Transparency}end,
+Load=function(ai,aj)if ah.Library.Options[ai]then ah.Library.Options[ai]:
+SetValueRGB(Color3.fromHex(aj.value),aj.transparency)end end},KeyPicker={Save=
+function(ai,aj)return{type='KeyPicker',idx=ai,mode=aj.Mode,key=aj.Value,
+modifiers=aj.Modifiers}end,Load=function(ai,aj)if ah.Library.Options[ai]then ah.
+Library.Options[ai]:SetValue{aj.key,aj.mode,aj.modifiers}end end},Input={Save=
+function(ai,aj)return{type='Input',idx=ai,text=aj.Value}end,Load=function(ai,aj)
+local ak=ah.Library.Options[ai]if ak and ak.Value~=aj.text and type(aj.text)==
+'string'then ah.Library.Options[ai]:SetValue(aj.text)end end}}ah.SetLibrary=
+function(ai,aj)ai.Library=aj end ah.SetLoadingOrder=function(ai,aj,ak)ai.
+UseLoadingOrder=aj if typeof(ak)=='table'then ai.LoadingOrder=ak end end ah.
+IgnoreThemeSettings=function(ai)ai:SetIgnoreIndexes{'BackgroundColor',
 'MainColor','AccentColor','OutlineColor','FontColor','FontFace',
 'ThemeManager_ThemeList','ThemeManager_CustomThemeList',
-'ThemeManager_CustomThemeName'}end ag.CheckSubFolder=function(ah,ai)if typeof(ah
-.SubFolder)~='string'or ah.SubFolder==''then return false end if ai==true then
-if not ad(ah.Folder..'/settings/'..ah.SubFolder)then makefolder(ah.Folder..
-'/settings/'..ah.SubFolder)end end return true end ag.GetPaths=function(ah)local
-ai,aj={},ah.Folder:split'/'for ak=1,#aj do local al=table.concat(aj,'/',1,ak)if
-not table.find(ai,al)then ai[#ai+1]=al end end ai[#ai+1]=ah.Folder..'/themes'ai[
-#ai+1]=ah.Folder..'/settings'if ah:CheckSubFolder(false)then local ak=ah.Folder
-..'/settings/'..ah.SubFolder aj=ak:split'/'for al=1,#aj do local am=table.
-concat(aj,'/',1,al)if not table.find(ai,am)then ai[#ai+1]=am end end end return
-ai end ag.BuildFolderTree=function(ah)local ai=ah:GetPaths()for aj=1,#ai do
-local ak=ai[aj]if ad(ak)then continue end makefolder(ak)end end ag.
-CheckFolderTree=function(ah)if ad(ah.Folder)then return end ag:BuildFolderTree()
-task.wait(0.1)end ag.SetIgnoreIndexes=function(ah,ai)for aj,ak in pairs(ai)do ah
-.Ignore[ak]=true end end ag.SetFolder=function(ah,ai)ah.Folder=ai ah:
-BuildFolderTree()end ag.SetSubFolder=function(ah,ai)ah.SubFolder=ai ah:
-BuildFolderTree()end ag.Save=function(ah,ai)if(not ai)then return false,
-'no config file is selected'end ag:CheckFolderTree()local aj=ah.Folder..
-'/settings/'..ai..'.json'if ag:CheckSubFolder(true)then aj=ah.Folder..
-'/settings/'..ah.SubFolder..'/'..ai..'.json'end local ak={objects={}}for al,am
-in pairs(ah.Library.Toggles)do if not am.Type then continue end if not ah.Parser
-[am.Type]then continue end if ah.Ignore[al]then continue end table.insert(ak.
-objects,ah.Parser[am.Type].Save(al,am))end for al,am in pairs(ah.Library.Options
-)do if not am.Type then continue end if not ah.Parser[am.Type]then continue end
-if ah.Ignore[al]then continue end table.insert(ak.objects,ah.Parser[am.Type].
-Save(al,am))end local al,am=pcall(ac.JSONEncode,ac,ak)if not al then return
-false,'failed to encode data'end writefile(aj,am)return true end ag.Load=
-function(ah,ai)if(not ai)then return false,'no config file is selected'end ag:
-CheckFolderTree()local aj=ah.Folder..'/settings/'..ai..'.json'if ag:
-CheckSubFolder(true)then aj=ah.Folder..'/settings/'..ah.SubFolder..'/'..ai..
-'.json'end if not ae(aj)then return false,'invalid file'end local ak,al=pcall(ac
-.JSONDecode,ac,readfile(aj))if not ak then return false,'decode error'end if ah.
-UseLoadingOrder==true and typeof(ah.LoadingOrder)=='table'then table.sort(al.
-objects,function(am,an)local ao,ap=table.find(ah.LoadingOrder,am.type)or math.
-huge,table.find(ah.LoadingOrder,an.type)or math.huge return ao<ap end)end for am
-,an in al.objects do if not an.type then continue end if not ah.Parser[an.type]
-then continue end if ah.Ignore[an.idx]then continue end task.spawn(ah.Parser[an.
-type].Load,an.idx,an)end return true end ag.Delete=function(ah,ai)if(not ai)then
-return false,'no config file is selected'end local aj=ah.Folder..'/settings/'..
-ai..'.json'if ag:CheckSubFolder(true)then aj=ah.Folder..'/settings/'..ah.
-SubFolder..'/'..ai..'.json'end if not ae(aj)then return false,'invalid file'end
-local ak=pcall(delfile,aj)if not ak then return false,'delete file error'end
-return true end ag.RefreshConfigList=function(ah)local ai,aj=pcall(function()ag:
-CheckFolderTree()local ai,aj={},{}if ag:CheckSubFolder(true)then ai=af(ah.Folder
-..'/settings/'..ah.SubFolder)else ai=af(ah.Folder..'/settings')end if typeof(ai)
-~='table'then ai={}end for ak=1,#ai do local al=ai[ak]if al:sub(-5)=='.json'then
-local am=al:find('.json',1,true)local an,ao=am,al:sub(am,am)while ao~='/'and ao
-~='\\'and ao~=''do am=am-1 ao=al:sub(am,am)end if ao=='/'or ao=='\\'then table.
-insert(aj,al:sub(am+1,an-1))end end end return aj end)if(not ai)then if ah.
-Library then ah.Library:Notify('Failed to load config list: '..tostring(aj))else
-warn('Failed to load config list: '..tostring(aj))end return{}end return aj end
-ag.GetAutoloadConfig=function(ah)ag:CheckFolderTree()local ai=ah.Folder..
-'/settings/autoload.txt'if ag:CheckSubFolder(true)then ai=ah.Folder..
-'/settings/'..ah.SubFolder..'/autoload.txt'end if ae(ai)then local aj,ak=pcall(
-readfile,ai)if not aj then return'none'end ak=tostring(ak)return ak==''and'none'
-or ak end return'none'end ag.LoadAutoloadConfig=function(ah)ag:CheckFolderTree()
-local ai=ah.Folder..'/settings/autoload.txt'if ag:CheckSubFolder(true)then ai=ah
-.Folder..'/settings/'..ah.SubFolder..'/autoload.txt'end if ae(ai)then local aj,
-ak=pcall(readfile,ai)if not aj then ah.Library:Notify
-'Failed to load autoload config: write file error'return end local al,am=ah:
-Load(ak)if not al then ah.Library:Notify('Failed to load autoload config: '..am)
-return end ah.Library:Notify(string.format('Auto loaded config %q',ak))end end
-ag.SaveAutoloadConfig=function(ah,ai)ag:CheckFolderTree()local aj=ah.Folder..
-'/settings/autoload.txt'if ag:CheckSubFolder(true)then aj=ah.Folder..
-'/settings/'..ah.SubFolder..'/autoload.txt'end local ak=pcall(writefile,aj,ai)if
-not ak then return false,'write file error'end return true,''end ag.
-DeleteAutoLoadConfig=function(ah)ag:CheckFolderTree()local ai=ah.Folder..
-'/settings/autoload.txt'if ag:CheckSubFolder(true)then ai=ah.Folder..
-'/settings/'..ah.SubFolder..'/autoload.txt'end local aj=pcall(delfile,ai)if not
-aj then return false,'delete file error'end return true,''end ag.
-BuildConfigSection=function(ah,ai)assert(ah.Library,
-'Must set SaveManager.Library')local aj=ai:AddRightGroupbox('Configuration',
-'folder-cog')aj:AddInput('SaveManager_ConfigName',{Text='Config name'})aj:
-AddButton('Create config',function()local ak=ah.Library.Options.
-SaveManager_ConfigName.Value if ak:gsub(' ','')==''then ah.Library:Notify(
-'Invalid config name (empty)',2)return end local al,am=ah:Save(ak)if not al then
-ah.Library:Notify('Failed to create config: '..am)return end ah.Library:Notify(
-string.format('Created config %q',ak))ah.Library.Options.SaveManager_ConfigList:
-SetValues(ah:RefreshConfigList())ah.Library.Options.SaveManager_ConfigList:
-SetValue(nil)end)aj:AddDivider()aj:AddDropdown('SaveManager_ConfigList',{Text=
-'Config list',Values=ah:RefreshConfigList(),AllowNull=true})aj:AddButton(
-'Load config',function()local ak=ah.Library.Options.SaveManager_ConfigList.Value
-local al,am=ah:Load(ak)if not al then ah.Library:Notify(
-'Failed to load config: '..am)return end ah.Library:Notify(string.format(
-'Loaded config %q',ak))end)aj:AddButton('Overwrite config',function()local ak=ah
-.Library.Options.SaveManager_ConfigList.Value local al,am=ah:Save(ak)if not al
-then ah.Library:Notify('Failed to overwrite config: '..am)return end ah.Library:
-Notify(string.format('Overwrote config %q',ak))end)aj:AddButton('Delete config',
-function()local ak=ah.Library.Options.SaveManager_ConfigList.Value local al,am=
-ah:Delete(ak)if not al then ah.Library:Notify('Failed to delete config: '..am)
-return end ah.Library:Notify(string.format('Deleted config %q',ak))ah.Library.
-Options.SaveManager_ConfigList:SetValues(ah:RefreshConfigList())ah.Library.
-Options.SaveManager_ConfigList:SetValue(nil)end)aj:AddButton('Refresh list',
-function()ah.Library.Options.SaveManager_ConfigList:SetValues(ah:
-RefreshConfigList())ah.Library.Options.SaveManager_ConfigList:SetValue(nil)end)
-aj:AddButton('Set as autoload',function()local ak=ah.Library.Options.
-SaveManager_ConfigList.Value local al,am=ah:SaveAutoloadConfig(ak)if not al then
-ah.Library:Notify('Failed to set autoload config: '..am)return end ah.Library:
-Notify(string.format('Set %q to auto load',ak))ah.AutoloadConfigLabel:SetText(
-'Current autoload config: '..ak)end)aj:AddButton('Reset autoload',function()
-local ak,al=ah:DeleteAutoLoadConfig()if not ak then ah.Library:Notify(
-'Failed to set autoload config: '..al)return end ah.Library:Notify
-'Set autoload to none'ah.AutoloadConfigLabel:SetText
-'Current autoload config: none'end)ah.AutoloadConfigLabel=aj:AddLabel(
-'Current autoload config: '..ah:GetAutoloadConfig(),true)ah:SetIgnoreIndexes{
-'SaveManager_ConfigList','SaveManager_ConfigName'}end ag:BuildFolderTree()end
-return ag end)()end,[13]=function()local aa,ab=a(13)return(function(...)return
-function(ac)return ac.new(ac):Extend(ac.Extensions.Children(ab))end end)()end,[
-14]=function()a(14)return(function(...)return function(aa)local ab=aa:Get
+'ThemeManager_CustomThemeName'}end ah.CheckSubFolder=function(ai,aj)if typeof(ai
+.SubFolder)~='string'or ai.SubFolder==''then return false end if aj==true then
+if not ae(ai.Folder..'/settings/'..ai.SubFolder)then makefolder(ai.Folder..
+'/settings/'..ai.SubFolder)end end return true end ah.GetPaths=function(ai)local
+aj,ak={},ai.Folder:split'/'for al=1,#ak do local am=table.concat(ak,'/',1,al)if
+not table.find(aj,am)then aj[#aj+1]=am end end aj[#aj+1]=ai.Folder..'/themes'aj[
+#aj+1]=ai.Folder..'/settings'if ai:CheckSubFolder(false)then local al=ai.Folder
+..'/settings/'..ai.SubFolder ak=al:split'/'for am=1,#ak do local an=table.
+concat(ak,'/',1,am)if not table.find(aj,an)then aj[#aj+1]=an end end end return
+aj end ah.BuildFolderTree=function(ai)local aj=ai:GetPaths()for ak=1,#aj do
+local al=aj[ak]if ae(al)then continue end makefolder(al)end end ah.
+CheckFolderTree=function(ai)if ae(ai.Folder)then return end ah:BuildFolderTree()
+task.wait(0.1)end ah.SetIgnoreIndexes=function(ai,aj)for ak,al in pairs(aj)do ai
+.Ignore[al]=true end end ah.SetFolder=function(ai,aj)ai.Folder=aj ai:
+BuildFolderTree()end ah.SetSubFolder=function(ai,aj)ai.SubFolder=aj ai:
+BuildFolderTree()end ah.Save=function(ai,aj)if(not aj)then return false,
+'no config file is selected'end ah:CheckFolderTree()local ak=ai.Folder..
+'/settings/'..aj..'.json'if ah:CheckSubFolder(true)then ak=ai.Folder..
+'/settings/'..ai.SubFolder..'/'..aj..'.json'end local al={objects={}}for am,an
+in pairs(ai.Library.Toggles)do if not an.Type then continue end if not ai.Parser
+[an.Type]then continue end if ai.Ignore[am]then continue end table.insert(al.
+objects,ai.Parser[an.Type].Save(am,an))end for am,an in pairs(ai.Library.Options
+)do if not an.Type then continue end if not ai.Parser[an.Type]then continue end
+if ai.Ignore[am]then continue end table.insert(al.objects,ai.Parser[an.Type].
+Save(am,an))end local am,an=pcall(ad.JSONEncode,ad,al)if not am then return
+false,'failed to encode data'end writefile(ak,an)return true end ah.Load=
+function(ai,aj)if(not aj)then return false,'no config file is selected'end ah:
+CheckFolderTree()local ak=ai.Folder..'/settings/'..aj..'.json'if ah:
+CheckSubFolder(true)then ak=ai.Folder..'/settings/'..ai.SubFolder..'/'..aj..
+'.json'end if not af(ak)then return false,'invalid file'end local al,am=pcall(ad
+.JSONDecode,ad,readfile(ak))if not al then return false,'decode error'end if ai.
+UseLoadingOrder==true and typeof(ai.LoadingOrder)=='table'then table.sort(am.
+objects,function(an,ao)local ap,aq=table.find(ai.LoadingOrder,an.type)or math.
+huge,table.find(ai.LoadingOrder,ao.type)or math.huge return ap<aq end)end for an
+,ao in am.objects do if not ao.type then continue end if not ai.Parser[ao.type]
+then continue end if ai.Ignore[ao.idx]then continue end task.spawn(ai.Parser[ao.
+type].Load,ao.idx,ao)end return true end ah.Delete=function(ai,aj)if(not aj)then
+return false,'no config file is selected'end local ak=ai.Folder..'/settings/'..
+aj..'.json'if ah:CheckSubFolder(true)then ak=ai.Folder..'/settings/'..ai.
+SubFolder..'/'..aj..'.json'end if not af(ak)then return false,'invalid file'end
+local al=pcall(delfile,ak)if not al then return false,'delete file error'end
+return true end ah.RefreshConfigList=function(ai)local aj,ak=pcall(function()ah:
+CheckFolderTree()local aj,ak={},{}if ah:CheckSubFolder(true)then aj=ag(ai.Folder
+..'/settings/'..ai.SubFolder)else aj=ag(ai.Folder..'/settings')end if typeof(aj)
+~='table'then aj={}end for al=1,#aj do local am=aj[al]if am:sub(-5)=='.json'then
+local an=am:find('.json',1,true)local ao,ap=an,am:sub(an,an)while ap~='/'and ap
+~='\\'and ap~=''do an=an-1 ap=am:sub(an,an)end if ap=='/'or ap=='\\'then table.
+insert(ak,am:sub(an+1,ao-1))end end end return ak end)if(not aj)then if ai.
+Library then ai.Library:Notify('Failed to load config list: '..tostring(ak))else
+warn('Failed to load config list: '..tostring(ak))end return{}end return ak end
+ah.GetAutoloadConfig=function(ai)ah:CheckFolderTree()local aj=ai.Folder..
+'/settings/autoload.txt'if ah:CheckSubFolder(true)then aj=ai.Folder..
+'/settings/'..ai.SubFolder..'/autoload.txt'end if af(aj)then local ak,al=pcall(
+readfile,aj)if not ak then return'none'end al=tostring(al)return al==''and'none'
+or al end return'none'end ah.LoadAutoloadConfig=function(ai)ah:CheckFolderTree()
+local aj=ai.Folder..'/settings/autoload.txt'if ah:CheckSubFolder(true)then aj=ai
+.Folder..'/settings/'..ai.SubFolder..'/autoload.txt'end if af(aj)then local ak,
+al=pcall(readfile,aj)if not ak then ai.Library:Notify
+'Failed to load autoload config: write file error'return end local am,an=ai:
+Load(al)if not am then ai.Library:Notify('Failed to load autoload config: '..an)
+return end ai.Library:Notify(string.format('Auto loaded config %q',al))end end
+ah.SaveAutoloadConfig=function(ai,aj)ah:CheckFolderTree()local ak=ai.Folder..
+'/settings/autoload.txt'if ah:CheckSubFolder(true)then ak=ai.Folder..
+'/settings/'..ai.SubFolder..'/autoload.txt'end local al=pcall(writefile,ak,aj)if
+not al then return false,'write file error'end return true,''end ah.
+DeleteAutoLoadConfig=function(ai)ah:CheckFolderTree()local aj=ai.Folder..
+'/settings/autoload.txt'if ah:CheckSubFolder(true)then aj=ai.Folder..
+'/settings/'..ai.SubFolder..'/autoload.txt'end local ak=pcall(delfile,aj)if not
+ak then return false,'delete file error'end return true,''end ah.
+BuildConfigSection=function(ai,aj)assert(ai.Library,
+'Must set SaveManager.Library')local ak=aj:AddRightGroupbox('Configuration',
+'folder-cog')ak:AddInput('SaveManager_ConfigName',{Text='Config name'})ak:
+AddButton('Create config',function()local al=ai.Library.Options.
+SaveManager_ConfigName.Value if al:gsub(' ','')==''then ai.Library:Notify(
+'Invalid config name (empty)',2)return end local am,an=ai:Save(al)if not am then
+ai.Library:Notify('Failed to create config: '..an)return end ai.Library:Notify(
+string.format('Created config %q',al))ai.Library.Options.SaveManager_ConfigList:
+SetValues(ai:RefreshConfigList())ai.Library.Options.SaveManager_ConfigList:
+SetValue(nil)end)ak:AddDivider()ak:AddDropdown('SaveManager_ConfigList',{Text=
+'Config list',Values=ai:RefreshConfigList(),AllowNull=true})ak:AddButton(
+'Load config',function()local al=ai.Library.Options.SaveManager_ConfigList.Value
+local am,an=ai:Load(al)if not am then ai.Library:Notify(
+'Failed to load config: '..an)return end ai.Library:Notify(string.format(
+'Loaded config %q',al))end)ak:AddButton('Overwrite config',function()local al=ai
+.Library.Options.SaveManager_ConfigList.Value local am,an=ai:Save(al)if not am
+then ai.Library:Notify('Failed to overwrite config: '..an)return end ai.Library:
+Notify(string.format('Overwrote config %q',al))end)ak:AddButton('Delete config',
+function()local al=ai.Library.Options.SaveManager_ConfigList.Value local am,an=
+ai:Delete(al)if not am then ai.Library:Notify('Failed to delete config: '..an)
+return end ai.Library:Notify(string.format('Deleted config %q',al))ai.Library.
+Options.SaveManager_ConfigList:SetValues(ai:RefreshConfigList())ai.Library.
+Options.SaveManager_ConfigList:SetValue(nil)end)ak:AddButton('Refresh list',
+function()ai.Library.Options.SaveManager_ConfigList:SetValues(ai:
+RefreshConfigList())ai.Library.Options.SaveManager_ConfigList:SetValue(nil)end)
+ak:AddButton('Set as autoload',function()local al=ai.Library.Options.
+SaveManager_ConfigList.Value local am,an=ai:SaveAutoloadConfig(al)if not am then
+ai.Library:Notify('Failed to set autoload config: '..an)return end ai.Library:
+Notify(string.format('Set %q to auto load',al))ai.AutoloadConfigLabel:SetText(
+'Current autoload config: '..al)end)ak:AddButton('Reset autoload',function()
+local al,am=ai:DeleteAutoLoadConfig()if not al then ai.Library:Notify(
+'Failed to set autoload config: '..am)return end ai.Library:Notify
+'Set autoload to none'ai.AutoloadConfigLabel:SetText
+'Current autoload config: none'end)ai.AutoloadConfigLabel=ak:AddLabel(
+'Current autoload config: '..ai:GetAutoloadConfig(),true)ai:SetIgnoreIndexes{
+'SaveManager_ConfigList','SaveManager_ConfigName'}end ah:BuildFolderTree()end
+return ah end end)()end,[13]=function()local aa,ab=a(13)return(function(...)
+return function(ac)return ac.new(ac):Extend(ac.Extensions.Children(ab))end end)(
+)end,[14]=function()a(14)return(function(...)return function(aa)local ab=aa:Get
 'Constants'local ac,ad,ae,af,ag,ah=ab.Characters,aa:Get'Modules/Places',aa:Get
 'Modules/Color',aa:Get'Functions/Time',aa:Get'Functions/Numbers',aa:Get
 'Functions/PromptDiscord'return function(ai)local aj,ak,al,am=aa:Get
@@ -2385,170 +2385,170 @@ Unload()end)af.ToggleKeybind=af.Options.MenuKeybind ah:SetLibrary(af)ag:
 SetLibrary(af)ag:IgnoreThemeSettings()ag:SetIgnoreIndexes{'MenuKeybind'}ah:
 SetFolder'strelizia'ag:SetFolder(string.format('strelizia/%s',tostring(ae.Name))
 )ag:BuildConfigSection(ac)ah:ApplyToTab(ac)ag:LoadAutoloadConfig()end end end)()
-end,[16]=function()a(16)return(function(...)local aa,ab=(cloneref or
-clonereference or function(aa)return aa end),(clonefunction or copyfunction or
-function(aa)return aa end)local ac,ad,ae,af=aa(game:GetService'HttpService'),
-isfolder,isfile,listfiles if typeof(ab)=='function'then local ag,ah,ai=ab(ad),
-ab(ae),ab(af)local aj,ak=pcall(function()return ag('test'..tostring(math.random(
-1000000,9999999)))end)if aj==false or typeof(ak)~='boolean'then ad=function(al)
-local am,an=pcall(ag,al)return((am and{an}or{false})[1])end ae=function(al)local
-am,an=pcall(ah,al)return((am and{an}or{false})[1])end af=function(al)local am,an
-=pcall(ai,al)return((am and{an}or{{}})[1])end end end local ag={}do local ah={
-'FontColor','MainColor','AccentColor','BackgroundColor','OutlineColor'}ag.Folder
-='ObsidianLibSettings'ag.Library=nil ag.AppliedToTab=false ag.BuiltInThemes={
-Default={1,{FontColor='ffffff',MainColor='191919',AccentColor='7d55ff',
-BackgroundColor='0f0f0f',OutlineColor='282828'}},BBot={2,{FontColor='ffffff',
-MainColor='1e1e1e',AccentColor='7e48a3',BackgroundColor='232323',OutlineColor=
-'141414'}},Fatality={3,{FontColor='ffffff',MainColor='1e1842',AccentColor=
-'c50754',BackgroundColor='191335',OutlineColor='3c355d'}},Jester={4,{FontColor=
-'ffffff',MainColor='242424',AccentColor='db4467',BackgroundColor='1c1c1c',
-OutlineColor='373737'}},Mint={5,{FontColor='ffffff',MainColor='242424',
-AccentColor='3db488',BackgroundColor='1c1c1c',OutlineColor='373737'}},[
-'Tokyo Night']={6,{FontColor='ffffff',MainColor='191925',AccentColor='6759b3',
-BackgroundColor='16161f',OutlineColor='323232'}},Ubuntu={7,{FontColor='ffffff',
-MainColor='3e3e3e',AccentColor='e2581e',BackgroundColor='323232',OutlineColor=
-'191919'}},Quartz={8,{FontColor='ffffff',MainColor='232330',AccentColor='426e87'
-,BackgroundColor='1d1b26',OutlineColor='27232f'}},Nord={9,{FontColor='eceff4',
-MainColor='3b4252',AccentColor='88c0d0',BackgroundColor='2e3440',OutlineColor=
-'4c566a'}},Dracula={10,{FontColor='f8f8f2',MainColor='44475a',AccentColor=
-'ff79c6',BackgroundColor='282a36',OutlineColor='6272a4'}},Monokai={11,{FontColor
-='f8f8f2',MainColor='272822',AccentColor='f92672',BackgroundColor='1e1f1c',
-OutlineColor='49483e'}},Gruvbox={12,{FontColor='ebdbb2',MainColor='3c3836',
-AccentColor='fb4934',BackgroundColor='282828',OutlineColor='504945'}},Solarized=
-{13,{FontColor='839496',MainColor='073642',AccentColor='cb4b16',BackgroundColor=
-'002b36',OutlineColor='586e75'}},Catppuccin={14,{FontColor='d9e0ee',MainColor=
-'302d41',AccentColor='f5c2e7',BackgroundColor='1e1e2e',OutlineColor='575268'}},[
-'One Dark']={15,{FontColor='abb2bf',MainColor='282c34',AccentColor='c678dd',
-BackgroundColor='21252b',OutlineColor='5c6370'}},Cyberpunk={16,{FontColor=
-'f9f9f9',MainColor='262335',AccentColor='00ff9f',BackgroundColor='1a1a2e',
-OutlineColor='413c5e'}},['Oceanic Next']={17,{FontColor='d8dee9',MainColor=
-'1b2b34',AccentColor='6699cc',BackgroundColor='16232a',OutlineColor='343d46'}},
-Material={18,{FontColor='eeffff',MainColor='212121',AccentColor='82aaff',
-BackgroundColor='151515',OutlineColor='424242'}}}ag.SetLibrary=function(ai,aj)ai
-.Library=aj end ag.GetPaths=function(ai)local aj,ak={},ai.Folder:split'/'for al=
-1,#ak do aj[#aj+1]=table.concat(ak,'/',1,al)end aj[#aj+1]=ai.Folder..'/themes'
-return aj end ag.BuildFolderTree=function(ai)local aj=ai:GetPaths()for ak=1,#aj
-do local al=aj[ak]if ad(al)then continue end makefolder(al)end end ag.
-CheckFolderTree=function(ai)if ad(ai.Folder)then return end ai:BuildFolderTree()
-task.wait(0.1)end ag.SetFolder=function(ai,aj)ai.Folder=aj ai:BuildFolderTree()
-end ag.ApplyTheme=function(ai,aj)local ak=ai:GetCustomTheme(aj)local al=ak or ai
-.BuiltInThemes[aj]if not al then return end local am=al[2]for an,ao in pairs(ak
-or am)do if an=='VideoLink'then continue elseif an=='FontFace'then ai.Library:
-SetFont(Enum.Font[ao])if ai.Library.Options[an]then ai.Library.Options[an]:
-SetValue(ao)end else ai.Library.Scheme[an]=Color3.fromHex(ao)if ai.Library.
-Options[an]then ai.Library.Options[an]:SetValueRGB(Color3.fromHex(ao))end end
-end ai:ThemeUpdate()end ag.ThemeUpdate=function(ai)for aj,ak in ah do if ai.
-Library.Options and ai.Library.Options[ak]then ai.Library.Scheme[ak]=ai.Library.
-Options[ak].Value end end ai.Library:UpdateColorsUsingRegistry()end ag.
-GetCustomTheme=function(ai,aj)local ak=ai.Folder..'/themes/'..aj..'.json'if not
-ae(ak)then return nil end local al=readfile(ak)local am,an=pcall(ac.JSONDecode,
-ac,al)if not am then return nil end return an end ag.LoadDefault=function(ai)
-local aj,ak,al='Default',ae(ai.Folder..'/themes/default.txt')and readfile(ai.
-Folder..'/themes/default.txt'),true if ak then if ai.BuiltInThemes[ak]then aj=ak
-elseif ai:GetCustomTheme(ak)then aj=ak al=false end elseif ai.BuiltInThemes[ai.
-DefaultTheme]then aj=ai.DefaultTheme end if al then ai.Library.Options.
-ThemeManager_ThemeList:SetValue(aj)else ai:ApplyTheme(aj)end end ag.SaveDefault=
-function(ai,aj)writefile(ai.Folder..'/themes/default.txt',aj)end ag.
-SetDefaultTheme=function(ai,aj)assert(ai.Library,
-'Must set ThemeManager.Library first!')assert(not ai.AppliedToTab,
-[[Cannot set default theme after applying ThemeManager to a tab!]])local ak,al={
-},{}for am,an in ah do if typeof(aj[an])=='Color3'then ak[an]='#'..aj[an]:ToHex(
-)al[an]=aj[an]elseif typeof(aj[an])=='string'then ak[an]=(aj[an]:sub(1,1)=='#'
-and{(aj[an])}or{('#'..aj[an])})[1]al[an]=Color3.fromHex(aj[an])else ak[an]=ag.
-BuiltInThemes.Default[2][an]al[an]=Color3.fromHex(ag.BuiltInThemes.Default[2][an
-])end end if typeof(aj.FontFace)=='EnumItem'then ak.FontFace=aj.FontFace.Name al
-.Font=Font.fromEnum(aj.FontFace)elseif typeof(aj.FontFace)=='string'then ak.
-FontFace=aj.FontFace al.Font=Font.fromEnum(Enum.Font[aj.FontFace])else ak.
-FontFace='Code'al.Font=Font.fromEnum(Enum.Font.Code)end for am,an in{'RedColor',
-'DarkColor','WhiteColor'}do al[an]=ai.Library.Scheme[an]end ai.Library.Scheme=al
-ai.BuiltInThemes.Default={1,ak}ai.Library:UpdateColorsUsingRegistry()end ag.
-SaveCustomTheme=function(ai,aj)if aj:gsub(' ','')==''then ai.Library:Notify(
-'Invalid file name for theme (empty)',3)return end local ak={}for al,am in ah do
-ak[am]=ai.Library.Options[am].Value:ToHex()end ak.FontFace=ai.Library.Options.
-FontFace.Value writefile(ai.Folder..'/themes/'..aj..'.json',ac:JSONEncode(ak))
-end ag.Delete=function(ai,aj)if not aj then return false,
-'no config file is selected'end local ak=ai.Folder..'/themes/'..aj..'.json'if
-not ae(ak)then return false,'invalid file'end local al=pcall(delfile,ak)if not
-al then return false,'delete file error'end return true end ag.
-ReloadCustomThemes=function(ai)local aj,ak=af(ai.Folder..'/themes'),{}for al=1,#
-aj do local am=aj[al]if am:sub(-5)=='.json'then local an=am:find('.json',1,true)
-local ao,ap=an,am:sub(an,an)while ap~='/'and ap~='\\'and ap~=''do an=an-1 ap=am:
-sub(an,an)end if ap=='/'or ap=='\\'then table.insert(ak,am:sub(an+1,ao-1))end
-end end return ak end ag.CreateThemeManager=function(ai,aj)aj:AddLabel
-'Background color':AddColorPicker('BackgroundColor',{Default=ai.Library.Scheme.
-BackgroundColor})aj:AddLabel'Main color':AddColorPicker('MainColor',{Default=ai.
-Library.Scheme.MainColor})aj:AddLabel'Accent color':AddColorPicker('AccentColor'
-,{Default=ai.Library.Scheme.AccentColor})aj:AddLabel'Outline color':
-AddColorPicker('OutlineColor',{Default=ai.Library.Scheme.OutlineColor})aj:
-AddLabel'Font color':AddColorPicker('FontColor',{Default=ai.Library.Scheme.
-FontColor})aj:AddDropdown('FontFace',{Text='Font Face',Default='Code',Values={
+end,[16]=function()a(16)return(function(...)return function(aa)local ab,ac=(
+cloneref or clonereference or function(ab)return ab end),(clonefunction or
+copyfunction or function(ab)return ab end)local ad,ae,af,ag=ab(game:GetService
+'HttpService'),isfolder,isfile,listfiles if typeof(ac)=='function'then local ah,
+ai,aj=ac(ae),ac(af),ac(ag)local ak,al=pcall(function()return ah('test'..
+tostring(math.random(1000000,9999999)))end)if ak==false or typeof(al)~='boolean'
+then ae=function(am)local an,ao=pcall(ah,am)return((an and{ao}or{false})[1])end
+af=function(am)local an,ao=pcall(ai,am)return((an and{ao}or{false})[1])end ag=
+function(am)local an,ao=pcall(aj,am)return((an and{ao}or{{}})[1])end end end
+local ah={}do local ai={'FontColor','MainColor','AccentColor','BackgroundColor',
+'OutlineColor'}ah.Folder='ObsidianLibSettings'ah.Library=nil ah.AppliedToTab=
+false ah.BuiltInThemes={Default={1,{FontColor='ffffff',MainColor='191919',
+AccentColor='7d55ff',BackgroundColor='0f0f0f',OutlineColor='282828'}},BBot={2,{
+FontColor='ffffff',MainColor='1e1e1e',AccentColor='7e48a3',BackgroundColor=
+'232323',OutlineColor='141414'}},Fatality={3,{FontColor='ffffff',MainColor=
+'1e1842',AccentColor='c50754',BackgroundColor='191335',OutlineColor='3c355d'}},
+Jester={4,{FontColor='ffffff',MainColor='242424',AccentColor='db4467',
+BackgroundColor='1c1c1c',OutlineColor='373737'}},Mint={5,{FontColor='ffffff',
+MainColor='242424',AccentColor='3db488',BackgroundColor='1c1c1c',OutlineColor=
+'373737'}},['Tokyo Night']={6,{FontColor='ffffff',MainColor='191925',AccentColor
+='6759b3',BackgroundColor='16161f',OutlineColor='323232'}},Ubuntu={7,{FontColor=
+'ffffff',MainColor='3e3e3e',AccentColor='e2581e',BackgroundColor='323232',
+OutlineColor='191919'}},Quartz={8,{FontColor='ffffff',MainColor='232330',
+AccentColor='426e87',BackgroundColor='1d1b26',OutlineColor='27232f'}},Nord={9,{
+FontColor='eceff4',MainColor='3b4252',AccentColor='88c0d0',BackgroundColor=
+'2e3440',OutlineColor='4c566a'}},Dracula={10,{FontColor='f8f8f2',MainColor=
+'44475a',AccentColor='ff79c6',BackgroundColor='282a36',OutlineColor='6272a4'}},
+Monokai={11,{FontColor='f8f8f2',MainColor='272822',AccentColor='f92672',
+BackgroundColor='1e1f1c',OutlineColor='49483e'}},Gruvbox={12,{FontColor='ebdbb2'
+,MainColor='3c3836',AccentColor='fb4934',BackgroundColor='282828',OutlineColor=
+'504945'}},Solarized={13,{FontColor='839496',MainColor='073642',AccentColor=
+'cb4b16',BackgroundColor='002b36',OutlineColor='586e75'}},Catppuccin={14,{
+FontColor='d9e0ee',MainColor='302d41',AccentColor='f5c2e7',BackgroundColor=
+'1e1e2e',OutlineColor='575268'}},['One Dark']={15,{FontColor='abb2bf',MainColor=
+'282c34',AccentColor='c678dd',BackgroundColor='21252b',OutlineColor='5c6370'}},
+Cyberpunk={16,{FontColor='f9f9f9',MainColor='262335',AccentColor='00ff9f',
+BackgroundColor='1a1a2e',OutlineColor='413c5e'}},['Oceanic Next']={17,{FontColor
+='d8dee9',MainColor='1b2b34',AccentColor='6699cc',BackgroundColor='16232a',
+OutlineColor='343d46'}},Material={18,{FontColor='eeffff',MainColor='212121',
+AccentColor='82aaff',BackgroundColor='151515',OutlineColor='424242'}}}ah.
+SetLibrary=function(aj,ak)aj.Library=ak end ah.GetPaths=function(aj)local ak,al=
+{},aj.Folder:split'/'for am=1,#al do ak[#ak+1]=table.concat(al,'/',1,am)end ak[#
+ak+1]=aj.Folder..'/themes'return ak end ah.BuildFolderTree=function(aj)local ak=
+aj:GetPaths()for al=1,#ak do local am=ak[al]if ae(am)then continue end
+makefolder(am)end end ah.CheckFolderTree=function(aj)if ae(aj.Folder)then return
+end aj:BuildFolderTree()task.wait(0.1)end ah.SetFolder=function(aj,ak)aj.Folder=
+ak aj:BuildFolderTree()end ah.ApplyTheme=function(aj,ak)local al=aj:
+GetCustomTheme(ak)local am=al or aj.BuiltInThemes[ak]if not am then return end
+local an=am[2]for ao,ap in pairs(al or an)do if ao=='VideoLink'then continue
+elseif ao=='FontFace'then aj.Library:SetFont(Enum.Font[ap])if aj.Library.Options
+[ao]then aj.Library.Options[ao]:SetValue(ap)end else aj.Library.Scheme[ao]=
+Color3.fromHex(ap)if aj.Library.Options[ao]then aj.Library.Options[ao]:
+SetValueRGB(Color3.fromHex(ap))end end end aj:ThemeUpdate()end ah.ThemeUpdate=
+function(aj)for ak,al in ai do if aj.Library.Options and aj.Library.Options[al]
+then aj.Library.Scheme[al]=aj.Library.Options[al].Value end end aj.Library:
+UpdateColorsUsingRegistry()end ah.GetCustomTheme=function(aj,ak)local al=aj.
+Folder..'/themes/'..ak..'.json'if not af(al)then return nil end local am=
+readfile(al)local an,ao=pcall(ad.JSONDecode,ad,am)if not an then return nil end
+return ao end ah.LoadDefault=function(aj)local ak,al,am='Default',af(aj.Folder..
+'/themes/default.txt')and readfile(aj.Folder..'/themes/default.txt'),true if al
+then if aj.BuiltInThemes[al]then ak=al elseif aj:GetCustomTheme(al)then ak=al am
+=false end elseif aj.BuiltInThemes[aj.DefaultTheme]then ak=aj.DefaultTheme end
+if am then aj.Library.Options.ThemeManager_ThemeList:SetValue(ak)else aj:
+ApplyTheme(ak)end end ah.SaveDefault=function(aj,ak)writefile(aj.Folder..
+'/themes/default.txt',ak)end ah.SetDefaultTheme=function(aj,ak)assert(aj.Library
+,'Must set ThemeManager.Library first!')assert(not aj.AppliedToTab,
+[[Cannot set default theme after applying ThemeManager to a tab!]])local al,am={
+},{}for an,ao in ai do if typeof(ak[ao])=='Color3'then al[ao]='#'..ak[ao]:ToHex(
+)am[ao]=ak[ao]elseif typeof(ak[ao])=='string'then al[ao]=(ak[ao]:sub(1,1)=='#'
+and{(ak[ao])}or{('#'..ak[ao])})[1]am[ao]=Color3.fromHex(ak[ao])else al[ao]=ah.
+BuiltInThemes.Default[2][ao]am[ao]=Color3.fromHex(ah.BuiltInThemes.Default[2][ao
+])end end if typeof(ak.FontFace)=='EnumItem'then al.FontFace=ak.FontFace.Name am
+.Font=Font.fromEnum(ak.FontFace)elseif typeof(ak.FontFace)=='string'then al.
+FontFace=ak.FontFace am.Font=Font.fromEnum(Enum.Font[ak.FontFace])else al.
+FontFace='Code'am.Font=Font.fromEnum(Enum.Font.Code)end for an,ao in{'RedColor',
+'DarkColor','WhiteColor'}do am[ao]=aj.Library.Scheme[ao]end aj.Library.Scheme=am
+aj.BuiltInThemes.Default={1,al}aj.Library:UpdateColorsUsingRegistry()end ah.
+SaveCustomTheme=function(aj,ak)if ak:gsub(' ','')==''then aj.Library:Notify(
+'Invalid file name for theme (empty)',3)return end local al={}for am,an in ai do
+al[an]=aj.Library.Options[an].Value:ToHex()end al.FontFace=aj.Library.Options.
+FontFace.Value writefile(aj.Folder..'/themes/'..ak..'.json',ad:JSONEncode(al))
+end ah.Delete=function(aj,ak)if not ak then return false,
+'no config file is selected'end local al=aj.Folder..'/themes/'..ak..'.json'if
+not af(al)then return false,'invalid file'end local am=pcall(delfile,al)if not
+am then return false,'delete file error'end return true end ah.
+ReloadCustomThemes=function(aj)local ak,al=ag(aj.Folder..'/themes'),{}for am=1,#
+ak do local an=ak[am]if an:sub(-5)=='.json'then local ao=an:find('.json',1,true)
+local ap,aq=ao,an:sub(ao,ao)while aq~='/'and aq~='\\'and aq~=''do ao=ao-1 aq=an:
+sub(ao,ao)end if aq=='/'or aq=='\\'then table.insert(al,an:sub(ao+1,ap-1))end
+end end return al end ah.CreateThemeManager=function(aj,ak)ak:AddLabel
+'Background color':AddColorPicker('BackgroundColor',{Default=aj.Library.Scheme.
+BackgroundColor})ak:AddLabel'Main color':AddColorPicker('MainColor',{Default=aj.
+Library.Scheme.MainColor})ak:AddLabel'Accent color':AddColorPicker('AccentColor'
+,{Default=aj.Library.Scheme.AccentColor})ak:AddLabel'Outline color':
+AddColorPicker('OutlineColor',{Default=aj.Library.Scheme.OutlineColor})ak:
+AddLabel'Font color':AddColorPicker('FontColor',{Default=aj.Library.Scheme.
+FontColor})ak:AddDropdown('FontFace',{Text='Font Face',Default='Code',Values={
 'BuilderSans','Code','Fantasy','Gotham','Jura','Roboto','RobotoMono',
-'SourceSans'}})local ak={}for al,am in pairs(ai.BuiltInThemes)do table.insert(ak
-,al)end table.sort(ak,function(al,am)return ai.BuiltInThemes[al][1]<ai.
-BuiltInThemes[am][1]end)aj:AddDivider()aj:AddDropdown('ThemeManager_ThemeList',{
-Text='Theme list',Values=ak,Default=1})aj:AddButton('Set as default',function()
-ai:SaveDefault(ai.Library.Options.ThemeManager_ThemeList.Value)ai.Library:
-Notify(string.format('Set default theme to %q',ai.Library.Options.
-ThemeManager_ThemeList.Value))end)ai.Library.Options.ThemeManager_ThemeList:
-OnChanged(function()ai:ApplyTheme(ai.Library.Options.ThemeManager_ThemeList.
-Value)end)aj:AddDivider()aj:AddInput('ThemeManager_CustomThemeName',{Text=
-'Custom theme name'})aj:AddButton('Create theme',function()local al=ai.Library.
-Options.ThemeManager_CustomThemeName.Value if al:gsub(' ','')==''then ai.Library
-:Notify('Invalid theme name (empty)',2)return end ai:SaveCustomTheme(al)ai.
-Library:Notify(string.format('Created theme %q',al))ai.Library.Options.
-ThemeManager_CustomThemeList:SetValues(ai:ReloadCustomThemes())ai.Library.
-Options.ThemeManager_CustomThemeList:SetValue(nil)end)aj:AddDivider()aj:
-AddDropdown('ThemeManager_CustomThemeList',{Text='Custom themes',Values=ai:
-ReloadCustomThemes(),AllowNull=true,Default=1})aj:AddButton('Load theme',
-function()local al=ai.Library.Options.ThemeManager_CustomThemeList.Value ai:
-ApplyTheme(al)ai.Library:Notify(string.format('Loaded theme %q',al))end)aj:
-AddButton('Overwrite theme',function()local al=ai.Library.Options.
-ThemeManager_CustomThemeList.Value ai:SaveCustomTheme(al)ai.Library:Notify(
-string.format('Overwrote config %q',al))end)aj:AddButton('Delete theme',function
-()local al=ai.Library.Options.ThemeManager_CustomThemeList.Value local am,an=ai:
-Delete(al)if not am then ai.Library:Notify('Failed to delete theme: '..an)return
-end ai.Library:Notify(string.format('Deleted theme %q',al))ai.Library.Options.
-ThemeManager_CustomThemeList:SetValues(ai:ReloadCustomThemes())ai.Library.
-Options.ThemeManager_CustomThemeList:SetValue(nil)end)aj:AddButton(
-'Refresh list',function()ai.Library.Options.ThemeManager_CustomThemeList:
-SetValues(ai:ReloadCustomThemes())ai.Library.Options.
-ThemeManager_CustomThemeList:SetValue(nil)end)aj:AddButton('Set as default',
-function()if ai.Library.Options.ThemeManager_CustomThemeList.Value~=nil and ai.
-Library.Options.ThemeManager_CustomThemeList.Value~=''then ai:SaveDefault(ai.
-Library.Options.ThemeManager_CustomThemeList.Value)ai.Library:Notify(string.
-format('Set default theme to %q',ai.Library.Options.ThemeManager_CustomThemeList
-.Value))end end)aj:AddButton('Reset default',function()local al=pcall(delfile,ai
-.Folder..'/themes/default.txt')if not al then ai.Library:Notify
-'Failed to reset default: delete file error'return end ai.Library:Notify
-'Set default theme to nothing'ai.Library.Options.ThemeManager_CustomThemeList:
-SetValues(ai:ReloadCustomThemes())ai.Library.Options.
-ThemeManager_CustomThemeList:SetValue(nil)end)ai:LoadDefault()ai.AppliedToTab=
-true local al=function()ai:ThemeUpdate()end ai.Library.Options.BackgroundColor:
-OnChanged(al)ai.Library.Options.MainColor:OnChanged(al)ai.Library.Options.
-AccentColor:OnChanged(al)ai.Library.Options.OutlineColor:OnChanged(al)ai.Library
-.Options.FontColor:OnChanged(al)ai.Library.Options.FontFace:OnChanged(function(
-am)ai.Library:SetFont(Enum.Font[am])ai.Library:UpdateColorsUsingRegistry()end)
-end ag.CreateGroupBox=function(ai,aj)assert(ai.Library,
-'Must set ThemeManager.Library first!')return aj:AddLeftGroupbox('Themes',
-'paintbrush')end ag.ApplyToTab=function(ai,aj)assert(ai.Library,
-'Must set ThemeManager.Library first!')local ak=ai:CreateGroupBox(aj)ai:
-CreateThemeManager(ak)end ag.ApplyToGroupbox=function(ai,aj)assert(ai.Library,
-'Must set ThemeManager.Library first!')ai:CreateThemeManager(aj)end ag:
-BuildFolderTree()end getgenv().ObsidianThemeManager=ag return ag end)()end,[17]=
-function()local aa,ab,ac=a(17)return(function(...)return function(ad)local ae={
-List={}}for af,ag in ab:GetChildren()do table.insert(ae.List,ac(ag)(ad))end ae.
-GetPlaceFromId=function(af)for ag,ah in ae.List do if not ah.Ids[tostring(af)]
-then continue end return ah end return nil end ae.IsExecutorBlacklisted=function
-(af)local ag=(getexecutorname or identifyexecutor)if not ag then return true end
-local ah=ag()for ai,aj in af.BlacklistedExecutors or{}do if(aj:find(ah,1,true)==
-nil)then continue end return true end return false end return ae end end)()end,[
-18]=function()a(18)return(function(...)return function(aa)local ab,ac,ad,ae=aa:
-Get'Modules/Color',Color3.new(0,1,0),Color3.new(1,0,0),Color3.new(0,0,1)return{
-Name='Slime RNG',Ids={['92416421522960']=true},Keyless=false,Downtime={Status=
-false,Message='Placeholder'},BlacklistedExecutors={'Solara','Xeno'},Credits={{
-Name='vma',Role='lead developer'},{Name='felik',Role='lead developer'}},Script=
-'8db54cb776ef39fb18e50589c7cff5db',Update={Time=1763296128,Log={ab.Paint(
-'[+] Released',ac)}}}end end)()end,[19]=function()local aa,ab=a(19)return(
+'SourceSans'}})local al={}for am,an in pairs(aj.BuiltInThemes)do table.insert(al
+,am)end table.sort(al,function(am,an)return aj.BuiltInThemes[am][1]<aj.
+BuiltInThemes[an][1]end)ak:AddDivider()ak:AddDropdown('ThemeManager_ThemeList',{
+Text='Theme list',Values=al,Default=1})ak:AddButton('Set as default',function()
+aj:SaveDefault(aj.Library.Options.ThemeManager_ThemeList.Value)aj.Library:
+Notify(string.format('Set default theme to %q',aj.Library.Options.
+ThemeManager_ThemeList.Value))end)aj.Library.Options.ThemeManager_ThemeList:
+OnChanged(function()aj:ApplyTheme(aj.Library.Options.ThemeManager_ThemeList.
+Value)end)ak:AddDivider()ak:AddInput('ThemeManager_CustomThemeName',{Text=
+'Custom theme name'})ak:AddButton('Create theme',function()local am=aj.Library.
+Options.ThemeManager_CustomThemeName.Value if am:gsub(' ','')==''then aj.Library
+:Notify('Invalid theme name (empty)',2)return end aj:SaveCustomTheme(am)aj.
+Library:Notify(string.format('Created theme %q',am))aj.Library.Options.
+ThemeManager_CustomThemeList:SetValues(aj:ReloadCustomThemes())aj.Library.
+Options.ThemeManager_CustomThemeList:SetValue(nil)end)ak:AddDivider()ak:
+AddDropdown('ThemeManager_CustomThemeList',{Text='Custom themes',Values=aj:
+ReloadCustomThemes(),AllowNull=true,Default=1})ak:AddButton('Load theme',
+function()local am=aj.Library.Options.ThemeManager_CustomThemeList.Value aj:
+ApplyTheme(am)aj.Library:Notify(string.format('Loaded theme %q',am))end)ak:
+AddButton('Overwrite theme',function()local am=aj.Library.Options.
+ThemeManager_CustomThemeList.Value aj:SaveCustomTheme(am)aj.Library:Notify(
+string.format('Overwrote config %q',am))end)ak:AddButton('Delete theme',function
+()local am=aj.Library.Options.ThemeManager_CustomThemeList.Value local an,ao=aj:
+Delete(am)if not an then aj.Library:Notify('Failed to delete theme: '..ao)return
+end aj.Library:Notify(string.format('Deleted theme %q',am))aj.Library.Options.
+ThemeManager_CustomThemeList:SetValues(aj:ReloadCustomThemes())aj.Library.
+Options.ThemeManager_CustomThemeList:SetValue(nil)end)ak:AddButton(
+'Refresh list',function()aj.Library.Options.ThemeManager_CustomThemeList:
+SetValues(aj:ReloadCustomThemes())aj.Library.Options.
+ThemeManager_CustomThemeList:SetValue(nil)end)ak:AddButton('Set as default',
+function()if aj.Library.Options.ThemeManager_CustomThemeList.Value~=nil and aj.
+Library.Options.ThemeManager_CustomThemeList.Value~=''then aj:SaveDefault(aj.
+Library.Options.ThemeManager_CustomThemeList.Value)aj.Library:Notify(string.
+format('Set default theme to %q',aj.Library.Options.ThemeManager_CustomThemeList
+.Value))end end)ak:AddButton('Reset default',function()local am=pcall(delfile,aj
+.Folder..'/themes/default.txt')if not am then aj.Library:Notify
+'Failed to reset default: delete file error'return end aj.Library:Notify
+'Set default theme to nothing'aj.Library.Options.ThemeManager_CustomThemeList:
+SetValues(aj:ReloadCustomThemes())aj.Library.Options.
+ThemeManager_CustomThemeList:SetValue(nil)end)aj:LoadDefault()aj.AppliedToTab=
+true local am=function()aj:ThemeUpdate()end aj.Library.Options.BackgroundColor:
+OnChanged(am)aj.Library.Options.MainColor:OnChanged(am)aj.Library.Options.
+AccentColor:OnChanged(am)aj.Library.Options.OutlineColor:OnChanged(am)aj.Library
+.Options.FontColor:OnChanged(am)aj.Library.Options.FontFace:OnChanged(function(
+an)aj.Library:SetFont(Enum.Font[an])aj.Library:UpdateColorsUsingRegistry()end)
+end ah.CreateGroupBox=function(aj,ak)assert(aj.Library,
+'Must set ThemeManager.Library first!')return ak:AddLeftGroupbox('Themes',
+'paintbrush')end ah.ApplyToTab=function(aj,ak)assert(aj.Library,
+'Must set ThemeManager.Library first!')local al=aj:CreateGroupBox(ak)aj:
+CreateThemeManager(al)end ah.ApplyToGroupbox=function(aj,ak)assert(aj.Library,
+'Must set ThemeManager.Library first!')aj:CreateThemeManager(ak)end ah:
+BuildFolderTree()end getgenv().ObsidianThemeManager=ah return ah end end)()end,[
+17]=function()local aa,ab,ac=a(17)return(function(...)return function(ad)local
+ae={List={}}for af,ag in ab:GetChildren()do table.insert(ae.List,ac(ag)(ad))end
+ae.GetPlaceFromId=function(af)for ag,ah in ae.List do if not ah.Ids[tostring(af)
+]then continue end return ah end return nil end ae.IsExecutorBlacklisted=
+function(af)local ag=(getexecutorname or identifyexecutor)if not ag then return
+true end local ah=ag()for ai,aj in af.BlacklistedExecutors or{}do if(aj:find(ah,
+1,true)==nil)then continue end return true end return false end return ae end
+end)()end,[18]=function()a(18)return(function(...)return function(aa)local ab,ac
+,ad,ae=aa:Get'Modules/Color',Color3.new(0,1,0),Color3.new(1,0,0),Color3.new(0,0,
+1)return{Name='Slime RNG',Ids={['92416421522960']=true},Keyless=false,Downtime={
+Status=false,Message='Placeholder'},BlacklistedExecutors={'Solara','Xeno'},
+Credits={{Name='vma',Role='lead developer'},{Name='felik',Role='lead developer'}
+},Script='8db54cb776ef39fb18e50589c7cff5db',Update={Time=1763296128,Log={ab.
+Paint('[+] Released',ac)}}}end end)()end,[19]=function()local aa,ab=a(19)return(
 function(...)return function(ac)return ac.new(ac):Extend(ac.Extensions.Children(
 ab))end end)()end,[20]=function()a(20)return(function(...)return function(aa)
 local ab={}ab.IsDict=function(ac)return ac[1]==nil end ab.Dictionary=function(ac
@@ -2655,14 +2655,14 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{30,2,{'Vinca'}},{2,2,{'Modules'},{{3,2,{
-'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{7,2,{'t'}},{8,2,{'Interface'},{
-{9,1,{'List'},{{10,1,{'Obsidian'},{{12,2,{'SaveManager'}},{11,2,{'Main'}},{16,2,
-{'ThemeManager'}},{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{'Home'}}}}}}}}}},{6
-,2,{'Color'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}}}},{19,2,{'RBXUtil'},{{21,
-2,{'Signal'}},{20,2,{'TableUtil'}}}},{29,2,{'Constants'}},{22,2,{'Functions'},{{
-27,2,{'PromptDiscord'}},{28,2,{'OutputMessage'}},{23,2,{'CreateGUID'}},{25,2,{
-'Numbers'}},{26,2,{'Strings'}},{24,2,{'Time'}}}}}}},'0.4.2','strelizia.cc',
+ad end)()end},{{1,2,{'Shared'},{{22,2,{'Functions'},{{23,2,{'CreateGUID'}},{25,2
+,{'Numbers'}},{27,2,{'PromptDiscord'}},{28,2,{'OutputMessage'}},{26,2,{'Strings'
+}},{24,2,{'Time'}}}},{19,2,{'RBXUtil'},{{21,2,{'Signal'}},{20,2,{'TableUtil'}}}}
+,{30,2,{'Vinca'}},{29,2,{'Constants'}},{2,2,{'Modules'},{{7,2,{'t'}},{17,2,{
+'Places'},{{18,2,{'Slime RNG'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{
+'Obsidian'},{{12,2,{'SaveManager'}},{16,2,{'ThemeManager'}},{13,2,{'Tabs'},{{15,
+2,{'Settings'}},{14,2,{'Home'}}}},{11,2,{'Main'}}}}}}}},{6,2,{'Color'}},{3,2,{
+'TaskManager'},{{4,2,{'Task'}},{5,2,{'Lock'}}}}}}}}},'0.4.2','strelizia.cc',
 string,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,
 pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,
 aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as
