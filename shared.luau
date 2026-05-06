@@ -239,7 +239,7 @@ local f={Loaded={}}f.GetInterface=function(g)assert(typeof(g)=='string',
 'Must provide Inteface Name')if f.Loaded[g]then return f.Loaded[g]end local h=c.
 List:FindFirstChild(g)assert(h,string.format(
 "Failed to find Interface Components for: '%s'",tostring(g)))local i={}for j,k
-in h:GetChildren()do assert(k:IsA'ModuleScript',string.format(
+in h:GetChildren()do assert(k.ClassName=='ModuleScript',string.format(
 [[Failed to load Interface Component '%s' of '%s': Instance is not a ModuleScript.]]
 ,tostring(k.Name),tostring(g)))i[k.Name]=d(k)(e)end f.Loaded[g]=i return i end
 return f end end)()end,[11]=function()a(11)return(function(...)return function(b
@@ -2655,33 +2655,33 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{8,2,{'Interface'},{{9,1,{
-'List'},{{10,1,{'Obsidian'},{{13,2,{'Tabs'},{{14,2,{'Home'}},{15,2,{'Settings'}}
-}},{11,2,{'Main'}},{16,2,{'ThemeManager'}},{12,2,{'SaveManager'}}}}}}}},{6,2,{
-'Color'}},{7,2,{'t'}},{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{17,
-2,{'Places'},{{18,2,{'Slime RNG'}}}}}},{30,2,{'Vinca'}},{19,2,{'RBXUtil'},{{21,2
-,{'Signal'}},{20,2,{'TableUtil'}}}},{29,2,{'Constants'}},{22,2,{'Functions'},{{
-25,2,{'Numbers'}},{26,2,{'Strings'}},{27,2,{'PromptDiscord'}},{24,2,{'Time'}},{
-28,2,{'OutputMessage'}},{23,2,{'CreateGUID'}}}}}}},'0.4.2','strelizia.cc',string
-,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
-tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
-freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
-ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC
-end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or function
-(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]=
-'LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={{
-},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
-aN.Parent end return aM end},GetChildren={{},function(aL)local aM={}for aN in ai
-,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}
-for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)
-end end return aM end},FindFirstChild={{'string','boolean?'},function(aL,aM,aN)
-local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return aP end end if aN
-then for aP in ai,aO do return aP:FindFirstChild(aM,true)end end end},
-FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while aN do if
-aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{'string',
-'number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO in ai,aL
-do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT,
-'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
+ad end)()end},{{1,2,{'Shared'},{{22,2,{'Functions'},{{25,2,{'Numbers'}},{27,2,{
+'PromptDiscord'}},{26,2,{'Strings'}},{28,2,{'OutputMessage'}},{23,2,{
+'CreateGUID'}},{24,2,{'Time'}}}},{19,2,{'RBXUtil'},{{21,2,{'Signal'}},{20,2,{
+'TableUtil'}}}},{29,2,{'Constants'}},{30,2,{'Vinca'}},{2,2,{'Modules'},{{3,2,{
+'TaskManager'},{{4,2,{'Task'}},{5,2,{'Lock'}}}},{8,2,{'Interface'},{{9,1,{'List'
+},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{11,2,{'Main'}},{13,2,{'Tabs'},{{
+14,2,{'Home'}},{15,2,{'Settings'}}}},{12,2,{'SaveManager'}}}}}}}},{17,2,{
+'Places'},{{18,2,{'Slime RNG'}}}},{7,2,{'t'}},{6,2,{'Color'}}}}}}},'0.4.2',
+'strelizia.cc',string,task,setmetatable,error,next,table,unpack,coroutine,script
+,type,require,pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.
+insert,aj.remove,aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,
+ae.gmatch if as and ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB
+and aC then af=aC end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ
+,aK=aB or function(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]=
+'Script',[4]='LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={
+GetFullName={{},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name
+..'.'..aM aN=aN.Parent end return aM end},GetChildren={{},function(aL)local aM={
+}for aN in ai,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(
+aL)local aM={}for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()
+do au(aM,aP)end end return aM end},FindFirstChild={{'string','boolean?'},
+function(aL,aM,aN)local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return
+aP end end if aN then for aP in ai,aO do return aP:FindFirstChild(aM,true)end
+end end},FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while
+aN do if aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{
+'string','number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO
+in ai,aL do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT
+,'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
 "Expected ':' not '.' calling member function "..aN,2)end local aT={...}for aU,
 aV in ai,aR do local aW=aT[aU]local aX,aY,aZ=an(aW),aV[1],aV[2]if aW==nil and
 not aZ then ah('Argument '..aW..' missing or nil',3)end if aY~='any'and aX~=aY
