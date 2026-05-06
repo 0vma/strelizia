@@ -2592,96 +2592,96 @@ Services local ac=ab.HttpService return function()return(ac:GenerateGUID(false):
 gsub('-','')):lower()end end end)()end,[24]=function()a(24)return(function(...)
 return function(aa)local ab=aa.Services local ac,ad,ae,af=ab.Workspace,aa:Get
 'Modules/t',aa:Get'RBXUtil/TableUtil',aa:Get'Functions/Numbers'local ag,ah,ai,aj
-,ak=ad.union(ad.number,ad.numberMin(0)),ad.tuple(ad.numberPositive,ad.string),
-math.floor,{},{}for al,am in pairs(aj.Constants)do table.insert(ak,{Name=al,
-Value=am})end table.sort(ak,function(al,am)return al.Value>am.Value end)aj.
-Constants={Second=1,Minute=60,Hour=3600,Day=86400,Month=2592000,Year=31536000}aj
-.now=function()return ac:GetServerTimeNow()end aj.FormatTime=function(al,am)
-assert(ah(al,am))return DateTime.fromUnixTimestamp(al):FormatLocalTime(am,
-'en-us')end aj.FormatDuration=function(al,am)assert(ah(al,am))local an,ao,ap,aq=
-ai(al/86400),ai(al%86400/3600),ai(al%3600/60),ai(al%60)return(am:gsub('%%d',an):
-gsub('%%h',ao):gsub('%%m',ap):gsub('%%s',aq))end aj.CompressTime=function(al)
-assert(ag(al))al=ai(al)for am,an in ak do local ao,ap=an.Name,an.Value local aq=
-ai(al/ap)if aq==0 then continue end return string.format('%s %s',tostring(af.
-CommaNumber(aq)),tostring(ao..(aq>1 and's'or'')))end return'0 seconds'end return
-aj end end)()end,[25]=function()a(25)return(function(...)return function(aa)
-local ab=aa:Get'Modules/t'local ac,ad=ab.tuple(ab.number,ab.numberConstrained(0,
-8)),{}ad.Comma=function(ae)assert(ab.integer(ae))local af=tostring(ae)local ag,
-ah,ai=af:match'^([^%d]*%d)(%d*)(.-)$'return ag..ah:reverse():gsub('(%d%d%d)',
-'%1,'):reverse()..ai end ad.DecimalRound=function(ae,af)assert(ac(ae,af))if ae%1
-==0 then return ae end return string.format(string.format('%%.%sf',tostring(af))
-,ae)end return ad end end)()end,[26]=function()a(26)return(function(...)return
-function(aa)local ab=aa:Get'Modules/t'local ac,ad=ab.tuple(ab.string,ab.
-numberMin(0),ab.optional(ab.string)),{}ad.Truncate=function(ae,af,ag)assert(ac(
-ae,af,ag))return ae:sub(1,af)..(ag or'')end return ad end end)()end,[27]=
-function()a(27)return(function(...)return function(aa)local ab,ac=(request or(
-http and http.request)or httprequest),aa.Services local ad=ac.HttpService return
-function(ae,af)if af then setclipboard('https://www.discord.gg/'..ae)end if(not
-ab)then return false end ab{Url='http://127.0.0.1:6463/rpc?v=1',Method='POST',
-Headers={['Content-Type']='application/json',Origin='https://discord.com'},Body=
-ad:JSONEncode{cmd='INVITE_BROWSER',args={code=ae},nonce=ad:GenerateGUID(false)}}
-return true end end end)()end,[28]=function()a(28)return(function(...)return
-function(aa)local ab={Info='\u{1f535}',Warn='\u{1f7e0}',Success='\u{1f7e2}',
-Error='\u{1f534}'}local ac=function(ac,ad)local ae=os.date'*t'string.format(
-'%s:%s:%s',ae.hour,ae.min,ae.sec)print(string.format('%s | [Library]: %s',ab[ac]
-,ad))end return ac end end)()end,[29]=function()a(29)return(function(...)return
-function(aa)local ab,ac,ad,ae=aa:Get'RBXUtil/TableUtil',aa:Get'Modules/t',utf8.
-char,{DiscordInviteCode='',Characters={Invisible=10240,BulletPoint=8226},Emojis=
-{Unknown='<:letter_x:1305284794044776622>',Person=
-'<:person:1305298114265219094>'},LRM_Constants={Premium=LRM_IsUserPremium or
-false,DiscordUserId=LRM_LinkedDiscordID or 0,ScriptName=LRM_ScriptName or
-'generic',TotalExecutions=LRM_TotalExecutions or 1337,SecondsLeft=
-LRM_SecondsLeft or 60,UserNote=LRM_UserNote or'user note',ScriptVersion=
-LRM_ScriptVersion or'0001'}}for af,ag in ae.Characters do if typeof(ag)~=
-'number'then continue end ae.Characters[af]=ad(ag)end setmetatable(ae.Emojis,
-function(af,ag)local ah=rawget(af,'Unknown')rawset(af,ag,ah)return ah end)return
-ae end end)()end,[30]=function()local aa,ab,ac=a(30)return(function(...)local ad
-={}ad.__index=ad ad.Extensions={Children=function(ae)local af={}for ag,ah in ae:
-GetChildren()do af[ah.Name]=ah end return af end}local ae=cloneref or function(
-ae)return ae end ad.Services=setmetatable({},{__index=function(af,ag)local ah,ai
-=pcall(game.GetService,game,ag)if ah and ai then ai=ae(ai)rawset(af,ag,ai)return
-ai end return nil end})ad.new=function(af)local ag=setmetatable({__vinca=true,
-Loaded={},Loading={},Container={}},ad)ag.Root=af or ag return ag end ad.is=
-function(af)return af and typeof(af)=='table'and rawget(af,'__vinca')end ad.Add=
-function(af,ag,ah)assert(not af.Container[ag],'Index already exists')af.
-Container[ag]=ah return af end ad.Load=function(af,ag)if af.Loaded[ag]~=nil then
-return af.Loaded[ag]end local ah=af.Container[ag]assert(ah~=nil,string.format(
-'Unknown dependency "%s"',tostring(ag)))assert(not af.Loading[ag],string.format(
-'Circular dependency at "%s"',tostring(ag)))af.Loading[ag]=true if typeof(ah)==
-'table'and ah.ClassName=='ModuleScript'then ah=ac(ah)elseif typeof(ah)==
-'Instance'and ah.ClassName=='ModuleScript'then ah=ac(ah)end if typeof(ah)==
-'function'then ah=ah(af.Root)end af.Loading[ag]=nil af.Loaded[ag]=ah return ah
-end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
-ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
-is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
-'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{19,2,{'RBXUtil'},{{20,2,{'TableUtil'}},{21,2,{
-'Signal'}}}},{30,2,{'Vinca'}},{29,2,{'Constants'}},{22,2,{'Functions'},{{27,2,{
-'PromptDiscord'}},{24,2,{'Time'}},{25,2,{'Numbers'}},{28,2,{'OutputMessage'}},{
-23,2,{'CreateGUID'}},{26,2,{'Strings'}}}},{2,2,{'Modules'},{{6,2,{'Color'}},{7,2
-,{'t'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{3,2,{'TaskManager'},{{4,2,{
-'Task'}},{5,2,{'Lock'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},
-{{11,2,{'Main'}},{16,2,{'ThemeManager'}},{12,2,{'SaveManager'}},{13,2,{'Tabs'},{
-{14,2,{'Home'}},{15,2,{'Settings'}}}}}}}}}}}}}}},'0.4.2','strelizia.cc',string,
-task,setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
-tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
-freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
-ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC
-end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or function
-(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]=
-'LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={{
-},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
-aN.Parent end return aM end},GetChildren={{},function(aL)local aM={}for aN in ai
-,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}
-for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)
-end end return aM end},FindFirstChild={{'string','boolean?'},function(aL,aM,aN)
-local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return aP end end if aN
-then for aP in ai,aO do return aP:FindFirstChild(aM,true)end end end},
-FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while aN do if
-aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{'string',
-'number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO in ai,aL
-do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT,
-'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
+=ad.numberMin(0),ad.tuple(ad.numberMin(0),ad.string),math.floor,{}aj.Constants={
+Second=1,Minute=60,Hour=3600,Day=86400,Month=2592000,Year=31536000}local ak={}
+for al,am in pairs(aj.Constants)do table.insert(ak,{Name=al,Value=am})end table.
+sort(ak,function(al,am)return al.Value>am.Value end)aj.now=function()return ac:
+GetServerTimeNow()end aj.FormatTime=function(al,am)assert(ah(al,am))return
+DateTime.fromUnixTimestamp(al):FormatLocalTime(am,'en-us')end aj.FormatDuration=
+function(al,am)assert(ah(al,am))local an,ao,ap,aq=ai(al/86400),ai(al%86400/3600)
+,ai(al%3600/60),ai(al%60)return(am:gsub('%%d',an):gsub('%%h',ao):gsub('%%m',ap):
+gsub('%%s',aq))end aj.CompressTime=function(al)assert(ag(al))al=ai(al)for am,an
+in ak do local ao,ap=an.Name,an.Value local aq=ai(al/ap)if aq==0 then continue
+end return string.format('%s %s',tostring(af.Comma(aq)),tostring(ao..(aq>1 and
+'s'or'')))end return'0 seconds'end return aj end end)()end,[25]=function()a(25)
+return(function(...)return function(aa)local ab=aa:Get'Modules/t'local ac,ad=ab.
+tuple(ab.number,ab.numberConstrained(0,8)),{}ad.Comma=function(ae)assert(ab.
+integer(ae))local af=tostring(ae)local ag,ah,ai=af:match'^([^%d]*%d)(%d*)(.-)$'
+return ag..ah:reverse():gsub('(%d%d%d)','%1,'):reverse()..ai end ad.DecimalRound
+=function(ae,af)assert(ac(ae,af))if ae%1==0 then return ae end return string.
+format(string.format('%%.%sf',tostring(af)),ae)end return ad end end)()end,[26]=
+function()a(26)return(function(...)return function(aa)local ab=aa:Get'Modules/t'
+local ac,ad=ab.tuple(ab.string,ab.numberMin(0),ab.optional(ab.string)),{}ad.
+Truncate=function(ae,af,ag)assert(ac(ae,af,ag))return ae:sub(1,af)..(ag or'')end
+return ad end end)()end,[27]=function()a(27)return(function(...)return function(
+aa)local ab,ac=(request or(http and http.request)or httprequest),aa.Services
+local ad=ac.HttpService return function(ae,af)if af then setclipboard(
+'https://www.discord.gg/'..ae)end if(not ab)then return false end ab{Url=
+'http://127.0.0.1:6463/rpc?v=1',Method='POST',Headers={['Content-Type']=
+'application/json',Origin='https://discord.com'},Body=ad:JSONEncode{cmd=
+'INVITE_BROWSER',args={code=ae},nonce=ad:GenerateGUID(false)}}return true end
+end end)()end,[28]=function()a(28)return(function(...)return function(aa)local
+ab={Info='\u{1f535}',Warn='\u{1f7e0}',Success='\u{1f7e2}',Error='\u{1f534}'}
+local ac=function(ac,ad)local ae=os.date'*t'string.format('%s:%s:%s',ae.hour,ae.
+min,ae.sec)print(string.format('%s | [Library]: %s',ab[ac],ad))end return ac end
+end)()end,[29]=function()a(29)return(function(...)return function(aa)local ab,ac
+,ad,ae=aa:Get'RBXUtil/TableUtil',aa:Get'Modules/t',utf8.char,{DiscordInviteCode=
+'',Characters={Invisible=10240,BulletPoint=8226},Emojis={Unknown=
+'<:letter_x:1305284794044776622>',Person='<:person:1305298114265219094>'},
+LRM_Constants={Premium=LRM_IsUserPremium or false,DiscordUserId=
+LRM_LinkedDiscordID or 0,ScriptName=LRM_ScriptName or'generic',TotalExecutions=
+LRM_TotalExecutions or 1337,SecondsLeft=LRM_SecondsLeft or 60,UserNote=
+LRM_UserNote or'user note',ScriptVersion=LRM_ScriptVersion or'0001'}}for af,ag
+in ae.Characters do if typeof(ag)~='number'then continue end ae.Characters[af]=
+ad(ag)end setmetatable(ae.Emojis,function(af,ag)local ah=rawget(af,'Unknown')
+rawset(af,ag,ah)return ah end)return ae end end)()end,[30]=function()local aa,ab
+,ac=a(30)return(function(...)local ad={}ad.__index=ad ad.Extensions={Children=
+function(ae)local af={}for ag,ah in ae:GetChildren()do af[ah.Name]=ah end return
+af end}local ae=cloneref or function(ae)return ae end ad.Services=setmetatable({
+},{__index=function(af,ag)local ah,ai=pcall(game.GetService,game,ag)if ah and ai
+then ai=ae(ai)rawset(af,ag,ai)return ai end return nil end})ad.new=function(af)
+local ag=setmetatable({__vinca=true,Loaded={},Loading={},Container={}},ad)ag.
+Root=af or ag return ag end ad.is=function(af)return af and typeof(af)=='table'
+and rawget(af,'__vinca')end ad.Add=function(af,ag,ah)assert(not af.Container[ag]
+,'Index already exists')af.Container[ag]=ah return af end ad.Load=function(af,ag
+)if af.Loaded[ag]~=nil then return af.Loaded[ag]end local ah=af.Container[ag]
+assert(ah~=nil,string.format('Unknown dependency "%s"',tostring(ag)))assert(not
+af.Loading[ag],string.format('Circular dependency at "%s"',tostring(ag)))af.
+Loading[ag]=true if typeof(ah)=='table'and ah.ClassName=='ModuleScript'then ah=
+ac(ah)elseif typeof(ah)=='Instance'and ah.ClassName=='ModuleScript'then ah=ac(ah
+)end if typeof(ah)=='function'then ah=ah(af.Root)end af.Loading[ag]=nil af.
+Loaded[ag]=ah return ah end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(
+ah,ai)end return af end ad.Get=function(af,ag)local ah=af for ai in string.
+gmatch(ag,'[^/]+')do if ad.is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah
+~=nil,string.format('Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end
+return ah end return ad end)()end},{{1,2,{'Shared'},{{22,2,{'Functions'},{{23,2,
+{'CreateGUID'}},{24,2,{'Time'}},{27,2,{'PromptDiscord'}},{25,2,{'Numbers'}},{28,
+2,{'OutputMessage'}},{26,2,{'Strings'}}}},{29,2,{'Constants'}},{30,2,{'Vinca'}},
+{2,2,{'Modules'},{{7,2,{'t'}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{
+'Obsidian'},{{16,2,{'ThemeManager'}},{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{
+'Home'}}}},{12,2,{'SaveManager'}},{11,2,{'Main'}}}}}}}},{6,2,{'Color'}},{3,2,{
+'TaskManager'},{{4,2,{'Task'}},{5,2,{'Lock'}}}},{17,2,{'Places'},{{18,2,{
+'Slime RNG'}}}}}},{19,2,{'RBXUtil'},{{20,2,{'TableUtil'}},{21,2,{'Signal'}}}}}}}
+,'0.4.2','strelizia.cc',string,task,setmetatable,error,next,table,unpack,
+coroutine,script,type,require,pcall,tostring,tonumber,_VERSION local au,av,aw,ax
+,ay,az,aA=aj.insert,aj.remove,aj.freeze or function(au)return au end,al.wrap,ae.
+sub,ae.match,ae.gmatch if as and ay(as,1,4)=='Lune'then local aB,aC=ap(ao,
+'@lune/task')if aB and aC then af=aC end end local aB=af and af.defer local aC,
+aD,aE,aF,aG,aH,aI,aJ,aK=aB or function(aC,...)ax(aC)(...)end,{[1]='Folder',[2]=
+'ModuleScript',[3]='Script',[4]='LocalScript',[5]='StringValue'},{},{},{},{},{},
+{},{}local aL,aM={GetFullName={{},function(aL)local aM,aN=aL.Name,aL.Parent
+while aN do aM=aN.Name..'.'..aM aN=aN.Parent end return aM end},GetChildren={{},
+function(aL)local aM={}for aN in ai,aK[aL]do au(aM,aN)end return aM end},
+GetDescendants={{},function(aL)local aM={}for aN in ai,aK[aL]do au(aM,aN)for aO,
+aP in ai,aN:GetDescendants()do au(aM,aP)end end return aM end},FindFirstChild={{
+'string','boolean?'},function(aL,aM,aN)local aO=aK[aL]for aP in ai,aO do if aP.
+Name==aM then return aP end end if aN then for aP in ai,aO do return aP:
+FindFirstChild(aM,true)end end end},FindFirstAncestor={{'string'},function(aL,aM
+)local aN=aL.Parent while aN do if aN.Name==aM then return aN end aN=aN.Parent
+end end},WaitForChild={{'string','number?'},function(aL,aM)return aL:
+FindFirstChild(aM)end}},{}for aN,aO in ai,aL do local aP,aQ,aR=aO[1],aO[2],{}for
+aS,aT in ai,aP do local aU,aV=az(aT,'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=
+function(aS,...)if not aK[aS]then ah(
 "Expected ':' not '.' calling member function "..aN,2)end local aT={...}for aU,
 aV in ai,aR do local aW=aT[aU]local aX,aY,aZ=an(aW),aV[1],aV[2]if aW==nil and
 not aZ then ah('Argument '..aW..' missing or nil',3)end if aY~='any'and aX~=aY
