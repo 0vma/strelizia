@@ -2655,14 +2655,14 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{7,2,{'t'}},{6,2,{'Color'}},{
-17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,
-2,{'Task'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{11,2,{
-'Main'}},{16,2,{'ThemeManager'}},{12,2,{'SaveManager'}},{13,2,{'Tabs'},{{15,2,{
-'Settings'}},{14,2,{'Home'}}}}}}}}}}}},{29,2,{'Constants'}},{30,2,{'Vinca'}},{22
-,2,{'Functions'},{{25,2,{'Numbers'}},{24,2,{'Time'}},{27,2,{'PromptDiscord'}},{
-23,2,{'CreateGUID'}},{28,2,{'OutputMessage'}},{26,2,{'Strings'}}}},{19,2,{
-'RBXUtil'},{{20,2,{'TableUtil'}},{21,2,{'Signal'}}}}}}},'0.4.2','strelizia.cc',
+ad end)()end},{{1,2,{'Shared'},{{29,2,{'Constants'}},{19,2,{'RBXUtil'},{{21,2,{
+'Signal'}},{20,2,{'TableUtil'}}}},{2,2,{'Modules'},{{7,2,{'t'}},{17,2,{'Places'}
+,{{18,2,{'Slime RNG'}}}},{3,2,{'TaskManager'},{{4,2,{'Task'}},{5,2,{'Lock'}}}},{
+8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{
+12,2,{'SaveManager'}},{11,2,{'Main'}},{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,
+{'Home'}}}}}}}}}},{6,2,{'Color'}}}},{22,2,{'Functions'},{{23,2,{'CreateGUID'}},{
+26,2,{'Strings'}},{28,2,{'OutputMessage'}},{25,2,{'Numbers'}},{27,2,{
+'PromptDiscord'}},{24,2,{'Time'}}}},{30,2,{'Vinca'}}}}},'0.4.2','strelizia.cc',
 string,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,
 pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,
 aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as
