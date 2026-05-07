@@ -880,16 +880,17 @@ table.insert(aw.Elements,aA)return aA end aq.AddLabel=function(ar,...)local as,
 at,au,av={},{},select(1,...),select(2,...)if typeof(au)=='table'or typeof(av)==
 'table'then local aw=typeof(au)=='table'and au or av as.Text=aw.Text or''as.
 DoesWrap=aw.DoesWrap or false as.Size=aw.Size or 14 as.Visible=aw.Visible or
-true as.Idx=typeof(av)=='table'and au or nil else as.Text=au or''as.DoesWrap=av
-or false as.Size=14 as.Visible=true as.Idx=select(3,...)or nil end local aw=ar
-local ax,ay=aw.Container,{Text=as.Text,DoesWrap=as.DoesWrap,Alignment=as.
-Alignment or Enum.TextXAlignment.Left,Addons=at,Visible=as.Visible,Type='Label'}
-local az=U('TextLabel',{BackgroundTransparency=1,Size=UDim2.new(1,0,0,18),Text=
-ay.Text,TextSize=as.Size,TextWrapped=ay.DoesWrap,TextXAlignment=aw.IsKeyTab and
-Enum.TextXAlignment.Center or ay.Alignment,Parent=ax})ay.SetVisible=function(aA,
-aB)ay.Visible=aB az.Visible=ay.Visible aw:Resize()end ay.SetText=function(aA,aB)
-ay.Text=aB az.Text=aB if ay.DoesWrap then local aC,aD=z:GetTextBounds(ay.Text,az
-.FontFace,az.TextSize,az.AbsoluteSize.X)az.Size=UDim2.new(1,0,0,aD+4)end aw:
+true as.Idx=typeof(av)=='table'and au or nil as.Alignment=aw.Alignment or Enum.
+TextXAlignment.Left else as.Text=au or''as.DoesWrap=av or false as.Size=14 as.
+Visible=true as.Idx=select(3,...)or nil end local aw=ar local ax,ay=aw.Container
+,{Text=as.Text,DoesWrap=as.DoesWrap,Alignment=as.Alignment or Enum.
+TextXAlignment.Left,Addons=at,Visible=as.Visible,Type='Label'}local az=U(
+'TextLabel',{BackgroundTransparency=1,Size=UDim2.new(1,0,0,18),Text=ay.Text,
+TextSize=as.Size,TextWrapped=ay.DoesWrap,TextXAlignment=aw.IsKeyTab and Enum.
+TextXAlignment.Center or ay.Alignment,Parent=ax})ay.SetVisible=function(aA,aB)ay
+.Visible=aB az.Visible=ay.Visible aw:Resize()end ay.SetText=function(aA,aB)ay.
+Text=aB az.Text=aB if ay.DoesWrap then local aC,aD=z:GetTextBounds(ay.Text,az.
+FontFace,az.TextSize,az.AbsoluteSize.X)az.Size=UDim2.new(1,0,0,aD+4)end aw:
 Resize()end if ay.DoesWrap then local aA,aB=z:GetTextBounds(ay.Text,az.FontFace,
 az.TextSize,az.AbsoluteSize.X)az.Size=UDim2.new(1,0,0,aB+4)local aC=az.
 AbsoluteSize az:GetPropertyChangedSignal'AbsoluteSize':Connect(function()if az.
@@ -2659,14 +2660,14 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{19,2,{'RBXUtil'},{{21,2,{'Signal'}},{20,2,{
-'TableUtil'}}}},{22,2,{'Functions'},{{24,2,{'Time'}},{27,2,{'PromptDiscord'}},{
-26,2,{'Strings'}},{25,2,{'Numbers'}},{28,2,{'OutputMessage'}},{23,2,{
-'CreateGUID'}}}},{2,2,{'Modules'},{{6,2,{'Color'}},{8,2,{'Interface'},{{9,1,{
-'List'},{{10,1,{'Obsidian'},{{13,2,{'Tabs'},{{14,2,{'Home'}},{15,2,{'Settings'}}
-}},{16,2,{'ThemeManager'}},{12,2,{'SaveManager'}},{11,2,{'Main'}}}}}}}},{7,2,{
-'t'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{3,2,{'TaskManager'},{{4,2,{
-'Task'}},{5,2,{'Lock'}}}}}},{30,2,{'Vinca'}},{29,2,{'Constants'}}}}},'0.4.2',
+ad end)()end},{{1,2,{'Shared'},{{29,2,{'Constants'}},{19,2,{'RBXUtil'},{{21,2,{
+'Signal'}},{20,2,{'TableUtil'}}}},{30,2,{'Vinca'}},{2,2,{'Modules'},{{3,2,{
+'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{8,2,{'Interface'},{{9,1,{'List'
+},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{13,2,{'Tabs'},{{14,2,{'Home'}},{
+15,2,{'Settings'}}}},{12,2,{'SaveManager'}},{11,2,{'Main'}}}}}}}},{17,2,{
+'Places'},{{18,2,{'Slime RNG'}}}},{7,2,{'t'}},{6,2,{'Color'}}}},{22,2,{
+'Functions'},{{28,2,{'OutputMessage'}},{23,2,{'CreateGUID'}},{24,2,{'Time'}},{26
+,2,{'Strings'}},{27,2,{'PromptDiscord'}},{25,2,{'Numbers'}}}}}}},'0.4.2',
 'strelizia.cc',string,task,setmetatable,error,next,table,unpack,coroutine,script
 ,type,require,pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.
 insert,aj.remove,aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,
