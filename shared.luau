@@ -882,25 +882,25 @@ at,au,av={},{},select(1,...),select(2,...)if typeof(au)=='table'or typeof(av)==
 DoesWrap=aw.DoesWrap or false as.Size=aw.Size or 14 as.Visible=aw.Visible or
 true as.Idx=typeof(av)=='table'and au or nil else as.Text=au or''as.DoesWrap=av
 or false as.Size=14 as.Visible=true as.Idx=select(3,...)or nil end local aw=ar
-local ax,ay=aw.Container,{Text=as.Text,DoesWrap=as.DoesWrap,Addons=at,Visible=as
-.Visible,Type='Label'}local az=U('TextLabel',{BackgroundTransparency=1,Size=
-UDim2.new(1,0,0,18),Text=ay.Text,TextSize=as.Size,TextWrapped=ay.DoesWrap,
-TextXAlignment=aw.IsKeyTab and Enum.TextXAlignment.Center or Enum.TextXAlignment
-.Left,Parent=ax})ay.SetVisible=function(aA,aB)ay.Visible=aB az.Visible=ay.
-Visible aw:Resize()end ay.SetText=function(aA,aB)ay.Text=aB az.Text=aB if ay.
-DoesWrap then local aC,aD=z:GetTextBounds(ay.Text,az.FontFace,az.TextSize,az.
-AbsoluteSize.X)az.Size=UDim2.new(1,0,0,aD+4)end aw:Resize()end if ay.DoesWrap
-then local aA,aB=z:GetTextBounds(ay.Text,az.FontFace,az.TextSize,az.AbsoluteSize
-.X)az.Size=UDim2.new(1,0,0,aB+4)local aC=az.AbsoluteSize az:
-GetPropertyChangedSignal'AbsoluteSize':Connect(function()if az.AbsoluteSize==aC
-then return end local aD,aE=z:GetTextBounds(ay.Text,az.FontFace,az.TextSize,az.
-AbsoluteSize.X)az.Size=UDim2.new(1,0,0,aE+4)aC=az.AbsoluteSize aw:Resize()end)
-else U('UIListLayout',{FillDirection=Enum.FillDirection.Horizontal,
-HorizontalAlignment=Enum.HorizontalAlignment.Right,Padding=UDim.new(0,6),Parent=
-az})end aw:Resize()ay.TextLabel=az ay.Container=ax if not as.DoesWrap then
-setmetatable(ay,ao)end ay.Holder=az table.insert(aw.Elements,ay)if as.Idx then r
-[as.Idx]=ay else table.insert(r,ay)end return ay end aq.AddButton=function(ar,
-...)local as=function(...)local as,at,au={},select(1,...),select(2,...)if
+local ax,ay=aw.Container,{Text=as.Text,DoesWrap=as.DoesWrap,Alignment=as.
+Alignment or Enum.TextXAlignment.Left,Addons=at,Visible=as.Visible,Type='Label'}
+local az=U('TextLabel',{BackgroundTransparency=1,Size=UDim2.new(1,0,0,18),Text=
+ay.Text,TextSize=as.Size,TextWrapped=ay.DoesWrap,TextXAlignment=aw.IsKeyTab and
+Enum.TextXAlignment.Center or ay.Alignment,Parent=ax})ay.SetVisible=function(aA,
+aB)ay.Visible=aB az.Visible=ay.Visible aw:Resize()end ay.SetText=function(aA,aB)
+ay.Text=aB az.Text=aB if ay.DoesWrap then local aC,aD=z:GetTextBounds(ay.Text,az
+.FontFace,az.TextSize,az.AbsoluteSize.X)az.Size=UDim2.new(1,0,0,aD+4)end aw:
+Resize()end if ay.DoesWrap then local aA,aB=z:GetTextBounds(ay.Text,az.FontFace,
+az.TextSize,az.AbsoluteSize.X)az.Size=UDim2.new(1,0,0,aB+4)local aC=az.
+AbsoluteSize az:GetPropertyChangedSignal'AbsoluteSize':Connect(function()if az.
+AbsoluteSize==aC then return end local aD,aE=z:GetTextBounds(ay.Text,az.FontFace
+,az.TextSize,az.AbsoluteSize.X)az.Size=UDim2.new(1,0,0,aE+4)aC=az.AbsoluteSize
+aw:Resize()end)else U('UIListLayout',{FillDirection=Enum.FillDirection.
+Horizontal,HorizontalAlignment=Enum.HorizontalAlignment.Right,Padding=UDim.new(0
+,6),Parent=az})end aw:Resize()ay.TextLabel=az ay.Container=ax if not as.DoesWrap
+then setmetatable(ay,ao)end ay.Holder=az table.insert(aw.Elements,ay)if as.Idx
+then r[as.Idx]=ay else table.insert(r,ay)end return ay end aq.AddButton=function
+(ar,...)local as=function(...)local as,at,au={},select(1,...),select(2,...)if
 typeof(at)=='table'or typeof(au)=='table'then local av=typeof(at)=='table'and at
 or au as.Text=av.Text or''as.Func=av.Func or av.Callback or function()end as.
 DoubleClick=av.DoubleClick as.Tooltip=av.Tooltip as.DisabledTooltip=av.
@@ -2633,17 +2633,17 @@ char local af=ac.Constants local ag={DiscordInviteCode='',Characters={Invisible=
 false,DiscordUserId=LRM_LinkedDiscordID or 0,ScriptName=LRM_ScriptName or
 'generic',TotalExecutions=LRM_TotalExecutions or 1337,SecondsLeft=
 LRM_SecondsLeft or 60,UserNote=LRM_UserNote or'user note',ScriptVersion=
-LRM_ScriptVersion or'0001'},KeySystemAdProviders={Linkvertise={KeyLength=af.Hour
-*24,CompletionTime=af.Minute*3,Identifier='Linkvertise-EsllfgSWtQqg'},
-AnotherProvider={KeyLength=af.Hour*12,CompletionTime=af.Minute*2,Identifier=
-'Something-ABCD'}}}for ah,ai in ag.Characters do if typeof(ai)~='number'then
-continue end ag.Characters[ah]=ae(ai)end setmetatable(ag.Emojis,{__index=
-function(ah,ai)local aj=rawget(ah,'Unknown')rawset(ah,ai,aj)return aj end})
-return ag end end)()end,[30]=function()local aa,ab,ac=a(30)return(function(...)
-local ad={}ad.__index=ad ad.Extensions={Children=function(ae)local af={}for ag,
-ah in ae:GetChildren()do af[ah.Name]=ah end return af end}local ae=cloneref or
-function(ae)return ae end ad.Services=setmetatable({},{__index=function(af,ag)
-local ah,ai=pcall(game.GetService,game,ag)if ah and ai then ai=ae(ai)rawset(af,
+LRM_ScriptVersion or'0001'},KeySystemAdProviders={{Name='Linkvertise',KeyLength=
+af.Hour*24,CompletionTime=af.Minute*3,Identifier='Linkvertise-EsllfgSWtQqg'},{
+Name='Another Provider',KeyLength=af.Hour*12,CompletionTime=af.Minute*2,
+Identifier='Something-ABCD'}}}for ah,ai in ag.Characters do if typeof(ai)~=
+'number'then continue end ag.Characters[ah]=ae(ai)end setmetatable(ag.Emojis,{
+__index=function(ah,ai)local aj=rawget(ah,'Unknown')rawset(ah,ai,aj)return aj
+end})return ag end end)()end,[30]=function()local aa,ab,ac=a(30)return(function(
+...)local ad={}ad.__index=ad ad.Extensions={Children=function(ae)local af={}for
+ag,ah in ae:GetChildren()do af[ah.Name]=ah end return af end}local ae=cloneref
+or function(ae)return ae end ad.Services=setmetatable({},{__index=function(af,ag
+)local ah,ai=pcall(game.GetService,game,ag)if ah and ai then ai=ae(ai)rawset(af,
 ag,ai)return ai end return nil end})ad.new=function(af)local ag=setmetatable({
 __vinca=true,Loaded={},Loading={},Container={}},ad)ag.Root=af or ag return ag
 end ad.is=function(af)return af and typeof(af)=='table'and rawget(af,'__vinca')
@@ -2659,33 +2659,33 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{22,2,{'Functions'},{{25,2,{'Numbers'}},{27,2,{
-'PromptDiscord'}},{28,2,{'OutputMessage'}},{24,2,{'Time'}},{26,2,{'Strings'}},{
-23,2,{'CreateGUID'}}}},{30,2,{'Vinca'}},{2,2,{'Modules'},{{8,2,{'Interface'},{{9
-,1,{'List'},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{13,2,{'Tabs'},{{15,2,{
-'Settings'}},{14,2,{'Home'}}}},{12,2,{'SaveManager'}},{11,2,{'Main'}}}}}}}},{7,2
-,{'t'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{6,2,{'Color'}},{3,2,{
-'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}}}},{29,2,{'Constants'}},{19,2,{
-'RBXUtil'},{{20,2,{'TableUtil'}},{21,2,{'Signal'}}}}}}},'0.4.2','strelizia.cc',
-string,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,
-pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,
-aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as
-and ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=
-aC end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or
-function(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]
-='LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={
-{},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
-aN.Parent end return aM end},GetChildren={{},function(aL)local aM={}for aN in ai
-,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}
-for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)
-end end return aM end},FindFirstChild={{'string','boolean?'},function(aL,aM,aN)
-local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return aP end end if aN
-then for aP in ai,aO do return aP:FindFirstChild(aM,true)end end end},
-FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while aN do if
-aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{'string',
-'number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO in ai,aL
-do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT,
-'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
+ad end)()end},{{1,2,{'Shared'},{{19,2,{'RBXUtil'},{{21,2,{'Signal'}},{20,2,{
+'TableUtil'}}}},{22,2,{'Functions'},{{24,2,{'Time'}},{27,2,{'PromptDiscord'}},{
+26,2,{'Strings'}},{25,2,{'Numbers'}},{28,2,{'OutputMessage'}},{23,2,{
+'CreateGUID'}}}},{2,2,{'Modules'},{{6,2,{'Color'}},{8,2,{'Interface'},{{9,1,{
+'List'},{{10,1,{'Obsidian'},{{13,2,{'Tabs'},{{14,2,{'Home'}},{15,2,{'Settings'}}
+}},{16,2,{'ThemeManager'}},{12,2,{'SaveManager'}},{11,2,{'Main'}}}}}}}},{7,2,{
+'t'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{3,2,{'TaskManager'},{{4,2,{
+'Task'}},{5,2,{'Lock'}}}}}},{30,2,{'Vinca'}},{29,2,{'Constants'}}}}},'0.4.2',
+'strelizia.cc',string,task,setmetatable,error,next,table,unpack,coroutine,script
+,type,require,pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.
+insert,aj.remove,aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,
+ae.gmatch if as and ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB
+and aC then af=aC end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ
+,aK=aB or function(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]=
+'Script',[4]='LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={
+GetFullName={{},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name
+..'.'..aM aN=aN.Parent end return aM end},GetChildren={{},function(aL)local aM={
+}for aN in ai,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(
+aL)local aM={}for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()
+do au(aM,aP)end end return aM end},FindFirstChild={{'string','boolean?'},
+function(aL,aM,aN)local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return
+aP end end if aN then for aP in ai,aO do return aP:FindFirstChild(aM,true)end
+end end},FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while
+aN do if aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{
+'string','number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO
+in ai,aL do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT
+,'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
 "Expected ':' not '.' calling member function "..aN,2)end local aT={...}for aU,
 aV in ai,aR do local aW=aT[aU]local aX,aY,aZ=an(aW),aV[1],aV[2]if aW==nil and
 not aZ then ah('Argument '..aW..' missing or nil',3)end if aY~='any'and aX~=aY
