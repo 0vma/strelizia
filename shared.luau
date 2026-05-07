@@ -2655,22 +2655,22 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{3,2,{'TaskManager'},{{5,2,{
-'Lock'}},{4,2,{'Task'}}}},{7,2,{'t'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{
-8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{12,2,{'SaveManager'}},{13
-,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{'Home'}}}},{16,2,{'ThemeManager'}},{11,2
-,{'Main'}}}}}}}},{6,2,{'Color'}}}},{30,2,{'Vinca'}},{22,2,{'Functions'},{{26,2,{
-'Strings'}},{25,2,{'Numbers'}},{24,2,{'Time'}},{28,2,{'OutputMessage'}},{23,2,{
-'CreateGUID'}},{27,2,{'PromptDiscord'}}}},{19,2,{'RBXUtil'},{{21,2,{'Signal'}},{
-20,2,{'TableUtil'}}}},{29,2,{'Constants'}}}}},'0.4.2','strelizia.cc',string,task
-,setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
-tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
-freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
-ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC
-end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or function
-(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]=
-'LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={{
-},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
+ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{7,2,{'t'}},{6,2,{'Color'}},{
+17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,
+2,{'Task'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{11,2,{
+'Main'}},{16,2,{'ThemeManager'}},{12,2,{'SaveManager'}},{13,2,{'Tabs'},{{15,2,{
+'Settings'}},{14,2,{'Home'}}}}}}}}}}}},{29,2,{'Constants'}},{30,2,{'Vinca'}},{22
+,2,{'Functions'},{{25,2,{'Numbers'}},{24,2,{'Time'}},{27,2,{'PromptDiscord'}},{
+23,2,{'CreateGUID'}},{28,2,{'OutputMessage'}},{26,2,{'Strings'}}}},{19,2,{
+'RBXUtil'},{{20,2,{'TableUtil'}},{21,2,{'Signal'}}}}}}},'0.4.2','strelizia.cc',
+string,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,
+pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,
+aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as
+and ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=
+aC end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or
+function(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]
+='LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={
+{},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
 aN.Parent end return aM end},GetChildren={{},function(aL)local aM={}for aN in ai
 ,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}
 for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)
