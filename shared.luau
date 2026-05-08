@@ -2383,14 +2383,19 @@ ad.SaveManager,ad.ThemeManager,ac:AddGroupbox{Side=1,Name='Menu',IconName=
 'wrench'}ai:AddButton{Text='Clear User Key',Tooltip=
 [[clears saved key from the loader allowing you to enter a new one]],Disabled=(
 not isfile'strelizia/key.bin'),DoubleClick=true,Func=function()delfile
-'strelizia/key.bin'end}ai:AddButton{Text='Erase Cache',Tooltip=
+'strelizia/key.bin'af:Notify{Text='strelizia.cc',Description=
+[[successfully deleted the saved key, re-execute the loader in order to enter a new one]]
+,Time=2}end}ai:AddButton{Text='Erase Cache',Tooltip=
 [[deletes all assets strelizia has cached, only run if you experience issues]],
-DoubleClick=true,Func=function()if(not isfile'strelizia/cache')then return end
-for aj,ak in listfiles'strelizia/cache'do delfile(ak)end end}ai:AddDivider{Text=
-'ui settings'}ai:AddToggle('KeybindMenuOpen',{Default=af.KeybindFrame.Visible,
-Text='Open Keybind Menu',Tooltip='determines which keybind will open the menu',
-Callback=function(aj)af.KeybindFrame.Visible=aj end})ai:AddToggle(
-'ShowCustomCursor',{Text='Custom Cursor',Tooltip=
+DoubleClick=true,Func=function()if(not isfolder'strelizia/cache')then return end
+local aj=0 for ak,al in listfiles'strelizia/cache'do for am,an in listfiles(al)
+do delfile(an)aj=aj+1 end end af:Notify{Text='strelizia.cc',Description=string.
+format('successfully deleted %s cached files!',tostring(aj)),Time=2}end}ai:
+AddDivider{Text='ui settings'}ai:AddToggle('KeybindMenuOpen',{Default=af.
+KeybindFrame.Visible,Text='Open Keybind Menu',Tooltip=
+'determines which keybind will open the menu',Callback=function(aj)af.
+KeybindFrame.Visible=aj end})ai:AddToggle('ShowCustomCursor',{Text=
+'Custom Cursor',Tooltip=
 [[determines if roblox cursor will be replaced with a custom one]],Default=true,
 Callback=function(aj)af.ShowCustomCursor=aj end})ai:AddDropdown(
 'NotificationSide',{Values={'Left','Right'},Default='Right',Text=
@@ -2401,44 +2406,45 @@ SetNotifySide(aj)end})ai:AddDropdown('DPIDropdown',{Values={'50%','75%','100%',
 'determines the size of the ui',Callback=function(aj)aj=aj:gsub('%%','')local ak
 =tonumber(aj)af:SetDPIScale(ak)end})ai:AddDivider{Text='misc'}ai:AddLabel
 'Menu bind':AddKeyPicker('MenuKeybind',{Default='RightShift',NoUI=true,Text=
-'Menu keybind'})ai:AddButton('Unload',function()af:Unload()end)af.ToggleKeybind=
-af.Options.MenuKeybind ah:SetLibrary(af)ag:SetLibrary(af)ag:IgnoreThemeSettings(
-)ag:SetIgnoreIndexes{'MenuKeybind'}ah:SetFolder'strelizia'ag:SetFolder(string.
-format('strelizia/%s',tostring(ae.Name)))ag:BuildConfigSection(ac)ah:ApplyToTab(
-ac)ag:LoadAutoloadConfig()end end end)()end,[16]=function()a(16)return(function(
-...)return function(aa)local ab,ac=(cloneref or clonereference or function(ab)
-return ab end),(clonefunction or copyfunction or function(ab)return ab end)local
-ad,ae,af,ag=ab(game:GetService'HttpService'),isfolder,isfile,listfiles if
-typeof(ac)=='function'then local ah,ai,aj=ac(ae),ac(af),ac(ag)local ak,al=pcall(
-function()return ah('test'..tostring(math.random(1000000,9999999)))end)if ak==
-false or typeof(al)~='boolean'then ae=function(am)local an,ao=pcall(ah,am)return
-((an and{ao}or{false})[1])end af=function(am)local an,ao=pcall(ai,am)return((an
-and{ao}or{false})[1])end ag=function(am)local an,ao=pcall(aj,am)return((an and{
-ao}or{{}})[1])end end end local ah={}do local ai={'FontColor','MainColor',
-'AccentColor','BackgroundColor','OutlineColor'}ah.Folder='ObsidianLibSettings'ah
-.Library=nil ah.AppliedToTab=false ah.BuiltInThemes={Default={1,{FontColor=
-'ffffff',MainColor='191919',AccentColor='7d55ff',BackgroundColor='0f0f0f',
-OutlineColor='282828'}},BBot={2,{FontColor='ffffff',MainColor='1e1e1e',
-AccentColor='7e48a3',BackgroundColor='232323',OutlineColor='141414'}},Fatality={
-3,{FontColor='ffffff',MainColor='1e1842',AccentColor='c50754',BackgroundColor=
-'191335',OutlineColor='3c355d'}},Jester={4,{FontColor='ffffff',MainColor=
-'242424',AccentColor='db4467',BackgroundColor='1c1c1c',OutlineColor='373737'}},
-Mint={5,{FontColor='ffffff',MainColor='242424',AccentColor='3db488',
-BackgroundColor='1c1c1c',OutlineColor='373737'}},['Tokyo Night']={6,{FontColor=
-'ffffff',MainColor='191925',AccentColor='6759b3',BackgroundColor='16161f',
-OutlineColor='323232'}},Ubuntu={7,{FontColor='ffffff',MainColor='3e3e3e',
-AccentColor='e2581e',BackgroundColor='323232',OutlineColor='191919'}},Quartz={8,
-{FontColor='ffffff',MainColor='232330',AccentColor='426e87',BackgroundColor=
-'1d1b26',OutlineColor='27232f'}},Nord={9,{FontColor='eceff4',MainColor='3b4252',
-AccentColor='88c0d0',BackgroundColor='2e3440',OutlineColor='4c566a'}},Dracula={
-10,{FontColor='f8f8f2',MainColor='44475a',AccentColor='ff79c6',BackgroundColor=
-'282a36',OutlineColor='6272a4'}},Monokai={11,{FontColor='f8f8f2',MainColor=
-'272822',AccentColor='f92672',BackgroundColor='1e1f1c',OutlineColor='49483e'}},
-Gruvbox={12,{FontColor='ebdbb2',MainColor='3c3836',AccentColor='fb4934',
-BackgroundColor='282828',OutlineColor='504945'}},Solarized={13,{FontColor=
-'839496',MainColor='073642',AccentColor='cb4b16',BackgroundColor='002b36',
-OutlineColor='586e75'}},Catppuccin={14,{FontColor='d9e0ee',MainColor='302d41',
-AccentColor='f5c2e7',BackgroundColor='1e1e2e',OutlineColor='575268'}},[
+'Menu keybind'})ai:AddButton{Text='Unload',Tooltip='unloads the script',Risky=
+true,DoubleClick=true,Func=function()af:Unload()end}af.ToggleKeybind=af.Options.
+MenuKeybind ah:SetLibrary(af)ag:SetLibrary(af)ag:IgnoreThemeSettings()ag:
+SetIgnoreIndexes{'MenuKeybind'}ah:SetFolder'strelizia/ui'ag:SetFolder(string.
+format('strelizia/ui/configs/%s',tostring(ae.Name)))ag:BuildConfigSection(ac)ah:
+ApplyToTab(ac)ag:LoadAutoloadConfig()end end end)()end,[16]=function()a(16)
+return(function(...)return function(aa)local ab,ac=(cloneref or clonereference
+or function(ab)return ab end),(clonefunction or copyfunction or function(ab)
+return ab end)local ad,ae,af,ag=ab(game:GetService'HttpService'),isfolder,isfile
+,listfiles if typeof(ac)=='function'then local ah,ai,aj=ac(ae),ac(af),ac(ag)
+local ak,al=pcall(function()return ah('test'..tostring(math.random(1000000,
+9999999)))end)if ak==false or typeof(al)~='boolean'then ae=function(am)local an,
+ao=pcall(ah,am)return((an and{ao}or{false})[1])end af=function(am)local an,ao=
+pcall(ai,am)return((an and{ao}or{false})[1])end ag=function(am)local an,ao=
+pcall(aj,am)return((an and{ao}or{{}})[1])end end end local ah={}do local ai={
+'FontColor','MainColor','AccentColor','BackgroundColor','OutlineColor'}ah.Folder
+='ObsidianLibSettings'ah.Library=nil ah.AppliedToTab=false ah.BuiltInThemes={
+Default={1,{FontColor='ffffff',MainColor='191919',AccentColor='7d55ff',
+BackgroundColor='0f0f0f',OutlineColor='282828'}},BBot={2,{FontColor='ffffff',
+MainColor='1e1e1e',AccentColor='7e48a3',BackgroundColor='232323',OutlineColor=
+'141414'}},Fatality={3,{FontColor='ffffff',MainColor='1e1842',AccentColor=
+'c50754',BackgroundColor='191335',OutlineColor='3c355d'}},Jester={4,{FontColor=
+'ffffff',MainColor='242424',AccentColor='db4467',BackgroundColor='1c1c1c',
+OutlineColor='373737'}},Mint={5,{FontColor='ffffff',MainColor='242424',
+AccentColor='3db488',BackgroundColor='1c1c1c',OutlineColor='373737'}},[
+'Tokyo Night']={6,{FontColor='ffffff',MainColor='191925',AccentColor='6759b3',
+BackgroundColor='16161f',OutlineColor='323232'}},Ubuntu={7,{FontColor='ffffff',
+MainColor='3e3e3e',AccentColor='e2581e',BackgroundColor='323232',OutlineColor=
+'191919'}},Quartz={8,{FontColor='ffffff',MainColor='232330',AccentColor='426e87'
+,BackgroundColor='1d1b26',OutlineColor='27232f'}},Nord={9,{FontColor='eceff4',
+MainColor='3b4252',AccentColor='88c0d0',BackgroundColor='2e3440',OutlineColor=
+'4c566a'}},Dracula={10,{FontColor='f8f8f2',MainColor='44475a',AccentColor=
+'ff79c6',BackgroundColor='282a36',OutlineColor='6272a4'}},Monokai={11,{FontColor
+='f8f8f2',MainColor='272822',AccentColor='f92672',BackgroundColor='1e1f1c',
+OutlineColor='49483e'}},Gruvbox={12,{FontColor='ebdbb2',MainColor='3c3836',
+AccentColor='fb4934',BackgroundColor='282828',OutlineColor='504945'}},Solarized=
+{13,{FontColor='839496',MainColor='073642',AccentColor='cb4b16',BackgroundColor=
+'002b36',OutlineColor='586e75'}},Catppuccin={14,{FontColor='d9e0ee',MainColor=
+'302d41',AccentColor='f5c2e7',BackgroundColor='1e1e2e',OutlineColor='575268'}},[
 'One Dark']={15,{FontColor='abb2bf',MainColor='282c34',AccentColor='c678dd',
 BackgroundColor='21252b',OutlineColor='5c6370'}},Cyberpunk={16,{FontColor=
 'f9f9f9',MainColor='262335',AccentColor='00ff9f',BackgroundColor='1a1a2e',
@@ -2692,33 +2698,33 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{19,2,{'RBXUtil'},{{20,2,{'TableUtil'}},{21,2,{
-'Signal'}}}},{29,2,{'Constants'}},{30,2,{'Vinca'}},{22,2,{'Functions'},{{24,2,{
-'Time'}},{28,2,{'OutputMessage'}},{26,2,{'Strings'}},{23,2,{'CreateGUID'}},{27,2
-,{'PromptDiscord'}},{25,2,{'Numbers'}}}},{2,2,{'Modules'},{{8,2,{'Interface'},{{
-9,1,{'List'},{{10,1,{'Obsidian'},{{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{
-'Home'}}}},{11,2,{'Main'}},{12,2,{'SaveManager'}},{16,2,{'ThemeManager'}}}}}}}},
-{3,2,{'TaskManager'},{{4,2,{'Task'}},{5,2,{'Lock'}}}},{6,2,{'Color'}},{7,2,{'t'}
-},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}}}}}}},'0.4.2','strelizia.cc',string,
-task,setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
-tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
-freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
-ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC
-end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or function
-(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]=
-'LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={{
-},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
-aN.Parent end return aM end},GetChildren={{},function(aL)local aM={}for aN in ai
-,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}
-for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)
-end end return aM end},FindFirstChild={{'string','boolean?'},function(aL,aM,aN)
-local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return aP end end if aN
-then for aP in ai,aO do return aP:FindFirstChild(aM,true)end end end},
-FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while aN do if
-aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{'string',
-'number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO in ai,aL
-do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT,
-'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
+ad end)()end},{{1,2,{'Shared'},{{22,2,{'Functions'},{{24,2,{'Time'}},{23,2,{
+'CreateGUID'}},{25,2,{'Numbers'}},{27,2,{'PromptDiscord'}},{28,2,{
+'OutputMessage'}},{26,2,{'Strings'}}}},{2,2,{'Modules'},{{17,2,{'Places'},{{18,2
+,{'Slime RNG'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{13,2,{
+'Tabs'},{{14,2,{'Home'}},{15,2,{'Settings'}}}},{16,2,{'ThemeManager'}},{12,2,{
+'SaveManager'}},{11,2,{'Main'}}}}}}}},{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,2,
+{'Task'}}}},{6,2,{'Color'}},{7,2,{'t'}}}},{30,2,{'Vinca'}},{19,2,{'RBXUtil'},{{
+20,2,{'TableUtil'}},{21,2,{'Signal'}}}},{29,2,{'Constants'}}}}},'0.4.2',
+'strelizia.cc',string,task,setmetatable,error,next,table,unpack,coroutine,script
+,type,require,pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.
+insert,aj.remove,aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,
+ae.gmatch if as and ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB
+and aC then af=aC end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ
+,aK=aB or function(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]=
+'Script',[4]='LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={
+GetFullName={{},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name
+..'.'..aM aN=aN.Parent end return aM end},GetChildren={{},function(aL)local aM={
+}for aN in ai,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(
+aL)local aM={}for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()
+do au(aM,aP)end end return aM end},FindFirstChild={{'string','boolean?'},
+function(aL,aM,aN)local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return
+aP end end if aN then for aP in ai,aO do return aP:FindFirstChild(aM,true)end
+end end},FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while
+aN do if aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{
+'string','number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO
+in ai,aL do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT
+,'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
 "Expected ':' not '.' calling member function "..aN,2)end local aT={...}for aU,
 aV in ai,aR do local aW=aT[aU]local aX,aY,aZ=an(aW),aV[1],aV[2]if aW==nil and
 not aZ then ah('Argument '..aW..' missing or nil',3)end if aY~='any'and aX~=aY
