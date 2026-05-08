@@ -1195,34 +1195,34 @@ function()return{0.5,az.AbsoluteSize.Y+1.5}end,2,function(aE)aB.TextTransparency
 180 or 0 if aD then aD.Text=''aD.Visible=aE end end,true)aw.Menu=aF aw.
 RecalculateListSize=function(aG,aH)local aI,aJ=math.clamp((aH or M(aw.Values))*
 21,0,at.MaxVisibleDropdownItems*21),(az.AbsoluteSize.X/z.DPIScale)+1 for aK in s
-do local aL=at.RichText and Q(aK.Text)or aK.Text local aM=i:GetTextSize(aL,aK.
-TextSize,aK.Font,Vector2.new(math.huge,math.huge)).X if aM>aJ then aJ=aM end end
-aF:SetSize(function()return UDim2.fromOffset(aJ,aI)end)end aw.UpdateColors=
-function(aG)if z.Unloaded then return end ay.TextTransparency=aw.Disabled and
-0.8 or 0 aB.TextTransparency=aw.Disabled and 0.8 or 0 aA.ImageTransparency=aw.
-Disabled and 0.8 or 0 aC.ImageTransparency=aw.Disabled and 0.8 or aF.Active and
-0 or 0.5 end aw.Display=function(aG)if z.Unloaded then return end local aH,aI=''
-if at.Multi then for aJ,aK in aw.Values do if aw.Value[aK]then if not aI then aI
-=aE(aK)end aH=aH..(at.FormatDisplayValue and tostring(at.FormatDisplayValue(aK))
-or tostring(aK))..', 'end end aH=aH:sub(1,#aH-2)else aI=aE(aw.Value)aH=aw.Value
-and tostring(aw.Value)or''if aH~=''and at.FormatDisplayValue then aH=tostring(at
-.FormatDisplayValue(aH))end end if#aH>25 then aH=aH:sub(1,22)..'...'end aB.Text=
-(aH==''and'---'or aH)if aI then aA.Image=aI.Url aA.ImageRectOffset=aI.
-ImageRectOffset or Vector2.zero aA.ImageRectSize=aI.ImageRectSize or Vector2.
-zero aA.ImageTransparency=0 else aA.Image=''aA.ImageTransparency=1 end aB.Size=
-aI and UDim2.new(1,-8,0,21)or UDim2.new(1,0,0,21)aB.Position=aI and UDim2.
-fromOffset(14,0)or UDim2.fromOffset(0,0)end aw.OnChanged=function(aG,aH)aw.
-Changed=aH end aw.GetActiveValues=function(aG)if at.Multi then local aH={}for aI
-,aJ in aw.Value do table.insert(aH,aI)end return aH end return aw.Value and 1 or
-0 end local aG={}aw.BuildDropdownList=function(aH)local aI,aJ=aw.Values,aw.
-DisabledValues if aw.UtilityButtonsHolder then aw.UtilityButtonsHolder:Destroy()
-aw.UtilityButtonsHolder=nil end for aK,aL in aG do aK.Parent:Destroy()end table.
-clear(aG)local aK=0 if aw.Multi and next(aw.Values)and(not aD or aD.Text:len()==
-0)then aK=1 local aL=U('Frame',{BackgroundTransparency=1,Size=UDim2.new(1,0,0,21
-),Parent=aF.Menu})aw.UtilityButtonsHolder=aL U('UIListLayout',{Parent=aL,Padding
-=UDim.new(0,8),FillDirection=Enum.FillDirection.Horizontal,HorizontalAlignment=
-Enum.HorizontalAlignment.Center,VerticalAlignment=Enum.VerticalAlignment.Center}
-)local aM=function(aM,aN)local aO=U('TextButton',{BackgroundColor3='MainColor',
+do local aL=at.RichText and Q(aK.Text)or aK.Text local aM=z:GetTextBounds(aL,aK.
+FontFace,aK.TextSize,math.huge)if aM>aJ then aJ=aM end end aF:SetSize(function()
+return UDim2.fromOffset(aJ,aI)end)end aw.UpdateColors=function(aG)if z.Unloaded
+then return end ay.TextTransparency=aw.Disabled and 0.8 or 0 aB.TextTransparency
+=aw.Disabled and 0.8 or 0 aA.ImageTransparency=aw.Disabled and 0.8 or 0 aC.
+ImageTransparency=aw.Disabled and 0.8 or aF.Active and 0 or 0.5 end aw.Display=
+function(aG)if z.Unloaded then return end local aH,aI=''if at.Multi then for aJ,
+aK in aw.Values do if aw.Value[aK]then if not aI then aI=aE(aK)end aH=aH..(at.
+FormatDisplayValue and tostring(at.FormatDisplayValue(aK))or tostring(aK))..', '
+end end aH=aH:sub(1,#aH-2)else aI=aE(aw.Value)aH=aw.Value and tostring(aw.Value)
+or''if aH~=''and at.FormatDisplayValue then aH=tostring(at.FormatDisplayValue(aH
+))end end if#aH>25 then aH=aH:sub(1,22)..'...'end aB.Text=(aH==''and'---'or aH)
+if aI then aA.Image=aI.Url aA.ImageRectOffset=aI.ImageRectOffset or Vector2.zero
+aA.ImageRectSize=aI.ImageRectSize or Vector2.zero aA.ImageTransparency=0 else aA
+.Image=''aA.ImageTransparency=1 end aB.Size=aI and UDim2.new(1,-8,0,21)or UDim2.
+new(1,0,0,21)aB.Position=aI and UDim2.fromOffset(14,0)or UDim2.fromOffset(0,0)
+end aw.OnChanged=function(aG,aH)aw.Changed=aH end aw.GetActiveValues=function(aG
+)if at.Multi then local aH={}for aI,aJ in aw.Value do table.insert(aH,aI)end
+return aH end return aw.Value and 1 or 0 end local aG={}aw.BuildDropdownList=
+function(aH)local aI,aJ=aw.Values,aw.DisabledValues if aw.UtilityButtonsHolder
+then aw.UtilityButtonsHolder:Destroy()aw.UtilityButtonsHolder=nil end for aK,aL
+in aG do aK.Parent:Destroy()end table.clear(aG)local aK=0 if aw.Multi and next(
+aw.Values)and(not aD or aD.Text:len()==0)then aK=1 local aL=U('Frame',{
+BackgroundTransparency=1,Size=UDim2.new(1,0,0,21),Parent=aF.Menu})aw.
+UtilityButtonsHolder=aL U('UIListLayout',{Parent=aL,Padding=UDim.new(0,8),
+FillDirection=Enum.FillDirection.Horizontal,HorizontalAlignment=Enum.
+HorizontalAlignment.Center,VerticalAlignment=Enum.VerticalAlignment.Center})
+local aM=function(aM,aN)local aO=U('TextButton',{BackgroundColor3='MainColor',
 Size=UDim2.fromScale(0.45,0.8),Text=aM,TextSize=13,TextTransparency=0.4,Parent=
 aL})U('UIStroke',{Color='OutlineColor',Parent=aO})table.insert(z.Corners,U(
 'UICorner',{CornerRadius=UDim.new(0,z.CornerRadius/2),Parent=aO}))aO.
@@ -2661,32 +2661,32 @@ ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
 ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{3,2,{'TaskManager'},{{4,2,{
-'Task'}},{5,2,{'Lock'}}}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{7,2,{'t'}},{
-6,2,{'Color'}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{11,2,{
-'Main'}},{12,2,{'SaveManager'}},{16,2,{'ThemeManager'}},{13,2,{'Tabs'},{{14,2,{
-'Home'}},{15,2,{'Settings'}}}}}}}}}}}},{22,2,{'Functions'},{{28,2,{
-'OutputMessage'}},{25,2,{'Numbers'}},{24,2,{'Time'}},{27,2,{'PromptDiscord'}},{
-23,2,{'CreateGUID'}},{26,2,{'Strings'}}}},{29,2,{'Constants'}},{30,2,{'Vinca'}},
-{19,2,{'RBXUtil'},{{21,2,{'Signal'}},{20,2,{'TableUtil'}}}}}}},'0.4.2',
-'strelizia.cc',string,task,setmetatable,error,next,table,unpack,coroutine,script
-,type,require,pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.
-insert,aj.remove,aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,
-ae.gmatch if as and ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB
-and aC then af=aC end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ
-,aK=aB or function(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]=
-'Script',[4]='LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={
-GetFullName={{},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name
-..'.'..aM aN=aN.Parent end return aM end},GetChildren={{},function(aL)local aM={
-}for aN in ai,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(
-aL)local aM={}for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()
-do au(aM,aP)end end return aM end},FindFirstChild={{'string','boolean?'},
-function(aL,aM,aN)local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return
-aP end end if aN then for aP in ai,aO do return aP:FindFirstChild(aM,true)end
-end end},FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while
-aN do if aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{
-'string','number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO
-in ai,aL do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT
-,'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
+'Task'}},{5,2,{'Lock'}}}},{6,2,{'Color'}},{7,2,{'t'}},{8,2,{'Interface'},{{9,1,{
+'List'},{{10,1,{'Obsidian'},{{11,2,{'Main'}},{16,2,{'ThemeManager'}},{13,2,{
+'Tabs'},{{15,2,{'Settings'}},{14,2,{'Home'}}}},{12,2,{'SaveManager'}}}}}}}},{17,
+2,{'Places'},{{18,2,{'Slime RNG'}}}}}},{29,2,{'Constants'}},{19,2,{'RBXUtil'},{{
+21,2,{'Signal'}},{20,2,{'TableUtil'}}}},{30,2,{'Vinca'}},{22,2,{'Functions'},{{
+28,2,{'OutputMessage'}},{25,2,{'Numbers'}},{23,2,{'CreateGUID'}},{27,2,{
+'PromptDiscord'}},{24,2,{'Time'}},{26,2,{'Strings'}}}}}}},'0.4.2','strelizia.cc'
+,string,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,
+pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,
+aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as
+and ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=
+aC end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or
+function(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]
+='LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={
+{},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
+aN.Parent end return aM end},GetChildren={{},function(aL)local aM={}for aN in ai
+,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}
+for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)
+end end return aM end},FindFirstChild={{'string','boolean?'},function(aL,aM,aN)
+local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return aP end end if aN
+then for aP in ai,aO do return aP:FindFirstChild(aM,true)end end end},
+FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while aN do if
+aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{'string',
+'number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO in ai,aL
+do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT,
+'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
 "Expected ':' not '.' calling member function "..aN,2)end local aT={...}for aU,
 aV in ai,aR do local aW=aT[aU]local aX,aY,aZ=an(aW),aV[1],aV[2]if aW==nil and
 not aZ then ah('Argument '..aW..' missing or nil',3)end if aY~='any'and aX~=aY
