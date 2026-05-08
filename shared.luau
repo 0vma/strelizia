@@ -2383,13 +2383,13 @@ ad.SaveManager,ad.ThemeManager,ac:AddGroupbox{Side=1,Name='Menu',IconName=
 'wrench'}ai:AddButton{Text='Clear User Key',Tooltip=
 [[clears saved key from the loader allowing you to enter a new one]],Disabled=(
 not isfile'strelizia/key.bin'),DoubleClick=true,Func=function()delfile
-'strelizia/key.bin'af:Notify{Text='strelizia.cc',Description=
+'strelizia/key.bin'af:Notify{Title='strelizia.cc',Description=
 [[successfully deleted the saved key, re-execute the loader in order to enter a new one]]
 ,Time=2}end}ai:AddButton{Text='Erase Cache',Tooltip=
 [[deletes all assets strelizia has cached, only run if you experience issues]],
 DoubleClick=true,Func=function()if(not isfolder'strelizia/cache')then return end
 local aj=0 for ak,al in listfiles'strelizia/cache'do for am,an in listfiles(al)
-do delfile(an)aj=aj+1 end end af:Notify{Text='strelizia.cc',Description=string.
+do delfile(an)aj=aj+1 end end af:Notify{Title='strelizia.cc',Description=string.
 format('successfully deleted %s cached files!',tostring(aj)),Time=2}end}ai:
 AddDivider{Text='ui settings'}ai:AddToggle('KeybindMenuOpen',{Default=af.
 KeybindFrame.Visible,Text='Open Keybind Menu',Tooltip=
@@ -2698,33 +2698,33 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{22,2,{'Functions'},{{24,2,{'Time'}},{23,2,{
-'CreateGUID'}},{25,2,{'Numbers'}},{27,2,{'PromptDiscord'}},{28,2,{
-'OutputMessage'}},{26,2,{'Strings'}}}},{2,2,{'Modules'},{{17,2,{'Places'},{{18,2
-,{'Slime RNG'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{13,2,{
-'Tabs'},{{14,2,{'Home'}},{15,2,{'Settings'}}}},{16,2,{'ThemeManager'}},{12,2,{
-'SaveManager'}},{11,2,{'Main'}}}}}}}},{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,2,
-{'Task'}}}},{6,2,{'Color'}},{7,2,{'t'}}}},{30,2,{'Vinca'}},{19,2,{'RBXUtil'},{{
-20,2,{'TableUtil'}},{21,2,{'Signal'}}}},{29,2,{'Constants'}}}}},'0.4.2',
-'strelizia.cc',string,task,setmetatable,error,next,table,unpack,coroutine,script
-,type,require,pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.
-insert,aj.remove,aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,
-ae.gmatch if as and ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB
-and aC then af=aC end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ
-,aK=aB or function(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]=
-'Script',[4]='LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={
-GetFullName={{},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name
-..'.'..aM aN=aN.Parent end return aM end},GetChildren={{},function(aL)local aM={
-}for aN in ai,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(
-aL)local aM={}for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()
-do au(aM,aP)end end return aM end},FindFirstChild={{'string','boolean?'},
-function(aL,aM,aN)local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return
-aP end end if aN then for aP in ai,aO do return aP:FindFirstChild(aM,true)end
-end end},FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while
-aN do if aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{
-'string','number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO
-in ai,aL do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT
-,'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
+ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{6,2,{'Color'}},{7,2,{'t'}},{8
+,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{11
+,2,{'Main'}},{12,2,{'SaveManager'}},{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{
+'Home'}}}}}}}}}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{3,2,{'TaskManager'},{
+{4,2,{'Task'}},{5,2,{'Lock'}}}}}},{30,2,{'Vinca'}},{19,2,{'RBXUtil'},{{21,2,{
+'Signal'}},{20,2,{'TableUtil'}}}},{22,2,{'Functions'},{{28,2,{'OutputMessage'}},
+{26,2,{'Strings'}},{23,2,{'CreateGUID'}},{24,2,{'Time'}},{25,2,{'Numbers'}},{27,
+2,{'PromptDiscord'}}}},{29,2,{'Constants'}}}}},'0.4.2','strelizia.cc',string,
+task,setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
+tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
+freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
+ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC
+end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or function
+(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]=
+'LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={{
+},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
+aN.Parent end return aM end},GetChildren={{},function(aL)local aM={}for aN in ai
+,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}
+for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)
+end end return aM end},FindFirstChild={{'string','boolean?'},function(aL,aM,aN)
+local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return aP end end if aN
+then for aP in ai,aO do return aP:FindFirstChild(aM,true)end end end},
+FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while aN do if
+aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{'string',
+'number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO in ai,aL
+do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT,
+'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
 "Expected ':' not '.' calling member function "..aN,2)end local aT={...}for aU,
 aV in ai,aR do local aW=aT[aU]local aX,aY,aZ=an(aW),aV[1],aV[2]if aW==nil and
 not aZ then ah('Argument '..aW..' missing or nil',3)end if aY~='any'and aX~=aY
