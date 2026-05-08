@@ -1196,33 +1196,33 @@ function()return{0.5,az.AbsoluteSize.Y+1.5}end,2,function(aE)aB.TextTransparency
 RecalculateListSize=function(aG,aH)local aI,aJ=math.clamp((aH or M(aw.Values))*
 21,0,at.MaxVisibleDropdownItems*21),(az.AbsoluteSize.X/z.DPIScale)+1 for aK in s
 do local aL=at.RichText and Q(aK.Text)or aK.Text local aM=i:GetTextSize(aL,aK.
-TextSize,aK.Font)if aM>aJ then aJ=aM end end aF:SetSize(function()return UDim2.
-fromOffset(aJ,aI)end)end aw.UpdateColors=function(aG)if z.Unloaded then return
-end ay.TextTransparency=aw.Disabled and 0.8 or 0 aB.TextTransparency=aw.Disabled
-and 0.8 or 0 aA.ImageTransparency=aw.Disabled and 0.8 or 0 aC.ImageTransparency=
-aw.Disabled and 0.8 or aF.Active and 0 or 0.5 end aw.Display=function(aG)if z.
-Unloaded then return end local aH,aI=''if at.Multi then for aJ,aK in aw.Values
-do if aw.Value[aK]then if not aI then aI=aE(aK)end aH=aH..(at.FormatDisplayValue
-and tostring(at.FormatDisplayValue(aK))or tostring(aK))..', 'end end aH=aH:sub(1
-,#aH-2)else aI=aE(aw.Value)aH=aw.Value and tostring(aw.Value)or''if aH~=''and at
-.FormatDisplayValue then aH=tostring(at.FormatDisplayValue(aH))end end if#aH>25
-then aH=aH:sub(1,22)..'...'end aB.Text=(aH==''and'---'or aH)if aI then aA.Image=
-aI.Url aA.ImageRectOffset=aI.ImageRectOffset or Vector2.zero aA.ImageRectSize=aI
-.ImageRectSize or Vector2.zero aA.ImageTransparency=0 else aA.Image=''aA.
-ImageTransparency=1 end aB.Size=aI and UDim2.new(1,-8,0,21)or UDim2.new(1,0,0,21
-)aB.Position=aI and UDim2.fromOffset(14,0)or UDim2.fromOffset(0,0)end aw.
-OnChanged=function(aG,aH)aw.Changed=aH end aw.GetActiveValues=function(aG)if at.
-Multi then local aH={}for aI,aJ in aw.Value do table.insert(aH,aI)end return aH
-end return aw.Value and 1 or 0 end local aG={}aw.BuildDropdownList=function(aH)
-local aI,aJ=aw.Values,aw.DisabledValues if aw.UtilityButtonsHolder then aw.
-UtilityButtonsHolder:Destroy()aw.UtilityButtonsHolder=nil end for aK,aL in aG do
-aK.Parent:Destroy()end table.clear(aG)local aK=0 if aw.Multi and next(aw.Values)
-and(not aD or aD.Text:len()==0)then aK=1 local aL=U('Frame',{
-BackgroundTransparency=1,Size=UDim2.new(1,0,0,21),Parent=aF.Menu})aw.
-UtilityButtonsHolder=aL U('UIListLayout',{Parent=aL,Padding=UDim.new(0,8),
-FillDirection=Enum.FillDirection.Horizontal,HorizontalAlignment=Enum.
-HorizontalAlignment.Center,VerticalAlignment=Enum.VerticalAlignment.Center})
-local aM=function(aM,aN)local aO=U('TextButton',{BackgroundColor3='MainColor',
+TextSize,aK.Font,Vector2.new(math.huge,math.huge)).X if aM>aJ then aJ=aM end end
+aF:SetSize(function()return UDim2.fromOffset(aJ,aI)end)end aw.UpdateColors=
+function(aG)if z.Unloaded then return end ay.TextTransparency=aw.Disabled and
+0.8 or 0 aB.TextTransparency=aw.Disabled and 0.8 or 0 aA.ImageTransparency=aw.
+Disabled and 0.8 or 0 aC.ImageTransparency=aw.Disabled and 0.8 or aF.Active and
+0 or 0.5 end aw.Display=function(aG)if z.Unloaded then return end local aH,aI=''
+if at.Multi then for aJ,aK in aw.Values do if aw.Value[aK]then if not aI then aI
+=aE(aK)end aH=aH..(at.FormatDisplayValue and tostring(at.FormatDisplayValue(aK))
+or tostring(aK))..', 'end end aH=aH:sub(1,#aH-2)else aI=aE(aw.Value)aH=aw.Value
+and tostring(aw.Value)or''if aH~=''and at.FormatDisplayValue then aH=tostring(at
+.FormatDisplayValue(aH))end end if#aH>25 then aH=aH:sub(1,22)..'...'end aB.Text=
+(aH==''and'---'or aH)if aI then aA.Image=aI.Url aA.ImageRectOffset=aI.
+ImageRectOffset or Vector2.zero aA.ImageRectSize=aI.ImageRectSize or Vector2.
+zero aA.ImageTransparency=0 else aA.Image=''aA.ImageTransparency=1 end aB.Size=
+aI and UDim2.new(1,-8,0,21)or UDim2.new(1,0,0,21)aB.Position=aI and UDim2.
+fromOffset(14,0)or UDim2.fromOffset(0,0)end aw.OnChanged=function(aG,aH)aw.
+Changed=aH end aw.GetActiveValues=function(aG)if at.Multi then local aH={}for aI
+,aJ in aw.Value do table.insert(aH,aI)end return aH end return aw.Value and 1 or
+0 end local aG={}aw.BuildDropdownList=function(aH)local aI,aJ=aw.Values,aw.
+DisabledValues if aw.UtilityButtonsHolder then aw.UtilityButtonsHolder:Destroy()
+aw.UtilityButtonsHolder=nil end for aK,aL in aG do aK.Parent:Destroy()end table.
+clear(aG)local aK=0 if aw.Multi and next(aw.Values)and(not aD or aD.Text:len()==
+0)then aK=1 local aL=U('Frame',{BackgroundTransparency=1,Size=UDim2.new(1,0,0,21
+),Parent=aF.Menu})aw.UtilityButtonsHolder=aL U('UIListLayout',{Parent=aL,Padding
+=UDim.new(0,8),FillDirection=Enum.FillDirection.Horizontal,HorizontalAlignment=
+Enum.HorizontalAlignment.Center,VerticalAlignment=Enum.VerticalAlignment.Center}
+)local aM=function(aM,aN)local aO=U('TextButton',{BackgroundColor3='MainColor',
 Size=UDim2.fromScale(0.45,0.8),Text=aM,TextSize=13,TextTransparency=0.4,Parent=
 aL})U('UIStroke',{Color='OutlineColor',Parent=aO})table.insert(z.Corners,U(
 'UICorner',{CornerRadius=UDim.new(0,z.CornerRadius/2),Parent=aO}))aO.
@@ -2380,13 +2380,13 @@ Values={'Left','Right'},Default='Right',Text='Notification Side',Callback=
 function(aj)af:SetNotifySide(aj)end})ai:AddDropdown('DPIDropdown',{Values={'50%'
 ,'75%','100%','125%','150%','175%','200%'},Default='100%',Text='DPI Scale',
 Callback=function(aj)aj=aj:gsub('%%','')local ak=tonumber(aj)af:SetDPIScale(ak)
-end})ai:AddDivider()ai:AddLabel'Menu bind':AddKeyPicker('MenuKeybind',{Default=
-'RightShift',NoUI=true,Text='Menu keybind'})ai:AddButton('Unload',function()af:
-Unload()end)af.ToggleKeybind=af.Options.MenuKeybind ah:SetLibrary(af)ag:
-SetLibrary(af)ag:IgnoreThemeSettings()ag:SetIgnoreIndexes{'MenuKeybind'}ah:
-SetFolder'strelizia'ag:SetFolder(string.format('strelizia/%s',tostring(ae.Name))
-)ag:BuildConfigSection(ac)ah:ApplyToTab(ac)ag:LoadAutoloadConfig()end end end)()
-end,[16]=function()a(16)return(function(...)return function(aa)local ab,ac=(
+end})ai:AddDivider{Text='misc'}ai:AddLabel'Menu bind':AddKeyPicker('MenuKeybind'
+,{Default='RightShift',NoUI=true,Text='Menu keybind'})ai:AddButton('Unload',
+function()af:Unload()end)af.ToggleKeybind=af.Options.MenuKeybind ah:SetLibrary(
+af)ag:SetLibrary(af)ag:IgnoreThemeSettings()ag:SetIgnoreIndexes{'MenuKeybind'}ah
+:SetFolder'strelizia'ag:SetFolder(string.format('strelizia/%s',tostring(ae.Name)
+))ag:BuildConfigSection(ac)ah:ApplyToTab(ac)ag:LoadAutoloadConfig()end end end)(
+)end,[16]=function()a(16)return(function(...)return function(aa)local ab,ac=(
 cloneref or clonereference or function(ab)return ab end),(clonefunction or
 copyfunction or function(ab)return ab end)local ad,ae,af,ag=ab(game:GetService
 'HttpService'),isfolder,isfile,listfiles if typeof(ac)=='function'then local ah,
@@ -2660,14 +2660,14 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{29,2,{'Constants'}},{19,2,{'RBXUtil'},{{21,2,{
-'Signal'}},{20,2,{'TableUtil'}}}},{30,2,{'Vinca'}},{2,2,{'Modules'},{{3,2,{
-'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{8,2,{'Interface'},{{9,1,{'List'
-},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{13,2,{'Tabs'},{{14,2,{'Home'}},{
-15,2,{'Settings'}}}},{12,2,{'SaveManager'}},{11,2,{'Main'}}}}}}}},{17,2,{
-'Places'},{{18,2,{'Slime RNG'}}}},{7,2,{'t'}},{6,2,{'Color'}}}},{22,2,{
-'Functions'},{{28,2,{'OutputMessage'}},{23,2,{'CreateGUID'}},{24,2,{'Time'}},{26
-,2,{'Strings'}},{27,2,{'PromptDiscord'}},{25,2,{'Numbers'}}}}}}},'0.4.2',
+ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{3,2,{'TaskManager'},{{4,2,{
+'Task'}},{5,2,{'Lock'}}}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{7,2,{'t'}},{
+6,2,{'Color'}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{11,2,{
+'Main'}},{12,2,{'SaveManager'}},{16,2,{'ThemeManager'}},{13,2,{'Tabs'},{{14,2,{
+'Home'}},{15,2,{'Settings'}}}}}}}}}}}},{22,2,{'Functions'},{{28,2,{
+'OutputMessage'}},{25,2,{'Numbers'}},{24,2,{'Time'}},{27,2,{'PromptDiscord'}},{
+23,2,{'CreateGUID'}},{26,2,{'Strings'}}}},{29,2,{'Constants'}},{30,2,{'Vinca'}},
+{19,2,{'RBXUtil'},{{21,2,{'Signal'}},{20,2,{'TableUtil'}}}}}}},'0.4.2',
 'strelizia.cc',string,task,setmetatable,error,next,table,unpack,coroutine,script
 ,type,require,pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.
 insert,aj.remove,aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,
