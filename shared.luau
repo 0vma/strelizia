@@ -29,22 +29,25 @@ c.new=function(k,l,m,n)assert(k~=nil and typeof(k)=='string',
 'Callback must be a function!')assert(m==nil or typeof(m)=='number',
 'Interval must be a number!')return setmetatable({Index=k,Identifier=nil,
 Callback=l,Thread=nil,Running=false,Destroyed=false,Interval=m,CurrentStep=nil,
-Priority=1,Locks=n and{Groups={},Individual={}}or nil,ExecutionBegan=0,
-LastFinishedExecution=0},c)end c.is=function(k)return typeof(k)=='table'and
-getmetatable(k)==c end c.SetPriority=function(k,l)assert(typeof(l)=='number',
-'Priority must be a number!')k.Priority=l return k end c.GetPriority=function(k)
-return k.Priority end c.CanRun=function(k)if k.Running then return false end if
-k.Destroyed then return false end if k.Interval~=nil and(k.Interval>(d.now()-k.
-LastFinishedExecution))then return false end return true end c.SetStep=function(
-k,l)local m=k.CurrentStep k.CurrentStep=l if m then i()end if l~=nil then h(l)
-end return k end c.SetIdentifier=function(k,l)assert(l and typeof(l)=='string',
-'Identifier must be a string!')k.Identifier=l return k end c.Run=function(k)f(k.
-Index)h(k.Index)k.Running=true k.ExecutionBegan=d.now()k.Thread=j()local l,m=
-pcall(k.Callback,k)if l then k.LastFinishedExecution=d.now()k.Running=false else
-e('Error',string.format(
+Profiling=false,Priority=1,Locks=n and{Groups={},Individual={}}or nil,
+ExecutionBegan=0,LastFinishedExecution=0},c)end c.is=function(k)return typeof(k)
+=='table'and getmetatable(k)==c end c.SetPriority=function(k,l)assert(typeof(l)
+=='number','Priority must be a number!')k.Priority=l return k end c.GetPriority=
+function(k)return k.Priority end c.CanRun=function(k)if k.Running then return
+false end if k.Destroyed then return false end if k.Interval~=nil and(k.Interval
+>(d.now()-k.LastFinishedExecution))then return false end return true end c.
+SetStep=function(k,l)local m=k.CurrentStep k.CurrentStep=l if m then i()end if l
+~=nil then h(l)end return k end c.SetProfiling=function(k,l)assert(typeof(l)==
+'boolean','Enabled must be a boolean!')if k.Profiling==l then return k end k.
+Profiling=l if l then f(k.Index)h(k.Index)else if k.CurrentStep then k:SetStep(
+nil)end g()i()end return k end c.SetIdentifier=function(k,l)assert(l and typeof(
+l)=='string','Identifier must be a string!')k.Identifier=l return k end c.Run=
+function(k)k.Running=true k.ExecutionBegan=d.now()k.Thread=j()local l,m=pcall(k.
+Callback,k)if l then k.LastFinishedExecution=d.now()k.Running=false else e(
+'Error',string.format(
 [[An error has occured during runtime of Thread '%s' on Step '%s': %s]],
 tostring(k.Index),tostring(tostring(k.CurrentStep)),tostring(m)))end if k.
-CurrentStep then k:SetStep(nil)end g()i()k.Thread=nil return l,m end c.Destroy=
+Profiling then k:SetProfiling(false)end k.Thread=nil return l,m end c.Destroy=
 function(k)k.Destroyed=true local l=k.Locks if l then for m in l.Groups do m:
 Release()end for m in l.Individual do m:Release()end table.clear(l.Groups)table.
 clear(l.Individual)end return k end return{new=c.new,is=c.is}end end)()end,
@@ -331,79 +334,79 @@ Changed=function()end,Disabled=false,Visible=true},Viewport={Object=nil,Camera=
 nil,Clone=true,AutoFocus=true,Interactive=false,Height=200,Visible=true},Image={
 Image='',Transparency=0,BackgroundTransparency=0,Color=Color3.new(1,1,1),
 RectOffset=Vector2.zero,RectSize=Vector2.zero,ScaleType=Enum.ScaleType.Fit,
-Height=200,Visible=true},Video={Video='',Looped=false,Playing=false,Volume=1,
-Height=200,Visible=true},UIPassthrough={Instance=nil,Height=24,Visible=true},
-KeyPicker={Text='KeyPicker',Default='None',DefaultModifiers={},Blacklisted={},
-BlacklistedModifiers={},Whitelisted={},WhitelistedModifiers={},Mode='Toggle',
-Modes={'Always','Toggle','Hold'},SyncToggleState=false,Callback=function()end,
-ChangedCallback=function()end,Changed=function()end,Clicked=function()end},
-ColorPicker={Default=Color3.new(1,1,1),Callback=function()end,Changed=function()
-end}},{Bottom={0,1},Right={1,0}},{Left={0.5,1},Right={0.5,1}},{RedColor='Red',
-WhiteColor='White',DarkColor='Dark'},{Red='RedColor',White='WhiteColor',Dark=
-'DarkColor'}local F,G,H=function(F)if not F then return nil end local G=D[F]if G
-and z.Scheme[G]~=nil then z.Scheme[F]=z.Scheme[G]z.Scheme[G]=nil return z.Scheme
-[F]end local H=E[F]if H and z.Scheme[H]~=nil then warn(string.format(
-'Scheme Value %q is deprecated, please use %q instead.',F,H))return z.Scheme[H]
-end return z.Scheme[F]end,function(F,G,H)local I=Instance.new'BindableEvent'
-local J=F:Once(function(...)if not H or typeof(H)=='function'and H(...)then I:
-Fire(true)else I:Fire(false)end end)task.delay(G,function()J:Disconnect()I:Fire(
-false)end)local K=I.Event:Wait()I:Destroy()return K end,function(F,G)return F.
-UserInputType==Enum.UserInputType.MouseButton1 or(G==true and F.UserInputType==
-Enum.UserInputType.MouseButton2)or F.UserInputType==Enum.UserInputType.Touch end
-local I,J,L,M,N,O,P,Q,R,S=function(I,J)return H(I,J)and I.UserInputState==Enum.
-UserInputState.Begin and z.IsRobloxFocused end,function(I)return(I.UserInputType
-==Enum.UserInputType.MouseMovement or I.UserInputType==Enum.UserInputType.Touch)
-and I.UserInputState==Enum.UserInputState.Change end,function(I,J)return H(I,J)
-and(I.UserInputState==Enum.UserInputState.Begin or I.UserInputState==Enum.
-UserInputState.Change)and z.IsRobloxFocused end,function(I)local J=0 for K,L in
-I do J=J+1 end return J end,function(I)if not(I and I.PlaybackState==Enum.
-PlaybackState.Playing)then return end I:Cancel()end,function(I)return I:match
-'^%s*(.-)%s*$'end,function(I,J)assert(J>=0,'Invalid rounding number.')if J==0
-then return math.floor(I)end return tonumber(string.format('%.'..J..'f',I))end,
-function(I)I=I:gsub('<br%s*/>','\n')return(I:gsub('<[^<>]->',''))end,function(I)
-local J=e:GetPlayers()if I then local L=table.find(J,p)if L then table.remove(J,
-L)end end table.sort(J,function(L,M)return L.Name:lower()<M.Name:lower()end)
-return J end,function()local I=j:GetTeams()table.sort(I,function(J,L)return J.
-Name:lower()<L.Name:lower()end)return I end z.UpdateDependencyBoxes=function(T)
-for U,V in z.DependencyBoxes do V:Update(true)end if z.Searching then z:
-UpdateSearch(z.SearchText)end end local function CheckDepbox(T,U)local V=0 for W
-,X in T.Elements do if X.Type=='Divider'then X.Holder.Visible=false continue
-elseif X.SubButton then local Y=false if X.Text:lower():match(U)and X.Visible
-then Y=true else X.Base.Visible=false end if X.SubButton.Text:lower():match(U)
-and X.SubButton.Visible then Y=true else X.SubButton.Base.Visible=false end X.
-Holder.Visible=Y if Y then V=V+1 end continue end if X.Text and X.Text:lower():
-match(U)and X.Visible then X.Holder.Visible=true V=V+1 else X.Holder.Visible=
-false end end for W,X in T.DependencyBoxes do if not X.Visible then continue end
-V=V+CheckDepbox(X,U)end T.Holder.Visible=V>0 return V end local function
-RestoreDepbox(T)for U,V in T.Elements do V.Holder.Visible=typeof(V.Visible)==
-'boolean'and V.Visible or true if V.SubButton then V.Base.Visible=V.Visible V.
-SubButton.Base.Visible=V.SubButton.Visible end end T:Resize()T.Holder.Visible=
-true for U,V in T.DependencyBoxes do if not V.Visible then continue end
-RestoreDepbox(V)end end local aa,ab=function(T,U)if not T then return end local
-V=false for W,X in T.Groupboxes do local Y=0 for Z,_ in X.Elements do if _.Type
-=='Divider'then _.Holder.Visible=false continue elseif _.SubButton then local aa
-=false if _.Text:lower():match(U)and _.Visible then aa=true else _.Base.Visible=
-false end if _.SubButton.Text:lower():match(U)and _.SubButton.Visible then aa=
-true else _.SubButton.Base.Visible=false end _.Holder.Visible=aa if aa then Y=Y+
-1 end continue end if _.Text and _.Text:lower():match(U)and _.Visible then _.
-Holder.Visible=true Y=Y+1 else _.Holder.Visible=false end end for aa,Z in X.
-DependencyBoxes do if not Z.Visible then continue end Y=Y+CheckDepbox(Z,U)end if
-Y>0 then X:Resize()V=true end X.BoxHolder.Visible=Y>0 end for aa,W in T.Tabboxes
-do local X,Y=0,{}for Z,_ in W.Tabs do Y[_]=0 for ab,ac in _.Elements do if ac.
-Type=='Divider'then ac.Holder.Visible=false continue elseif ac.SubButton then
-local ad=false if ac.Text:lower():match(U)and ac.Visible then ad=true else ac.
-Base.Visible=false end if ac.SubButton.Text:lower():match(U)and ac.SubButton.
-Visible then ad=true else ac.SubButton.Base.Visible=false end ac.Holder.Visible=
-ad if ad then Y[_]=Y[_]+1 end continue end if ac.Text and ac.Text:lower():match(
-U)and ac.Visible then ac.Holder.Visible=true Y[_]=Y[_]+1 else ac.Holder.Visible=
-false end end for ab,ac in _.DependencyBoxes do if not ac.Visible then continue
-end Y[_]=Y[_]+CheckDepbox(ac,U)end end for ab,ac in Y do ab.ButtonHolder.Visible
-=ac>0 if ac>0 then X=X+1 V=true if W.ActiveTab==ab then ab:Resize()elseif W.
-ActiveTab and Y[W.ActiveTab]==0 then ab:Show()end end end W.BoxHolder.Visible=X>
-0 end return V end,function(aa)if not aa then return end for ab,ac in aa.
-Groupboxes do for ad,T in ac.Elements do T.Holder.Visible=typeof(T.Visible)==
-'boolean'and T.Visible or true if T.SubButton then T.Base.Visible=T.Visible T.
-SubButton.Base.Visible=T.SubButton.Visible end end for ad,T in ac.
+Height=200,Outline=false,Visible=true},Video={Video='',Looped=false,Playing=
+false,Volume=1,Height=200,Visible=true},UIPassthrough={Instance=nil,Height=24,
+Visible=true},KeyPicker={Text='KeyPicker',Default='None',DefaultModifiers={},
+Blacklisted={},BlacklistedModifiers={},Whitelisted={},WhitelistedModifiers={},
+Mode='Toggle',Modes={'Always','Toggle','Hold'},SyncToggleState=false,Callback=
+function()end,ChangedCallback=function()end,Changed=function()end,Clicked=
+function()end},ColorPicker={Default=Color3.new(1,1,1),Callback=function()end,
+Changed=function()end}},{Bottom={0,1},Right={1,0}},{Left={0.5,1},Right={0.5,1}},
+{RedColor='Red',WhiteColor='White',DarkColor='Dark'},{Red='RedColor',White=
+'WhiteColor',Dark='DarkColor'}local F,G,H=function(F)if not F then return nil
+end local G=D[F]if G and z.Scheme[G]~=nil then z.Scheme[F]=z.Scheme[G]z.Scheme[G
+]=nil return z.Scheme[F]end local H=E[F]if H and z.Scheme[H]~=nil then warn(
+string.format('Scheme Value %q is deprecated, please use %q instead.',F,H))
+return z.Scheme[H]end return z.Scheme[F]end,function(F,G,H)local I=Instance.new
+'BindableEvent'local J=F:Once(function(...)if not H or typeof(H)=='function'and
+H(...)then I:Fire(true)else I:Fire(false)end end)task.delay(G,function()J:
+Disconnect()I:Fire(false)end)local K=I.Event:Wait()I:Destroy()return K end,
+function(F,G)return F.UserInputType==Enum.UserInputType.MouseButton1 or(G==true
+and F.UserInputType==Enum.UserInputType.MouseButton2)or F.UserInputType==Enum.
+UserInputType.Touch end local I,J,L,M,N,O,P,Q,R,S=function(I,J)return H(I,J)and
+I.UserInputState==Enum.UserInputState.Begin and z.IsRobloxFocused end,function(I
+)return(I.UserInputType==Enum.UserInputType.MouseMovement or I.UserInputType==
+Enum.UserInputType.Touch)and I.UserInputState==Enum.UserInputState.Change end,
+function(I,J)return H(I,J)and(I.UserInputState==Enum.UserInputState.Begin or I.
+UserInputState==Enum.UserInputState.Change)and z.IsRobloxFocused end,function(I)
+local J=0 for K,L in I do J=J+1 end return J end,function(I)if not(I and I.
+PlaybackState==Enum.PlaybackState.Playing)then return end I:Cancel()end,function
+(I)return I:match'^%s*(.-)%s*$'end,function(I,J)assert(J>=0,
+'Invalid rounding number.')if J==0 then return math.floor(I)end return tonumber(
+string.format('%.'..J..'f',I))end,function(I)I=I:gsub('<br%s*/>','\n')return(I:
+gsub('<[^<>]->',''))end,function(I)local J=e:GetPlayers()if I then local L=table
+.find(J,p)if L then table.remove(J,L)end end table.sort(J,function(L,M)return L.
+Name:lower()<M.Name:lower()end)return J end,function()local I=j:GetTeams()table.
+sort(I,function(J,L)return J.Name:lower()<L.Name:lower()end)return I end z.
+UpdateDependencyBoxes=function(T)for U,V in z.DependencyBoxes do V:Update(true)
+end if z.Searching then z:UpdateSearch(z.SearchText)end end local function
+CheckDepbox(T,U)local V=0 for W,X in T.Elements do if X.Type=='Divider'then X.
+Holder.Visible=false continue elseif X.SubButton then local Y=false if X.Text:
+lower():match(U)and X.Visible then Y=true else X.Base.Visible=false end if X.
+SubButton.Text:lower():match(U)and X.SubButton.Visible then Y=true else X.
+SubButton.Base.Visible=false end X.Holder.Visible=Y if Y then V=V+1 end continue
+end if X.Text and X.Text:lower():match(U)and X.Visible then X.Holder.Visible=
+true V=V+1 else X.Holder.Visible=false end end for W,X in T.DependencyBoxes do
+if not X.Visible then continue end V=V+CheckDepbox(X,U)end T.Holder.Visible=V>0
+return V end local function RestoreDepbox(T)for U,V in T.Elements do V.Holder.
+Visible=typeof(V.Visible)=='boolean'and V.Visible or true if V.SubButton then V.
+Base.Visible=V.Visible V.SubButton.Base.Visible=V.SubButton.Visible end end T:
+Resize()T.Holder.Visible=true for U,V in T.DependencyBoxes do if not V.Visible
+then continue end RestoreDepbox(V)end end local aa,ab=function(T,U)if not T then
+return end local V=false for W,X in T.Groupboxes do local Y=0 for Z,_ in X.
+Elements do if _.Type=='Divider'then _.Holder.Visible=false continue elseif _.
+SubButton then local aa=false if _.Text:lower():match(U)and _.Visible then aa=
+true else _.Base.Visible=false end if _.SubButton.Text:lower():match(U)and _.
+SubButton.Visible then aa=true else _.SubButton.Base.Visible=false end _.Holder.
+Visible=aa if aa then Y=Y+1 end continue end if _.Text and _.Text:lower():match(
+U)and _.Visible then _.Holder.Visible=true Y=Y+1 else _.Holder.Visible=false end
+end for aa,Z in X.DependencyBoxes do if not Z.Visible then continue end Y=Y+
+CheckDepbox(Z,U)end if Y>0 then X:Resize()V=true end X.BoxHolder.Visible=Y>0 end
+for aa,W in T.Tabboxes do local X,Y=0,{}for Z,_ in W.Tabs do Y[_]=0 for ab,ac in
+_.Elements do if ac.Type=='Divider'then ac.Holder.Visible=false continue elseif
+ac.SubButton then local ad=false if ac.Text:lower():match(U)and ac.Visible then
+ad=true else ac.Base.Visible=false end if ac.SubButton.Text:lower():match(U)and
+ac.SubButton.Visible then ad=true else ac.SubButton.Base.Visible=false end ac.
+Holder.Visible=ad if ad then Y[_]=Y[_]+1 end continue end if ac.Text and ac.Text
+:lower():match(U)and ac.Visible then ac.Holder.Visible=true Y[_]=Y[_]+1 else ac.
+Holder.Visible=false end end for ab,ac in _.DependencyBoxes do if not ac.Visible
+then continue end Y[_]=Y[_]+CheckDepbox(ac,U)end end for ab,ac in Y do ab.
+ButtonHolder.Visible=ac>0 if ac>0 then X=X+1 V=true if W.ActiveTab==ab then ab:
+Resize()elseif W.ActiveTab and Y[W.ActiveTab]==0 then ab:Show()end end end W.
+BoxHolder.Visible=X>0 end return V end,function(aa)if not aa then return end for
+ab,ac in aa.Groupboxes do for ad,T in ac.Elements do T.Holder.Visible=typeof(T.
+Visible)=='boolean'and T.Visible or true if T.SubButton then T.Base.Visible=T.
+Visible T.SubButton.Base.Visible=T.SubButton.Visible end end for ad,T in ac.
 DependencyBoxes do if not T.Visible then continue end RestoreDepbox(T)end ac:
 Resize()ac.BoxHolder.Visible=true end for ab,ac in aa.Tabboxes do for ad,T in ac
 .Tabs do for U,V in T.Elements do V.Holder.Visible=typeof(V.Visible)=='boolean'
@@ -1349,18 +1352,19 @@ SetVisible=function(aH,aI)aB.Visible=aI aE.Visible=aB.Visible au:Resize()end au:
 Resize()aB.Holder=aE table.insert(au.Elements,aB)u[as]=aB return aB end aq.
 AddImage=function(ar,as,at)at=z:Validate(at,A.Image)local au=ar local av,aw=au.
 Container,{Image=at.Image,Color=at.Color,RectOffset=at.RectOffset,RectSize=at.
-RectSize,Height=at.Height,ScaleType=at.ScaleType,Transparency=at.Transparency,
-BackgroundTransparency=at.BackgroundTransparency,Visible=at.Visible,Type='Image'
-}local ax=U('Frame',{BackgroundTransparency=1,Size=UDim2.new(1,0,0,at.Height),
-Visible=aw.Visible,Parent=av})local ay=U('Frame',{AnchorPoint=Vector2.new(0,1),
-BackgroundColor3='MainColor',BorderColor3='OutlineColor',BorderSizePixel=1,
-BackgroundTransparency=aw.BackgroundTransparency,Position=UDim2.fromScale(0,1),
-Size=UDim2.fromScale(1,1),Parent=ax})U('UIPadding',{PaddingBottom=UDim.new(0,3),
-PaddingLeft=UDim.new(0,8),PaddingRight=UDim.new(0,8),PaddingTop=UDim.new(0,4),
-Parent=ay})local az={BackgroundTransparency=1,Size=UDim2.fromScale(1,1),Image=aw
-.Image,ImageTransparency=aw.Transparency,ImageColor3=aw.Color,ImageRectOffset=aw
-.RectOffset,ImageRectSize=aw.RectSize,ScaleType=aw.ScaleType,Parent=ay}local aA=
-z:GetCustomIcon(az.Image)assert(aA,
+RectSize,Outline=at.Outline,Height=at.Height,ScaleType=at.ScaleType,Transparency
+=at.Transparency,BackgroundTransparency=at.BackgroundTransparency,Visible=at.
+Visible,Type='Image'}local ax=U('Frame',{BackgroundTransparency=1,Size=UDim2.
+new(1,0,0,at.Height),Visible=aw.Visible,Parent=av})local ay=U('Frame',{
+AnchorPoint=Vector2.new(0,1),BackgroundColor3='MainColor',BorderColor3=
+'OutlineColor',BorderSizePixel=1,BackgroundTransparency=aw.
+BackgroundTransparency,Position=UDim2.fromScale(0,1),Size=UDim2.fromScale(1,1),
+Parent=ax})if aw.Outline then z:AddOutline(ay)end U('UIPadding',{PaddingBottom=
+UDim.new(0,3),PaddingLeft=UDim.new(0,8),PaddingRight=UDim.new(0,8),PaddingTop=
+UDim.new(0,4),Parent=ay})local az={BackgroundTransparency=1,Size=UDim2.
+fromScale(1,1),Image=aw.Image,ImageTransparency=aw.Transparency,ImageColor3=aw.
+Color,ImageRectOffset=aw.RectOffset,ImageRectSize=aw.RectSize,ScaleType=aw.
+ScaleType,Parent=ay}local aA=z:GetCustomIcon(az.Image)assert(aA,
 [[Image must be a valid Roblox asset or a valid URL or a valid lucide icon.]])az
 .Image=aA.Url az.ImageRectOffset=aA.ImageRectOffset az.ImageRectSize=aA.
 ImageRectSize local aB=U('ImageLabel',az)aw.SetHeight=function(aC,aD)assert(aD>0
@@ -2368,75 +2372,71 @@ return'Evening'end return'Night'end return function(aw)local ax,ay,az,aA=aa:Get
 'Modules/Interface'.GetInterface'Obsidian',ai.GetPlaceFromId(game.PlaceId),ag.
 LRM_Constants,aw:AddGroupbox{Side=1,Name='Account',IconName='circle-user'}local
 aB=aA:AddImage('UserImage',{Image=
-'http://www.roblox.com/asset/?id=131927632408540',Height=200,
+'http://www.roblox.com/asset/?id=131927632408540',Height=200,Outline=true,
 BackgroundTransparency=1})task.spawn(function()local aC,aD=pcall(ad.
 GetUserThumbnailAsync,ad,aq.UserId,Enum.ThumbnailType.HeadShot,Enum.
-ThumbnailSize.Size180x180)if aC then aB:SetImage(aD)end end)aA:AddLabel{Text=
+ThumbnailSize.Size352x352)if aC then aB:SetImage(aD)end end)aA:AddLabel{Text=
 string.format('Good %s, <b>%s</b>!',tostring(av()),tostring(aq.DisplayName)),
-DoesWrap=true}aA:AddLabel{Text=string.format('Welcome to %s!',tostring(aj.Paint(
-'strelizia.cc',as))),DoesWrap=true}aA:AddDivider{Text='account info'}aA:AddLabel
-{Text=string.format('%s User Id: <b>%s</b>',tostring(ah.BulletPoint),tostring(aq
-.UserId))}aA:AddLabel{Text=string.format('%s Account Age: <b>%s</b> Days',
-tostring(ah.BulletPoint),tostring(aq.AccountAge))}local aC=aA:AddLabel{Text=
-string.format('%s Friends Online: <b>?</b>',tostring(ah.BulletPoint))}task.
-spawn(function()local aD,aE=pcall(aq.GetFriendsOnlineAsync,aq)if aD then aC:
-SetText(string.format('%s Friends Online: <b>%s</b>',tostring(ah.BulletPoint),
-tostring(am.Comma(#aE))))end end)local aD=aw:AddGroupbox{Side=1,Name='Session',
-IconName='server'}local aE,aF,aG=aD:AddLabel{Text=string.format(
-'%s Session Time: <b>00:00:00</b>',tostring(ah.BulletPoint)),DoesWrap=true},aD:
-AddLabel{Text=string.format('%s FPS: <b>?</b>',tostring(ah.BulletPoint)),
-DoesWrap=true},aD:AddLabel{Text=string.format('%s Ping: <b>? ms</b>',tostring(ah
-.BulletPoint)),DoesWrap=true}ak.AddTask(ak.Task.new('SessionGroupboxUpdater',
-function(aH)aE:SetText(string.format('%s Session Time: <b>%s</b>',tostring(ah.
-BulletPoint),tostring(al.FormatDuration(al.now()-ar,'%h:%m:%s'))))aF:SetText(
-string.format('%s FPS: <b>%s</b>',tostring(ah.BulletPoint),tostring(math.floor(1
-/ae.Heartbeat:Wait()))))aG:SetText(string.format('%s Ping: <b>%s ms</b>',
-tostring(ah.BulletPoint),tostring(math.floor(ao()*1000))))end,1))aD:AddDivider{
-Text='server info'}local aH=aD:AddLabel{Text=string.format(
+DoesWrap=true}aA:AddLabel{Text=string.format('Welcome to <b>%s</b>!',tostring(aj
+.Paint('strelizia.cc',as))),DoesWrap=true}aA:AddDivider{Text='account info'}aA:
+AddLabel{Text=string.format('%s User Id: <b>%s</b>',tostring(ah.BulletPoint),
+tostring(aq.UserId))}aA:AddLabel{Text=string.format(
+'%s Account Age: <b>%s Days</b>',tostring(ah.BulletPoint),tostring(aq.AccountAge
+))}local aC=aA:AddLabel{Text=string.format('%s Friends Online: <b>?</b>',
+tostring(ah.BulletPoint))}task.spawn(function()local aD,aE=pcall(aq.
+GetFriendsOnlineAsync,aq)if aD then aC:SetText(string.format(
+'%s Friends Online: <b>%s</b>',tostring(ah.BulletPoint),tostring(am.Comma(#aE)))
+)end end)local aD=aw:AddGroupbox{Side=1,Name='Session',IconName='server'}local
+aE,aF,aG=aD:AddLabel{Text=string.format('%s Session Time: <b>00:00:00</b>',
+tostring(ah.BulletPoint)),DoesWrap=true},aD:AddLabel{Text=string.format(
+'%s FPS: <b>?</b>',tostring(ah.BulletPoint)),DoesWrap=true},aD:AddLabel{Text=
+string.format('%s Ping: <b>? ms</b>',tostring(ah.BulletPoint)),DoesWrap=true}ak.
+AddTask(ak.Task.new('SessionGroupboxUpdater',function(aH)aE:SetText(string.
+format('%s Session Time: <b>%s</b>',tostring(ah.BulletPoint),tostring(al.
+FormatDuration(al.now()-ar,'%h:%m:%s',true))))aF:SetText(string.format(
+'%s FPS: <b>%s</b>',tostring(ah.BulletPoint),tostring(math.floor(1/ae.Heartbeat:
+Wait()))))aG:SetText(string.format('%s Ping: <b>%s ms</b>',tostring(ah.
+BulletPoint),tostring(math.floor(ao()*1000))))end,1))aD:AddDivider{Text=
+'server info'}local aH=aD:AddLabel{Text=string.format(
 '%s Players Online: ? out of ?',tostring(ah.BulletPoint)),DoesWrap=true}do local
-aI=function()aH:SetText(string.format('%s Players Online: %s out of %s',
-tostring(ah.BulletPoint),tostring(#ad:GetPlayers()),tostring(ad.MaxPlayers)))end
-local aJ,aK=ad.PlayerAdded:Connect(aI),ad.PlayerRemoving:Connect(aI)ax.Main:
-OnUnload(function()aJ:Disconnect()aK:Disconnect()end)aI()end local aI=game.
-PrivateServerId~=''and game.PrivateServerOwnerId~=0 aD:AddLabel{Text=string.
-format('%s Private Server: <b>%s</b>',tostring(ah.BulletPoint),tostring(
-tostring(aI))),DoesWrap=true}if aI then local aJ=aD:AddLabel{Text=string.format(
-'%s%s Owner: <b>?</b>',tostring(an.LeadingSpace(5)),tostring(ah.BulletPoint))}
-task.spawn(function()local aK,aL=pcall(ad.GetNameFromUserIdAsync,ad,game.
-PrivateServerOwnerId)if aK then aJ:SetText(string.format('%s%s Owner: <b>%s</b>'
-,tostring(an.LeadingSpace(5)),tostring(ah.BulletPoint),tostring(aL)))end end)end
-aD:AddDivider{Text='session sharing'}local aJ=aD:AddInput('SessionShareJobId',{
-Text='Server Job Id',Tooltip=
+aI=function()aH:SetText(string.format(
+'%s Players Online: <b>%s</b> out of <b>%s</b>',tostring(ah.BulletPoint),
+tostring(#ad:GetPlayers()),tostring(ad.MaxPlayers)))end local aJ,aK=ad.
+PlayerAdded:Connect(aI),ad.PlayerRemoving:Connect(aI)ax.Main:OnUnload(function()
+aJ:Disconnect()aK:Disconnect()end)aI()end aD:AddLabel{Text=string.format(
+'%s Place Version: <b>v%s</b>',tostring(ah.BulletPoint),tostring(game.
+PlaceVersion)),DoesWrap=true}aD:AddDivider{Text='session sharing'}local aI=aD:
+AddInput('SessionShareJobId',{Text='Server Job Id',Tooltip=
 [[enter job id of the server you want to join, must be in the same game]],
 Placeholder='click here',ClearTextOnFocus=true})aD:AddButton{Text='Join Server',
 Tooltip='joins the server using the job id from above',DoubleClick=true,Func=
-function()local aK=aJ.Value or''if#aK~=36 then return ax.Main:Notify{Title=
-'strelizia.cc',Description='invalid job id',Duration=2}end local aL,aM=pcall(af.
-TeleportToPlaceInstance,af,game.PlaceId,aK,aq)if(not aL)then ax.Main:Notify{
+function()local aJ=aI.Value or''if#aJ~=36 then return ax.Main:Notify{Title=
+'strelizia.cc',Description='invalid job id',Duration=2}end local aK,aL=pcall(af.
+TeleportToPlaceInstance,af,game.PlaceId,aJ,aq)if(not aK)then ax.Main:Notify{
 Title='strelizia.cc',Description=string.format(
-'failed to join server: %s; click to try again',tostring(tostring(aM))),Duration
+'failed to join server: %s; click to try again',tostring(tostring(aL))),Duration
 =2}end end}aD:AddButton{Text='Copy Job Id',Tooltip=
 'copies the job id from the current server to clipboard',Func=function()
 setclipboard(game.JobId)ax.Main:Notify{Title='strelizia.cc',Description=
-'copied job id to clipboard',Duration=2}end}local aK,aL,aM=aw:AddGroupbox{Side=2
+'copied job id to clipboard',Duration=2}end}local aJ,aK,aL=aw:AddGroupbox{Side=2
 ,Name='Key Information',IconName='key'},(az.SecondsLeft==-1)or(az.SecondsLeft==
-math.huge),al.now()+az.SecondsLeft aK:AddLabel{Text=string.format(
-'%s Key Expiry: <b>%s</b>',tostring(ah.BulletPoint),tostring((aL and{(aj.Paint(
-'Never!',at))}or{(al.FormatTime(aM,'MM/DD/YYYY HH:mm'))})[1])),DoesWrap=true}aK:
+math.huge),al.now()+az.SecondsLeft aJ:AddLabel{Text=string.format(
+'%s Key Expiry: <b>%s</b>',tostring(ah.BulletPoint),tostring((aK and{(aj.Paint(
+'Never!',at))}or{(al.FormatTime(aL,'MM/DD/YYYY HH:mm'))})[1])),DoesWrap=true}aJ:
 AddLabel{Text=string.format('%s Total Executions: <b>%s</b>',tostring(ah.
-BulletPoint),tostring(am.Comma(az.TotalExecutions))),DoesWrap=true}aK:AddLabel{
+BulletPoint),tostring(am.Comma(az.TotalExecutions))),DoesWrap=true}aJ:AddLabel{
 Text=string.format('%s User Note: <b>%s</b>',tostring(ah.BulletPoint),tostring(
-az.UserNote)),DoesWrap=true}aK:AddDivider{Text='key stuff'}aK:AddLabel{Text=
+az.UserNote)),DoesWrap=true}aJ:AddDivider{Text='key stuff'}aJ:AddLabel{Text=
 string.format('%s Script Key: <b>...%s</b>',tostring(ah.BulletPoint),tostring(
-string.sub(au,-5))),DoesWrap=true}aK:AddButton{Text='Copy Script Key',Tooltip=
+string.sub(au,-5))),DoesWrap=true}aJ:AddButton{Text='Copy Script Key',Tooltip=
 'copies user key to clipboard',Func=function()setclipboard(au)ax.Main:Notify{
 Title='strelizia.cc',Description='copied script key to clipboard',Duration=2}end
-}local aN,aO=aw:AddGroupbox{Side=2,Name='Credits',IconName='list'},{}for aP,aQ
-in(ay.Credits or{})do local aR=ag.ProductionRoleInfo[aQ.Role]or ag.
-ProductionRoleInfo.generic table.insert(aO,string.format('%s %s - <b>%s</b>',
-tostring(ah.BulletPoint),tostring(aQ.Name),tostring(aj.Paint(aQ.Role,aR.Color)))
-)end aN:AddLabel('CreditsLabel',{Text=table.concat(aO,'\n'),DoesWrap=true})aN:
-AddDivider{Text='discord (pls join)'}aN:AddButton{Text='Join Discord Server',
+}local aM,aN=aw:AddGroupbox{Side=2,Name='Credits',IconName='list'},{}for aO,aP
+in(ay.Credits or{})do local aQ=ag.ProductionRoleInfo[aP.Role]or ag.
+ProductionRoleInfo.generic table.insert(aN,string.format('%s %s - <b>%s</b>',
+tostring(ah.BulletPoint),tostring(aP.Name),tostring(aj.Paint(aP.Role,aQ.Color)))
+)end aM:AddLabel('CreditsLabel',{Text=table.concat(aN,'\n'),DoesWrap=true})aM:
+AddDivider{Text='discord (pls join)'}aM:AddButton{Text='Join Discord Server',
 Func=function()ap(ag.DiscordInviteCode,true)ax.Main:Notify{Title='strelizia.cc',
 Description='successfully copied/prompted discord join code!'}end}end end end)()
 end,[15]=function()a(15)return(function(...)return function(aa)local ab=aa:Get
@@ -2941,82 +2941,83 @@ pairs(aj.Constants)do table.insert(ak,{Name=al,Value=am})end table.sort(ak,
 function(al,am)return al.Value>am.Value end)aj.now=function()return ac:
 GetServerTimeNow()end aj.FormatTime=function(al,am)assert(ah(al,am))return
 DateTime.fromUnixTimestamp(al):FormatLocalTime(am,'en-us')end aj.FormatDuration=
-function(al,am)assert(ah(al,am))local an,ao,ap,aq=ai(al/86400),ai(al%86400/3600)
-,ai(al%3600/60),ai(al%60)return(am:gsub('%%d',an):gsub('%%h',ao):gsub('%%m',ap):
-gsub('%%s',aq))end aj.CompressTime=function(al)assert(ag(al))al=ai(al)for am,an
-in ak do local ao,ap=an.Name,an.Value local aq=ai(al/ap)if aq==0 then continue
-end return string.format('%s %s',tostring(af.Comma(aq)),tostring(ao..(aq>1 and
-'s'or'')))end return'0 seconds'end return aj end end)()end,[26]=function()a(26)
-return(function(...)return function(aa)local ab=aa:Get'Modules/t'local ac,ad=ab.
-tuple(ab.number,ab.numberConstrained(0,8)),{}ad.Comma=function(ae)assert(ab.
-integer(ae))local af=tostring(ae)local ag,ah,ai=af:match'^([^%d]*%d)(%d*)(.-)$'
-return ag..ah:reverse():gsub('(%d%d%d)','%1,'):reverse()..ai end ad.DecimalRound
-=function(ae,af)assert(ac(ae,af))if ae%1==0 then return ae end return string.
-format(string.format('%%.%sf',tostring(af)),ae)end return ad end end)()end,[27]=
-function()a(27)return(function(...)return function(aa)local ab=aa:Get'Modules/t'
-local ac,ad,ae=ab.tuple(ab.string,ab.numberMin(0),ab.optional(ab.string)),string
-.rep,{}ae.Truncate=function(af,ag,ah)assert(ac(af,ag,ah))return af:sub(1,ag)..(
-ah or'')end ae.LeadingSpace=function(af)assert(ab.numberPositive(af))return ad(
-' ',af)end return ae end end)()end,[28]=function()a(28)return(function(...)
-return function(aa)local ab,ac=(request or(http and http.request)or httprequest)
-,aa.Services local ad=ac.HttpService return function(ae,af)if af then
-setclipboard('https://www.discord.gg/'..ae)end if(not ab)then return false end
-ab{Url='http://127.0.0.1:6463/rpc?v=1',Method='POST',Headers={['Content-Type']=
-'application/json',Origin='https://discord.com'},Body=ad:JSONEncode{cmd=
-'INVITE_BROWSER',args={code=ae},nonce=ad:GenerateGUID(false)}}return true end
-end end)()end,[29]=function()a(29)return(function(...)return function(aa)local
-ab={Info='\u{1f535}',Warn='\u{1f7e0}',Success='\u{1f7e2}',Error='\u{1f534}'}
-local ac=function(ac,ad)local ae=os.date'*t'string.format('%s:%s:%s',ae.hour,ae.
-min,ae.sec)print(string.format('%s | [Library]: %s',ab[ac],ad))end return ac end
-end)()end,[30]=function()a(30)return(function(...)return function(aa)local ab=aa
-.Services.Stats local ac=ab.Network.ServerStatsItem['Data Ping']return function(
-)return ac:GetValue()/1000 end end end)()end,[31]=function()a(31)return(function
-(...)return function(aa)local ab,ac,ad,ae=aa:Get'RBXUtil/TableUtil',aa:Get
-'Functions/Time',aa:Get'Modules/t',utf8.char local af=ac.Constants local ag={
-DiscordInviteCode='',Characters={Invisible=10240,BulletPoint=8226},Emojis={
-Unknown='<:letter_x:1305284794044776622>',Person='<:person:1305298114265219094>'
-},LRM_Constants={Premium=LRM_IsUserPremium or false,DiscordUserId=
-LRM_LinkedDiscordID or 0,ScriptName=LRM_ScriptName or'generic',TotalExecutions=
-LRM_TotalExecutions or 1337,SecondsLeft=LRM_SecondsLeft or 60,UserNote=
-LRM_UserNote or'user note',ScriptVersion=LRM_ScriptVersion or'0001'},
-KeySystemAdProviders={{Name='Linkvertise',KeyLength=af.Hour*24,CompletionTime=af
-.Minute*3,Identifier='Linkvertise-EsllfgSWtQqg'},{Name='Another Provider',
-KeyLength=af.Hour*12,CompletionTime=af.Minute*2,Identifier='Something-ABCD'}},
-ProductionRoleInfo={developer={Color=Color3.fromRGB(2,116,255)},contributor={
-Color=Color3.fromRGB(255,255,127)},generic={Color=Color3.new(1,1,1)}}}for ah,ai
-in ag.Characters do if typeof(ai)~='number'then continue end ag.Characters[ah]=
-ae(ai)end setmetatable(ag.Emojis,{__index=function(ah,ai)local aj=rawget(ah,
-'Unknown')rawset(ah,ai,aj)return aj end})return ag end end)()end,[32]=function()
-local aa,ab,ac=a(32)return(function(...)local ad={}ad.__index=ad ad.Extensions={
-Children=function(ae)local af={}for ag,ah in ae:GetChildren()do af[ah.Name]=ah
-end return af end}local ae=cloneref or function(ae)return ae end ad.Services=
-setmetatable({},{__index=function(af,ag)local ah,ai=pcall(game.GetService,game,
-ag)if ah and ai then ai=ae(ai)rawset(af,ag,ai)return ai end return nil end})ad.
-new=function(af)local ag=setmetatable({__vinca=true,Loaded={},Loading={},
-Container={}},ad)ag.Root=af or ag return ag end ad.is=function(af)return af and
-typeof(af)=='table'and rawget(af,'__vinca')end ad.Add=function(af,ag,ah)assert(
-not af.Container[ag],'Index already exists')af.Container[ag]=ah return af end ad
-.Load=function(af,ag)if af.Loaded[ag]~=nil then return af.Loaded[ag]end local ah
-=af.Container[ag]assert(ah~=nil,string.format('Unknown dependency "%s"',
-tostring(ag)))assert(not af.Loading[ag],string.format(
-'Circular dependency at "%s"',tostring(ag)))af.Loading[ag]=true if typeof(ah)==
-'table'and ah.ClassName=='ModuleScript'then ah=ac(ah)elseif typeof(ah)==
-'Instance'and ah.ClassName=='ModuleScript'then ah=ac(ah)end if typeof(ah)==
+function(al,am,an)assert(ah(al,am))local ao,ap,aq,ar,as=ai(al/86400),ai(al%86400
+/3600),ai(al%3600/60),ai(al%60),an and'%02d'or'%d'return(am:gsub('%%d',string.
+format(as,ao)):gsub('%%h',string.format(as,ap)):gsub('%%m',string.format(as,aq))
+:gsub('%%s',string.format(as,ar)))end aj.CompressTime=function(al)assert(ag(al))
+al=ai(al)for am,an in ak do local ao,ap=an.Name,an.Value local aq=ai(al/ap)if aq
+==0 then continue end return string.format('%s %s',tostring(af.Comma(aq)),
+tostring(ao..(aq>1 and's'or'')))end return'0 seconds'end return aj end end)()end
+,[26]=function()a(26)return(function(...)return function(aa)local ab=aa:Get
+'Modules/t'local ac,ad=ab.tuple(ab.number,ab.numberConstrained(0,8)),{}ad.Comma=
+function(ae)assert(ab.integer(ae))local af=tostring(ae)local ag,ah,ai=af:match
+'^([^%d]*%d)(%d*)(.-)$'return ag..ah:reverse():gsub('(%d%d%d)','%1,'):reverse()
+..ai end ad.DecimalRound=function(ae,af)assert(ac(ae,af))if ae%1==0 then return
+ae end return string.format(string.format('%%.%sf',tostring(af)),ae)end return
+ad end end)()end,[27]=function()a(27)return(function(...)return function(aa)
+local ab=aa:Get'Modules/t'local ac,ad,ae=ab.tuple(ab.string,ab.numberMin(0),ab.
+optional(ab.string)),string.rep,{}ae.Truncate=function(af,ag,ah)assert(ac(af,ag,
+ah))return af:sub(1,ag)..(ah or'')end ae.LeadingSpace=function(af)assert(ab.
+numberPositive(af))return ad(' ',af)end return ae end end)()end,[28]=function()
+a(28)return(function(...)return function(aa)local ab,ac=(request or(http and
+http.request)or httprequest),aa.Services local ad=ac.HttpService return function
+(ae,af)if af then setclipboard('https://www.discord.gg/'..ae)end if(not ab)then
+return false end ab{Url='http://127.0.0.1:6463/rpc?v=1',Method='POST',Headers={[
+'Content-Type']='application/json',Origin='https://discord.com'},Body=ad:
+JSONEncode{cmd='INVITE_BROWSER',args={code=ae},nonce=ad:GenerateGUID(false)}}
+return true end end end)()end,[29]=function()a(29)return(function(...)return
+function(aa)local ab={Info='\u{1f535}',Warn='\u{1f7e0}',Success='\u{1f7e2}',
+Error='\u{1f534}'}local ac=function(ac,ad)local ae=os.date'*t'string.format(
+'%s:%s:%s',ae.hour,ae.min,ae.sec)print(string.format('%s | [Library]: %s',ab[ac]
+,ad))end return ac end end)()end,[30]=function()a(30)return(function(...)return
+function(aa)local ab=aa.Services.Stats local ac=ab.Network.ServerStatsItem[
+'Data Ping']return function()return ac:GetValue()/1000 end end end)()end,[31]=
+function()a(31)return(function(...)return function(aa)local ab,ac,ad,ae=aa:Get
+'RBXUtil/TableUtil',aa:Get'Functions/Time',aa:Get'Modules/t',utf8.char local af=
+ac.Constants local ag={DiscordInviteCode='',Characters={Invisible=10240,
+BulletPoint=8226},Emojis={Unknown='<:letter_x:1305284794044776622>',Person=
+'<:person:1305298114265219094>'},LRM_Constants={Premium=LRM_IsUserPremium or
+false,DiscordUserId=LRM_LinkedDiscordID or 0,ScriptName=LRM_ScriptName or
+'generic',TotalExecutions=LRM_TotalExecutions or 1337,SecondsLeft=
+LRM_SecondsLeft or 60,UserNote=LRM_UserNote or'user note',ScriptVersion=
+LRM_ScriptVersion or'0001'},KeySystemAdProviders={{Name='Linkvertise',KeyLength=
+af.Hour*24,CompletionTime=af.Minute*3,Identifier='Linkvertise-EsllfgSWtQqg'},{
+Name='Another Provider',KeyLength=af.Hour*12,CompletionTime=af.Minute*2,
+Identifier='Something-ABCD'}},ProductionRoleInfo={developer={Color=Color3.
+fromRGB(2,116,255)},contributor={Color=Color3.fromRGB(255,255,127)},generic={
+Color=Color3.new(1,1,1)}}}for ah,ai in ag.Characters do if typeof(ai)~='number'
+then continue end ag.Characters[ah]=ae(ai)end setmetatable(ag.Emojis,{__index=
+function(ah,ai)local aj=rawget(ah,'Unknown')rawset(ah,ai,aj)return aj end})
+return ag end end)()end,[32]=function()local aa,ab,ac=a(32)return(function(...)
+local ad={}ad.__index=ad ad.Extensions={Children=function(ae)local af={}for ag,
+ah in ae:GetChildren()do af[ah.Name]=ah end return af end}local ae=cloneref or
+function(ae)return ae end ad.Services=setmetatable({},{__index=function(af,ag)
+local ah,ai=pcall(game.GetService,game,ag)if ah and ai then ai=ae(ai)rawset(af,
+ag,ai)return ai end return nil end})ad.new=function(af)local ag=setmetatable({
+__vinca=true,Loaded={},Loading={},Container={}},ad)ag.Root=af or ag return ag
+end ad.is=function(af)return af and typeof(af)=='table'and rawget(af,'__vinca')
+end ad.Add=function(af,ag,ah)assert(not af.Container[ag],'Index already exists')
+af.Container[ag]=ah return af end ad.Load=function(af,ag)if af.Loaded[ag]~=nil
+then return af.Loaded[ag]end local ah=af.Container[ag]assert(ah~=nil,string.
+format('Unknown dependency "%s"',tostring(ag)))assert(not af.Loading[ag],string.
+format('Circular dependency at "%s"',tostring(ag)))af.Loading[ag]=true if
+typeof(ah)=='table'and ah.ClassName=='ModuleScript'then ah=ac(ah)elseif typeof(
+ah)=='Instance'and ah.ClassName=='ModuleScript'then ah=ac(ah)end if typeof(ah)==
 'function'then ah=ah(af.Root)end af.Loading[ag]=nil af.Loaded[ag]=ah return ah
 end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{19,2,{'RBXUtil'},{{21,2,{'Signal'}},{22,2,{
-'Promise'}},{20,2,{'TableUtil'}}}},{31,2,{'Constants'}},{23,2,{'Functions'},{{25
-,2,{'Time'}},{26,2,{'Numbers'}},{28,2,{'PromptDiscord'}},{24,2,{'CreateGUID'}},{
-29,2,{'OutputMessage'}},{30,2,{'GetPing'}},{27,2,{'Strings'}}}},{2,2,{'Modules'}
-,{{7,2,{'t'}},{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{17,2,{
-'Places'},{{18,2,{'Slime RNG'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{
-'Obsidian'},{{12,2,{'SaveManager'}},{13,2,{'Tabs'},{{14,2,{'Home'}},{15,2,{
-'Settings'}}}},{16,2,{'ThemeManager'}},{11,2,{'Main'}}}}}}}},{6,2,{'Color'}}}},{
-32,2,{'Vinca'}}}}},'0.4.2','strelizia.cc',string,task,setmetatable,error,next,
-table,unpack,coroutine,script,type,require,pcall,tostring,tonumber,_VERSION
+ad end)()end},{{1,2,{'Shared'},{{32,2,{'Vinca'}},{31,2,{'Constants'}},{2,2,{
+'Modules'},{{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{8,2,{
+'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{13,2,{
+'Tabs'},{{14,2,{'Home'}},{15,2,{'Settings'}}}},{12,2,{'SaveManager'}},{11,2,{
+'Main'}}}}}}}},{7,2,{'t'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{6,2,{
+'Color'}}}},{19,2,{'RBXUtil'},{{21,2,{'Signal'}},{20,2,{'TableUtil'}},{22,2,{
+'Promise'}}}},{23,2,{'Functions'},{{28,2,{'PromptDiscord'}},{25,2,{'Time'}},{30,
+2,{'GetPing'}},{27,2,{'Strings'}},{24,2,{'CreateGUID'}},{26,2,{'Numbers'}},{29,2
+,{'OutputMessage'}}}}}}},'0.4.2','strelizia.cc',string,task,setmetatable,error,
+next,table,unpack,coroutine,script,type,require,pcall,tostring,tonumber,_VERSION
 local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.freeze or function(au)return
 au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and ay(as,1,4)=='Lune'then local
 aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC end end local aB=af and af.
