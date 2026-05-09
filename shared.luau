@@ -2360,104 +2360,115 @@ return ah end end)()end,[13]=function()local aa,ab,ac=a(13)return(function(...)
 return function(ad)return{Home=ac(ab.Home)(ad),Settings=ac(ab.Settings)(ad)}end
 end)()end,[14]=function()a(14)return(function(...)return function(aa)local ab,ac
 =aa.Services,getgenv()local ad,ae,af,ag=ab.Players,ab.RunService,ab.
-TeleportService,aa:Get'Constants'local ah,ai,aj,ak,al,am,an,ao,ap,aq=ag.
+TeleportService,aa:Get'Constants'local ah,ai,aj,ak,al,am,an,ao,ap,aq,ar=ag.
 Characters,aa:Get'Modules/Places',aa:Get'Modules/Color',aa:Get
-'Modules/TaskManager',aa:Get'Functions/Time',aa:Get'Functions/Numbers',aa:Get
-'Functions/Strings',aa:Get'Functions/GetPing',aa:Get'Functions/PromptDiscord',ad
-.LocalPlayer local ar,as,at,au,av=al.now(),Color3.fromRGB(255,170,255),Color3.
-fromRGB(0,170,255),ac.script_key or'abcdef',function()local ar=os.date'*t'.hour
-if ar>=0 and ar<6 then return'Night'elseif ar>=6 and ar<12 then return'Morning'
-elseif ar>=12 and ar<16 then return'Afternoon'elseif ar>=16 and ar<20 then
-return'Evening'end return'Night'end return function(aw)local ax,ay,az,aA=aa:Get
-'Modules/Interface'.GetInterface'Obsidian',ai.GetPlaceFromId(game.PlaceId),ag.
-LRM_Constants,aw:AddGroupbox{Side=1,Name='Account',IconName='circle-user'}local
-aB=aA:AddImage('UserImage',{Image=
+'Modules/TaskManager',aa:Get'Modules/Preference',aa:Get'Functions/Time',aa:Get
+'Functions/Numbers',aa:Get'Functions/Strings',aa:Get'Functions/GetPing',aa:Get
+'Functions/PromptDiscord',ad.LocalPlayer local as,at,au,av,aw,ax=am.now(),Color3
+.fromRGB(255,170,255),Color3.fromRGB(0,170,255),ac.script_key or'abcdef',al.new(
+),function()local as=os.date'*t'.hour if as>=0 and as<6 then return'Night'elseif
+as>=6 and as<12 then return'Morning'elseif as>=12 and as<16 then return
+'Afternoon'elseif as>=16 and as<20 then return'Evening'end return'Night'end
+return function(ay,az)local aA,aB,aC=aa:Get'Modules/Interface'.GetInterface
+'Obsidian',ai.GetPlaceFromId(game.PlaceId),ag.LRM_Constants ay:SetDescription
+'contains basic information'ay:SetIcon'house'local aD=ay:AddGroupbox{Side=1,Name
+='Account',IconName='circle-user'}local aE=aD:AddImage('UserImage',{Image=
 'http://www.roblox.com/asset/?id=131927632408540',Height=200,Outline=true,
 ScaleType=Enum.ScaleType.Stretch,BackgroundTransparency=1})task.spawn(function()
-local aC,aD=pcall(ad.GetUserThumbnailAsync,ad,aq.UserId,Enum.ThumbnailType.
-HeadShot,Enum.ThumbnailSize.Size352x352)if aC then aB:SetImage(aD)end end)aA:
-AddLabel{Text=string.format('Good %s, <b>%s</b>!',tostring(av()),tostring(aq.
-DisplayName)),DoesWrap=true}aA:AddLabel{Text=string.format(
-'Welcome to <b>%s</b>!',tostring(aj.Paint('strelizia.cc',as))),DoesWrap=true}aA:
-AddDivider{Text='account info'}aA:AddLabel{Text=string.format(
-'%s User Id: <b>%s</b>',tostring(ah.BulletPoint),tostring(aq.UserId))}aA:
+local aF,aG=pcall(ad.GetUserThumbnailAsync,ad,ar.UserId,Enum.ThumbnailType.
+HeadShot,Enum.ThumbnailSize.Size352x352)if aF then aE:SetImage(aG)end end)aD:
+AddLabel{Text=string.format('Good %s, <b>%s</b>!',tostring(ax()),tostring(ar.
+DisplayName)),DoesWrap=true}aD:AddLabel{Text=string.format(
+'Welcome to <b>%s</b>!',tostring(aj.Paint('strelizia.cc',at))),DoesWrap=true}aD:
+AddDivider{Text='account info'}aD:AddLabel{Text=string.format(
+'%s User Id: <b>%s</b>',tostring(ah.BulletPoint),tostring(ar.UserId))}aD:
 AddLabel{Text=string.format('%s Account Age: <b>%s Days</b>',tostring(ah.
-BulletPoint),tostring(aq.AccountAge))}local aC=aA:AddLabel{Text=string.format(
+BulletPoint),tostring(ar.AccountAge))}local aF=aD:AddLabel{Text=string.format(
 '%s Friends Online: <b>?</b>',tostring(ah.BulletPoint))}task.spawn(function()
-local aD,aE=pcall(aq.GetFriendsOnlineAsync,aq)if aD then aC:SetText(string.
-format('%s Friends Online: <b>%s</b>',tostring(ah.BulletPoint),tostring(am.
-Comma(#aE))))end end)local aD=aw:AddGroupbox{Side=1,Name='Session',IconName=
-'server'}local aE,aF,aG=aD:AddLabel{Text=string.format(
-'%s Session Time: <b>00:00:00</b>',tostring(ah.BulletPoint)),DoesWrap=true},aD:
+local aG,aH=pcall(ar.GetFriendsOnlineAsync,ar)if aG then aF:SetText(string.
+format('%s Friends Online: <b>%s</b>',tostring(ah.BulletPoint),tostring(an.
+Comma(#aH))))end end)local aG=ay:AddGroupbox{Side=1,Name='Session',IconName=
+'server'}local aH,aI,aJ=aG:AddLabel{Text=string.format(
+'%s Session Time: <b>00:00:00</b>',tostring(ah.BulletPoint)),DoesWrap=true},aG:
 AddLabel{Text=string.format('%s FPS: <b>?</b>',tostring(ah.BulletPoint)),
-DoesWrap=true},aD:AddLabel{Text=string.format('%s Ping: <b>? ms</b>',tostring(ah
+DoesWrap=true},aG:AddLabel{Text=string.format('%s Ping: <b>? ms</b>',tostring(ah
 .BulletPoint)),DoesWrap=true}ak.AddTask(ak.Task.new('SessionGroupboxUpdater',
-function(aH)aE:SetText(string.format('%s Session Time: <b>%s</b>',tostring(ah.
-BulletPoint),tostring(al.FormatDuration(al.now()-ar,'%h:%m:%s',true))))aF:
+function(aK)aH:SetText(string.format('%s Session Time: <b>%s</b>',tostring(ah.
+BulletPoint),tostring(am.FormatDuration(am.now()-as,'%h:%m:%s',true))))aI:
 SetText(string.format('%s FPS: <b>%s</b>',tostring(ah.BulletPoint),tostring(math
-.floor(1/ae.Heartbeat:Wait()))))aG:SetText(string.format('%s Ping: <b>%s ms</b>'
-,tostring(ah.BulletPoint),tostring(math.floor(ao()*1000))))end,1))aD:AddDivider{
-Text='server info'}local aH=aD:AddLabel{Text=string.format(
+.floor(1/ae.Heartbeat:Wait()))))aJ:SetText(string.format('%s Ping: <b>%s ms</b>'
+,tostring(ah.BulletPoint),tostring(math.floor(ap()*1000))))end,1))aG:AddDivider{
+Text='server info'}local aK=aG:AddLabel{Text=string.format(
 '%s Players Online: ? out of ?',tostring(ah.BulletPoint)),DoesWrap=true}do local
-aI=function()aH:SetText(string.format(
+aL=function()aK:SetText(string.format(
 '%s Players Online: <b>%s</b> out of <b>%s</b>',tostring(ah.BulletPoint),
-tostring(#ad:GetPlayers()),tostring(ad.MaxPlayers)))end local aJ,aK=ad.
-PlayerAdded:Connect(aI),ad.PlayerRemoving:Connect(aI)ax.Main:OnUnload(function()
-aJ:Disconnect()aK:Disconnect()end)aI()end aD:AddLabel{Text=string.format(
+tostring(#ad:GetPlayers()),tostring(ad.MaxPlayers)))end local aM,aN=ad.
+PlayerAdded:Connect(aL),ad.PlayerRemoving:Connect(aL)aA.Main:OnUnload(function()
+aM:Disconnect()aN:Disconnect()end)aL()end aG:AddLabel{Text=string.format(
 '%s Place Version: <b>v%s</b>',tostring(ah.BulletPoint),tostring(game.
-PlaceVersion)),DoesWrap=true}aD:AddDivider{Text='session sharing'}local aI=aD:
+PlaceVersion)),DoesWrap=true}aG:AddDivider{Text='session sharing'}local aL=aG:
 AddInput('SessionShareJobId',{Text='Server Job Id',Tooltip=
 [[enter job id of the server you want to join, must be in the same game]],
-Placeholder='click here',ClearTextOnFocus=true})aD:AddButton{Text='Join Server',
+Placeholder='click here',ClearTextOnFocus=true})aG:AddButton{Text='Join Server',
 Tooltip='joins the server using the job id from above',DoubleClick=true,Func=
-function()local aJ=aI.Value or''if#aJ~=36 then return ax.Main:Notify{Title=
-'strelizia.cc',Description='invalid job id',Duration=2}end local aK,aL=pcall(af.
-TeleportToPlaceInstance,af,game.PlaceId,aJ,aq)if(not aK)then ax.Main:Notify{
+function()local aM=aL.Value or''if#aM~=36 then return aA.Main:Notify{Title=
+'strelizia.cc',Description='invalid job id',Duration=2}end local aN,aO=pcall(af.
+TeleportToPlaceInstance,af,game.PlaceId,aM,ar)if(not aN)then aA.Main:Notify{
 Title='strelizia.cc',Description=string.format(
-'failed to join server: %s; click to try again',tostring(tostring(aL))),Duration
-=2}end end}aD:AddButton{Text='Copy Job Id',Tooltip=
+'failed to join server: %s; click to try again',tostring(tostring(aO))),Duration
+=2}end end}aG:AddButton{Text='Copy Job Id',Tooltip=
 'copies the job id from the current server to clipboard',Func=function()
-setclipboard(game.JobId)ax.Main:Notify{Title='strelizia.cc',Description=
-'copied job id to clipboard',Duration=2}end}local aJ,aK,aL=aw:AddGroupbox{Side=2
-,Name='Key Information',IconName='key'},(az.SecondsLeft==-1)or(az.SecondsLeft==
-math.huge),al.now()+az.SecondsLeft aJ:AddLabel{Text=string.format(
-'%s Key Expiry: <b>%s</b>',tostring(ah.BulletPoint),tostring((aK and{(aj.Paint(
-'Never!',at))}or{(al.FormatTime(aL,'MM/DD/YYYY HH:mm'))})[1])),DoesWrap=true}aJ:
+setclipboard(game.JobId)aA.Main:Notify{Title='strelizia.cc',Description=
+'copied job id to clipboard',Duration=2}end}local aM,aN,aO=ay:AddGroupbox{Side=2
+,Name='Key Information',IconName='key'},(aC.SecondsLeft==-1)or(aC.SecondsLeft==
+math.huge),am.now()+aC.SecondsLeft aM:AddLabel{Text=string.format(
+'%s Key Expiry: <b>%s</b>',tostring(ah.BulletPoint),tostring((aN and{(aj.Paint(
+'Never!',au))}or{(am.FormatTime(aO,'MM/DD/YYYY HH:mm'))})[1])),DoesWrap=true}aM:
 AddLabel{Text=string.format('%s Total Executions: <b>%s</b>',tostring(ah.
-BulletPoint),tostring(am.Comma(az.TotalExecutions))),DoesWrap=true}aJ:AddLabel{
+BulletPoint),tostring(an.Comma(aC.TotalExecutions))),DoesWrap=true}aM:AddLabel{
 Text=string.format('%s User Note: <b>%s</b>',tostring(ah.BulletPoint),tostring(
-az.UserNote)),DoesWrap=true}aJ:AddDivider{Text='key stuff'}aJ:AddLabel{Text=
+aC.UserNote)),DoesWrap=true}aM:AddDivider{Text='key stuff'}aM:AddLabel{Text=
 string.format('%s Script Key: <b>...%s</b>',tostring(ah.BulletPoint),tostring(
-string.sub(au,-5))),DoesWrap=true}aJ:AddButton{Text='Copy Script Key',Tooltip=
-'copies user key to clipboard',Func=function()setclipboard(au)ax.Main:Notify{
+string.sub(av,-5))),DoesWrap=true}aM:AddButton{Text='Copy Script Key',Tooltip=
+'copies user key to clipboard',Func=function()setclipboard(av)aA.Main:Notify{
 Title='strelizia.cc',Description='copied script key to clipboard',Duration=2}end
-}local aM,aN=aw:AddGroupbox{Side=2,Name='Credits',IconName='list'},{}for aO,aP
-in(ay.Credits or{})do local aQ=ag.ProductionRoleInfo[aP.Role]or ag.
-ProductionRoleInfo.generic table.insert(aN,string.format('%s %s - <b>%s</b>',
-tostring(ah.BulletPoint),tostring(aP.Name),tostring(aj.Paint(aP.Role,aQ.Color)))
-)end aM:AddLabel('CreditsLabel',{Text=table.concat(aN,'\n'),DoesWrap=true})aM:
-AddDivider{Text='discord (pls join)'}aM:AddButton{Text='Join Discord Server',
-Func=function()ap(ag.DiscordInviteCode,true)ax.Main:Notify{Title='strelizia.cc',
-Description='successfully copied/prompted discord join code!'}end}end end end)()
-end,[15]=function()a(15)return(function(...)return function(aa)local ab=aa:Get
-'Modules/Places'return function(ac)local ad,ae=aa:Get'Modules/Interface'.
-GetInterface'Obsidian',ab.GetPlaceFromId(game.PlaceId)local af,ag,ah,ai=ad.Main,
-ad.SaveManager,ad.ThemeManager,ac:AddGroupbox{Side=1,Name='Menu',IconName=
-'wrench'}ai:AddButton{Text='Clear User Key',Tooltip=
+}local aP,aQ=ay:AddGroupbox{Side=2,Name='Credits',IconName='list'},{}for aR,aS
+in(aB.Credits or{})do local aT=ag.ProductionRoleInfo[aS.Role]or ag.
+ProductionRoleInfo.generic table.insert(aQ,string.format('%s %s - <b>%s</b>',
+tostring(ah.BulletPoint),tostring(aS.Name),tostring(aj.Paint(aS.Role,aT.Color)))
+)end aP:AddLabel('CreditsLabel',{Text=table.concat(aQ,'\n'),DoesWrap=true})aP:
+AddDivider{Text='discord (pls join)'}local aR=aP:AddButton{Text=
+'Join Discord Server',Func=function()aq(ag.DiscordInviteCode,true)aA.Main:Notify
+{Title='strelizia.cc',Description=
+'successfully copied/prompted discord join code!'}end}if(not aw:Read
+'PRESSED_JOIN_DISCORD')then print'mueheheh'task.spawn(function()task.wait(math.
+random(5,10))local aS=az:AddDialog('DiscordJoinDialog',{Title=
+'sorry for disturbing you',Description=
+[[would you please join our discord? it helps us grow and stay connected with our community. you also benefit from being able to make suggestions, bug reports and stay updated with latest features.]]
+,FooterButtons={Confirm={Title='yes!',Variant='Primary',Callback=function()aw:
+Write('PRESSED_JOIN_DISCORD',true)aR.Func()end},Decline={Title='no, thanks',
+Variant='Secondary',WaitTime=3}}})aS:AddToggle{Text="don't ask me again",Tooltip
+='okay :(',Callback=function(aT)aw:Write('PRESSED_JOIN_DISCORD',aT)end}end)end
+end end end)()end,[15]=function()a(15)return(function(...)return function(aa)
+local ab=aa:Get'Modules/Places'return function(ac)local ad,ae=aa:Get
+'Modules/Interface'.GetInterface'Obsidian',ab.GetPlaceFromId(game.PlaceId)ac:
+SetDescription'contains settings for the interface'ac:SetIcon'cog'local af,ag,ah
+,ai=ad.Main,ad.SaveManager,ad.ThemeManager,ac:AddGroupbox{Side=1,Name='Menu',
+IconName='wrench'}ai:AddButton{Text='Clear User Key',Tooltip=
 [[clears saved key from the loader allowing you to enter a new one]],Disabled=(
 not isfile'strelizia/key.bin'),DoubleClick=true,Func=function()delfile
 'strelizia/key.bin'af:Notify{Title='strelizia.cc',Description=
 [[successfully deleted the saved key, re-execute the loader in order to enter a new one]]
 ,Time=2}end}ai:AddButton{Text='Erase Cache',Tooltip=
-[[deletes all assets strelizia has cached, only run if you experience issues]],
-DoubleClick=true,Func=function()if(not isfolder'strelizia/cache')then return end
-local aj=0 for ak,al in listfiles'strelizia/cache'do for am,an in listfiles(al)
-do delfile(an)aj=aj+1 end end af:Notify{Title='strelizia.cc',Description=string.
-format('successfully deleted %s cached files!',tostring(aj)),Time=2}end}ai:
-AddDivider{Text='ui settings'}ai:AddToggle('KeybindMenuOpen',{Default=af.
-KeybindFrame.Visible,Text='Open Keybind Menu',Tooltip='opens menu with keybinds'
-,Callback=function(aj)af.KeybindFrame.Visible=aj end})ai:AddToggle(
-'ShowCustomCursor',{Text='Custom Cursor',Tooltip=
+[[deletes cache files used for quality of life, only run if you experience issues]]
+,DoubleClick=true,Func=function()if(not isfolder'strelizia/cache')then return
+end for aj,ak in listfiles'strelizia/cache'do for al,am in listfiles(ak)do
+delfile(am)end end for aj,ak in listfiles'strelizia/pref'do delfile(ak)end af:
+Notify{Title='strelizia.cc',Description='successfully deleted all cached files!'
+,Time=2}end}ai:AddDivider{Text='ui settings'}ai:AddToggle('KeybindMenuOpen',{
+Default=af.KeybindFrame.Visible,Text='Open Keybind Menu',Tooltip=
+'opens menu with keybinds',Callback=function(aj)af.KeybindFrame.Visible=aj end})
+ai:AddToggle('ShowCustomCursor',{Text='Custom Cursor',Tooltip=
 [[determines if roblox cursor will be replaced with a custom one]],Default=true,
 Callback=function(aj)af.ShowCustomCursor=aj end})ai:AddDropdown(
 'NotificationSide',{Values={'Left','Right'},Default='Right',Text=
@@ -2649,28 +2660,40 @@ end)()end,[18]=function()a(18)return(function(...)return function(aa)local ab,ac
 Status=false,Message='Placeholder'},BlacklistedExecutors={'Solara','Xeno'},
 Credits={{Name='vma',Role='developer'},{Name='felik',Role='contributor'}},Script
 ='8db54cb776ef39fb18e50589c7cff5db',Update={Time=1763296128,Log={ab.Paint(
-'[+] Released',ac)}}}end end)()end,[19]=function()local aa,ab=a(19)return(
-function(...)return function(ac)return ac.new(ac):Extend(ac.Extensions.Children(
-ab))end end)()end,[20]=function()a(20)return(function(...)return function(aa)
-local ab={}ab.IsDict=function(ac)return ac[1]==nil end ab.Dictionary=function(ac
-)local ad={}for ae,af in ac do ad[af]=true end return ad end ab.Filter=function(
-ac,ad)local ae,af={},ab.IsDict(ac)for ag,ah in ac do local ai=ad(ah,ag)if(not ai
-)then continue end if af then ae[ag]=ah else table.insert(ae,ah)end end return
-ae end ab.Reconcile=function(ac,ad)for ae,af in ad do local ag,ah=ac[ae],typeof(
-af)if ag==nil or typeof(ag)~=ah then ac[ae]=af elseif ah=='table'then ab.
-Reconcile(ag,af)end end return ac end ab.FullMap=function(ac,ad)local ae,af={},
-ab.IsDict(ac)for ag,ah in ac do local ai,aj=ad(ah,ag)if not(ai)then continue end
-if af then ae[aj]=ai else table.insert(ae,ai)end end return ae end ab.JoinArrays
-=function(...)local ac={}for ad=1,select('#',...)do for ae,af in select(ad,...)
-do ac[#ac+1]=af end end return ac end return ab end end)()end,[21]=function()a(
-21)return(function(...)return function(aa)local ab local ac=function(ac,...)
-local ad=ab ab=nil ac(...)ab=ad end local ad,ae=function()while true do ac(
-coroutine.yield())end end,{}ae.__index=ae ae.new=function(af,ag)return
-setmetatable({_connected=true,_signal=af,_fn=ag,_next=false},ae)end ae.
-Disconnect=function(af)af._connected=false if af._signal._handlerListHead==af
-then af._signal._handlerListHead=af._next else local ag=af._signal.
-_handlerListHead while ag and ag._next~=af do ag=ag._next end if ag then ag.
-_next=af._next end end end setmetatable(ae,{__index=function(af,ag)error((
+'[+] Released',ac)}}}end end)()end,[19]=function()a(19)return(function(...)
+return function(aa)local ab=aa.Services local ac,ad,ae,af=ab.HttpService,aa:Get
+'Modules/t','strelizia/pref','generic'local ag,ah,ai=ad.union(ad.string,ad.
+number,ad.table,ad.boolean,ad['nil']),ad.optional(ad.string),{}ai.__index=ai ai.
+new=function(aj)aj=aj or af return setmetatable({Path=string.format('%s/%s.json'
+,tostring(ae),tostring(aj))},ai)end ai.Get=function(aj,ak)assert(ah(ak))if(not
+isfile(aj.Path))then return{}end local al,am=pcall(ac.JSONDecode,ac,readfile(aj.
+Path))if(not al)then aj:Erase()return nil end return(ak and{(am[ak])}or{am})[1]
+end ai.Write=function(aj,ak,al)assert(ad.string(ak))assert(ag(al))local am=aj:
+Get()am[ak]=al local an,ao=pcall(ac.JSONEncode,ac,am)if an then writefile(aj.
+Path,ao)end return aj end ai.Update=function(aj,ak,al)assert(ad.string(ak))
+assert(ad['function'](al))return aj:Write(ak,al(aj:Get(ak)))end ai.Erase=
+function(aj)writefile(aj.Path,'{}')return aj end return ai end end)()end,[20]=
+function()local aa,ab=a(20)return(function(...)return function(ac)return ac.new(
+ac):Extend(ac.Extensions.Children(ab))end end)()end,[21]=function()a(21)return(
+function(...)return function(aa)local ab={}ab.IsDict=function(ac)return ac[1]==
+nil end ab.Dictionary=function(ac)local ad={}for ae,af in ac do ad[af]=true end
+return ad end ab.Filter=function(ac,ad)local ae,af={},ab.IsDict(ac)for ag,ah in
+ac do local ai=ad(ah,ag)if(not ai)then continue end if af then ae[ag]=ah else
+table.insert(ae,ah)end end return ae end ab.Reconcile=function(ac,ad)for ae,af
+in ad do local ag,ah=ac[ae],typeof(af)if ag==nil or typeof(ag)~=ah then ac[ae]=
+af elseif ah=='table'then ab.Reconcile(ag,af)end end return ac end ab.FullMap=
+function(ac,ad)local ae,af={},ab.IsDict(ac)for ag,ah in ac do local ai,aj=ad(ah,
+ag)if not(ai)then continue end if af then ae[aj]=ai else table.insert(ae,ai)end
+end return ae end ab.JoinArrays=function(...)local ac={}for ad=1,select('#',...)
+do for ae,af in select(ad,...)do ac[#ac+1]=af end end return ac end return ab
+end end)()end,[22]=function()a(22)return(function(...)return function(aa)local
+ab local ac=function(ac,...)local ad=ab ab=nil ac(...)ab=ad end local ad,ae=
+function()while true do ac(coroutine.yield())end end,{}ae.__index=ae ae.new=
+function(af,ag)return setmetatable({_connected=true,_signal=af,_fn=ag,_next=
+false},ae)end ae.Disconnect=function(af)af._connected=false if af._signal.
+_handlerListHead==af then af._signal._handlerListHead=af._next else local ag=af.
+_signal._handlerListHead while ag and ag._next~=af do ag=ag._next end if ag then
+ag._next=af._next end end end setmetatable(ae,{__index=function(af,ag)error((
 'Attempt to get Connection::%s (not a valid member)'):format(tostring(ag)),2)end
 ,__newindex=function(af,ag,ah)error((
 'Attempt to set Connection::%s (not a valid member)'):format(tostring(ag)),2)end
@@ -2688,7 +2711,7 @@ end ah(...)end)return ai end setmetatable(af,{__index=function(ag,ah)error((
 'Attempt to get Signal::%s (not a valid member)'):format(tostring(ah)),2)end,
 __newindex=function(ag,ah,ai)error((
 'Attempt to set Signal::%s (not a valid member)'):format(tostring(ah)),2)end})
-return af end end)()end,[22]=function()a(22)return(function(...)return function(
+return af end end)()end,[23]=function()a(23)return(function(...)return function(
 aa)local ab,ac,ad,ae,af,ag,ah='Non-promise value passed into %s at index %s',
 'Please pass a list of promises to %s','Please pass a handler function to %s!',{
 __mode='k'},function(ab)if type(ab)=='function'then return true end if type(ab)
@@ -2929,12 +2952,12 @@ elseif type(az)~='boolean'then error
 then return ay()end av(ay)end)end ao.onUnhandledRejection=function(ar)table.
 insert(ao._unhandledRejectionCallbacks,ar)return function()local as=table.find(
 ao._unhandledRejectionCallbacks,ar)if as then table.remove(ao.
-_unhandledRejectionCallbacks,as)end end end return ao end end)()end,[23]=
-function()local aa,ab=a(23)return(function(...)return function(ac)return ac.new(
-ac):Extend(ac.Extensions.Children(ab))end end)()end,[24]=function()a(24)return(
+_unhandledRejectionCallbacks,as)end end end return ao end end)()end,[24]=
+function()local aa,ab=a(24)return(function(...)return function(ac)return ac.new(
+ac):Extend(ac.Extensions.Children(ab))end end)()end,[25]=function()a(25)return(
 function(...)return function(aa)local ab=aa.Services local ac=ab.HttpService
 return function()return(ac:GenerateGUID(false):gsub('-','')):lower()end end end
-)()end,[25]=function()a(25)return(function(...)return function(aa)local ab=aa.
+)()end,[26]=function()a(26)return(function(...)return function(aa)local ab=aa.
 Services local ac,ad,ae,af=ab.Workspace,aa:Get'Modules/t',aa:Get
 'RBXUtil/TableUtil',aa:Get'Functions/Numbers'local ag,ah,ai,aj=ad.numberMin(0),
 ad.tuple(ad.numberMin(0),ad.string),math.floor,{}aj.Constants={Second=1,Minute=
@@ -2950,31 +2973,31 @@ format(as,ao)):gsub('%%h',string.format(as,ap)):gsub('%%m',string.format(as,aq))
 al=ai(al)for am,an in ak do local ao,ap=an.Name,an.Value local aq=ai(al/ap)if aq
 ==0 then continue end return string.format('%s %s',tostring(af.Comma(aq)),
 tostring(ao..(aq>1 and's'or'')))end return'0 seconds'end return aj end end)()end
-,[26]=function()a(26)return(function(...)return function(aa)local ab=aa:Get
+,[27]=function()a(27)return(function(...)return function(aa)local ab=aa:Get
 'Modules/t'local ac,ad=ab.tuple(ab.number,ab.numberConstrained(0,8)),{}ad.Comma=
 function(ae)assert(ab.integer(ae))local af=tostring(ae)local ag,ah,ai=af:match
 '^([^%d]*%d)(%d*)(.-)$'return ag..ah:reverse():gsub('(%d%d%d)','%1,'):reverse()
 ..ai end ad.DecimalRound=function(ae,af)assert(ac(ae,af))if ae%1==0 then return
 ae end return string.format(string.format('%%.%sf',tostring(af)),ae)end return
-ad end end)()end,[27]=function()a(27)return(function(...)return function(aa)
+ad end end)()end,[28]=function()a(28)return(function(...)return function(aa)
 local ab=aa:Get'Modules/t'local ac,ad,ae=ab.tuple(ab.string,ab.numberMin(0),ab.
 optional(ab.string)),string.rep,{}ae.Truncate=function(af,ag,ah)assert(ac(af,ag,
 ah))return af:sub(1,ag)..(ah or'')end ae.LeadingSpace=function(af)assert(ab.
-numberPositive(af))return ad(' ',af)end return ae end end)()end,[28]=function()
-a(28)return(function(...)return function(aa)local ab,ac=(request or(http and
+numberPositive(af))return ad(' ',af)end return ae end end)()end,[29]=function()
+a(29)return(function(...)return function(aa)local ab,ac=(request or(http and
 http.request)or httprequest),aa.Services local ad=ac.HttpService return function
 (ae,af)if af then setclipboard('https://www.discord.gg/'..ae)end if(not ab)then
 return false end ab{Url='http://127.0.0.1:6463/rpc?v=1',Method='POST',Headers={[
 'Content-Type']='application/json',Origin='https://discord.com'},Body=ad:
 JSONEncode{cmd='INVITE_BROWSER',args={code=ae},nonce=ad:GenerateGUID(false)}}
-return true end end end)()end,[29]=function()a(29)return(function(...)return
+return true end end end)()end,[30]=function()a(30)return(function(...)return
 function(aa)local ab={Info='\u{1f535}',Warn='\u{1f7e0}',Success='\u{1f7e2}',
 Error='\u{1f534}'}local ac=function(ac,ad)local ae=os.date'*t'string.format(
 '%s:%s:%s',ae.hour,ae.min,ae.sec)print(string.format('%s | [Library]: %s',ab[ac]
-,ad))end return ac end end)()end,[30]=function()a(30)return(function(...)return
+,ad))end return ac end end)()end,[31]=function()a(31)return(function(...)return
 function(aa)local ab=aa.Services.Stats local ac=ab.Network.ServerStatsItem[
-'Data Ping']return function()return ac:GetValue()/1000 end end end)()end,[31]=
-function()a(31)return(function(...)return function(aa)local ab,ac,ad,ae=aa:Get
+'Data Ping']return function()return ac:GetValue()/1000 end end end)()end,[32]=
+function()a(32)return(function(...)return function(aa)local ab,ac,ad,ae=aa:Get
 'RBXUtil/TableUtil',aa:Get'Functions/Time',aa:Get'Modules/t',utf8.char local af=
 ac.Constants local ag={DiscordInviteCode='',Characters={Invisible=10240,
 BulletPoint=8226},Emojis={Unknown='<:letter_x:1305284794044776622>',Person=
@@ -2990,7 +3013,7 @@ fromRGB(2,116,255)},contributor={Color=Color3.fromRGB(255,255,127)},generic={
 Color=Color3.new(1,1,1)}}}for ah,ai in ag.Characters do if typeof(ai)~='number'
 then continue end ag.Characters[ah]=ae(ai)end setmetatable(ag.Emojis,{__index=
 function(ah,ai)local aj=rawget(ah,'Unknown')rawset(ah,ai,aj)return aj end})
-return ag end end)()end,[32]=function()local aa,ab,ac=a(32)return(function(...)
+return ag end end)()end,[33]=function()local aa,ab,ac=a(33)return(function(...)
 local ad={}ad.__index=ad ad.Extensions={Children=function(ae)local af={}for ag,
 ah in ae:GetChildren()do af[ah.Name]=ah end return af end}local ae=cloneref or
 function(ae)return ae end ad.Services=setmetatable({},{__index=function(af,ag)
@@ -3010,15 +3033,15 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{6,2,{'Color'}},{3,2,{
-'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{17,2,{'Places'},{{18,2,{
-'Slime RNG'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2,{
-'ThemeManager'}},{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{'Home'}}}},{11,2,{
-'Main'}},{12,2,{'SaveManager'}}}}}}}},{7,2,{'t'}}}},{32,2,{'Vinca'}},{31,2,{
-'Constants'}},{23,2,{'Functions'},{{24,2,{'CreateGUID'}},{28,2,{'PromptDiscord'}
-},{27,2,{'Strings'}},{30,2,{'GetPing'}},{29,2,{'OutputMessage'}},{26,2,{
-'Numbers'}},{25,2,{'Time'}}}},{19,2,{'RBXUtil'},{{22,2,{'Promise'}},{21,2,{
-'Signal'}},{20,2,{'TableUtil'}}}}}}},'0.4.2','strelizia.cc',string,task,
+ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{17,2,{'Places'},{{18,2,{
+'Slime RNG'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{12,2,{
+'SaveManager'}},{11,2,{'Main'}},{16,2,{'ThemeManager'}},{13,2,{'Tabs'},{{15,2,{
+'Settings'}},{14,2,{'Home'}}}}}}}}}},{19,2,{'Preference'}},{3,2,{'TaskManager'},
+{{4,2,{'Task'}},{5,2,{'Lock'}}}},{7,2,{'t'}},{6,2,{'Color'}}}},{33,2,{'Vinca'}},
+{24,2,{'Functions'},{{31,2,{'GetPing'}},{26,2,{'Time'}},{27,2,{'Numbers'}},{30,2
+,{'OutputMessage'}},{28,2,{'Strings'}},{29,2,{'PromptDiscord'}},{25,2,{
+'CreateGUID'}}}},{32,2,{'Constants'}},{20,2,{'RBXUtil'},{{22,2,{'Signal'}},{23,2
+,{'Promise'}},{21,2,{'TableUtil'}}}}}}},'0.4.2','strelizia.cc',string,task,
 setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
 tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
 freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
