@@ -2373,31 +2373,31 @@ return'Evening'end return'Night'end return function(aw)local ax,ay,az,aA=aa:Get
 LRM_Constants,aw:AddGroupbox{Side=1,Name='Account',IconName='circle-user'}local
 aB=aA:AddImage('UserImage',{Image=
 'http://www.roblox.com/asset/?id=131927632408540',Height=200,Outline=true,
-BackgroundTransparency=1})task.spawn(function()local aC,aD=pcall(ad.
-GetUserThumbnailAsync,ad,aq.UserId,Enum.ThumbnailType.HeadShot,Enum.
-ThumbnailSize.Size352x352)if aC then aB:SetImage(aD)end end)aA:AddLabel{Text=
-string.format('Good %s, <b>%s</b>!',tostring(av()),tostring(aq.DisplayName)),
-DoesWrap=true}aA:AddLabel{Text=string.format('Welcome to <b>%s</b>!',tostring(aj
-.Paint('strelizia.cc',as))),DoesWrap=true}aA:AddDivider{Text='account info'}aA:
-AddLabel{Text=string.format('%s User Id: <b>%s</b>',tostring(ah.BulletPoint),
-tostring(aq.UserId))}aA:AddLabel{Text=string.format(
-'%s Account Age: <b>%s Days</b>',tostring(ah.BulletPoint),tostring(aq.AccountAge
-))}local aC=aA:AddLabel{Text=string.format('%s Friends Online: <b>?</b>',
-tostring(ah.BulletPoint))}task.spawn(function()local aD,aE=pcall(aq.
-GetFriendsOnlineAsync,aq)if aD then aC:SetText(string.format(
-'%s Friends Online: <b>%s</b>',tostring(ah.BulletPoint),tostring(am.Comma(#aE)))
-)end end)local aD=aw:AddGroupbox{Side=1,Name='Session',IconName='server'}local
-aE,aF,aG=aD:AddLabel{Text=string.format('%s Session Time: <b>00:00:00</b>',
-tostring(ah.BulletPoint)),DoesWrap=true},aD:AddLabel{Text=string.format(
-'%s FPS: <b>?</b>',tostring(ah.BulletPoint)),DoesWrap=true},aD:AddLabel{Text=
-string.format('%s Ping: <b>? ms</b>',tostring(ah.BulletPoint)),DoesWrap=true}ak.
-AddTask(ak.Task.new('SessionGroupboxUpdater',function(aH)aE:SetText(string.
-format('%s Session Time: <b>%s</b>',tostring(ah.BulletPoint),tostring(al.
-FormatDuration(al.now()-ar,'%h:%m:%s',true))))aF:SetText(string.format(
-'%s FPS: <b>%s</b>',tostring(ah.BulletPoint),tostring(math.floor(1/ae.Heartbeat:
-Wait()))))aG:SetText(string.format('%s Ping: <b>%s ms</b>',tostring(ah.
-BulletPoint),tostring(math.floor(ao()*1000))))end,1))aD:AddDivider{Text=
-'server info'}local aH=aD:AddLabel{Text=string.format(
+ScaleType=Enum.ScaleType.Stretch,BackgroundTransparency=1})task.spawn(function()
+local aC,aD=pcall(ad.GetUserThumbnailAsync,ad,aq.UserId,Enum.ThumbnailType.
+HeadShot,Enum.ThumbnailSize.Size352x352)if aC then aB:SetImage(aD)end end)aA:
+AddLabel{Text=string.format('Good %s, <b>%s</b>!',tostring(av()),tostring(aq.
+DisplayName)),DoesWrap=true}aA:AddLabel{Text=string.format(
+'Welcome to <b>%s</b>!',tostring(aj.Paint('strelizia.cc',as))),DoesWrap=true}aA:
+AddDivider{Text='account info'}aA:AddLabel{Text=string.format(
+'%s User Id: <b>%s</b>',tostring(ah.BulletPoint),tostring(aq.UserId))}aA:
+AddLabel{Text=string.format('%s Account Age: <b>%s Days</b>',tostring(ah.
+BulletPoint),tostring(aq.AccountAge))}local aC=aA:AddLabel{Text=string.format(
+'%s Friends Online: <b>?</b>',tostring(ah.BulletPoint))}task.spawn(function()
+local aD,aE=pcall(aq.GetFriendsOnlineAsync,aq)if aD then aC:SetText(string.
+format('%s Friends Online: <b>%s</b>',tostring(ah.BulletPoint),tostring(am.
+Comma(#aE))))end end)local aD=aw:AddGroupbox{Side=1,Name='Session',IconName=
+'server'}local aE,aF,aG=aD:AddLabel{Text=string.format(
+'%s Session Time: <b>00:00:00</b>',tostring(ah.BulletPoint)),DoesWrap=true},aD:
+AddLabel{Text=string.format('%s FPS: <b>?</b>',tostring(ah.BulletPoint)),
+DoesWrap=true},aD:AddLabel{Text=string.format('%s Ping: <b>? ms</b>',tostring(ah
+.BulletPoint)),DoesWrap=true}ak.AddTask(ak.Task.new('SessionGroupboxUpdater',
+function(aH)aE:SetText(string.format('%s Session Time: <b>%s</b>',tostring(ah.
+BulletPoint),tostring(al.FormatDuration(al.now()-ar,'%h:%m:%s',true))))aF:
+SetText(string.format('%s FPS: <b>%s</b>',tostring(ah.BulletPoint),tostring(math
+.floor(1/ae.Heartbeat:Wait()))))aG:SetText(string.format('%s Ping: <b>%s ms</b>'
+,tostring(ah.BulletPoint),tostring(math.floor(ao()*1000))))end,1))aD:AddDivider{
+Text='server info'}local aH=aD:AddLabel{Text=string.format(
 '%s Players Online: ? out of ?',tostring(ah.BulletPoint)),DoesWrap=true}do local
 aI=function()aH:SetText(string.format(
 '%s Players Online: <b>%s</b> out of <b>%s</b>',tostring(ah.BulletPoint),
@@ -3010,34 +3010,34 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{19,2,{'RBXUtil'},{{20,2,{'TableUtil'}},{22,2,{
-'Promise'}},{21,2,{'Signal'}}}},{2,2,{'Modules'},{{17,2,{'Places'},{{18,2,{
-'Slime RNG'}}}},{3,2,{'TaskManager'},{{4,2,{'Task'}},{5,2,{'Lock'}}}},{8,2,{
-'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{12,2,{
-'SaveManager'}},{11,2,{'Main'}},{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{
-'Home'}}}}}}}}}},{6,2,{'Color'}},{7,2,{'t'}}}},{31,2,{'Constants'}},{32,2,{
-'Vinca'}},{23,2,{'Functions'},{{25,2,{'Time'}},{29,2,{'OutputMessage'}},{27,2,{
-'Strings'}},{28,2,{'PromptDiscord'}},{26,2,{'Numbers'}},{30,2,{'GetPing'}},{24,2
-,{'CreateGUID'}}}}}}},'0.4.2','strelizia.cc',string,task,setmetatable,error,next
-,table,unpack,coroutine,script,type,require,pcall,tostring,tonumber,_VERSION
-local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.freeze or function(au)return
-au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and ay(as,1,4)=='Lune'then local
-aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC end end local aB=af and af.
-defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or function(aC,...)ax(aC)(...)end,{[1]
-='Folder',[2]='ModuleScript',[3]='Script',[4]='LocalScript',[5]='StringValue'},{
-},{},{},{},{},{},{}local aL,aM={GetFullName={{},function(aL)local aM,aN=aL.Name,
-aL.Parent while aN do aM=aN.Name..'.'..aM aN=aN.Parent end return aM end},
-GetChildren={{},function(aL)local aM={}for aN in ai,aK[aL]do au(aM,aN)end return
-aM end},GetDescendants={{},function(aL)local aM={}for aN in ai,aK[aL]do au(aM,aN
-)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)end end return aM end},
-FindFirstChild={{'string','boolean?'},function(aL,aM,aN)local aO=aK[aL]for aP in
-ai,aO do if aP.Name==aM then return aP end end if aN then for aP in ai,aO do
-return aP:FindFirstChild(aM,true)end end end},FindFirstAncestor={{'string'},
-function(aL,aM)local aN=aL.Parent while aN do if aN.Name==aM then return aN end
-aN=aN.Parent end end},WaitForChild={{'string','number?'},function(aL,aM)return
-aL:FindFirstChild(aM)end}},{}for aN,aO in ai,aL do local aP,aQ,aR=aO[1],aO[2],{}
-for aS,aT in ai,aP do local aU,aV=az(aT,'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN
-]=function(aS,...)if not aK[aS]then ah(
+ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{6,2,{'Color'}},{3,2,{
+'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{17,2,{'Places'},{{18,2,{
+'Slime RNG'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2,{
+'ThemeManager'}},{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{'Home'}}}},{11,2,{
+'Main'}},{12,2,{'SaveManager'}}}}}}}},{7,2,{'t'}}}},{32,2,{'Vinca'}},{31,2,{
+'Constants'}},{23,2,{'Functions'},{{24,2,{'CreateGUID'}},{28,2,{'PromptDiscord'}
+},{27,2,{'Strings'}},{30,2,{'GetPing'}},{29,2,{'OutputMessage'}},{26,2,{
+'Numbers'}},{25,2,{'Time'}}}},{19,2,{'RBXUtil'},{{22,2,{'Promise'}},{21,2,{
+'Signal'}},{20,2,{'TableUtil'}}}}}}},'0.4.2','strelizia.cc',string,task,
+setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
+tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
+freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
+ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC
+end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or function
+(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]=
+'LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={{
+},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
+aN.Parent end return aM end},GetChildren={{},function(aL)local aM={}for aN in ai
+,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}
+for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)
+end end return aM end},FindFirstChild={{'string','boolean?'},function(aL,aM,aN)
+local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return aP end end if aN
+then for aP in ai,aO do return aP:FindFirstChild(aM,true)end end end},
+FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while aN do if
+aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{'string',
+'number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO in ai,aL
+do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT,
+'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
 "Expected ':' not '.' calling member function "..aN,2)end local aT={...}for aU,
 aV in ai,aR do local aW=aT[aU]local aX,aY,aZ=an(aW),aV[1],aV[2]if aW==nil and
 not aZ then ah('Argument '..aW..' missing or nil',3)end if aY~='any'and aX~=aY
