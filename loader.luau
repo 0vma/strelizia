@@ -1,1 +1,236 @@
-local a local b={function()local b, c, d=a(1)return(function(...)if(not game:IsLoaded())then game.Loaded:Wait() end local e=d(c.Library); local f=getgenv() if f.Library then f.Library:Unload() end local g=e.Shared:Get(); local h=g.Modules.Places local i=g.Modules.Interface:Get('Obsidian'); local j=h.GetPlaceFromId(game.PlaceId); if not j then return i.Main:Notify({Title='strelizia.cc',Description=[[this game is currently not supported by strelizia! if you think that this is a mistake then join our discord server and report this issue!]],Time=5}) end if h.IsExecutorBlacklisted(j.BlacklistedExecutors)then return i.Main:Notify({Title='strelizia.cc',Description='this script is not compatible with your executor!',Time=3}) end local k=(j.Downtime.Status and j.Downtime.Message) if k then return i.Main:Notify({Title='strelizia.cc',Description=string.format([[unable to load %s script because it's currently experiencing a downtime! specificed downtime reason: %s]], tostring(j.Name), tostring(k))}) end local l=e.Modules.KeyFile local m=e.Modules.Luarmor:Init(j.Script); if j.Keyless then i.Main:Notify({Title='strelizia.cc',Description=[[script for this game is currently keyless, no key required! loading script...]],Time=3}) return m:LoadScript() end local n=l:Read(); if n~=nil then local o=m:Check(n.Key); if o.code=='KEY_VALID'then i.Main:Notify({Title='strelizia.cc',Description='saved key is valid! loading script!',Time=3}) return m:LoadScript(n.Key) end i.Main:Notify({Title='strelizia.cc',Description='saved key is invalid! please enter a new key!',Time=3}) l:Erase(); end local o=e.Interface:Create(); local p=o.Library.Buttons local q=p.CheckKeyButton; local r=p.GetKeyButton; local function KeyCheck(s) if s:len()~=32 then o.Library:Notify({Title='strelizia.cc',Description='invalid key length!',Time=2}) return end q:SetDisabled(true) o.Library:Notify({Title='strelizia.cc',Description='checking your key, please wait...',Time=2}) local t=m:Check(s); o.Library:Notify({Title='strelizia.cc',Description=t.message,Time=2}) if t.code=='KEY_VALID'then l:Write(s) o.Library:Unload(); return m:LoadScript(s) else q:SetDisabled(false) end end q.Func=function() return KeyCheck(o.Library.Options.ScriptKeyInput.Value) end r.Func=function() setclipboard('https://linktr.ee/strelizia.cc'); return o.Library:Notify({Title='strelizia.cc',Description='successfully copied keysystem link tree to your clipboard!',Time=3}) end p.JoinDiscordButton.Func=function() o.Library:Notify({Title='strelizia.cc',Description='successfully copied/prompted discord join code!'}) return g.Commons.JoinDiscord(g.Constants.DiscordJoinCode) end p.UnloadScript.Func=function() return o.Library:Unload() end end)()end,function()local b, c, d=a(2)return(function(...) local e={} e.Cache={} e.Services=setmetatable({},{ __index=function(f,g) local h,i=pcall(game.GetService,game,g); if h then i=cloneref(i) rawset(f,g,i) end return i end, }) function e.GetLazyTree(f,g) local h,i=g or{},{} for j,k in f:GetChildren()do i[k.Name]=k end return setmetatable(h,{ __index=function(j,k) local l=i[k] assert(l,string.format("unable to index '%s' as its not a valid member of '%s'", tostring(k), tostring(f.Name))) local m=l if l.ClassName=='ModuleScript'then m=nil; local n,o=pcall(d,l) assert(n and typeof(o)=='function',string.format("failed to load module '%s' in '%s': %s", tostring(k), tostring(f.Name), tostring(typeof(o)~='function'and'returned object is not a function'or tostring(o)))) local p,q=pcall(o,e) assert(p,string.format("failed to initialize module '%s' in '%s': %s", tostring(k), tostring(f.Name), tostring(tostring(q)))) if typeof(q)=='function'and islclosure(q)then q=newcclosure(q) end m=q end rawset(j,k,m) return m end, __newindex=function() assert(false,'you cannot manually write keys to this table') end, __metatable='this metatable is locked!', }) end do local f={}; local g=function()return f end; local h={ isfunctionhooked=isfunctionhooked, GetObjects=game.GetObjects, require=d, clonefunction=clonefunction, loadstring=loadstring }; hookfunction(g,g); for i,j in h do if(not isfunctionhooked(j))or(not iscclosure(j))then rawset(e,i,clonefunction(j)) continue end; while true do end end local i=clonefunction(g) if(not isfunctionhooked(g))or(i==g)or(debug.getupvalue(i,1)~=debug.getupvalue(g,1))then while true do end end end return e.GetLazyTree(c,e) end)()end,function()a(3)return(function(...)return function(b) return setmetatable({},{ __index=function(c,d) local e,f=pcall(game.GetService,game,d); if e then f=cloneref(f) rawset(c,d,f) return f end return nil end, }) end end)()end,function()local b, c=a(4)return(function(...)return function(d) return d.GetLazyTree(c) end end)()end,function()a(5)return(function(...)return function(b) local c={}; local d=b.Shared:Get(); local e=d.Commons.Crypt.Base64 local f='strelizia.key' local g=b.Services.HttpService; function c.Erase(h) return delfile(f) end function c.Read(h) if(not isfile(f))then return end local i,j=pcall(e.Decode,readfile(f)) if not i then return c:Erase() end local k,l=pcall(g.JSONDecode,g,j); if not k then return c:Erase() end return l end function c.Write(h,j) return writefile(f,e.Encode(g:JSONEncode({ Key=j, }))) end return c end end)()end,function()a(6)return(function(...)return function(b) local c={}; local d=[[luaarmor api hasn't been initialized yet! make sure to call :Init() before calling other methods!]] function c.Init(e,f) e.Cached=loadstring(game:HttpGet("https://sdkapi-public.luarmor.net/library.lua"))() e.Cached.script_id=f return e end function c.Get(e) return e.Cached end function c.Check(e,f) assert(e:Get(),d) return e:Get().check_key(f) end function c.LoadScript(e,f) assert(e:Get(),d) getgenv().script_key=f return e:Get().load_script() end function c.Purge(e) assert(e:Get(),d) e:Get().purge_cache() end return c end end)()end,function()a(7)return(function(...)return function(b) getgenv() local c=b.Shared:Get(); local d=c.Constants local e=c.Modules.Places local f=c.Commons.Time local g= c.RBXUtil.TableUtil local h=c.Modules.Interface local j=c.Modules.Color local k=d.Characters local l=j.new(ColorSequence.new(Color3.fromRGB(93,13,115),Color3.fromRGB(196,22,89))); function h.Create(m) local p=h:Get('Obsidian'); local q=p.Main; h.Library=q local r=e.GetPlaceFromId(game.PlaceId); local s=q:CreateWindow({ Center=true, AutoShow=true, Resizable=true, Compact=true, ShowCustomCursor=true, Size=UDim2.fromOffset(600,500), Title='key system', Footer='strelizia.cc', Icon=79981166576877, NotifySide='Left', }) local t={ Home=s:AddTab('Home','house') } local u=t.Home:AddGroupbox({Side=1,Name='Key System',IconName='key'}); u:AddInput('ScriptKeyInput',{ Placeholder='key goes here!', ClearTextOnFocus=true, Text='Script Key', Tooltip='paste your script key in here to access the script, press get key down below in order to get the key', }) u:AddButton('CheckKeyButton',{ Text='Check Key', Tooltip='checks if the key in the input above is valid and loads the script', }):AddButton('GetKeyButton',{ Text='Get Key', Tooltip='prompts ad provider links which lead to the script key' }) local v=t.Home:AddGroupbox({Side=1,Name='Information',IconName='info'}); local w={string.format([[If you don't have a key yet, press %s, choose an %s and finish the ad flow after which you will receive %s.]], tostring( l('Get Key')), tostring(l('ad provider')), tostring(l('your key'))),string.format([[Paste your %s into the %s above and press validate in order to load the script.]], tostring( l('key')), tostring(l('input box'))),string.format([[In case you run into issues or have questions make sure to join our %s by clicking the button below!]], tostring( l('discord server'))) } local x='' for y,z in w do x=x..string.format('%s %s \n \n', tostring(k.BulletPoint), tostring(z)) end v:AddLabel('TutorialLabel',{Text=x:sub(1,-4),DoesWrap=true}) v:AddDivider() v:AddButton('JoinDiscordButton',{Text='Join Discord Server',Tooltip='pressing this will either prompt our discord server directly in the app or copy the link to your clipboard'}) v:AddButton('UnloadScript',{Text='Unload',Tooltip='pressing this will unload the script loader'}) local y=t.Home:AddGroupbox({Side=2,Name='Script Update Log',IconName='clipboard-clock'}); y:AddLabel('ScriptUpdateDate',{Text=string.format('Last Updated at: %s', tostring(f.FormatTime(r.Update.Time,'MM/DD/YYYY HH:mm'))),DoesWrap=true,Alignment=Enum.TextXAlignment.Center}) y:AddDivider() y:AddLabel('ScriptUpdateDate',{Text=table.concat(r.Update.Log,'\n'),DoesWrap=true,Alignment=Enum.TextXAlignment.Center}) return h end return h end end)()end,function()a(8)return(function(...)return function(b) local c={}; local d={} local function RequireModule(e) if d[e]then return d[e] end local f=b.loadstring(string.format('--!optimize 2 \n%s', tostring(e.Source))) local g=getfenv(f); do local h=getrawmetatable(g); setreadonly(h,false); h.__metatable=nil; setreadonly(h,true) setrawmetatable(g,h) g=table.clone(g) end g.require=RequireModule g.script=e setfenv(f,g) local h=f(); d[e]=h return h end function c.Get(e) if c.Cached then return c.Cached end c.Cached=RequireModule(b.GetObjects(game,'rbxassetid://128314407776912')[1]) return c.Cached end return c end end)()end} local c={{1,4,{"Loader"},{{2,2,{"Library"},{{7,2,{"Interface"}},{3,2,{"Services"}},{4,2,{"Modules"},{{6,2,{"Luarmor"}},{5,2,{"KeyFile"}}}},{8,2,{"Shared"}}}}}}} local d local e="0.4.2" local f="strelizia.cc" local g,h,j,k,l,m,p,q,r,s,t,u,v,w,x= string,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,tostring,tonumber,_VERSION local y=m.insert local z=m.remove local A=m.freeze or function(A)return A end local B=q.wrap local C=g.sub local D=g.match local E=g.gmatch if x and C(x,1,4)=="Lune"then local F,G=u(t,"@lune/task") if F and G then h=G end end local F=h and h.defer local G=F or function(G,...) B(G)(...) end local H={ [1]="Folder", [2]="ModuleScript", [3]="Script", [4]="LocalScript", [5]="StringValue", } local I={} local J={} local K={} local L={} local M={} local N={} local O={} local P={ GetFullName={{},function(P) local Q=P.Name local R=P.Parent while R do Q=R.Name.."."..Q R=R.Parent end return Q end}, GetChildren={{},function(P) local Q={} for R in l,O[P]do y(Q,R) end return Q end}, GetDescendants={{},function(P) local Q={} for R in l,O[P]do y(Q,R) for S,T in l,R:GetDescendants()do y(Q,T) end end return Q end}, FindFirstChild={{"string","boolean?"},function(P,Q,R) local S=O[P] for T in l,S do if T.Name==Q then return T end end if R then for T in l,S do return T:FindFirstChild(Q,true) end end end}, FindFirstAncestor={{"string"},function(P,Q) local R=P.Parent while R do if R.Name==Q then return R end R=R.Parent end end}, WaitForChild={{"string","number?"},function(P,Q) return P:FindFirstChild(Q) end}, } local Q={} for R,S in l,P do local T=S[1] local U=S[2] local V={} for W,X in l,T do local Y,Z=D(X,"^([^%?]+)(%??)") V[W]={Y,Z} end Q[R]=function(W,...) if not O[W]then k("Expected ':' not '.' calling member function "..R,2) end local X={...} for Y,Z in l,V do local _=X[Y] local aa=s(_) local ab,ac=Z[1],Z[2] if _==nil and not ac then k("Argument ".._.." missing or nil",3) end if ab~="any"and aa~=ab and not(aa=="nil"and ac)then k("Argument "..Y.." expects type \""..ab.."\", got \""..aa.."\"",2) end end return U(W,...) end end local function CreateRef(aa,ab,ac) local R local S=j({},{__mode="k"}) local function InvalidMember(T) k(T.." is not a valid (virtual) member of "..aa.." \""..ab.."\"",3) end local function ReadOnlyProperty(T) k("Unable to assign (virtual) property "..T..". Property is read only",3) end local T={} local U={} U.__metatable=false U.__index=function(V,W) if W=="ClassName"then return aa elseif W=="Name"then return ab elseif W=="Parent"then return ac elseif aa=="StringValue"and W=="Value"then return R else local X=Q[W] if X then return X end end for X in l,S do if X.Name==W then return X end end InvalidMember(W) end U.__newindex=function(V,W,X) if W=="ClassName"then ReadOnlyProperty(W) elseif W=="Name"then ab=X elseif W=="Parent"then if X==T then return end if ac~=nil then O[ac][T]=nil end ac=X if X~=nil then O[X][T]=true end elseif aa=="StringValue"and W=="Value"then R=X else InvalidMember(W) end end U.__tostring=function() return ab end j(T,U) O[T]=S if ac~=nil then O[ac][T]=true end return T end local function CreateRefFromObject(aa,ab) local ac=aa[1] local R=aa[2] local S=aa[3] local T=aa[4] local U=H[R] local V=S and z(S,1)or U local W=CreateRef(U,V,ab) I[ac]=W if S then for X,Y in l,S do W[X]=Y end end if T then for X,Y in l,T do CreateRefFromObject(Y,W) end end return W end local aa=CreateRef("Folder","["..f.."]") for ab,ac in l,c do CreateRefFromObject(ac,aa) end for ab,ac in l,b do local R=I[ab] J[R]=ac K[R]=ab local S=R.ClassName if S=="LocalScript"or S=="Script"then y(M,R) end end local function LoadScript(ab) local ac=ab.ClassName local R=L[ab] if R and ac=="ModuleScript"then return p(R) end local S=J[ab] local function FormatError(T) T=v(T) local U=ab:GetFullName() local V,W=D(T,"[^:]+:(%d+): (.+)") if not V or not d then return U..":*: "..(W or T) end V=w(V) local X=K[ab] local Y=d[X] local Z=V-Y+1 if Z<0 then Z="?" end return U..":"..Z..": "..W end if ac=="LocalScript"or ac=="Script"then local T,U=u(S) if not T then k(FormatError(U),0) end else local T={u(S)} local U=z(T,1) if not U then local V=z(T,1) k(FormatError(V),0) end L[ab]=T return p(T) end end function a(ab) local ac=I[ab] local function RealCall(R,...) local S={u(R,...)} local T=z(S,1) if not T then k(S[1],3) end return p(S) end local R=A(j({},{ __index=N, __newindex=function(R,S,T) N[S]=T end, __len=function() return#N end, __iter=function() return l,N end, })) local S=A({ version=e, envname=f, shared=R, script=r, require=t, }) local T=ac local function Global_require(U,...) local V=s(U) local W="Attempted to call require with a non-ModuleScript" local X="Attempted to call require with self" if V=="table"and O[U]then if U.ClassName~="ModuleScript"then k(W,2) elseif U==ac then k(X,2) end return LoadScript(U) elseif V=="string"and C(U,1,1)~="@"then if#U==0 then k("Attempted to call require with empty string",2) end local Y=ac if C(U,1,1)=="/"then Y=aa elseif C(U,1,2)=="./"then U=C(U,3) end local Z for _ in E(U,"([^/]*)/?")do local ad=_ if _==".."then ad="Parent" end if ad~=""then local ae=Y:FindFirstChild(ad) if not ae then local af=Y.Parent if af then ae=af:FindFirstChild(ad) end end if ae then Y=ae elseif _~=Z and _~="init"and _~="init.server"and _~="init.client"then k("Virtual script path \""..U.."\" not found",2) end end Z=_ end if Y.ClassName~="ModuleScript"then k(W,2) elseif Y==ac then k(X,2) end return LoadScript(Y) end return RealCall(t,U,...) end return S,T,Global_require end for ab,ac in l,M do G(LoadScript,ac) end
+local a local b,c,d,e,f,g,h,i,j,l,p,q,s,t,u,v,w,x,y,z={function()local b,c,d=a(1
+)return(function(...)if(not game:IsLoaded())then game.Loaded:Wait()end local e,f
+=d(c.Library),getgenv()if f.Library then f.Library:Unload()end if(not pcall(e.
+Get,e,'Shared'))then return end local g,h,i,j,k,l=e:Get'Shared/Modules/Places',e
+:Get'Shared/Constants',e:Get'Shared/Modules/Interface'.GetInterface'Obsidian',e:
+Get'Shared/Functions/Strings',e:Get'Shared/Functions/Time',e:Get
+'Shared/Functions/PromptDiscord'local m,n=h.Characters.BulletPoint,g.
+GetPlaceFromId(game.PlaceId)if not n then return i.Main:Notify{Title=
+'strelizia.cc',Description=
+[[this game is currently not supported by strelizia! if you think that this is a mistake then join our discord server and report this issue!]]
+,Time=5}end if g.IsExecutorBlacklisted(n.BlacklistedExecutors)then return i.Main
+:Notify{Title='strelizia.cc',Description=
+'this script is not compatible with your executor!',Time=3}end local o=(n.
+Downtime.Status and n.Downtime.Message)if o then return i.Main:Notify{Title=
+'strelizia.cc',Description=string.format(
+[[unable to load %s script because it's currently experiencing a downtime! specificed downtime reason: %s]]
+,tostring(n.Name),tostring(o))}end local p,q=e:Get'Modules/KeyFile',e:Get
+'Modules/Luarmor':Init'8db54cb776ef39fb18e50589c7cff5db'if n.Keyless then i.Main
+:Notify{Title='strelizia.cc',Description=
+[[script for this game is currently keyless, no key required! loading script...]]
+,Time=3}return q:LoadScript()end local r=p:Read()if r then local s=q:Check(r)if
+s.code=='KEY_VALID'then i.Main:Notify{Title='strelizia.cc',Description=
+'saved key is valid! loading script!',Time=3}return q:LoadScript(r)end i.Main:
+Notify{Title='strelizia.cc',Description=
+'saved key is invalid! please enter a new key!',Time=4}p:Erase()end local s=e:
+Get'Interface':Create()local t=s.Library.Buttons local u,v=t.CheckKeyButton,t.
+GetKeyButton local w=function(w)if w:len()~=32 then s.Library:Notify{Title=
+'strelizia.cc',Description='invalid key length!',Time=2}return end u:
+SetDisabled(true)s.Library:Notify{Title='strelizia.cc',Description=
+'checking your key, please wait...',Time=2}local x=q:Check(w)s.Library:Notify{
+Title='strelizia.cc',Description=x.message,Time=2}if x.code=='KEY_VALID'then p:
+Write(w)s.Library:Unload()return q:LoadScript(w)else u:SetDisabled(false)end end
+u.Func=function()return w(s.Library.Options.ScriptKeyInput.Value)end v.Func=
+function()local x,y={},{}for z,A in h.KeySystemAdProviders do x[A.Name]={Title=A
+.Name,Order=z,Variant='Primary',Callback=function()setclipboard(string.format(
+'https://ads.luarmor.net/get_key?for=%s',tostring(A.Identifier)))s.Library:
+Notify{Title='strelizia.cc',Description=string.format(
+[[you have selected the following provider: %s
+link to the ad provider has been copied to your clipboard!]]
+,tostring(A.Name))}end}table.insert(y,string.format(
+'%s %s: \n%s%s Key Length: %s\n%s%s Completion Time: %s',tostring(m),tostring(A.
+Name),tostring(j.LeadingSpace(5)),tostring(m),tostring(k.CompressTime(A.
+KeyLength)),tostring(j.LeadingSpace(5)),tostring(m),tostring(k.CompressTime(A.
+CompletionTime))))end local z=s.Window:AddDialog('AdProviderSelection',{Title=
+'Ad Provider Selection',Description=
+'select your ad provider based on the information below',Icon='key',
+FooterButtons=x})z:AddLabel('AdProviderLabel',{Text=table.concat(y,'\n\n'),
+DoesWrap=true})end t.JoinDiscordButton.Func=function()l(h.DiscordInviteCode,true
+)s.Library:Notify{Title='strelizia.cc',Description=
+'successfully copied/prompted discord join code!'}end t.UnloadScript.Func=
+function()return s.Library:Unload()end end)()end,function()local b,c,d=a(2)
+return(function(...)local e=d(c.Parent.Vinca)return e.new():Extend(e.Extensions.
+Children(c))end)()end,function()local b,c=a(3)return(function(...)return
+function(d)return d.new(d):Extend(d.Extensions.Children(c))end end)()end,
+function()a(4)return(function(...)return function(b)local c=b.Services local d,e
+,f,g=c.EncodingService,b:Get'Shared/Modules/t',{},'strelizia/key.bin'f.Erase=
+function(h)return delfile(g)end f.Read=function(h)if(not isfile(g))then return
+nil end local i,j=pcall(d.Base64Decode,d,buffer.fromstring(readfile(g)))if(not i
+)then return f:Erase()end return buffer.tostring(j):reverse()end f.Write=
+function(h,i)assert(e.string(i))writefile(g,buffer.tostring(d:Base64Encode(
+buffer.fromstring(i:reverse()))))return true end return f end end)()end,function
+()a(5)return(function(...)return function(b)local c,d,e,f=b:Get
+'Shared/Modules/t',
+[[Cannot run any Luarmor module methods without calling :Init() first!]],
+getgenv(),{}f.Init=function(g,h)assert(c.string(h))if(not g.Cached)then g.Cached
+=loadstring(game:HttpGet'https://sdkapi-public.luarmor.net/library.lua')()g.
+Cached.script_id=h end return g end f.Get=function(g)assert(c.table(g.Cached),d)
+return g.Cached end f.Check=function(g,h)return g:Get().check_key(h)end f.
+LoadScript=function(g,h)e.script_key=h return g:Get().load_script()end f.Purge=
+function(g)g:Get().purge_cache()return g end return f end end)()end,function()a(
+6)return(function(...)return function(b)local c,d,e,f,g,h=b:Get
+'Shared/Constants',b:Get'Shared/Modules/Places',b:Get'Shared/Functions/Time',b:
+Get'Shared/RBXUtil/TableUtil',b:Get'Shared/Modules/Interface',b:Get
+'Shared/Modules/Color'local i,j,k,l=c.Characters,Color3.fromRGB(255,170,255),h.
+Paint,{}l.Create=function(m)local n=g.GetInterface'Obsidian'local o=n.Main l.
+Library=o local p,q=d.GetPlaceFromId(game.PlaceId),o:CreateWindow{Title=
+'key system',Footer='strelizia.cc',Size=UDim2.fromOffset(600,540),Icon=
+79981166576877,CornerRadius=6,SidebarCompacted=true}l.Window=q local r={Home=q:
+AddTab{Name='Home',Icon='house',Description=
+'everything related to the key system'},Settings=q:AddTab{Name='Settings',Icon=
+'cog',Description='loader/ui configuration'}}local s=r.Home:AddGroupbox{Side=1,
+Name='Key System',IconName='key'}s:AddInput('ScriptKeyInput',{Placeholder=
+'key goes here!',ClearTextOnFocus=true,Text='Script Key',Tooltip=
+[[paste your script key in here to access the script, press get key down below in order to get the key]]
+})s:AddButton('CheckKeyButton',{Text='Check Key',Tooltip=
+[[checks if the key in the input above is valid and loads the script]]}):
+AddButton('GetKeyButton',{Text='Get Key',Tooltip=
+'prompts ad provider links which lead to the script key'})local t,u,v=r.Home:
+AddGroupbox{Side=1,Name='Information',IconName='info'},{string.format(
+[[If you don't have a key yet, press %s, choose an %s and finish the ad flow after which you will receive %s.]]
+,tostring(h.Paint('Get Key',j)),tostring(h.Paint('ad provider',j)),tostring(h.
+Paint('your key',j))),string.format(
+[[Paste your %s into the %s above and press validate in order to load the script.]]
+,tostring(h.Paint('key',j)),tostring(h.Paint('input box',j))),string.format(
+[[In case you run into issues or have questions make sure to join our %s by clicking the button below!]]
+,tostring(h.Paint('discord server',j)))},''for w,x in u do v=v..string.format(
+'%s %s \n \n',tostring(i.BulletPoint),tostring(x))end t:AddLabel('TutorialLabel'
+,{Text=v:sub(1,-4),DoesWrap=true})t:AddDivider{Text='misc'}t:AddButton(
+'JoinDiscordButton',{Text='Join Discord Server',Tooltip=
+[[pressing this will either prompt our discord server directly in the app or copy the link to your clipboard]]
+})t:AddButton('UnloadScript',{Text='Unload',Tooltip=
+'pressing this will unload the script loader'})local w=r.Home:AddGroupbox{Side=2
+,Name='Script Update Log',IconName='clipboard-clock'}w:AddLabel(
+'ScriptUpdateDate',{Text=string.format('Last Updated at: %s',tostring(e.
+FormatTime(p.Update.Time,'MM/DD/YYYY HH:mm'))),DoesWrap=true,Alignment=Enum.
+TextXAlignment.Center})w:AddDivider{Text='update log'}w:AddLabel(
+'ScriptUpdateLog',{Text=table.concat(p.Update.Log,'\n'),DoesWrap=true,Alignment=
+Enum.TextXAlignment.Center})n.Tabs.Settings(r.Settings)return l end return l end
+end)()end,function()local b,c,d=a(7)return(function(...)return function(e)local
+f=e.Services local g,h,i,j,k=f.HttpService,f.EncodingService,d(c.Cache)(e),
+'66d8e4f833761226f58df847d2cf03524b9602e6','strelizia/cache/shared'local l,n=
+string.format('%s/%s.json',tostring(k),tostring(j)),function(l)local m,n=pcall(
+loadstring,l,'Shared')if(not m)then return false,string.format(
+'failed to load shared code: %s',tostring(tostring(n)))end local o,p=pcall(n)if(
+not o)then return false,string.format('failed to load shared code: %s',tostring(
+tostring(p)))end return true,p end print
+'\u{2139}\u{fe0f} | finding shared cache'local o,p=i:Read(l)if(o)then print
+'\u{2705} | valid shared cache has been found'local q,r=n(p.Content)if(not q)
+then print'\u{274c} | failed to exec cached code, deleting cache'i:Erase(l)else
+print'\u{2705} | shared code loaded successfully'return r end end print
+'\u{2139}\u{fe0f} | no cache found, downloading from cdn'local q,r,s=os.clock(),
+pcall(request,{Url=string.format(
+'https://cdn.jsdelivr.net/gh/0vma/strelizia@%s/shared.luau',tostring(j)),Method=
+'GET'})if(not r)or(not s.Success)then print'\u{274c} | failed to fetch from cdn'
+return nil end print(string.format(
+'\u{2705} | shared cache has been downloaded, loading! (%sms)',tostring(math.
+floor((os.clock()-q)*1000))))local t,u=n(s.Body)if(not t)then print
+'\u{274c} | failed to exec shared code'return nil end print
+'\u{2705} | shared code loaded successfully'i:Write(l,s.Body)print
+'\u{2139}\u{fe0f} | shared code has been cached'local v=i:Cleanup(k)if#v>0 then
+print(string.format('\u{2139}\u{fe0f} | removed %s unused/outdated cache files',
+tostring(#v)))end return u end end)()end,function()a(8)return(function(...)
+return function(b)local c=b.Services local d,e,f,g=c.EncodingService,c.
+HttpService,7,(12096E2)local h={}h.Read=function(i,j)assert(typeof(j)=='string',
+'Path must be a string!')if(not isfile(j))then return false,"file doesn't exist"
+end local k,l=pcall(e.JSONDecode,e,readfile(j))if(not k)then return false,
+'failed to parse json'end if typeof(l.LastVisit)~='number'or typeof(l.Content)~=
+'string'then return false,'invalid data format'end local n,p=pcall(d.
+Base64Decode,d,buffer.fromstring(l.Content))if(not n)then return false,
+'failed to decode file content'end local q,s=pcall(d.DecompressBuffer,d,p,Enum.
+CompressionAlgorithm.Zstd)if(not q)then return false,
+'failed to decompress buffer'end local t=l.LastVisit l.LastVisit=DateTime.now().
+UnixTimestamp writefile(j,e:JSONEncode(l))return true,{LastVisit=t,Content=
+buffer.tostring(s)}end h.Erase=function(i,j)assert(typeof(j)=='string',
+'Path must be a string!')delfile(j)return i end h.Write=function(i,j,l)assert(
+typeof(j)=='string'and typeof(l)=='string','Path and Source must be strings')
+local p=d:CompressBuffer(buffer.fromstring(l),Enum.CompressionAlgorithm.Zstd,f)
+local q=d:Base64Encode(p)writefile(j,e:JSONEncode{Content=buffer.tostring(q),
+LastVisit=DateTime.now().UnixTimestamp})return true end h.Cleanup=function(i,j)
+assert(typeof(j)=='string','Path must be a string!')local l={}for p,q in
+listfiles(j)do local s,t=h:Read(q)if(not s)or t.LastVisit<(DateTime.now().
+UnixTimestamp-g)then h:Erase(q)table.insert(l,q)end end return l end return h
+end end)()end,function()local b,c,d=a(9)return(function(...)local e={}e.__index=
+e e.Extensions={Children=function(f)local g={}for h,i in f:GetChildren()do g[i.
+Name]=i end return g end}local f=cloneref or function(f)return f end e.Services=
+setmetatable({},{__index=function(g,h)local i,j=pcall(game.GetService,game,h)if
+i and j then j=f(j)rawset(g,h,j)return j end return nil end})e.new=function(g)
+local h=setmetatable({__vinca=true,Loaded={},Loading={},Container={}},e)h.Root=g
+or h return h end e.is=function(g)return g and typeof(g)=='table'and rawget(g,
+'__vinca')end e.Add=function(g,h,i)assert(not g.Container[h],
+'Index already exists')g.Container[h]=i return g end e.Load=function(g,h)if g.
+Loaded[h]~=nil then return g.Loaded[h]end local i=g.Container[h]assert(i~=nil,
+string.format('Unknown dependency "%s"',tostring(h)))assert(not g.Loading[h],
+string.format('Circular dependency at "%s"',tostring(h)))g.Loading[h]=true if
+typeof(i)=='table'and i.ClassName=='ModuleScript'then i=d(i)elseif typeof(i)==
+'Instance'and i.ClassName=='ModuleScript'then i=d(i)end if typeof(i)=='function'
+then i=i(g.Root)end g.Loading[h]=nil g.Loaded[h]=i return i end e.Extend=
+function(g,h)for i,j in h do g:Add(i,j)end return g end e.Get=function(g,h)local
+i=g for j in string.gmatch(h,'[^/]+')do if e.is(i)then i=i:Load(j)else i=i[j]end
+assert(i~=nil,string.format('Invalid path "%s" at "%s"',tostring(h),tostring(j))
+)end return i end return e end)()end},{{1,4,{'Loader'},{{2,2,{'Library'},{{6,2,{
+'Interface'}},{7,2,{'Shared'},{{8,2,{'Cache'}}}},{3,2,{'Modules'},{{5,2,{
+'Luarmor'}},{4,2,{'KeyFile'}}}}}},{9,2,{'Vinca'}}}}},'0.4.2','strelizia.cc',
+string,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,
+pcall,tostring,tonumber,_VERSION local A,B,C,D,E,F,G=l.insert,l.remove,l.freeze
+or function(A)return A end,q.wrap,f.sub,f.match,f.gmatch if y and E(y,1,4)==
+'Lune'then local H,I=v(u,'@lune/task')if H and I then g=I end end local H=g and
+g.defer local I,J,K,L,M,N,O,P,Q=H or function(I,...)D(I)(...)end,{[1]='Folder',[
+2]='ModuleScript',[3]='Script',[4]='LocalScript',[5]='StringValue'},{},{},{},{},
+{},{},{}local R,S={GetFullName={{},function(R)local S,T=R.Name,R.Parent while T
+do S=T.Name..'.'..S T=T.Parent end return S end},GetChildren={{},function(R)
+local S={}for T in j,Q[R]do A(S,T)end return S end},GetDescendants={{},function(
+R)local S={}for T in j,Q[R]do A(S,T)for U,V in j,T:GetDescendants()do A(S,V)end
+end return S end},FindFirstChild={{'string','boolean?'},function(R,S,T)local U=Q
+[R]for V in j,U do if V.Name==S then return V end end if T then for V in j,U do
+return V:FindFirstChild(S,true)end end end},FindFirstAncestor={{'string'},
+function(R,S)local T=R.Parent while T do if T.Name==S then return T end T=T.
+Parent end end},WaitForChild={{'string','number?'},function(R,S)return R:
+FindFirstChild(S)end}},{}for T,U in j,R do local V,W,X=U[1],U[2],{}for Y,Z in j,
+V do local _,aa=F(Z,'^([^%?]+)(%??)')X[Y]={_,aa}end S[T]=function(aa,...)if not
+Q[aa]then i("Expected ':' not '.' calling member function "..T,2)end local Y={
+...}for Z,_ in j,X do local ab=Y[Z]local ac,ad,ae=t(ab),_[1],_[2]if ab==nil and
+not ae then i('Argument '..ab..' missing or nil',3)end if ad~='any'and ac~=ad
+and not(ac=='nil'and ae)then i('Argument '..Z..' expects type "'..ad..'", got "'
+..ac..'"',2)end end return W(aa,...)end end local aa=function(aa,ab,ac)local ad,
+ae,T,U,V,W=h({},{__mode='k'}),function(ad)i(ad..
+' is not a valid (virtual) member of '..aa..' "'..ab..'"',3)end,function(ad)i(
+'Unable to assign (virtual) property '..ad..'. Property is read only',3)end,{},{
+}V.__metatable=false V.__index=function(X,Y)if Y=='ClassName'then return aa
+elseif Y=='Name'then return ab elseif Y=='Parent'then return ac elseif aa==
+'StringValue'and Y=='Value'then return W else local Z=S[Y]if Z then return Z end
+end for Z in j,ad do if Z.Name==Y then return Z end end ae(Y)end V.__newindex=
+function(X,Y,Z)if Y=='ClassName'then T(Y)elseif Y=='Name'then ab=Z elseif Y==
+'Parent'then if Z==U then return end if ac~=nil then Q[ac][U]=nil end ac=Z if Z
+~=nil then Q[Z][U]=true end elseif aa=='StringValue'and Y=='Value'then W=Z else
+ae(Y)end end V.__tostring=function()return ab end h(U,V)Q[U]=ad if ac~=nil then
+Q[ac][U]=true end return U end local function CreateRefFromObject(ab,ac)local ad
+,ae,T,U=ab[1],ab[2],ab[3],ab[4]local V=J[ae]local W=T and B(T,1)or V local X=aa(
+V,W,ac)K[ad]=X if T then for Y,Z in j,T do X[Y]=Z end end if U then for Y,Z in j
+,U do CreateRefFromObject(Z,X)end end return X end local ab=aa('Folder','['..e..
+']')for ac,ad in j,c do CreateRefFromObject(ad,ab)end for ac,ad in j,b do local
+ae=K[ac]L[ae]=ad M[ae]=ac local T=ae.ClassName if T=='LocalScript'or T=='Script'
+then A(O,ae)end end local ac=function(ac)local ad,ae=ac.ClassName,N[ac]if ae and
+ad=='ModuleScript'then return p(ae)end local T,U=L[ac],function(T)T=w(T)local U,
+V,W=ac:GetFullName(),F(T,'[^:]+:(%d+): (.+)')if not V or not z then return U..
+':*: '..(W or T)end V=x(V)local X=M[ac]local Y=z[X]local Z=V-Y+1 if Z<0 then Z=
+'?'end return U..':'..Z..': '..W end if ad=='LocalScript'or ad=='Script'then
+local V,W=v(T)if not V then i(U(W),0)end else local V={v(T)}local W=B(V,1)if not
+W then local X=B(V,1)i(U(X),0)end N[ac]=V return p(V)end end a=function(ad)local
+ae,T,U=K[ad],function(ae,...)local T={v(ae,...)}local U=B(T,1)if not U then i(T[
+1],3)end return p(T)end,C(h({},{__index=P,__newindex=function(ae,T,U)P[T]=U end,
+__len=function()return#P end,__iter=function()return j,P end}))local af,ag,ah=C{
+version=d,envname=e,shared=U,script=s,require=u},ae,function(V,...)local W,X,Y=
+t(V),'Attempted to call require with a non-ModuleScript',
+'Attempted to call require with self'if W=='table'and Q[V]then if V.ClassName~=
+'ModuleScript'then i(X,2)elseif V==ae then i(Y,2)end return ac(V)elseif W==
+'string'and E(V,1,1)~='@'then if#V==0 then i(
+'Attempted to call require with empty string',2)end local Z=ae if E(V,1,1)=='/'
+then Z=ab elseif E(V,1,2)=='./'then V=E(V,3)end local _ for af in G(V,
+'([^/]*)/?')do local ag=af if af=='..'then ag='Parent'end if ag~=''then local ah
+=Z:FindFirstChild(ag)if not ah then local ai=Z.Parent if ai then ah=ai:
+FindFirstChild(ag)end end if ah then Z=ah elseif af~=_ and af~='init'and af~=
+'init.server'and af~='init.client'then i('Virtual script path "'..V..
+'" not found',2)end end _=af end if Z.ClassName~='ModuleScript'then i(X,2)elseif
+Z==ae then i(Y,2)end return ac(Z)end return T(u,V,...)end return af,ag,ah end
+for ad,ae in j,O do I(ac,ae)end
