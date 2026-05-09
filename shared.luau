@@ -2660,15 +2660,17 @@ ae end ab.Reconcile=function(ac,ad)for ae,af in ad do local ag,ah=ac[ae],typeof(
 af)if ag==nil or typeof(ag)~=ah then ac[ae]=af elseif ah=='table'then ab.
 Reconcile(ag,af)end end return ac end ab.FullMap=function(ac,ad)local ae,af={},
 ab.IsDict(ac)for ag,ah in ac do local ai,aj=ad(ah,ag)if not(ai)then continue end
-if af then ae[aj]=ai else table.insert(ae,ai)end end return ae end return ab end
-end)()end,[21]=function()a(21)return(function(...)return function(aa)local ab
-local ac=function(ac,...)local ad=ab ab=nil ac(...)ab=ad end local ad,ae=
-function()while true do ac(coroutine.yield())end end,{}ae.__index=ae ae.new=
-function(af,ag)return setmetatable({_connected=true,_signal=af,_fn=ag,_next=
-false},ae)end ae.Disconnect=function(af)af._connected=false if af._signal.
-_handlerListHead==af then af._signal._handlerListHead=af._next else local ag=af.
-_signal._handlerListHead while ag and ag._next~=af do ag=ag._next end if ag then
-ag._next=af._next end end end setmetatable(ae,{__index=function(af,ag)error((
+if af then ae[aj]=ai else table.insert(ae,ai)end end return ae end ab.JoinArrays
+=function(...)local ac={}for ad=1,select('#',...)do for ae,af in select(ad,...)
+do ac[#ac+1]=af end end return ac end return ab end end)()end,[21]=function()a(
+21)return(function(...)return function(aa)local ab local ac=function(ac,...)
+local ad=ab ab=nil ac(...)ab=ad end local ad,ae=function()while true do ac(
+coroutine.yield())end end,{}ae.__index=ae ae.new=function(af,ag)return
+setmetatable({_connected=true,_signal=af,_fn=ag,_next=false},ae)end ae.
+Disconnect=function(af)af._connected=false if af._signal._handlerListHead==af
+then af._signal._handlerListHead=af._next else local ag=af._signal.
+_handlerListHead while ag and ag._next~=af do ag=ag._next end if ag then ag.
+_next=af._next end end end setmetatable(ae,{__index=function(af,ag)error((
 'Attempt to get Connection::%s (not a valid member)'):format(tostring(ag)),2)end
 ,__newindex=function(af,ag,ah)error((
 'Attempt to set Connection::%s (not a valid member)'):format(tostring(ag)),2)end
@@ -3008,16 +3010,16 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{32,2,{'Vinca'}},{31,2,{'Constants'}},{2,2,{
-'Modules'},{{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{8,2,{
-'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{13,2,{
-'Tabs'},{{14,2,{'Home'}},{15,2,{'Settings'}}}},{12,2,{'SaveManager'}},{11,2,{
-'Main'}}}}}}}},{7,2,{'t'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{6,2,{
-'Color'}}}},{19,2,{'RBXUtil'},{{21,2,{'Signal'}},{20,2,{'TableUtil'}},{22,2,{
-'Promise'}}}},{23,2,{'Functions'},{{28,2,{'PromptDiscord'}},{25,2,{'Time'}},{30,
-2,{'GetPing'}},{27,2,{'Strings'}},{24,2,{'CreateGUID'}},{26,2,{'Numbers'}},{29,2
-,{'OutputMessage'}}}}}}},'0.4.2','strelizia.cc',string,task,setmetatable,error,
-next,table,unpack,coroutine,script,type,require,pcall,tostring,tonumber,_VERSION
+ad end)()end},{{1,2,{'Shared'},{{19,2,{'RBXUtil'},{{20,2,{'TableUtil'}},{22,2,{
+'Promise'}},{21,2,{'Signal'}}}},{2,2,{'Modules'},{{17,2,{'Places'},{{18,2,{
+'Slime RNG'}}}},{3,2,{'TaskManager'},{{4,2,{'Task'}},{5,2,{'Lock'}}}},{8,2,{
+'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{12,2,{
+'SaveManager'}},{11,2,{'Main'}},{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{
+'Home'}}}}}}}}}},{6,2,{'Color'}},{7,2,{'t'}}}},{31,2,{'Constants'}},{32,2,{
+'Vinca'}},{23,2,{'Functions'},{{25,2,{'Time'}},{29,2,{'OutputMessage'}},{27,2,{
+'Strings'}},{28,2,{'PromptDiscord'}},{26,2,{'Numbers'}},{30,2,{'GetPing'}},{24,2
+,{'CreateGUID'}}}}}}},'0.4.2','strelizia.cc',string,task,setmetatable,error,next
+,table,unpack,coroutine,script,type,require,pcall,tostring,tonumber,_VERSION
 local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.freeze or function(au)return
 au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and ay(as,1,4)=='Lune'then local
 aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC end end local aB=af and af.
