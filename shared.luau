@@ -2392,10 +2392,9 @@ local aj=0 for ak,al in listfiles'strelizia/cache'do for am,an in listfiles(al)
 do delfile(an)aj=aj+1 end end af:Notify{Title='strelizia.cc',Description=string.
 format('successfully deleted %s cached files!',tostring(aj)),Time=2}end}ai:
 AddDivider{Text='ui settings'}ai:AddToggle('KeybindMenuOpen',{Default=af.
-KeybindFrame.Visible,Text='Open Keybind Menu',Tooltip=
-'determines which keybind will open the menu',Callback=function(aj)af.
-KeybindFrame.Visible=aj end})ai:AddToggle('ShowCustomCursor',{Text=
-'Custom Cursor',Tooltip=
+KeybindFrame.Visible,Text='Open Keybind Menu',Tooltip='opens menu with keybinds'
+,Callback=function(aj)af.KeybindFrame.Visible=aj end})ai:AddToggle(
+'ShowCustomCursor',{Text='Custom Cursor',Tooltip=
 [[determines if roblox cursor will be replaced with a custom one]],Default=true,
 Callback=function(aj)af.ShowCustomCursor=aj end})ai:AddDropdown(
 'NotificationSide',{Values={'Left','Right'},Default='Right',Text=
@@ -2698,14 +2697,14 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{6,2,{'Color'}},{7,2,{'t'}},{8
-,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{11
-,2,{'Main'}},{12,2,{'SaveManager'}},{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{
-'Home'}}}}}}}}}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{3,2,{'TaskManager'},{
-{4,2,{'Task'}},{5,2,{'Lock'}}}}}},{30,2,{'Vinca'}},{19,2,{'RBXUtil'},{{21,2,{
-'Signal'}},{20,2,{'TableUtil'}}}},{22,2,{'Functions'},{{28,2,{'OutputMessage'}},
-{26,2,{'Strings'}},{23,2,{'CreateGUID'}},{24,2,{'Time'}},{25,2,{'Numbers'}},{27,
-2,{'PromptDiscord'}}}},{29,2,{'Constants'}}}}},'0.4.2','strelizia.cc',string,
+ad end)()end},{{1,2,{'Shared'},{{19,2,{'RBXUtil'},{{20,2,{'TableUtil'}},{21,2,{
+'Signal'}}}},{2,2,{'Modules'},{{6,2,{'Color'}},{8,2,{'Interface'},{{9,1,{'List'}
+,{{10,1,{'Obsidian'},{{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{'Home'}}}},{16,
+2,{'ThemeManager'}},{11,2,{'Main'}},{12,2,{'SaveManager'}}}}}}}},{7,2,{'t'}},{17
+,2,{'Places'},{{18,2,{'Slime RNG'}}}},{3,2,{'TaskManager'},{{4,2,{'Task'}},{5,2,
+{'Lock'}}}}}},{29,2,{'Constants'}},{22,2,{'Functions'},{{26,2,{'Strings'}},{28,2
+,{'OutputMessage'}},{23,2,{'CreateGUID'}},{27,2,{'PromptDiscord'}},{25,2,{
+'Numbers'}},{24,2,{'Time'}}}},{30,2,{'Vinca'}}}}},'0.4.2','strelizia.cc',string,
 task,setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
 tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
 freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
