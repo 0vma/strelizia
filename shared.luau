@@ -2369,10 +2369,9 @@ Characters,aa:Get'Modules/Places',aa:Get'Modules/Color',aa:Get
 ),function()local as=os.date'*t'.hour if as>=0 and as<6 then return'Night'elseif
 as>=6 and as<12 then return'Morning'elseif as>=12 and as<16 then return
 'Afternoon'elseif as>=16 and as<20 then return'Evening'end return'Night'end
-return function(ay,az)local aA,aB,aC=aa:Get'Modules/Interface'.GetInterface
-'Obsidian',ai.GetPlaceFromId(game.PlaceId),ag.LRM_Constants ay:SetDescription
-'contains basic information'ay:SetIcon'house'local aD=ay:AddGroupbox{Side=1,Name
-='Account',IconName='circle-user'}local aE=aD:AddImage('UserImage',{Image=
+return function(ay,az)local aA,aB,aC,aD=aa:Get'Modules/Interface'.GetInterface
+'Obsidian',ai.GetPlaceFromId(game.PlaceId),ag.LRM_Constants,ay:AddGroupbox{Side=
+1,Name='Account',IconName='circle-user'}local aE=aD:AddImage('UserImage',{Image=
 'http://www.roblox.com/asset/?id=131927632408540',Height=200,Outline=true,
 ScaleType=Enum.ScaleType.Stretch,BackgroundTransparency=1})task.spawn(function()
 local aF,aG=pcall(ad.GetUserThumbnailAsync,ad,ar.UserId,Enum.ThumbnailType.
@@ -2451,10 +2450,9 @@ Variant='Secondary',WaitTime=3}}})aS:AddToggle{Text="don't ask me again",Tooltip
 ='okay :(',Callback=function(aT)aw:Write('PRESSED_JOIN_DISCORD',aT)end}end)end
 end end end)()end,[15]=function()a(15)return(function(...)return function(aa)
 local ab=aa:Get'Modules/Places'return function(ac)local ad,ae=aa:Get
-'Modules/Interface'.GetInterface'Obsidian',ab.GetPlaceFromId(game.PlaceId)ac:
-SetDescription'contains settings for the interface'ac:SetIcon'cog'local af,ag,ah
-,ai=ad.Main,ad.SaveManager,ad.ThemeManager,ac:AddGroupbox{Side=1,Name='Menu',
-IconName='wrench'}ai:AddButton{Text='Clear User Key',Tooltip=
+'Modules/Interface'.GetInterface'Obsidian',ab.GetPlaceFromId(game.PlaceId)local
+af,ag,ah,ai=ad.Main,ad.SaveManager,ad.ThemeManager,ac:AddGroupbox{Side=1,Name=
+'Menu',IconName='wrench'}ai:AddButton{Text='Clear User Key',Tooltip=
 [[clears saved key from the loader allowing you to enter a new one]],Disabled=(
 not isfile'strelizia/key.bin'),DoubleClick=true,Func=function()delfile
 'strelizia/key.bin'af:Notify{Title='strelizia.cc',Description=
@@ -3033,15 +3031,15 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{17,2,{'Places'},{{18,2,{
-'Slime RNG'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{12,2,{
-'SaveManager'}},{11,2,{'Main'}},{16,2,{'ThemeManager'}},{13,2,{'Tabs'},{{15,2,{
-'Settings'}},{14,2,{'Home'}}}}}}}}}},{19,2,{'Preference'}},{3,2,{'TaskManager'},
-{{4,2,{'Task'}},{5,2,{'Lock'}}}},{7,2,{'t'}},{6,2,{'Color'}}}},{33,2,{'Vinca'}},
-{24,2,{'Functions'},{{31,2,{'GetPing'}},{26,2,{'Time'}},{27,2,{'Numbers'}},{30,2
-,{'OutputMessage'}},{28,2,{'Strings'}},{29,2,{'PromptDiscord'}},{25,2,{
-'CreateGUID'}}}},{32,2,{'Constants'}},{20,2,{'RBXUtil'},{{22,2,{'Signal'}},{23,2
-,{'Promise'}},{21,2,{'TableUtil'}}}}}}},'0.4.2','strelizia.cc',string,task,
+ad end)()end},{{1,2,{'Shared'},{{33,2,{'Vinca'}},{32,2,{'Constants'}},{24,2,{
+'Functions'},{{28,2,{'Strings'}},{27,2,{'Numbers'}},{25,2,{'CreateGUID'}},{31,2,
+{'GetPing'}},{30,2,{'OutputMessage'}},{29,2,{'PromptDiscord'}},{26,2,{'Time'}}}}
+,{2,2,{'Modules'},{{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2,
+{'ThemeManager'}},{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{'Home'}}}},{12,2,{
+'SaveManager'}},{11,2,{'Main'}}}}}}}},{6,2,{'Color'}},{3,2,{'TaskManager'},{{5,2
+,{'Lock'}},{4,2,{'Task'}}}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{19,2,{
+'Preference'}},{7,2,{'t'}}}},{20,2,{'RBXUtil'},{{22,2,{'Signal'}},{23,2,{
+'Promise'}},{21,2,{'TableUtil'}}}}}}},'0.4.2','strelizia.cc',string,task,
 setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
 tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
 freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
