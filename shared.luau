@@ -2446,13 +2446,14 @@ random(5,10))local aS=az:AddDialog('DiscordJoinDialog',{Title=
 [[would you please join our discord? it helps us grow and stay connected with our community. you also benefit from being able to make suggestions, bug reports and stay updated with latest features.]]
 ,FooterButtons={Confirm={Title='yes!',Variant='Primary',Callback=function()aw:
 Write('PRESSED_JOIN_DISCORD',true)aR.Func()end},Decline={Title='no, thanks',
-Variant='Secondary',WaitTime=3}}})aS:AddToggle{Text="don't ask me again",Tooltip
-='okay :(',Callback=function(aT)aw:Write('PRESSED_JOIN_DISCORD',aT)end}end)end
-end end end)()end,[15]=function()a(15)return(function(...)return function(aa)
-local ab=aa:Get'Modules/Places'return function(ac)local ad,ae=aa:Get
-'Modules/Interface'.GetInterface'Obsidian',ab.GetPlaceFromId(game.PlaceId)local
-af,ag,ah,ai=ad.Main,ad.SaveManager,ad.ThemeManager,ac:AddGroupbox{Side=1,Name=
-'Menu',IconName='wrench'}ai:AddButton{Text='Clear User Key',Tooltip=
+Variant='Secondary',WaitTime=3}}})aS:AddToggle('DontAskDiscord',{Text=
+"don't ask me again",Tooltip='okay :(',Callback=function(aT)aw:Write(
+'PRESSED_JOIN_DISCORD',aT)end})end)end end end end)()end,[15]=function()a(15)
+return(function(...)return function(aa)local ab=aa:Get'Modules/Places'return
+function(ac)local ad,ae=aa:Get'Modules/Interface'.GetInterface'Obsidian',ab.
+GetPlaceFromId(game.PlaceId)local af,ag,ah,ai=ad.Main,ad.SaveManager,ad.
+ThemeManager,ac:AddGroupbox{Side=1,Name='Menu',IconName='wrench'}ai:AddButton{
+Text='Clear User Key',Tooltip=
 [[clears saved key from the loader allowing you to enter a new one]],Disabled=(
 not isfile'strelizia/key.bin'),DoubleClick=true,Func=function()delfile
 'strelizia/key.bin'af:Notify{Title='strelizia.cc',Description=
@@ -2480,75 +2481,75 @@ SetNotifySide(aj)end})ai:AddDropdown('DPIDropdown',{Values={'50%','75%','100%',
 'Menu keybind'})ai:AddButton{Text='Unload',Tooltip='unloads the script',Risky=
 true,DoubleClick=true,Func=function()af:Unload()end}af.ToggleKeybind=af.Options.
 MenuKeybind ah:SetLibrary(af)ag:SetLibrary(af)ag:IgnoreThemeSettings()ag:
-SetIgnoreIndexes{'MenuKeybind'}ah:SetFolder'strelizia/ui'ag:SetFolder(string.
-format('strelizia/ui/configs/%s',tostring(ae.Name)))ag:BuildConfigSection(ac)ah:
-ApplyToTab(ac)ag:LoadAutoloadConfig()end end end)()end,[16]=function()a(16)
-return(function(...)return function(aa)local ab,ac=(cloneref or clonereference
-or function(ab)return ab end),(clonefunction or copyfunction or function(ab)
-return ab end)local ad,ae,af,ag=ab(game:GetService'HttpService'),isfolder,isfile
-,listfiles if typeof(ac)=='function'then local ah,ai,aj=ac(ae),ac(af),ac(ag)
-local ak,al=pcall(function()return ah('test'..tostring(math.random(1000000,
-9999999)))end)if ak==false or typeof(al)~='boolean'then ae=function(am)local an,
-ao=pcall(ah,am)return((an and{ao}or{false})[1])end af=function(am)local an,ao=
-pcall(ai,am)return((an and{ao}or{false})[1])end ag=function(am)local an,ao=
-pcall(aj,am)return((an and{ao}or{{}})[1])end end end local ah={}do local ai={
-'FontColor','MainColor','AccentColor','BackgroundColor','OutlineColor'}ah.Folder
-='ObsidianLibSettings'ah.Library=nil ah.AppliedToTab=false ah.BuiltInThemes={
-Default={1,{FontColor='ffffff',MainColor='191919',AccentColor='7d55ff',
-BackgroundColor='0f0f0f',OutlineColor='282828'}},BBot={2,{FontColor='ffffff',
-MainColor='1e1e1e',AccentColor='7e48a3',BackgroundColor='232323',OutlineColor=
-'141414'}},Fatality={3,{FontColor='ffffff',MainColor='1e1842',AccentColor=
-'c50754',BackgroundColor='191335',OutlineColor='3c355d'}},Jester={4,{FontColor=
-'ffffff',MainColor='242424',AccentColor='db4467',BackgroundColor='1c1c1c',
-OutlineColor='373737'}},Mint={5,{FontColor='ffffff',MainColor='242424',
-AccentColor='3db488',BackgroundColor='1c1c1c',OutlineColor='373737'}},[
-'Tokyo Night']={6,{FontColor='ffffff',MainColor='191925',AccentColor='6759b3',
-BackgroundColor='16161f',OutlineColor='323232'}},Ubuntu={7,{FontColor='ffffff',
-MainColor='3e3e3e',AccentColor='e2581e',BackgroundColor='323232',OutlineColor=
-'191919'}},Quartz={8,{FontColor='ffffff',MainColor='232330',AccentColor='426e87'
-,BackgroundColor='1d1b26',OutlineColor='27232f'}},Nord={9,{FontColor='eceff4',
-MainColor='3b4252',AccentColor='88c0d0',BackgroundColor='2e3440',OutlineColor=
-'4c566a'}},Dracula={10,{FontColor='f8f8f2',MainColor='44475a',AccentColor=
-'ff79c6',BackgroundColor='282a36',OutlineColor='6272a4'}},Monokai={11,{FontColor
-='f8f8f2',MainColor='272822',AccentColor='f92672',BackgroundColor='1e1f1c',
-OutlineColor='49483e'}},Gruvbox={12,{FontColor='ebdbb2',MainColor='3c3836',
-AccentColor='fb4934',BackgroundColor='282828',OutlineColor='504945'}},Solarized=
-{13,{FontColor='839496',MainColor='073642',AccentColor='cb4b16',BackgroundColor=
-'002b36',OutlineColor='586e75'}},Catppuccin={14,{FontColor='d9e0ee',MainColor=
-'302d41',AccentColor='f5c2e7',BackgroundColor='1e1e2e',OutlineColor='575268'}},[
-'One Dark']={15,{FontColor='abb2bf',MainColor='282c34',AccentColor='c678dd',
-BackgroundColor='21252b',OutlineColor='5c6370'}},Cyberpunk={16,{FontColor=
-'f9f9f9',MainColor='262335',AccentColor='00ff9f',BackgroundColor='1a1a2e',
-OutlineColor='413c5e'}},['Oceanic Next']={17,{FontColor='d8dee9',MainColor=
-'1b2b34',AccentColor='6699cc',BackgroundColor='16232a',OutlineColor='343d46'}},
-Material={18,{FontColor='eeffff',MainColor='212121',AccentColor='82aaff',
-BackgroundColor='151515',OutlineColor='424242'}}}ah.SetLibrary=function(aj,ak)aj
-.Library=ak end ah.GetPaths=function(aj)local ak,al={},aj.Folder:split'/'for am=
-1,#al do ak[#ak+1]=table.concat(al,'/',1,am)end ak[#ak+1]=aj.Folder..'/themes'
-return ak end ah.BuildFolderTree=function(aj)local ak=aj:GetPaths()for al=1,#ak
-do local am=ak[al]if ae(am)then continue end makefolder(am)end end ah.
-CheckFolderTree=function(aj)if ae(aj.Folder)then return end aj:BuildFolderTree()
-task.wait(0.1)end ah.SetFolder=function(aj,ak)aj.Folder=ak aj:BuildFolderTree()
-end ah.ApplyTheme=function(aj,ak)local al=aj:GetCustomTheme(ak)local am=al or aj
-.BuiltInThemes[ak]if not am then return end local an=am[2]for ao,ap in pairs(al
-or an)do if ao=='VideoLink'then continue elseif ao=='FontFace'then aj.Library:
-SetFont(Enum.Font[ap])if aj.Library.Options[ao]then aj.Library.Options[ao]:
-SetValue(ap)end else aj.Library.Scheme[ao]=Color3.fromHex(ap)if aj.Library.
-Options[ao]then aj.Library.Options[ao]:SetValueRGB(Color3.fromHex(ap))end end
-end aj:ThemeUpdate()end ah.ThemeUpdate=function(aj)for ak,al in ai do if aj.
-Library.Options and aj.Library.Options[al]then aj.Library.Scheme[al]=aj.Library.
-Options[al].Value end end aj.Library:UpdateColorsUsingRegistry()end ah.
-GetCustomTheme=function(aj,ak)local al=aj.Folder..'/themes/'..ak..'.json'if not
-af(al)then return nil end local am=readfile(al)local an,ao=pcall(ad.JSONDecode,
-ad,am)if not an then return nil end return ao end ah.LoadDefault=function(aj)
-local ak,al,am='Default',af(aj.Folder..'/themes/default.txt')and readfile(aj.
-Folder..'/themes/default.txt'),true if al then if aj.BuiltInThemes[al]then ak=al
-elseif aj:GetCustomTheme(al)then ak=al am=false end elseif aj.BuiltInThemes[aj.
-DefaultTheme]then ak=aj.DefaultTheme end if am then aj.Library.Options.
-ThemeManager_ThemeList:SetValue(ak)else aj:ApplyTheme(ak)end end ah.SaveDefault=
-function(aj,ak)writefile(aj.Folder..'/themes/default.txt',ak)end ah.
-SetDefaultTheme=function(aj,ak)assert(aj.Library,
-'Must set ThemeManager.Library first!')assert(not aj.AppliedToTab,
+SetIgnoreIndexes{'MenuKeybind','DontAskDiscord','RememberMyChoiceProvider'}ah:
+SetFolder'strelizia/ui'ag:SetFolder(string.format('strelizia/ui/configs/%s',
+tostring(ae.Name)))ag:BuildConfigSection(ac)ah:ApplyToTab(ac)ag:
+LoadAutoloadConfig()end end end)()end,[16]=function()a(16)return(function(...)
+return function(aa)local ab,ac=(cloneref or clonereference or function(ab)return
+ab end),(clonefunction or copyfunction or function(ab)return ab end)local ad,ae,
+af,ag=ab(game:GetService'HttpService'),isfolder,isfile,listfiles if typeof(ac)==
+'function'then local ah,ai,aj=ac(ae),ac(af),ac(ag)local ak,al=pcall(function()
+return ah('test'..tostring(math.random(1000000,9999999)))end)if ak==false or
+typeof(al)~='boolean'then ae=function(am)local an,ao=pcall(ah,am)return((an and{
+ao}or{false})[1])end af=function(am)local an,ao=pcall(ai,am)return((an and{ao}or
+{false})[1])end ag=function(am)local an,ao=pcall(aj,am)return((an and{ao}or{{}})
+[1])end end end local ah={}do local ai={'FontColor','MainColor','AccentColor',
+'BackgroundColor','OutlineColor'}ah.Folder='ObsidianLibSettings'ah.Library=nil
+ah.AppliedToTab=false ah.BuiltInThemes={Default={1,{FontColor='ffffff',MainColor
+='191919',AccentColor='7d55ff',BackgroundColor='0f0f0f',OutlineColor='282828'}},
+BBot={2,{FontColor='ffffff',MainColor='1e1e1e',AccentColor='7e48a3',
+BackgroundColor='232323',OutlineColor='141414'}},Fatality={3,{FontColor='ffffff'
+,MainColor='1e1842',AccentColor='c50754',BackgroundColor='191335',OutlineColor=
+'3c355d'}},Jester={4,{FontColor='ffffff',MainColor='242424',AccentColor='db4467'
+,BackgroundColor='1c1c1c',OutlineColor='373737'}},Mint={5,{FontColor='ffffff',
+MainColor='242424',AccentColor='3db488',BackgroundColor='1c1c1c',OutlineColor=
+'373737'}},['Tokyo Night']={6,{FontColor='ffffff',MainColor='191925',AccentColor
+='6759b3',BackgroundColor='16161f',OutlineColor='323232'}},Ubuntu={7,{FontColor=
+'ffffff',MainColor='3e3e3e',AccentColor='e2581e',BackgroundColor='323232',
+OutlineColor='191919'}},Quartz={8,{FontColor='ffffff',MainColor='232330',
+AccentColor='426e87',BackgroundColor='1d1b26',OutlineColor='27232f'}},Nord={9,{
+FontColor='eceff4',MainColor='3b4252',AccentColor='88c0d0',BackgroundColor=
+'2e3440',OutlineColor='4c566a'}},Dracula={10,{FontColor='f8f8f2',MainColor=
+'44475a',AccentColor='ff79c6',BackgroundColor='282a36',OutlineColor='6272a4'}},
+Monokai={11,{FontColor='f8f8f2',MainColor='272822',AccentColor='f92672',
+BackgroundColor='1e1f1c',OutlineColor='49483e'}},Gruvbox={12,{FontColor='ebdbb2'
+,MainColor='3c3836',AccentColor='fb4934',BackgroundColor='282828',OutlineColor=
+'504945'}},Solarized={13,{FontColor='839496',MainColor='073642',AccentColor=
+'cb4b16',BackgroundColor='002b36',OutlineColor='586e75'}},Catppuccin={14,{
+FontColor='d9e0ee',MainColor='302d41',AccentColor='f5c2e7',BackgroundColor=
+'1e1e2e',OutlineColor='575268'}},['One Dark']={15,{FontColor='abb2bf',MainColor=
+'282c34',AccentColor='c678dd',BackgroundColor='21252b',OutlineColor='5c6370'}},
+Cyberpunk={16,{FontColor='f9f9f9',MainColor='262335',AccentColor='00ff9f',
+BackgroundColor='1a1a2e',OutlineColor='413c5e'}},['Oceanic Next']={17,{FontColor
+='d8dee9',MainColor='1b2b34',AccentColor='6699cc',BackgroundColor='16232a',
+OutlineColor='343d46'}},Material={18,{FontColor='eeffff',MainColor='212121',
+AccentColor='82aaff',BackgroundColor='151515',OutlineColor='424242'}}}ah.
+SetLibrary=function(aj,ak)aj.Library=ak end ah.GetPaths=function(aj)local ak,al=
+{},aj.Folder:split'/'for am=1,#al do ak[#ak+1]=table.concat(al,'/',1,am)end ak[#
+ak+1]=aj.Folder..'/themes'return ak end ah.BuildFolderTree=function(aj)local ak=
+aj:GetPaths()for al=1,#ak do local am=ak[al]if ae(am)then continue end
+makefolder(am)end end ah.CheckFolderTree=function(aj)if ae(aj.Folder)then return
+end aj:BuildFolderTree()task.wait(0.1)end ah.SetFolder=function(aj,ak)aj.Folder=
+ak aj:BuildFolderTree()end ah.ApplyTheme=function(aj,ak)local al=aj:
+GetCustomTheme(ak)local am=al or aj.BuiltInThemes[ak]if not am then return end
+local an=am[2]for ao,ap in pairs(al or an)do if ao=='VideoLink'then continue
+elseif ao=='FontFace'then aj.Library:SetFont(Enum.Font[ap])if aj.Library.Options
+[ao]then aj.Library.Options[ao]:SetValue(ap)end else aj.Library.Scheme[ao]=
+Color3.fromHex(ap)if aj.Library.Options[ao]then aj.Library.Options[ao]:
+SetValueRGB(Color3.fromHex(ap))end end end aj:ThemeUpdate()end ah.ThemeUpdate=
+function(aj)for ak,al in ai do if aj.Library.Options and aj.Library.Options[al]
+then aj.Library.Scheme[al]=aj.Library.Options[al].Value end end aj.Library:
+UpdateColorsUsingRegistry()end ah.GetCustomTheme=function(aj,ak)local al=aj.
+Folder..'/themes/'..ak..'.json'if not af(al)then return nil end local am=
+readfile(al)local an,ao=pcall(ad.JSONDecode,ad,am)if not an then return nil end
+return ao end ah.LoadDefault=function(aj)local ak,al,am='Default',af(aj.Folder..
+'/themes/default.txt')and readfile(aj.Folder..'/themes/default.txt'),true if al
+then if aj.BuiltInThemes[al]then ak=al elseif aj:GetCustomTheme(al)then ak=al am
+=false end elseif aj.BuiltInThemes[aj.DefaultTheme]then ak=aj.DefaultTheme end
+if am then aj.Library.Options.ThemeManager_ThemeList:SetValue(ak)else aj:
+ApplyTheme(ak)end end ah.SaveDefault=function(aj,ak)writefile(aj.Folder..
+'/themes/default.txt',ak)end ah.SetDefaultTheme=function(aj,ak)assert(aj.Library
+,'Must set ThemeManager.Library first!')assert(not aj.AppliedToTab,
 [[Cannot set default theme after applying ThemeManager to a tab!]])local al,am={
 },{}for an,ao in ai do if typeof(ak[ao])=='Color3'then al[ao]='#'..ak[ao]:ToHex(
 )am[ao]=ak[ao]elseif typeof(ak[ao])=='string'then al[ao]=(ak[ao]:sub(1,1)=='#'
@@ -3032,15 +3033,15 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{20,2,{'RBXUtil'},{{22,2,{'Signal'}},{21,2,{
-'TableUtil'}},{23,2,{'Promise'}}}},{32,2,{'Constants'}},{33,2,{'Vinca'}},{24,2,{
-'Functions'},{{27,2,{'Numbers'}},{28,2,{'Strings'}},{25,2,{'CreateGUID'}},{31,2,
-{'GetPing'}},{30,2,{'OutputMessage'}},{26,2,{'Time'}},{29,2,{'PromptDiscord'}}}}
-,{2,2,{'Modules'},{{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{6,2,{'Color'}},{7,2
-,{'t'}},{19,2,{'Preference'}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{
-'Obsidian'},{{16,2,{'ThemeManager'}},{11,2,{'Main'}},{13,2,{'Tabs'},{{15,2,{
-'Settings'}},{14,2,{'Home'}}}},{12,2,{'SaveManager'}}}}}}}},{3,2,{'TaskManager'}
-,{{5,2,{'Lock'}},{4,2,{'Task'}}}}}}}}},'0.4.2','strelizia.cc',string,task,
+ad end)()end},{{1,2,{'Shared'},{{24,2,{'Functions'},{{31,2,{'GetPing'}},{28,2,{
+'Strings'}},{30,2,{'OutputMessage'}},{26,2,{'Time'}},{27,2,{'Numbers'}},{29,2,{
+'PromptDiscord'}},{25,2,{'CreateGUID'}}}},{32,2,{'Constants'}},{2,2,{'Modules'},
+{{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{12,2,{'SaveManager'}},{
+11,2,{'Main'}},{16,2,{'ThemeManager'}},{13,2,{'Tabs'},{{14,2,{'Home'}},{15,2,{
+'Settings'}}}}}}}}}},{7,2,{'t'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{3,2,{
+'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{6,2,{'Color'}},{19,2,{
+'Preference'}}}},{33,2,{'Vinca'}},{20,2,{'RBXUtil'},{{21,2,{'TableUtil'}},{22,2,
+{'Signal'}},{23,2,{'Promise'}}}}}}},'0.4.2','strelizia.cc',string,task,
 setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
 tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
 freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
