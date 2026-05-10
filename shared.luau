@@ -1152,24 +1152,25 @@ SpecialType=='Team'then at.Values=S()at.AllowNull=true end local aw={Text=
 typeof(at.Text)=='string'and at.Text or nil,Value=at.Multi and{}or nil,Values=at
 .Values,DisabledValues=at.DisabledValues,ValueImages=at.ValueImages,Multi=at.
 Multi,SpecialType=at.SpecialType,ExcludeLocalPlayer=at.ExcludeLocalPlayer,
-EnablePlayerImages=at.EnablePlayerImages,Tooltip=at.Tooltip,DisabledTooltip=at.
-DisabledTooltip,TooltipTable=nil,Callback=at.Callback,Changed=at.Changed,
-Disabled=at.Disabled,Visible=at.Visible,Type='Dropdown'}local ax=U('Frame',{
-BackgroundTransparency=1,Size=UDim2.new(1,0,0,aw.Text and 39 or 21),Visible=aw.
-Visible,Parent=av})local ay,az=U('TextLabel',{BackgroundTransparency=1,Size=
-UDim2.new(1,0,0,14),Text=aw.Text,TextSize=14,TextXAlignment=Enum.TextXAlignment.
-Left,Visible=not not at.Text,ZIndex=3,Parent=ax}),U('TextButton',{AnchorPoint=
-Vector2.new(0,1),BackgroundColor3='MainColor',Position=UDim2.fromScale(0,1),Size
-=UDim2.new(1,0,0,21),Text='',TextTransparency=1,ZIndex=2,Parent=ax})U(
-'UIPadding',{PaddingLeft=UDim.new(0,8),PaddingRight=UDim.new(0,4),Parent=az})U(
-'UIStroke',{Color='OutlineColor',Parent=az})if z.CornerRadiusDropdown==true then
-table.insert(z.Corners,U('UICorner',{CornerRadius=UDim.new(0,z.CornerRadius/2),
-Parent=az}))end local aA,aB,aC,aD=U('ImageLabel',{BackgroundTransparency=1,
-Position=UDim2.fromOffset(-4,3),Size=UDim2.fromOffset(16,16),Image='',
-ImageTransparency=1,ZIndex=2,Parent=az}),U('TextButton',{Active=not aw.Disabled,
-BackgroundTransparency=1,Size=UDim2.new(1,0,0,21),Text='---',TextSize=14,
-TextXAlignment=Enum.TextXAlignment.Left,RichText=at.RichText,ZIndex=2,Parent=az}
-),(U('ImageLabel',{AnchorPoint=Vector2.new(1,0.5),Image=ak and ak.Url or'',
+EnablePlayerImages=at.EnablePlayerImages,Tooltip=at.Tooltip,RichText=at.RichText
+,DisabledTooltip=at.DisabledTooltip,TooltipTable=nil,Callback=at.Callback,
+Changed=at.Changed,Disabled=at.Disabled,Visible=at.Visible,Type='Dropdown'}local
+ax=U('Frame',{BackgroundTransparency=1,Size=UDim2.new(1,0,0,aw.Text and 39 or 21
+),Visible=aw.Visible,Parent=av})local ay,az=U('TextLabel',{
+BackgroundTransparency=1,Size=UDim2.new(1,0,0,14),Text=aw.Text,TextSize=14,
+TextXAlignment=Enum.TextXAlignment.Left,Visible=not not at.Text,ZIndex=3,Parent=
+ax}),U('TextButton',{AnchorPoint=Vector2.new(0,1),BackgroundColor3='MainColor',
+Position=UDim2.fromScale(0,1),Size=UDim2.new(1,0,0,21),Text='',TextTransparency=
+1,ZIndex=2,Parent=ax})U('UIPadding',{PaddingLeft=UDim.new(0,8),PaddingRight=UDim
+.new(0,4),Parent=az})U('UIStroke',{Color='OutlineColor',Parent=az})if z.
+CornerRadiusDropdown==true then table.insert(z.Corners,U('UICorner',{
+CornerRadius=UDim.new(0,z.CornerRadius/2),Parent=az}))end local aA,aB,aC,aD=U(
+'ImageLabel',{BackgroundTransparency=1,Position=UDim2.fromOffset(-4,3),Size=
+UDim2.fromOffset(16,16),Image='',ImageTransparency=1,ZIndex=2,Parent=az}),U(
+'TextButton',{Active=not aw.Disabled,BackgroundTransparency=1,Size=UDim2.new(1,0
+,0,21),Text='---',TextSize=14,TextXAlignment=Enum.TextXAlignment.Left,
+TextTruncate=Enum.TextTruncate.AtEnd,RichText=at.RichText,ZIndex=2,Parent=az}),(
+U('ImageLabel',{AnchorPoint=Vector2.new(1,0.5),Image=ak and ak.Url or'',
 ImageColor3='FontColor',ImageRectOffset=ak and ak.ImageRectOffset or Vector2.
 zero,ImageRectSize=ak and ak.ImageRectSize or Vector2.zero,ImageTransparency=0.5
 ,Position=UDim2.fromScale(1,0.5),Size=UDim2.fromOffset(16,16),Parent=az}))if at.
@@ -1199,23 +1200,23 @@ then for aK,aL in aw.Values do if aw.Value[aL]then if not aJ then aJ=aE(aL)end
 aI=aI..(at.FormatDisplayValue and tostring(at.FormatDisplayValue(aL))or
 tostring(aL))..', 'end end aI=aI:sub(1,#aI-2)else aJ=aE(aw.Value)aI=aw.Value and
 tostring(aw.Value)or''if aI~=''and at.FormatDisplayValue then aI=tostring(at.
-FormatDisplayValue(aI))end end if#aI>25 then aI=aI:sub(1,22)..'...'end aB.Text=(
-aI==''and'---'or aI)if aJ then aA.Image=aJ.Url aA.ImageRectOffset=aJ.
-ImageRectOffset or Vector2.zero aA.ImageRectSize=aJ.ImageRectSize or Vector2.
-zero aA.ImageTransparency=0 else aA.Image=''aA.ImageTransparency=1 end aB.Size=
-aJ and UDim2.new(1,-8,0,21)or UDim2.new(1,0,0,21)aB.Position=aJ and UDim2.
-fromOffset(14,0)or UDim2.fromOffset(0,0)end aw.OnChanged=function(aH,aI)aw.
-Changed=aI end aw.GetActiveValues=function(aH)if at.Multi then local aI={}for aJ
-,aK in aw.Value do table.insert(aI,aJ)end return aI end return aw.Value and 1 or
-0 end aw.BuildDropdownList=function(aH)local aI,aJ=aw.Values,aw.DisabledValues
-if aw.UtilityButtonsHolder then aw.UtilityButtonsHolder:Destroy()aw.
-UtilityButtonsHolder=nil end for aK,aL in aG do aK.Parent:Destroy()end table.
-clear(aG)local aK=0 if aw.Multi and next(aw.Values)and(not aD or aD.Text:len()==
-0)then aK=1 local aL=U('Frame',{BackgroundTransparency=1,Size=UDim2.new(1,0,0,21
-),Parent=aF.Menu})aw.UtilityButtonsHolder=aL U('UIListLayout',{Parent=aL,Padding
-=UDim.new(0,8),FillDirection=Enum.FillDirection.Horizontal,HorizontalAlignment=
-Enum.HorizontalAlignment.Center,VerticalAlignment=Enum.VerticalAlignment.Center}
-)local aM=function(aM,aN)local aO=U('TextButton',{BackgroundColor3='MainColor',
+FormatDisplayValue(aI))end end aB.Text=(aI==''and'---'or aI)if aJ then aA.Image=
+aJ.Url aA.ImageRectOffset=aJ.ImageRectOffset or Vector2.zero aA.ImageRectSize=aJ
+.ImageRectSize or Vector2.zero aA.ImageTransparency=0 else aA.Image=''aA.
+ImageTransparency=1 end aB.Size=aJ and UDim2.new(1,-8,0,21)or UDim2.new(1,0,0,21
+)aB.Position=aJ and UDim2.fromOffset(14,0)or UDim2.fromOffset(0,0)end aw.
+OnChanged=function(aH,aI)aw.Changed=aI end aw.GetActiveValues=function(aH)if at.
+Multi then local aI={}for aJ,aK in aw.Value do table.insert(aI,aJ)end return aI
+end return aw.Value and 1 or 0 end aw.BuildDropdownList=function(aH)local aI,aJ=
+aw.Values,aw.DisabledValues if aw.UtilityButtonsHolder then aw.
+UtilityButtonsHolder:Destroy()aw.UtilityButtonsHolder=nil end for aK,aL in aG do
+aK.Parent:Destroy()end table.clear(aG)local aK=0 if aw.Multi and next(aw.Values)
+and(not aD or aD.Text:len()==0)then aK=1 local aL=U('Frame',{
+BackgroundTransparency=1,Size=UDim2.new(1,0,0,21),Parent=aF.Menu})aw.
+UtilityButtonsHolder=aL U('UIListLayout',{Parent=aL,Padding=UDim.new(0,8),
+FillDirection=Enum.FillDirection.Horizontal,HorizontalAlignment=Enum.
+HorizontalAlignment.Center,VerticalAlignment=Enum.VerticalAlignment.Center})
+local aM=function(aM,aN)local aO=U('TextButton',{BackgroundColor3='MainColor',
 Size=UDim2.fromScale(0.45,0.8),Text=aM,TextSize=13,TextTransparency=0.4,Parent=
 aL})U('UIStroke',{Color='OutlineColor',Parent=aO})table.insert(z.Corners,U(
 'UICorner',{CornerRadius=UDim.new(0,z.CornerRadius/2),Parent=aO}))aO.
@@ -3034,15 +3035,15 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{34,2,{'Vinca'}},{25,2,{'Functions'},{{27,2,{
-'Time'}},{29,2,{'Strings'}},{31,2,{'OutputMessage'}},{28,2,{'Numbers'}},{32,2,{
-'GetPing'}},{30,2,{'PromptDiscord'}},{26,2,{'CreateGUID'}}}},{33,2,{'Constants'}
-},{2,2,{'Modules'},{{6,2,{'Color'}},{19,2,{'Preference'}},{17,2,{'Places'},{{18,
-2,{'Slime RNG'}}}},{3,2,{'TaskManager'},{{4,2,{'Task'}},{5,2,{'Lock'}}}},{8,2,{
-'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{11,2,{'Main'}},{16,2,{
-'ThemeManager'}},{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{'Home'}}}},{12,2,{
-'SaveManager'}}}}}}}},{7,2,{'t'}}}},{20,2,{'RBXUtil'},{{23,2,{'Promise'}},{21,2,
-{'TableUtil'}},{24,2,{'Tree'}},{22,2,{'Signal'}}}}}}},'0.4.2','strelizia.cc',
+ad end)()end},{{1,2,{'Shared'},{{33,2,{'Constants'}},{2,2,{'Modules'},{{17,2,{
+'Places'},{{18,2,{'Slime RNG'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{
+'Obsidian'},{{12,2,{'SaveManager'}},{16,2,{'ThemeManager'}},{11,2,{'Main'}},{13,
+2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{'Home'}}}}}}}}}},{7,2,{'t'}},{19,2,{
+'Preference'}},{6,2,{'Color'}},{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'
+}}}}}},{20,2,{'RBXUtil'},{{22,2,{'Signal'}},{23,2,{'Promise'}},{24,2,{'Tree'}},{
+21,2,{'TableUtil'}}}},{25,2,{'Functions'},{{30,2,{'PromptDiscord'}},{32,2,{
+'GetPing'}},{31,2,{'OutputMessage'}},{28,2,{'Numbers'}},{29,2,{'Strings'}},{27,2
+,{'Time'}},{26,2,{'CreateGUID'}}}},{34,2,{'Vinca'}}}}},'0.4.2','strelizia.cc',
 string,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,
 pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,
 aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as
