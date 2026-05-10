@@ -3,95 +3,85 @@ function()local b,c,d=a(1)return(function(...)local e=d(c.Vinca)return e.new():
 Extend(e.Extensions.Children(c))end)()end,function()local b,c=a(2)return(
 function(...)return function(d)return d.new(d):Extend(d.Extensions.Children(c))
 end end)()end,function()local b,c,d=a(3)return(function(...)return function(e)
-local f=e.Services local g,h,i,j,k,l,m,n=f.RunService,f.HttpService,d(c.Lock)(e)
-,d(c.Task)(e),e:Get'Functions/CreateGUID',e:Get'Functions/Time',
-3.333333333333333E-2,{Running=false,HeartbeatRunning=false,Connection=nil,
-LastHeartbeatRun=0,Tasks={}}n.Task=j n.Lock=i n.Begin=function()if n.Running
-then return end n.Running=true n.Connection=g.Heartbeat:Connect(function(o)if(
-not n.Running)or(n.HeartbeatRunning)then return end local p=l.now()if(p-n.
-LastHeartbeatRun)<m then return end n.LastHeartbeatRun=p n.HeartbeatRunning=true
-debug.profilebegin'TaskManager'for q,r in n.Tasks do if(not r:CanRun())then
-continue end task.spawn(function()local s=r:Run()if(not s)or(not r.Interval)then
-n.RemoveTask(q)end end)end debug.profileend()n.HeartbeatRunning=false end)end n.
-Stop=function()if not n.Running then return end n.Running=false n.Connection:
-Disconnect()n.Connection=nil for o in n.Tasks do n.RemoveTask(o)end end n.
-AddTask=function(o)assert(o and j.is(o),'Task must be a Task object!')local p=k(
-)n.Tasks[p]=o:SetIdentifier(p)return p end n.RemoveTask=function(o)local p=n.
-Tasks[o]if(not p)then return end n.Tasks[o]=nil p:Destroy()end n.
-GetTasksFromIndex=function(o)local p={}for q,r in n.Tasks do if r.Index~=o then
-continue end p[q]=r end return p end n.RemoveTasksByIndex=function(o)for p in n.
-GetTasksFromIndex(o)do n.RemoveTask(p)end end return n end end)()end,function()
-a(4)return(function(...)return function(b)local c={}c.__index=c local d,e,f,g,h,
-i,j=b:Get'Functions/Time',b:Get'Functions/OutputMessage',debug.setmemorycategory
-,debug.resetmemorycategory,debug.profilebegin,debug.profileend,coroutine.running
-c.new=function(k,l,m,n)assert(k~=nil and typeof(k)=='string',
-'Index must be a string!')assert(l and typeof(l)=='function',
-'Callback must be a function!')assert(m==nil or typeof(m)=='number',
-'Interval must be a number!')return setmetatable({Index=k,Identifier=nil,
-Callback=l,Thread=nil,Running=false,Destroyed=false,Interval=m,CurrentStep=nil,
-Profiling=false,Priority=1,Locks=n and{Groups={},Individual={}}or nil,
-ExecutionBegan=0,LastFinishedExecution=0},c)end c.is=function(k)return typeof(k)
-=='table'and getmetatable(k)==c end c.SetPriority=function(k,l)assert(typeof(l)
-=='number','Priority must be a number!')k.Priority=l return k end c.GetPriority=
-function(k)return k.Priority end c.CanRun=function(k)if k.Running then return
-false end if k.Destroyed then return false end if k.Interval~=nil and(k.Interval
->(d.now()-k.LastFinishedExecution))then return false end return true end c.
-SetStep=function(k,l)local m=k.CurrentStep k.CurrentStep=l if m then i()end if l
-~=nil then h(l)end return k end c.SetProfiling=function(k,l)assert(typeof(l)==
-'boolean','Enabled must be a boolean!')if k.Profiling==l then return k end k.
-Profiling=l if l then f(k.Index)h(k.Index)else if k.CurrentStep then k:SetStep(
-nil)end g()i()end return k end c.SetIdentifier=function(k,l)assert(l and typeof(
-l)=='string','Identifier must be a string!')k.Identifier=l return k end c.Run=
-function(k)k.Running=true k.ExecutionBegan=d.now()k.Thread=j()local l,m=pcall(k.
-Callback,k)if l then k.LastFinishedExecution=d.now()k.Running=false else e(
-'Error',string.format(
+local f=e.Services local g,h,i,j=f.RunService,d(c.Lock)(e),d(c.Task)(e),{Running
+=false,Connection=nil,Tasks={},PendingTasks={}}j.Task=i j.Lock=h j.Begin=
+function()if j.Running then return end j.Running=true j.Connection=g.Heartbeat:
+Connect(function(k)if(not j.Running)then return end debug.profilebegin
+'TaskManager'for l,m in j.PendingTasks do j.PendingTasks[l]=nil task.spawn(
+function()local n=m:Run()if(not n)or(not m.Interval)then return j.RemoveTask(l)
+end task.wait(m.Interval)if(j.Tasks[l])then j.PendingTasks[l]=m end end)end
+debug.profileend()end)end j.Stop=function()if not j.Running then return end j.
+Running=false j.Connection:Disconnect()j.Connection=nil for k in j.Tasks do j.
+RemoveTask(k)end end j.AddTask=function(k)assert(k and i.is(k),
+'Task must be a Task object!')local l=k.Identifier j.Tasks[l]=k j.PendingTasks[l
+]=k return l end j.RemoveTask=function(k)local l=j.Tasks[k]if(not l)then return
+end j.Tasks[k]=nil j.PendingTasks[k]=nil l:Destroy()end j.GetTasksFromIndex=
+function(k)local l={}for m,n in j.Tasks do if n.Index~=k then continue end l[m]=
+n end return l end j.RemoveTasksByIndex=function(k)for l in j.GetTasksFromIndex(
+k)do j.RemoveTask(l)end end return j end end)()end,function()a(4)return(function
+(...)return function(b)local c={}c.__index=c local d,e,f,g,h,i,j,k=b:Get
+'Modules/t',b:Get'Functions/Time',b:Get'Functions/OutputMessage',b:Get
+'Functions/CreateGUID',debug.setmemorycategory,debug.resetmemorycategory,debug.
+profilebegin,debug.profileend local l,m=d.tuple(d.string,d['function'],d.
+optional(d.number),d.optional(d.boolean)),d.optional(d.string)c.new=function(n,o
+,p,q)assert(l(n,o,p,q))return setmetatable({__TASK=true,Index=n,Identifier=g(),
+Callback=o,Running=false,Destroyed=false,Interval=p,CurrentStep=nil,Profiling=
+false,Priority=1,Locks=q and{Groups={},Individual={}}or nil},c)end c.is=function
+(n)return typeof(n)=='table'and rawget(n,'__TASK')end c.SetPriority=function(n,o
+)assert(d.number(o))n.Priority=o return n end c.GetPriority=function(n)return n.
+Priority end c.SetStep=function(n,o)assert(m(o))local p=n.CurrentStep n.
+CurrentStep=o if p then k()end if o~=nil then j(o)end return n end c.
+SetProfiling=function(n,o)assert(d.boolean(o))if n.Profiling==o then return n
+end n.Profiling=o if o then h(n.Index)j(n.Index)else if n.CurrentStep then n:
+SetStep(nil)end i()k()end return n end c.Run=function(n)n.Running=true local o,p
+=pcall(n.Callback,n)if(not o)then f('Error',string.format(
 [[An error has occured during runtime of Thread '%s' on Step '%s': %s]],
-tostring(k.Index),tostring(tostring(k.CurrentStep)),tostring(m)))end if k.
-Profiling then k:SetProfiling(false)end k.Thread=nil return l,m end c.Destroy=
-function(k)k.Destroyed=true local l=k.Locks if l then for m in l.Groups do m:
-Release()end for m in l.Individual do m:Release()end table.clear(l.Groups)table.
-clear(l.Individual)end return k end return{new=c.new,is=c.is}end end)()end,
-function()a(5)return(function(...)return function(b)local c,d=b:Get
-'RBXUtil/Signal',b:Get'RBXUtil/TableUtil'local e,f,g,h=d.Dictionary,d.Filter,
-function(e,f)local g,h=e:GetPriority(),f:GetPriority()if g~=h then return g>h
-end return e.Identifier>f.Identifier end,{Cache={}}h.__index=h h.new=function(i)
-assert(i and typeof(i)=='string','Index must be a string!')if h.Cache[i]then
-return h.Cache[i]end local j=setmetatable({Index=i,User=nil,UserChanged=c.new(),
-TakeoverRecipient=nil,TakeoverInitiated=c.new(),Aborted=false,Destroyed=false},h
-)h.Cache[i]=j return j end h.is=function(i)return typeof(i)=='table'and
-getmetatable(i)==h end h.CanTake=function(i,j)assert(j and typeof(j)=='table',
-'Must provide a Task object for evaluation!')assert(j.Locks,
-'Task must be Lock-utilizing!')local k=i.User if(not k)then return true end if(k
-==j)then return true end local l=i.TakeoverRecipient if l then return g(j,l)end
-return g(j,k)end h.TakeAsync=function(i,j)assert(j and typeof(j)=='table',
-'Must provide a Task object for evaluation!')assert(j.Locks,
-'Task must be Lock-utilizing!')if(not i.User)then i.User=j i.Aborted=false j.
-Locks.Individual[i]=true i.UserChanged:Fire(j,nil)return true end if(i.User==j)
-then return true end i.Aborted=true i.TakeoverRecipient=j i.TakeoverInitiated:
-Fire(j,i.User)return i.UserChanged:Wait()==j end h.Release=function(i)if(not i.
-User)then return i end local j,k=i.User,i.TakeoverRecipient i.User=k i.
-TakeoverRecipient=nil i.Aborted=false j.Locks.Individual[i]=nil if k then k.
-Locks.Individual[i]=true end i.UserChanged:Fire(k,j)return i end local i={}i.
-__index=i i.new=function(j)assert(j and typeof(j)=='table',
-'Must provide Locks for a Group')local k=setmetatable({User=nil,UserChanged=c.
-new(),Locks=e(f(j,h.is)),TakeoverRecipient=nil,TakeoverInitiated=c.new(),Aborted
-=false,Connections={},Destroyed=false},i)for l in k.Locks do table.insert(k.
-Connections,l.TakeoverInitiated:Connect(function(m,n)if(not k.User)or(k.User~=n)
-then return end k.Aborted=true end))end return k end i.CanTake=function(j,k)for
-l in j.Locks do if l:CanTake(k)then continue end return false end return true
-end i.TakeAsync=function(j,k)local l=j.User if(l==k)then return true end if l
-then j.TakeoverRecipient=k j.TakeoverInitiated:Fire(k,l)return j.UserChanged:
-Wait()==k end local m={}for n in j.Locks do if n:TakeAsync(k)then m[n]=true
-continue end for o in m do o:Release()end return false end j.User=k j.Aborted=
-false k.Locks.Groups[j]=true j.UserChanged:Fire(k,l)return true end i.Release=
-function(j)if(not j.User)then return j end local k,l=j.User,j.TakeoverRecipient
-for m in j.Locks do if(m.User~=k)then continue end if l then m.User=l m.Aborted=
-false k.Locks.Individual[m]=nil l.Locks.Individual[m]=true else m:Release()end
-end j.User=l j.TakeoverRecipient=nil j.Aborted=false k.Locks.Groups[j]=nil if l
-then l.Locks.Groups[j]=true end j.UserChanged:Fire(l,k)return j end i.Destroy=
-function(j)if(not j.Destroyed)then j.Destroyed=true for k,l in j.Connections do
-l:Disconnect()end table.clear(j.Connections)end return j end return table.freeze
-{new=h.new,Group=i}end end)()end,function()a(6)return(function(...)return
+tostring(n.Index),tostring(tostring(n.CurrentStep)),tostring(p)))end n.Running=
+false if n.Profiling then n:SetProfiling(false)end return o,p end c.Destroy=
+function(n)n.Destroyed=true local o=n.Locks if o then for p in o.Groups do p:
+Release()end for p in o.Individual do p:Release()end table.clear(o.Groups)table.
+clear(o.Individual)end return n end return{new=c.new,is=c.is}end end)()end,
+function()a(5)return(function(...)return function(b)local c,d,e=b:Get'Modules/t'
+,b:Get'RBXUtil/Signal',b:Get'RBXUtil/TableUtil'local f,g,h,i=e.Dictionary,e.
+Filter,function(f,g)local h,i=f:GetPriority(),g:GetPriority()if h~=i then return
+h>i end return f.Identifier>g.Identifier end,{Cache={}}i.__index=i i.new=
+function(j)assert(c.string(j))if i.Cache[j]then return i.Cache[j]end local k=
+setmetatable({__LOCK=true,Index=j,User=nil,UserChanged=d.new(),TakeoverRecipient
+=nil,TakeoverInitiated=d.new(),Aborted=false,Destroyed=false},i)i.Cache[j]=k
+return k end i.is=function(j)return typeof(j)=='table'and rawget(j,'__LOCK')end
+i.CanTake=function(j,k)assert(k and typeof(k)=='table',
+'Must provide a Task object for evaluation!')assert(k.Locks,
+'Task must be Lock-utilizing!')local l=j.User if(not l)then return true end if(l
+==k)then return true end local m=j.TakeoverRecipient if m then return h(k,m)end
+return h(k,l)end i.TakeAsync=function(j,k)assert(k and typeof(k)=='table',
+'Must provide a Task object for evaluation!')assert(k.Locks,
+'Task must be Lock-utilizing!')if(not j.User)then j.User=k j.Aborted=false k.
+Locks.Individual[j]=true j.UserChanged:Fire(k,nil)return true end if(j.User==k)
+then return true end j.Aborted=true j.TakeoverRecipient=k j.TakeoverInitiated:
+Fire(k,j.User)return j.UserChanged:Wait()==k end i.Release=function(j)if(not j.
+User)then return j end local k,l=j.User,j.TakeoverRecipient j.User=l j.
+TakeoverRecipient=nil j.Aborted=false k.Locks.Individual[j]=nil if l then l.
+Locks.Individual[j]=true end j.UserChanged:Fire(l,k)return j end local j={}j.
+__index=j j.new=function(k)assert(k and typeof(k)=='table',
+'Must provide Locks for a Group')local l=setmetatable({User=nil,UserChanged=d.
+new(),Locks=f(g(k,i.is)),TakeoverRecipient=nil,TakeoverInitiated=d.new(),Aborted
+=false,Connections={},Destroyed=false},j)for m in l.Locks do table.insert(l.
+Connections,m.TakeoverInitiated:Connect(function(n,o)if(not l.User)or(l.User~=o)
+then return end l.Aborted=true end))end return l end j.CanTake=function(k,l)for
+m in k.Locks do if m:CanTake(l)then continue end return false end return true
+end j.TakeAsync=function(k,l)local m=k.User if(m==l)then return true end if m
+then k.TakeoverRecipient=l k.TakeoverInitiated:Fire(l,m)return k.UserChanged:
+Wait()==l end local n={}for o in k.Locks do if o:TakeAsync(l)then n[o]=true
+continue end for p in n do p:Release()end return false end k.User=l k.Aborted=
+false l.Locks.Groups[k]=true k.UserChanged:Fire(l,m)return true end j.Release=
+function(k)if(not k.User)then return k end local l,m=k.User,k.TakeoverRecipient
+for n in k.Locks do if(n.User~=l)then continue end if m then n.User=m n.Aborted=
+false l.Locks.Individual[n]=nil m.Locks.Individual[n]=true else n:Release()end
+end k.User=m k.TakeoverRecipient=nil k.Aborted=false l.Locks.Groups[k]=nil if m
+then m.Locks.Groups[k]=true end k.UserChanged:Fire(m,l)return k end j.Destroy=
+function(k)if(not k.Destroyed)then k.Destroyed=true for l,m in k.Connections do
+m:Disconnect()end table.clear(k.Connections)end return k end return table.freeze
+{new=i.new,Group=j}end end)()end,function()a(6)return(function(...)return
 function(b)local c=b:Get'Modules/t'local d,e,f,g=c.tuple(c.ColorSequence,c.
 numberConstrained(0,1)),c.tuple(c.string,c.union(c.Color3,c.ColorSequence)),c.
 intersection(c.array(c.Color3),function(d)return#d>=2,
@@ -2387,68 +2377,69 @@ BulletPoint),tostring(ar.AccountAge))}local aF=aD:AddLabel{Text=string.format(
 local aG,aH=pcall(ar.GetFriendsOnlineAsync,ar)if aG then aF:SetText(string.
 format('%s Friends Online: <b>%s</b>',tostring(ah.BulletPoint),tostring(an.
 Comma(#aH))))end end)local aG=ay:AddGroupbox{Side=1,Name='Session',IconName=
-'server'}local aH,aI,aJ=aG:AddLabel{Text=string.format(
+'server'}local aH,aI,aJ,aK=aG:AddLabel{Text=string.format(
 '%s Session Time: <b>00:00:00</b>',tostring(ah.BulletPoint)),DoesWrap=true},aG:
 AddLabel{Text=string.format('%s FPS: <b>?</b>',tostring(ah.BulletPoint)),
-DoesWrap=true},aG:AddLabel{Text=string.format('%s Ping: <b>? ms</b>',tostring(ah
-.BulletPoint)),DoesWrap=true}ak.AddTask(ak.Task.new('SessionGroupboxUpdater',
-function(aK)aH:SetText(string.format('%s Session Time: <b>%s</b>',tostring(ah.
-BulletPoint),tostring(am.FormatDuration(am.now()-as,'%h:%m:%s',true))))aI:
-SetText(string.format('%s FPS: <b>%s</b>',tostring(ah.BulletPoint),tostring(math
-.floor(1/ae.Heartbeat:Wait()))))aJ:SetText(string.format('%s Ping: <b>%s ms</b>'
-,tostring(ah.BulletPoint),tostring(math.floor(ap()*1000))))end,1))aG:AddDivider{
-Text='server info'}local aK=aG:AddLabel{Text=string.format(
-'%s Players Online: ? out of ?',tostring(ah.BulletPoint)),DoesWrap=true}do local
-aL=function()aK:SetText(string.format(
+DoesWrap=true},(aG:AddLabel{Text=string.format('%s Ping: <b>? ms</b>',tostring(
+ah.BulletPoint)),DoesWrap=true})do local aL,aM=0,am.now()ak.AddTask(ak.Task.new(
+'FrameCounter',function(aN)aL=aL+1 local aO=am.now()if aO>=aM then aK=aL aL=0 aM
+=aO+1 end end,0))end ak.AddTask(ak.Task.new('SessionGroupboxUpdater',function(aL
+)aH:SetText(string.format('%s Session Time: <b>%s</b>',tostring(ah.BulletPoint),
+tostring(am.FormatDuration(am.now()-as,'%h:%m:%s',true))))aI:SetText(string.
+format('%s FPS: <b>%s</b>',tostring(ah.BulletPoint),tostring(aK or'N/A')))aJ:
+SetText(string.format('%s Ping: <b>%s ms</b>',tostring(ah.BulletPoint),tostring(
+math.floor(ap()*1000))))end,1))aG:AddDivider{Text='server info'}local aL=aG:
+AddLabel{Text=string.format('%s Players Online: ? out of ?',tostring(ah.
+BulletPoint)),DoesWrap=true}do local aM=function()aL:SetText(string.format(
 '%s Players Online: <b>%s</b> out of <b>%s</b>',tostring(ah.BulletPoint),
-tostring(#ad:GetPlayers()),tostring(ad.MaxPlayers)))end local aM,aN=ad.
-PlayerAdded:Connect(aL),ad.PlayerRemoving:Connect(aL)aA.Main:OnUnload(function()
-aM:Disconnect()aN:Disconnect()end)aL()end aG:AddLabel{Text=string.format(
+tostring(#ad:GetPlayers()),tostring(ad.MaxPlayers)))end local aN,aO=ad.
+PlayerAdded:Connect(aM),ad.PlayerRemoving:Connect(aM)aA.Main:OnUnload(function()
+aN:Disconnect()aO:Disconnect()end)aM()end aG:AddLabel{Text=string.format(
 '%s Place Version: <b>v%s</b>',tostring(ah.BulletPoint),tostring(game.
-PlaceVersion)),DoesWrap=true}aG:AddDivider{Text='session sharing'}local aL=aG:
+PlaceVersion)),DoesWrap=true}aG:AddDivider{Text='session sharing'}local aM=aG:
 AddInput('SessionShareJobId',{Text='Server Job Id',Tooltip=
 [[enter job id of the server you want to join, must be in the same game]],
 Placeholder='click here',ClearTextOnFocus=true})aG:AddButton{Text='Join Server',
 Tooltip='joins the server using the job id from above',DoubleClick=true,Func=
-function()local aM=aL.Value or''if#aM~=36 then return aA.Main:Notify{Title=
-'strelizia.cc',Description='invalid job id',Duration=2}end local aN,aO=pcall(af.
-TeleportToPlaceInstance,af,game.PlaceId,aM,ar)if(not aN)then aA.Main:Notify{
+function()local aN=aM.Value or''if#aN~=36 then return aA.Main:Notify{Title=
+'strelizia.cc',Description='invalid job id',Duration=2}end local aO,aP=pcall(af.
+TeleportToPlaceInstance,af,game.PlaceId,aN,ar)if(not aO)then aA.Main:Notify{
 Title='strelizia.cc',Description=string.format(
-'failed to join server: %s; click to try again',tostring(tostring(aO))),Duration
+'failed to join server: %s; click to try again',tostring(tostring(aP))),Duration
 =2}end end}aG:AddButton{Text='Copy Job Id',Tooltip=
 'copies the job id from the current server to clipboard',Func=function()
 setclipboard(game.JobId)aA.Main:Notify{Title='strelizia.cc',Description=
-'copied job id to clipboard',Duration=2}end}local aM,aN,aO=ay:AddGroupbox{Side=2
+'copied job id to clipboard',Duration=2}end}local aN,aO,aP=ay:AddGroupbox{Side=2
 ,Name='Key Information',IconName='key'},(aC.SecondsLeft==-1)or(aC.SecondsLeft==
-math.huge),am.now()+aC.SecondsLeft aM:AddLabel{Text=string.format(
-'%s Key Expiry: <b>%s</b>',tostring(ah.BulletPoint),tostring((aN and{(aj.Paint(
-'Never!',au))}or{(am.FormatTime(aO,'MM/DD/YYYY HH:mm'))})[1])),DoesWrap=true}aM:
+math.huge),am.now()+aC.SecondsLeft aN:AddLabel{Text=string.format(
+'%s Key Expiry: <b>%s</b>',tostring(ah.BulletPoint),tostring((aO and{(aj.Paint(
+'Never!',au))}or{(am.FormatTime(aP,'MM/DD/YYYY HH:mm'))})[1])),DoesWrap=true}aN:
 AddLabel{Text=string.format('%s Total Executions: <b>%s</b>',tostring(ah.
-BulletPoint),tostring(an.Comma(aC.TotalExecutions))),DoesWrap=true}aM:AddLabel{
+BulletPoint),tostring(an.Comma(aC.TotalExecutions))),DoesWrap=true}aN:AddLabel{
 Text=string.format('%s User Note: <b>%s</b>',tostring(ah.BulletPoint),tostring(
-aC.UserNote)),DoesWrap=true}aM:AddDivider{Text='key stuff'}aM:AddLabel{Text=
+aC.UserNote)),DoesWrap=true}aN:AddDivider{Text='key stuff'}aN:AddLabel{Text=
 string.format('%s Script Key: <b>...%s</b>',tostring(ah.BulletPoint),tostring(
-string.sub(av,-5))),DoesWrap=true}aM:AddButton{Text='Copy Script Key',Tooltip=
+string.sub(av,-5))),DoesWrap=true}aN:AddButton{Text='Copy Script Key',Tooltip=
 'copies user key to clipboard',Func=function()setclipboard(av)aA.Main:Notify{
 Title='strelizia.cc',Description='copied script key to clipboard',Duration=2}end
-}local aP,aQ=ay:AddGroupbox{Side=2,Name='Credits',IconName='list'},{}for aR,aS
-in(aB.Credits or{})do local aT=ag.ProductionRoleInfo[aS.Role]or ag.
-ProductionRoleInfo.generic table.insert(aQ,string.format('%s %s - <b>%s</b>',
-tostring(ah.BulletPoint),tostring(aS.Name),tostring(aj.Paint(aS.Role,aT.Color)))
-)end aP:AddLabel('CreditsLabel',{Text=table.concat(aQ,'\n'),DoesWrap=true})aP:
-AddDivider{Text='discord (pls join)'}local aR=aP:AddButton{Text=
+}local aQ,aR=ay:AddGroupbox{Side=2,Name='Credits',IconName='list'},{}for aS,aT
+in(aB.Credits or{})do local aU=ag.ProductionRoleInfo[aT.Role]or ag.
+ProductionRoleInfo.generic table.insert(aR,string.format('%s %s - <b>%s</b>',
+tostring(ah.BulletPoint),tostring(aT.Name),tostring(aj.Paint(aT.Role,aU.Color)))
+)end aQ:AddLabel('CreditsLabel',{Text=table.concat(aR,'\n'),DoesWrap=true})aQ:
+AddDivider{Text='discord (pls join)'}local aS=aQ:AddButton{Text=
 'Join Discord Server',Func=function()aq(ag.DiscordInviteCode,true)aA.Main:Notify
 {Title='strelizia.cc',Description=
 'successfully copied/prompted discord join code!'}end}if(not aw:Read
 'PRESSED_JOIN_DISCORD')then print'mueheheh'task.spawn(function()task.wait(math.
-random(5,10))local aS=az:AddDialog('DiscordJoinDialog',{Title=
+random(5,10))local aT=az:AddDialog('DiscordJoinDialog',{Title=
 'sorry for disturbing you',Description=
 [[would you please join our discord? it helps us grow and stay connected with our community. you also benefit from being able to make suggestions, bug reports and stay updated with latest features.]]
 ,FooterButtons={Confirm={Title='yes!',Variant='Primary',Callback=function()aw:
-Write('PRESSED_JOIN_DISCORD',true)aR.Func()end},Decline={Title='no, thanks',
-Variant='Secondary',WaitTime=3}}})aS:AddToggle('DontAskDiscord',{Text=
-"don't ask me again",Tooltip='okay :(',Callback=function(aT)aw:Write(
-'PRESSED_JOIN_DISCORD',aT)end})end)end end end end)()end,[15]=function()a(15)
+Write('PRESSED_JOIN_DISCORD',true)aS.Func()end},Decline={Title='no, thanks',
+Variant='Secondary',WaitTime=3}}})aT:AddToggle('DontAskDiscord',{Text=
+"don't ask me again",Tooltip='okay :(',Callback=function(aU)aw:Write(
+'PRESSED_JOIN_DISCORD',aU)end})end)end end end end)()end,[15]=function()a(15)
 return(function(...)return function(aa)local ab=aa:Get'Modules/Places'return
 function(ac)local ad,ae=aa:Get'Modules/Interface'.GetInterface'Obsidian',ab.
 GetPlaceFromId(game.PlaceId)local af,ag,ah,ai=ad.Main,ad.SaveManager,ad.
@@ -3033,15 +3024,15 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{24,2,{'Functions'},{{31,2,{'GetPing'}},{28,2,{
-'Strings'}},{30,2,{'OutputMessage'}},{26,2,{'Time'}},{27,2,{'Numbers'}},{29,2,{
-'PromptDiscord'}},{25,2,{'CreateGUID'}}}},{32,2,{'Constants'}},{2,2,{'Modules'},
-{{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{12,2,{'SaveManager'}},{
-11,2,{'Main'}},{16,2,{'ThemeManager'}},{13,2,{'Tabs'},{{14,2,{'Home'}},{15,2,{
-'Settings'}}}}}}}}}},{7,2,{'t'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{3,2,{
-'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{6,2,{'Color'}},{19,2,{
-'Preference'}}}},{33,2,{'Vinca'}},{20,2,{'RBXUtil'},{{21,2,{'TableUtil'}},{22,2,
-{'Signal'}},{23,2,{'Promise'}}}}}}},'0.4.2','strelizia.cc',string,task,
+ad end)()end},{{1,2,{'Shared'},{{2,2,{'Modules'},{{19,2,{'Preference'}},{7,2,{
+'t'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}}}},{8,2,{'Interface'},{{9,1,{'List'}
+,{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{12,2,{'SaveManager'}},{11,2,{
+'Main'}},{13,2,{'Tabs'},{{14,2,{'Home'}},{15,2,{'Settings'}}}}}}}}}},{3,2,{
+'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{6,2,{'Color'}}}},{24,2,{
+'Functions'},{{29,2,{'PromptDiscord'}},{25,2,{'CreateGUID'}},{27,2,{'Numbers'}},
+{31,2,{'GetPing'}},{30,2,{'OutputMessage'}},{26,2,{'Time'}},{28,2,{'Strings'}}}}
+,{20,2,{'RBXUtil'},{{23,2,{'Promise'}},{22,2,{'Signal'}},{21,2,{'TableUtil'}}}},
+{32,2,{'Constants'}},{33,2,{'Vinca'}}}}},'0.4.2','strelizia.cc',string,task,
 setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
 tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
 freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
