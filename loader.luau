@@ -1,54 +1,60 @@
-local a local b,c,d,e,f,g,h,i,j,l,p,q,s,t,u,v,w,x,y,z={function()local b,c,d=a(1
+local a local b,c,d,e,f,g,h,i,j,k,n,q,s,t,u,v,w,x,y,z={function()local b,c,d=a(1
 )return(function(...)if(not game:IsLoaded())then game.Loaded:Wait()end local e,f
 =d(c.Library),getgenv()if f.Library then f.Library:Unload()end if(not pcall(e.
-Get,e,'Shared'))then return end local g,h,i,j,k,l=e:Get'Shared/Modules/Places',e
-:Get'Shared/Constants',e:Get'Shared/Modules/Interface'.GetInterface'Obsidian',e:
-Get'Shared/Functions/Strings',e:Get'Shared/Functions/Time',e:Get
-'Shared/Functions/PromptDiscord'local m,n=h.Characters.BulletPoint,g.
-GetPlaceFromId(game.PlaceId)if not n then return i.Main:Notify{Title=
+Get,e,'Shared'))then return end local g,h,i,j,k,l,m=e:Get'Shared/Modules/Places'
+,e:Get'Shared/Modules/Interface'.GetInterface'Obsidian',e:Get
+'Shared/Modules/Preference',e:Get'Shared/Constants',e:Get
+'Shared/Functions/Strings',e:Get'Shared/Functions/Time',e:Get
+'Shared/Functions/PromptDiscord'local n,o,p=j.Characters.BulletPoint,i.new(),g.
+GetPlaceFromId(game.PlaceId)if not p then return h.Main:Notify{Title=
 'strelizia.cc',Description=
 [[this game is currently not supported by strelizia! if you think that this is a mistake then join our discord server and report this issue!]]
-,Time=5}end if g.IsExecutorBlacklisted(n.BlacklistedExecutors)then return i.Main
+,Time=5}end if g.IsExecutorBlacklisted(p.BlacklistedExecutors)then return h.Main
 :Notify{Title='strelizia.cc',Description=
-'this script is not compatible with your executor!',Time=3}end local o=(n.
-Downtime.Status and n.Downtime.Message)if o then return i.Main:Notify{Title=
+'this script is not compatible with your executor!',Time=3}end local q=(p.
+Downtime.Status and p.Downtime.Message)if q then return h.Main:Notify{Title=
 'strelizia.cc',Description=string.format(
 [[unable to load %s script because it's currently experiencing a downtime! specificed downtime reason: %s]]
-,tostring(n.Name),tostring(o))}end local p,q=e:Get'Modules/KeyFile',e:Get
-'Modules/Luarmor':Init'8db54cb776ef39fb18e50589c7cff5db'if n.Keyless then i.Main
-:Notify{Title='strelizia.cc',Description=
+,tostring(p.Name),tostring(q))}end local r,s=e:Get'Modules/KeyFile',e:Get
+'Modules/Luarmor':Init'15da501a7e3c5c8be15ae68adb8f1b13'local t=f.script_key or
+r:Read()if t then local u=s:Check(t)if u.code=='KEY_VALID'then h.Main:Notify{
+Title='strelizia.cc',Description='saved key is valid! loading script!',Time=3}
+return s:LoadScript(t)end h.Main:Notify{Title='strelizia.cc',Description=
+'saved key is invalid! please enter a new key!',Time=4}r:Erase()end if p.Keyless
+then h.Main:Notify{Title='strelizia.cc',Description=
 [[script for this game is currently keyless, no key required! loading script...]]
-,Time=3}return q:LoadScript()end local r=p:Read()if r then local s=q:Check(r)if
-s.code=='KEY_VALID'then i.Main:Notify{Title='strelizia.cc',Description=
-'saved key is valid! loading script!',Time=3}return q:LoadScript(r)end i.Main:
-Notify{Title='strelizia.cc',Description=
-'saved key is invalid! please enter a new key!',Time=4}p:Erase()end local s=e:
-Get'Interface':Create()local t=s.Library.Buttons local u,v=t.CheckKeyButton,t.
-GetKeyButton local w=function(w)if w:len()~=32 then s.Library:Notify{Title=
-'strelizia.cc',Description='invalid key length!',Time=2}return end u:
-SetDisabled(true)s.Library:Notify{Title='strelizia.cc',Description=
-'checking your key, please wait...',Time=2}local x=q:Check(w)s.Library:Notify{
-Title='strelizia.cc',Description=x.message,Time=2}if x.code=='KEY_VALID'then p:
-Write(w)s.Library:Unload()return q:LoadScript(w)else u:SetDisabled(false)end end
-u.Func=function()return w(s.Library.Options.ScriptKeyInput.Value)end v.Func=
-function()local x,y={},{}for z,A in h.KeySystemAdProviders do x[A.Name]={Title=A
-.Name,Order=z,Variant='Primary',Callback=function()setclipboard(string.format(
-'https://ads.luarmor.net/get_key?for=%s',tostring(A.Identifier)))s.Library:
+,Time=3}return s:LoadScript()end local u=e:Get'Interface':Create()local v=u.
+Library.Buttons local w,x=v.CheckKeyButton,v.GetKeyButton local y=function(y)if
+y:len()~=32 then u.Library:Notify{Title='strelizia.cc',Description=
+'invalid key length!',Time=2}return end w:SetDisabled(true)u.Library:Notify{
+Title='strelizia.cc',Description='checking your key, please wait...',Time=2}
+local z=s:Check(y)u.Library:Notify{Title='strelizia.cc',Description=z.message,
+Time=2}if z.code=='KEY_VALID'then r:Write(y)u.Library:Unload()return s:
+LoadScript(y)else w:SetDisabled(false)end end w.Func=function()return y(u.
+Library.Options.ScriptKeyInput.Value)end x.Func=function()local z,A,B={},{}for C
+,D in j.KeySystemAdProviders do z[D.Name]={Title=D.Name,Order=C,Variant=
+'Primary',Callback=function()setclipboard(string.format(
+'https://ads.luarmor.net/get_key?for=%s',tostring(D.Identifier)))u.Library:
 Notify{Title='strelizia.cc',Description=string.format(
 [[you have selected the following provider: %s
 link to the ad provider has been copied to your clipboard!]]
-,tostring(A.Name))}end}table.insert(y,string.format(
-'%s %s: \n%s%s Key Length: %s\n%s%s Completion Time: %s',tostring(m),tostring(A.
-Name),tostring(j.LeadingSpace(5)),tostring(m),tostring(k.CompressTime(A.
-KeyLength)),tostring(j.LeadingSpace(5)),tostring(m),tostring(k.CompressTime(A.
-CompletionTime))))end local z=s.Window:AddDialog('AdProviderSelection',{Title=
-'Ad Provider Selection',Description=
+,tostring(D.Name))}if B then print'ha yes i am the sigma one.'o:Write(
+'SELECTED_AD_PROVIDER',D.Name)end end}table.insert(A,string.format(
+'%s %s: \n%s%s Key Length: %s\n%s%s Completion Time: %s',tostring(n),tostring(D.
+Name),tostring(k.LeadingSpace(5)),tostring(n),tostring(l.CompressTime(D.
+KeyLength)),tostring(k.LeadingSpace(5)),tostring(n),tostring(l.CompressTime(D.
+CompletionTime))))end local C=o:Read'SELECTED_AD_PROVIDER'if C then local D=z[C]
+if(D)then return D.Callback()end print'nope, not the sigma one'o:Write(
+'SELECTED_AD_PROVIDER',nil)end local D=u.Window:AddDialog('AdProviderSelection',
+{Title='Ad Provider Selection',Description=
 'select your ad provider based on the information below',Icon='key',
-FooterButtons=x})z:AddLabel('AdProviderLabel',{Text=table.concat(y,'\n\n'),
-DoesWrap=true})end t.JoinDiscordButton.Func=function()l(h.DiscordInviteCode,true
-)s.Library:Notify{Title='strelizia.cc',Description=
-'successfully copied/prompted discord join code!'}end t.UnloadScript.Func=
-function()return s.Library:Unload()end end)()end,function()local b,c,d=a(2)
+FooterButtons=z})D:AddLabel('AdProviderLabel',{Text=table.concat(A,'\n\n'),
+DoesWrap=true})D:AddToggle('RememberMyChoiceProvider',{Text='remember my choice'
+,Tooltip='wont ask you to pick providers again',Callback=function(E)print
+'oh yes we are save'B=E end})end v.JoinDiscordButton.Func=function()m(j.
+DiscordInviteCode,true)u.Library:Notify{Title='strelizia.cc',Description=
+'successfully copied/prompted discord join code!'}end v.UnloadScript.Func=
+function()return u.Library:Unload()end end)()end,function()local b,c,d=a(2)
 return(function(...)local e=d(c.Parent.Vinca)return e.new():Extend(e.Extensions.
 Children(c))end)()end,function()local b,c=a(3)return(function(...)return
 function(d)return d.new(d):Extend(d.Extensions.Children(c))end end)()end,
@@ -108,7 +114,7 @@ TextXAlignment.Center})w:AddDivider{Text='update log'}w:AddLabel(
 Enum.TextXAlignment.Center})n.Tabs.Settings(r.Settings)return l end return l end
 end)()end,function()local b,c,d=a(7)return(function(...)return function(e)local
 f=e.Services local g,h,i,j,k=f.HttpService,f.EncodingService,d(c.Cache)(e),
-'66d8e4f833761226f58df847d2cf03524b9602e6','strelizia/cache/shared'local l,n=
+'424e003e2f56556da9a2032426c948112d6f34b3','strelizia/cache/shared'local l,n=
 string.format('%s/%s.json',tostring(k),tostring(j)),function(l)local m,n=pcall(
 loadstring,l,'Shared')if(not m)then return false,string.format(
 'failed to load shared code: %s',tostring(tostring(n)))end local o,p=pcall(n)if(
@@ -131,25 +137,27 @@ floor((os.clock()-q)*1000))))local t,u=n(s.Body)if(not t)then print
 print(string.format('\u{2139}\u{fe0f} | removed %s unused/outdated cache files',
 tostring(#v)))end return u end end)()end,function()a(8)return(function(...)
 return function(b)local c=b.Services local d,e,f,g=c.EncodingService,c.
-HttpService,7,(12096E2)local h={}h.Read=function(i,j)assert(typeof(j)=='string',
-'Path must be a string!')if(not isfile(j))then return false,"file doesn't exist"
-end local k,l=pcall(e.JSONDecode,e,readfile(j))if(not k)then return false,
-'failed to parse json'end if typeof(l.LastVisit)~='number'or typeof(l.Content)~=
-'string'then return false,'invalid data format'end local n,p=pcall(d.
-Base64Decode,d,buffer.fromstring(l.Content))if(not n)then return false,
-'failed to decode file content'end local q,s=pcall(d.DecompressBuffer,d,p,Enum.
-CompressionAlgorithm.Zstd)if(not q)then return false,
-'failed to decompress buffer'end local t=l.LastVisit l.LastVisit=DateTime.now().
-UnixTimestamp writefile(j,e:JSONEncode(l))return true,{LastVisit=t,Content=
-buffer.tostring(s)}end h.Erase=function(i,j)assert(typeof(j)=='string',
-'Path must be a string!')delfile(j)return i end h.Write=function(i,j,l)assert(
-typeof(j)=='string'and typeof(l)=='string','Path and Source must be strings')
-local p=d:CompressBuffer(buffer.fromstring(l),Enum.CompressionAlgorithm.Zstd,f)
-local q=d:Base64Encode(p)writefile(j,e:JSONEncode{Content=buffer.tostring(q),
-LastVisit=DateTime.now().UnixTimestamp})return true end h.Cleanup=function(i,j)
-assert(typeof(j)=='string','Path must be a string!')local l={}for p,q in
-listfiles(j)do local s,t=h:Read(q)if(not s)or t.LastVisit<(DateTime.now().
-UnixTimestamp-g)then h:Erase(q)table.insert(l,q)end end return l end return h
+HttpService,7,(12096E2)local h,i=function(h)assert(typeof(h)=='string',
+'Path must be a string!')local i,j=pcall(e.JSONDecode,e,readfile(h))if(not i)
+then return false,'failed to parse json'end if typeof(j.LastVisit)~='number'or
+typeof(j.Content)~='string'then return false,'invalid data format'end return
+true,j end,{}i.Read=function(j,k)assert(typeof(k)=='string',
+'Path must be a string!')if(not isfile(k))then return false,"file doesn't exist"
+end local l,n=h(k)if(not l)then return false,n end local p,q=pcall(d.
+Base64Decode,d,buffer.fromstring(n.Content))if(not p)then return false,
+'failed to decode file content'end local s,t=pcall(d.DecompressBuffer,d,q,Enum.
+CompressionAlgorithm.Zstd)if(not s)then return false,
+'failed to decompress buffer'end local u=n.LastVisit n.LastVisit=DateTime.now().
+UnixTimestamp writefile(k,e:JSONEncode(n))return true,{LastVisit=u,Content=
+buffer.tostring(t)}end i.Erase=function(j,k)assert(typeof(k)=='string',
+'Path must be a string!')delfile(k)return j end i.Write=function(j,k,n)assert(
+typeof(k)=='string'and typeof(n)=='string','Path and Source must be strings')
+local q=d:CompressBuffer(buffer.fromstring(n),Enum.CompressionAlgorithm.Zstd,f)
+local s=d:Base64Encode(q)writefile(k,e:JSONEncode{Content=buffer.tostring(s),
+LastVisit=DateTime.now().UnixTimestamp})return true end i.Cleanup=function(j,k)
+assert(typeof(k)=='string','Path must be a string!')local n={}for q,s in
+listfiles(k)do local t,u=h(s)if(not t)or u.LastVisit<(DateTime.now().
+UnixTimestamp-g)then i:Erase(s)table.insert(n,s)end end return n end return i
 end end)()end,function()local b,c,d=a(9)return(function(...)local e={}e.__index=
 e e.Extensions={Children=function(f)local g={}for h,i in f:GetChildren()do g[i.
 Name]=i end return g end}local f=cloneref or function(f)return f end e.Services=
@@ -168,11 +176,11 @@ then i=i(g.Root)end g.Loading[h]=nil g.Loaded[h]=i return i end e.Extend=
 function(g,h)for i,j in h do g:Add(i,j)end return g end e.Get=function(g,h)local
 i=g for j in string.gmatch(h,'[^/]+')do if e.is(i)then i=i:Load(j)else i=i[j]end
 assert(i~=nil,string.format('Invalid path "%s" at "%s"',tostring(h),tostring(j))
-)end return i end return e end)()end},{{1,4,{'Loader'},{{2,2,{'Library'},{{6,2,{
-'Interface'}},{7,2,{'Shared'},{{8,2,{'Cache'}}}},{3,2,{'Modules'},{{5,2,{
-'Luarmor'}},{4,2,{'KeyFile'}}}}}},{9,2,{'Vinca'}}}}},'0.4.2','strelizia.cc',
+)end return i end return e end)()end},{{1,4,{'Loader'},{{9,2,{'Vinca'}},{2,2,{
+'Library'},{{6,2,{'Interface'}},{7,2,{'Shared'},{{8,2,{'Cache'}}}},{3,2,{
+'Modules'},{{5,2,{'Luarmor'}},{4,2,{'KeyFile'}}}}}}}}},'0.4.2','strelizia.cc',
 string,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,
-pcall,tostring,tonumber,_VERSION local A,B,C,D,E,F,G=l.insert,l.remove,l.freeze
+pcall,tostring,tonumber,_VERSION local A,B,C,D,E,F,G=k.insert,k.remove,k.freeze
 or function(A)return A end,q.wrap,f.sub,f.match,f.gmatch if y and E(y,1,4)==
 'Lune'then local H,I=v(u,'@lune/task')if H and I then g=I end end local H=g and
 g.defer local I,J,K,L,M,N,O,P,Q=H or function(I,...)D(I)(...)end,{[1]='Folder',[
@@ -211,14 +219,14 @@ V,W,ac)K[ad]=X if T then for Y,Z in j,T do X[Y]=Z end end if U then for Y,Z in j
 ']')for ac,ad in j,c do CreateRefFromObject(ad,ab)end for ac,ad in j,b do local
 ae=K[ac]L[ae]=ad M[ae]=ac local T=ae.ClassName if T=='LocalScript'or T=='Script'
 then A(O,ae)end end local ac=function(ac)local ad,ae=ac.ClassName,N[ac]if ae and
-ad=='ModuleScript'then return p(ae)end local T,U=L[ac],function(T)T=w(T)local U,
+ad=='ModuleScript'then return n(ae)end local T,U=L[ac],function(T)T=w(T)local U,
 V,W=ac:GetFullName(),F(T,'[^:]+:(%d+): (.+)')if not V or not z then return U..
 ':*: '..(W or T)end V=x(V)local X=M[ac]local Y=z[X]local Z=V-Y+1 if Z<0 then Z=
 '?'end return U..':'..Z..': '..W end if ad=='LocalScript'or ad=='Script'then
 local V,W=v(T)if not V then i(U(W),0)end else local V={v(T)}local W=B(V,1)if not
-W then local X=B(V,1)i(U(X),0)end N[ac]=V return p(V)end end a=function(ad)local
+W then local X=B(V,1)i(U(X),0)end N[ac]=V return n(V)end end a=function(ad)local
 ae,T,U=K[ad],function(ae,...)local T={v(ae,...)}local U=B(T,1)if not U then i(T[
-1],3)end return p(T)end,C(h({},{__index=P,__newindex=function(ae,T,U)P[T]=U end,
+1],3)end return n(T)end,C(h({},{__index=P,__newindex=function(ae,T,U)P[T]=U end,
 __len=function()return#P end,__iter=function()return j,P end}))local af,ag,ah=C{
 version=d,envname=e,shared=U,script=s,require=u},ae,function(V,...)local W,X,Y=
 t(V),'Attempted to call require with a non-ModuleScript',
