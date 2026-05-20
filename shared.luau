@@ -2647,14 +2647,14 @@ true end local ah=ag()for ai,aj in af.BlacklistedExecutors or{}do if(aj:find(ah,
 1,true)==nil)then continue end return true end return false end return ae end
 end)()end,[18]=function()a(18)return(function(...)return function(aa)local ab,ac
 ,ad,ae=aa:Get'Modules/Color',Color3.new(0,1,0),Color3.new(1,0,0),Color3.new(0,0,
-1)return{Name='Slime RNG',Ids={['92416421522960']=true},Keyless=false,Downtime={
+1)return{Name='Slime RNG',Ids={['92416421522960']=true},Keyless=true,Downtime={
 Status=false,Message='Placeholder'},BlacklistedExecutors={'Solara','Xeno'},
 Credits={{Name='vma',Role='developer'},{Name='felik',Role='contributor'}},Script
 ='d0595bedc8bfc40178f522fe49b5285f',Update={Time=1763296128,Log={ab.Paint(
 '[+] Released',ac)}}}end end)()end,[19]=function()a(19)return(function(...)
 return function(aa)local ab,ac,ad,ae=aa:Get'Modules/Color',Color3.new(0,1,0),
 Color3.new(1,0,0),Color3.new(0,0,1)return{Name='Kick a Lucky Block',Ids={[
-'89469502395769']=true},Keyless=false,Downtime={Status=false,Message=
+'89469502395769']=true},Keyless=true,Downtime={Status=false,Message=
 'Placeholder'},BlacklistedExecutors={'Solara','Xeno'},Credits={{Name='felix',
 Role='developer'}},Script='dbf4452a0cf919c7bad6aef8117e789f',Update={Time=
 1763296128,Log={ab.Paint('[+] Released',ac)}}}end end)()end,[20]=function()a(20)
@@ -3123,36 +3123,36 @@ end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{21,2,{'RBXUtil'},{{25,2,{'Tree'}},{24,2,{
-'Promise'}},{23,2,{'Signal'}},{22,2,{'TableUtil'}},{26,2,{'Trove'}}}},{27,2,{
-'Functions'},{{33,2,{'OutputMessage'}},{30,2,{'Numbers'}},{34,2,{'GetPing'}},{32
-,2,{'PromptDiscord'}},{38,2,{'Noclip'}},{36,2,{'AntiAFK'}},{31,2,{'Strings'}},{
-37,2,{'BinarySearch'}},{35,2,{'Hooks'}},{28,2,{'CreateGUID'}},{29,2,{'Time'}}}},
-{40,2,{'Vinca'}},{39,2,{'Constants'}},{2,2,{'Modules'},{{3,2,{'TaskManager'},{{4
-,2,{'Task'}},{5,2,{'Lock'}}}},{6,2,{'Color'}},{17,2,{'Places'},{{18,2,{
-'Slime RNG'}},{19,2,{'Kick a Lucky Block'}}}},{8,2,{'Interface'},{{9,1,{'List'},
-{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{11,2,{'Main'}},{13,2,{'Tabs'},{{15
-,2,{'Settings'}},{14,2,{'Home'}}}},{12,2,{'SaveManager'}}}}}}}},{20,2,{
-'Preference'}},{7,2,{'t'}}}}}}},'0.4.2','strelizia.cc',string,task,setmetatable,
-error,next,table,unpack,coroutine,script,type,require,pcall,tostring,tonumber,
-_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.freeze or function(au
-)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and ay(as,1,4)=='Lune'
-then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC end end local aB=af
-and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or function(aC,...)ax(aC)(...)
-end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]='LocalScript',[5]=
-'StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={{},function(aL)
-local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=aN.Parent end
-return aM end},GetChildren={{},function(aL)local aM={}for aN in ai,aK[aL]do au(
-aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}for aN in ai,
-aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)end end return
-aM end},FindFirstChild={{'string','boolean?'},function(aL,aM,aN)local aO=aK[aL]
-for aP in ai,aO do if aP.Name==aM then return aP end end if aN then for aP in ai
-,aO do return aP:FindFirstChild(aM,true)end end end},FindFirstAncestor={{
-'string'},function(aL,aM)local aN=aL.Parent while aN do if aN.Name==aM then
-return aN end aN=aN.Parent end end},WaitForChild={{'string','number?'},function(
-aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO in ai,aL do local aP,aQ,aR=
-aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT,'^([^%?]+)(%??)')aR[aS]={
-aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
+ad end)()end},{{1,2,{'Shared'},{{39,2,{'Constants'}},{40,2,{'Vinca'}},{2,2,{
+'Modules'},{{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{8,2,{
+'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{11,2,{'Main'}},{16,2,{
+'ThemeManager'}},{13,2,{'Tabs'},{{14,2,{'Home'}},{15,2,{'Settings'}}}},{12,2,{
+'SaveManager'}}}}}}}},{7,2,{'t'}},{20,2,{'Preference'}},{17,2,{'Places'},{{18,2,
+{'Slime RNG'}},{19,2,{'Kick a Lucky Block'}}}},{6,2,{'Color'}}}},{21,2,{
+'RBXUtil'},{{26,2,{'Trove'}},{22,2,{'TableUtil'}},{23,2,{'Signal'}},{25,2,{
+'Tree'}},{24,2,{'Promise'}}}},{27,2,{'Functions'},{{32,2,{'PromptDiscord'}},{34,
+2,{'GetPing'}},{31,2,{'Strings'}},{38,2,{'Noclip'}},{28,2,{'CreateGUID'}},{36,2,
+{'AntiAFK'}},{35,2,{'Hooks'}},{29,2,{'Time'}},{37,2,{'BinarySearch'}},{30,2,{
+'Numbers'}},{33,2,{'OutputMessage'}}}}}}},'0.4.2','strelizia.cc',string,task,
+setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
+tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
+freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
+ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC
+end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or function
+(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]=
+'LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={{
+},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
+aN.Parent end return aM end},GetChildren={{},function(aL)local aM={}for aN in ai
+,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}
+for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)
+end end return aM end},FindFirstChild={{'string','boolean?'},function(aL,aM,aN)
+local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return aP end end if aN
+then for aP in ai,aO do return aP:FindFirstChild(aM,true)end end end},
+FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while aN do if
+aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{'string',
+'number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO in ai,aL
+do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT,
+'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
 "Expected ':' not '.' calling member function "..aN,2)end local aT={...}for aU,
 aV in ai,aR do local aW=aT[aU]local aX,aY,aZ=an(aW),aV[1],aV[2]if aW==nil and
 not aZ then ah('Argument '..aW..' missing or nil',3)end if aY~='any'and aX~=aY
