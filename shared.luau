@@ -3,38 +3,38 @@ function()local b,c,d=a(1)return(function(...)local e=d(c.Vinca)return e.new():
 Extend(e.Extensions.Children(c))end)()end,function()local b,c=a(2)return(
 function(...)return function(d)return d.new(d):Extend(d.Extensions.Children(c))
 end end)()end,function()local b,c,d=a(3)return(function(...)return function(e)
-local f=e.Services local g,h,i,j=f.RunService,d(c.Lock)(e),d(c.Task)(e),{Running
-=false,Connection=nil,Tasks={},PendingTasks={}}j.Task=i j.Lock=h j.Begin=
-function()if j.Running then return end j.Running=true j.Connection=g.Heartbeat:
-Connect(function(k)if(not j.Running)then return end debug.profilebegin
-'TaskManager'for l,m in j.PendingTasks do j.PendingTasks[l]=nil task.spawn(
-function()local n=m:Run()if(not n)or(not m.Interval)then return j.RemoveTask(l)
-end task.wait(m.Interval)if(j.Tasks[l])then j.PendingTasks[l]=m end end)end
-debug.profileend()end)end j.Stop=function()if not j.Running then return end j.
-Running=false j.Connection:Disconnect()j.Connection=nil for k in j.Tasks do j.
-RemoveTask(k)end end j.AddTask=function(k)assert(k and i.is(k),
-'Task must be a Task object!')local l=k.Identifier j.Tasks[l]=k j.PendingTasks[l
-]=k return l end j.RemoveTask=function(k)local l=j.Tasks[k]if(not l)then return
-end j.Tasks[k]=nil j.PendingTasks[k]=nil l:Destroy()end j.GetTasksFromIndex=
-function(k)local l={}for m,n in j.Tasks do if n.Index~=k then continue end l[m]=
-n end return l end j.RemoveTasksByIndex=function(k)for l in j.GetTasksFromIndex(
-k)do j.RemoveTask(l)end end return j end end)()end,function()a(4)return(function
-(...)return function(b)local c={}c.__index=c local d,e,f,g,h,i,j,k=b:Get
-'Modules/t',b:Get'Functions/Time',b:Get'Functions/OutputMessage',b:Get
-'Functions/CreateGUID',debug.setmemorycategory,debug.resetmemorycategory,debug.
-profilebegin,debug.profileend local l,m=d.tuple(d.string,d['function'],d.
-optional(d.number),d.optional(d.boolean)),d.optional(d.string)c.new=function(n,o
-,p,q)assert(l(n,o,p,q))return setmetatable({__TASK=true,Index=n,Identifier=g(),
-Callback=o,Running=false,Destroyed=false,Interval=p,CurrentStep=nil,Profiling=
-false,Priority=1,Locks=q and{Groups={},Individual={}}or nil},c)end c.is=function
-(n)return typeof(n)=='table'and rawget(n,'__TASK')end c.SetPriority=function(n,o
-)assert(d.number(o))n.Priority=o return n end c.GetPriority=function(n)return n.
-Priority end c.SetStep=function(n,o)assert(m(o))local p=n.CurrentStep n.
-CurrentStep=o if p then k()end if o~=nil then j(o)end return n end c.
-SetProfiling=function(n,o)assert(d.boolean(o))if n.Profiling==o then return n
-end n.Profiling=o if o then h(n.Index)j(n.Index)else if n.CurrentStep then n:
-SetStep(nil)end i()k()end return n end c.Run=function(n)n.Running=true local o,p
-=pcall(n.Callback,n)if(not o)then f('Error',string.format(
+local f=e.Services local g,h,i,j=f.RunService,d(c.Lock)(e),d(c.Task)(e),e:Get
+'RBXUtil/Trove'local k={Running=false,Connection=nil,Trove=j.new(),Tasks={},
+PendingTasks={}}k.Task=i k.Lock=h k.Begin=function()if k.Running then return end
+k.Running=true k.Connection=g.Heartbeat:Connect(function(l)if(not k.Running)then
+return end debug.profilebegin'TaskManager'for m,n in k.PendingTasks do k.
+PendingTasks[m]=nil task.spawn(function()local o=n:Run()if(not o)or(not n.
+Interval)then return k.RemoveTask(m)end task.wait(n.Interval)if(k.Tasks[m])then
+k.PendingTasks[m]=n end end)end debug.profileend()end)end k.Stop=function()if
+not k.Running then return end k.Running=false k.Connection:Disconnect()k.
+Connection=nil for l in k.Tasks do k.RemoveTask(l)end k.Trove:Destroy()end k.
+AddTask=function(l)assert(l and i.is(l),'Task must be a Task object!')local m=l.
+Identifier k.Tasks[m]=l k.PendingTasks[m]=l return m end k.RemoveTask=function(l
+)local m=k.Tasks[l]if(not m)then return end k.Tasks[l]=nil k.PendingTasks[l]=nil
+m:Destroy()end k.GetTasksFromIndex=function(l)local m={}for n,o in k.Tasks do if
+o.Index~=l then continue end m[n]=o end return m end k.RemoveTasksByIndex=
+function(l)for m in k.GetTasksFromIndex(l)do k.RemoveTask(m)end end return k end
+end)()end,function()a(4)return(function(...)return function(b)local c={}c.
+__index=c local d,e,f,g,h,i,j,k=b:Get'Modules/t',b:Get'Functions/Time',b:Get
+'Functions/OutputMessage',b:Get'Functions/CreateGUID',debug.setmemorycategory,
+debug.resetmemorycategory,debug.profilebegin,debug.profileend local l,m=d.tuple(
+d.string,d['function'],d.optional(d.number),d.optional(d.boolean)),d.optional(d.
+string)c.new=function(n,o,p,q)assert(l(n,o,p,q))return setmetatable({__TASK=true
+,Index=n,Identifier=g(),Callback=o,Running=false,Destroyed=false,Interval=p,
+CurrentStep=nil,Profiling=false,Priority=1,Locks=q and{Groups={},Individual={}}
+or nil},c)end c.is=function(n)return typeof(n)=='table'and rawget(n,'__TASK')end
+c.SetPriority=function(n,o)assert(d.number(o))n.Priority=o return n end c.
+GetPriority=function(n)return n.Priority end c.SetStep=function(n,o)assert(m(o))
+local p=n.CurrentStep n.CurrentStep=o if p then k()end if o~=nil then j(o)end
+return n end c.SetProfiling=function(n,o)assert(d.boolean(o))if n.Profiling==o
+then return n end n.Profiling=o if o then h(n.Index)j(n.Index)else if n.
+CurrentStep then n:SetStep(nil)end i()k()end return n end c.Run=function(n)n.
+Running=true local o,p=pcall(n.Callback,n)if(not o)then f('Error',string.format(
 [[An error has occured during runtime of Thread '%s' on Step '%s': %s]],
 tostring(n.Index),tostring(tostring(n.CurrentStep)),tostring(p)))end n.Running=
 false if n.Profiling then n:SetProfiling(false)end return o,p end c.Destroy=
@@ -525,29 +525,29 @@ BackgroundColor3='OutlineColor',Position=UDim2.fromOffset(1,1),Size=UDim2.new(1,
 -2,1,-2),ZIndex=aj,Parent=ak})if ai and ai>0 then U('UICorner',{CornerRadius=
 UDim.new(0,ai+1),Parent=ak})U('UICorner',{CornerRadius=UDim.new(0,ai),Parent=al}
 )end return ak,al end z.AddDraggableLabel=function(ag,ah)local ai,aj={},U(
-'TextLabel',{AutomaticSize=Enum.AutomaticSize.XY,BackgroundColor3=
-'BackgroundColor',Size=UDim2.fromOffset(0,0),Position=UDim2.fromOffset(6,6),Text
-=ah,TextSize=15,ZIndex=10,Parent=X})table.insert(z.Corners,U('UICorner',{
-CornerRadius=UDim.new(0,z.CornerRadius),Parent=aj}))U('UIPadding',{PaddingBottom
-=UDim.new(0,6),PaddingLeft=UDim.new(0,12),PaddingRight=UDim.new(0,12),PaddingTop
-=UDim.new(0,6),Parent=aj})table.insert(z.Scales,U('UIScale',{Parent=aj}))z:
-AddOutline(aj)z:MakeDraggable(aj,aj,true)ai.Label=aj ai.SetText=function(ak,al)
-aj.Text=al end ai.SetVisible=function(ak,al)aj.Visible=al end return ai end z.
-AddDraggableButton=function(ag,ah,ai,aj)local ak,al={},U('TextButton',{
-BackgroundColor3='BackgroundColor',Position=UDim2.fromOffset(6,6),TextSize=16,
-ZIndex=10,Parent=X})table.insert(z.Corners,U('UICorner',{CornerRadius=UDim.new(0
-,z.CornerRadius),Parent=al}))if not aj then table.insert(z.Scales,U('UIScale',{
-Parent=al}))end z:AddOutline(al)al.MouseButton1Click:Connect(function()z:
-SafeCallback(ai,ak)end)z:MakeDraggable(al,al,true)ak.Button=al ak.SetText=
-function(am,an)local ao,ap=z:GetTextBounds(an,z.Scheme.Font,16)al.Text=an al.
-Size=UDim2.fromOffset(ao*2,ap*2)end ak:SetText(ah)return ak end z.
-AddDraggableMenu=function(ag,ah)local ai=U('Frame',{AutomaticSize=Enum.
-AutomaticSize.XY,BackgroundColor3='BackgroundColor',Position=UDim2.fromOffset(6,
-6),Size=UDim2.fromOffset(0,0),ZIndex=10,Parent=X})table.insert(z.Corners,U(
-'UICorner',{CornerRadius=UDim.new(0,z.CornerRadius),Parent=ai}))table.insert(z.
-Scales,U('UIScale',{Parent=ai}))z:AddOutline(ai)z:MakeLine(ai,{Position=UDim2.
-fromOffset(0,34),Size=UDim2.new(1,0,0,1)})local aj=U('TextLabel',{
-BackgroundTransparency=1,Size=UDim2.new(1,0,0,34),Text=ah,TextSize=15,
+'TextLabel',{AutomaticSize=Enum.AutomaticSize.XY,TextXAlignment=Enum.
+TextXAlignment.Left,BackgroundColor3='BackgroundColor',Size=UDim2.fromOffset(0,0
+),Position=UDim2.fromOffset(6,6),Text=ah,TextSize=15,ZIndex=10,Parent=X})table.
+insert(z.Corners,U('UICorner',{CornerRadius=UDim.new(0,z.CornerRadius),Parent=aj
+}))U('UIPadding',{PaddingBottom=UDim.new(0,6),PaddingLeft=UDim.new(0,12),
+PaddingRight=UDim.new(0,12),PaddingTop=UDim.new(0,6),Parent=aj})table.insert(z.
+Scales,U('UIScale',{Parent=aj}))z:AddOutline(aj)z:MakeDraggable(aj,aj,true)ai.
+Label=aj ai.SetText=function(ak,al)aj.Text=al end ai.SetVisible=function(ak,al)
+aj.Visible=al end return ai end z.AddDraggableButton=function(ag,ah,ai,aj)local
+ak,al={},U('TextButton',{BackgroundColor3='BackgroundColor',Position=UDim2.
+fromOffset(6,6),TextSize=16,ZIndex=10,Parent=X})table.insert(z.Corners,U(
+'UICorner',{CornerRadius=UDim.new(0,z.CornerRadius),Parent=al}))if not aj then
+table.insert(z.Scales,U('UIScale',{Parent=al}))end z:AddOutline(al)al.
+MouseButton1Click:Connect(function()z:SafeCallback(ai,ak)end)z:MakeDraggable(al,
+al,true)ak.Button=al ak.SetText=function(am,an)local ao,ap=z:GetTextBounds(an,z.
+Scheme.Font,16)al.Text=an al.Size=UDim2.fromOffset(ao*2,ap*2)end ak:SetText(ah)
+return ak end z.AddDraggableMenu=function(ag,ah)local ai=U('Frame',{
+AutomaticSize=Enum.AutomaticSize.XY,BackgroundColor3='BackgroundColor',Position=
+UDim2.fromOffset(6,6),Size=UDim2.fromOffset(0,0),ZIndex=10,Parent=X})table.
+insert(z.Corners,U('UICorner',{CornerRadius=UDim.new(0,z.CornerRadius),Parent=ai
+}))table.insert(z.Scales,U('UIScale',{Parent=ai}))z:AddOutline(ai)z:MakeLine(ai,
+{Position=UDim2.fromOffset(0,34),Size=UDim2.new(1,0,0,1)})local aj=U('TextLabel'
+,{BackgroundTransparency=1,Size=UDim2.new(1,0,0,34),Text=ah,TextSize=15,
 TextXAlignment=Enum.TextXAlignment.Left,Parent=ai})U('UIPadding',{PaddingLeft=
 UDim.new(0,12),PaddingRight=UDim.new(0,12),Parent=aj})local ak=U('Frame',{
 BackgroundTransparency=1,Position=UDim2.fromOffset(0,35),Size=UDim2.new(1,0,1,-
@@ -2650,42 +2650,48 @@ end)()end,[18]=function()a(18)return(function(...)return function(aa)local ab,ac
 1)return{Name='Slime RNG',Ids={['92416421522960']=true},Keyless=false,Downtime={
 Status=false,Message='Placeholder'},BlacklistedExecutors={'Solara','Xeno'},
 Credits={{Name='vma',Role='developer'},{Name='felik',Role='contributor'}},Script
-='8db54cb776ef39fb18e50589c7cff5db',Update={Time=1763296128,Log={ab.Paint(
+='d0595bedc8bfc40178f522fe49b5285f',Update={Time=1763296128,Log={ab.Paint(
 '[+] Released',ac)}}}end end)()end,[19]=function()a(19)return(function(...)
-return function(aa)local ab=aa.Services local ac,ad,ae,af=ab.HttpService,aa:Get
-'Modules/t','strelizia/pref','generic'local ag,ah,ai=ad.union(ad.string,ad.
-number,ad.table,ad.boolean,ad['nil']),ad.optional(ad.string),{}ai.__index=ai ai.
-new=function(aj)aj=aj or af return setmetatable({Path=string.format('%s/%s.json'
-,tostring(ae),tostring(aj))},ai)end ai.Read=function(aj,ak)assert(ah(ak))local
-al=(ak and{nil}or{{}})[1]if(not isfile(aj.Path))then return al end local am,an=
-pcall(ac.JSONDecode,ac,readfile(aj.Path))if(not am)then aj:Erase()return al end
-return(ak and{(an[ak])}or{an})[1]end ai.Write=function(aj,ak,al)assert(ad.
-string(ak))assert(ag(al))local am=aj:Read()am[ak]=al local an,ao=pcall(ac.
-JSONEncode,ac,am)if an then writefile(aj.Path,ao)end return aj end ai.Update=
-function(aj,ak,al)assert(ad.string(ak))assert(ad['function'](al))return aj:
-Write(ak,al(aj:Read(ak)))end ai.Erase=function(aj)writefile(aj.Path,'{}')return
-aj end return ai end end)()end,[20]=function()local aa,ab=a(20)return(function(
-...)return function(ac)return ac.new(ac):Extend(ac.Extensions.Children(ab))end
-end)()end,[21]=function()a(21)return(function(...)return function(aa)local ab={}
-ab.IsDict=function(ac)return ac[1]==nil end ab.Dictionary=function(ac)local ad={
-}for ae,af in ac do ad[af]=true end return ad end ab.Filter=function(ac,ad)local
-ae,af={},ab.IsDict(ac)for ag,ah in ac do local ai=ad(ah,ag)if(not ai)then
-continue end if af then ae[ag]=ah else table.insert(ae,ah)end end return ae end
-ab.Reconcile=function(ac,ad)for ae,af in ad do local ag,ah=ac[ae],typeof(af)if
-ag==nil or typeof(ag)~=ah then ac[ae]=af elseif ah=='table'then ab.Reconcile(ag,
-af)end end return ac end ab.FullMap=function(ac,ad)local ae,af={},ab.IsDict(ac)
-for ag,ah in ac do local ai,aj=ad(ah,ag)if not(ai)then continue end if af then
-ae[aj]=ai else table.insert(ae,ai)end end return ae end ab.JoinArrays=function(
-...)local ac={}for ad=1,select('#',...)do for ae,af in select(ad,...)do ac[#ac+1
-]=af end end return ac end return ab end end)()end,[22]=function()a(22)return(
-function(...)return function(aa)local ab local ac=function(ac,...)local ad=ab ab
-=nil ac(...)ab=ad end local ad,ae=function()while true do ac(coroutine.yield())
-end end,{}ae.__index=ae ae.new=function(af,ag)return setmetatable({_connected=
-true,_signal=af,_fn=ag,_next=false},ae)end ae.Disconnect=function(af)af.
-_connected=false if af._signal._handlerListHead==af then af._signal.
-_handlerListHead=af._next else local ag=af._signal._handlerListHead while ag and
-ag._next~=af do ag=ag._next end if ag then ag._next=af._next end end end
-setmetatable(ae,{__index=function(af,ag)error((
+return function(aa)local ab,ac,ad,ae=aa:Get'Modules/Color',Color3.new(0,1,0),
+Color3.new(1,0,0),Color3.new(0,0,1)return{Name='Kick a Lucky Block',Ids={[
+'89469502395769']=true},Keyless=false,Downtime={Status=false,Message=
+'Placeholder'},BlacklistedExecutors={'Solara','Xeno'},Credits={{Name='felix',
+Role='developer'}},Script='dbf4452a0cf919c7bad6aef8117e789f',Update={Time=
+1763296128,Log={ab.Paint('[+] Released',ac)}}}end end)()end,[20]=function()a(20)
+return(function(...)return function(aa)local ab=aa.Services local ac,ad,ae,af=ab
+.HttpService,aa:Get'Modules/t','strelizia/pref','generic'local ag,ah,ai=ad.
+union(ad.string,ad.number,ad.table,ad.boolean,ad['nil']),ad.optional(ad.string),
+{}ai.__index=ai ai.new=function(aj)aj=aj or af return setmetatable({Path=string.
+format('%s/%s.json',tostring(ae),tostring(aj))},ai)end ai.Read=function(aj,ak)
+assert(ah(ak))local al=(ak and{nil}or{{}})[1]if(not isfile(aj.Path))then return
+al end local am,an=pcall(ac.JSONDecode,ac,readfile(aj.Path))if(not am)then aj:
+Erase()return al end return(ak and{(an[ak])}or{an})[1]end ai.Write=function(aj,
+ak,al)assert(ad.string(ak))assert(ag(al))local am=aj:Read()am[ak]=al local an,ao
+=pcall(ac.JSONEncode,ac,am)if an then writefile(aj.Path,ao)end return aj end ai.
+Update=function(aj,ak,al)assert(ad.string(ak))assert(ad['function'](al))return
+aj:Write(ak,al(aj:Read(ak)))end ai.Erase=function(aj)writefile(aj.Path,'{}')
+return aj end return ai end end)()end,[21]=function()local aa,ab=a(21)return(
+function(...)return function(ac)return ac.new(ac):Extend(ac.Extensions.Children(
+ab))end end)()end,[22]=function()a(22)return(function(...)return function(aa)
+local ab={}ab.IsDict=function(ac)return ac[1]==nil end ab.Dictionary=function(ac
+)local ad={}for ae,af in ac do ad[af]=true end return ad end ab.Filter=function(
+ac,ad)local ae,af={},ab.IsDict(ac)for ag,ah in ac do local ai=ad(ah,ag)if(not ai
+)then continue end if af then ae[ag]=ah else table.insert(ae,ah)end end return
+ae end ab.Reconcile=function(ac,ad)for ae,af in ad do local ag,ah=ac[ae],typeof(
+af)if ag==nil or typeof(ag)~=ah then ac[ae]=af elseif ah=='table'then ab.
+Reconcile(ag,af)end end return ac end ab.FullMap=function(ac,ad)local ae,af={},
+ab.IsDict(ac)for ag,ah in ac do local ai,aj=ad(ah,ag)if not(ai)then continue end
+if af then ae[aj]=ai else table.insert(ae,ai)end end return ae end ab.JoinArrays
+=function(...)local ac={}for ad=1,select('#',...)do for ae,af in select(ad,...)
+do ac[#ac+1]=af end end return ac end return ab end end)()end,[23]=function()a(
+23)return(function(...)return function(aa)local ab local ac=function(ac,...)
+local ad=ab ab=nil ac(...)ab=ad end local ad,ae=function()while true do ac(
+coroutine.yield())end end,{}ae.__index=ae ae.new=function(af,ag)return
+setmetatable({_connected=true,_signal=af,_fn=ag,_next=false},ae)end ae.
+Disconnect=function(af)af._connected=false if af._signal._handlerListHead==af
+then af._signal._handlerListHead=af._next else local ag=af._signal.
+_handlerListHead while ag and ag._next~=af do ag=ag._next end if ag then ag.
+_next=af._next end end end setmetatable(ae,{__index=function(af,ag)error((
 'Attempt to get Connection::%s (not a valid member)'):format(tostring(ag)),2)end
 ,__newindex=function(af,ag,ah)error((
 'Attempt to set Connection::%s (not a valid member)'):format(tostring(ag)),2)end
@@ -2703,7 +2709,7 @@ end ah(...)end)return ai end setmetatable(af,{__index=function(ag,ah)error((
 'Attempt to get Signal::%s (not a valid member)'):format(tostring(ah)),2)end,
 __newindex=function(ag,ah,ai)error((
 'Attempt to set Signal::%s (not a valid member)'):format(tostring(ah)),2)end})
-return af end end)()end,[23]=function()a(23)return(function(...)return function(
+return af end end)()end,[24]=function()a(24)return(function(...)return function(
 aa)local ab,ac,ad,ae,af,ag,ah='Non-promise value passed into %s at index %s',
 'Please pass a list of promises to %s','Please pass a handler function to %s!',{
 __mode='k'},function(ab)if type(ab)=='function'then return true end if type(ab)
@@ -2944,8 +2950,8 @@ elseif type(az)~='boolean'then error
 then return ay()end av(ay)end)end ao.onUnhandledRejection=function(ar)table.
 insert(ao._unhandledRejectionCallbacks,ar)return function()local as=table.find(
 ao._unhandledRejectionCallbacks,ar)if as then table.remove(ao.
-_unhandledRejectionCallbacks,as)end end end return ao end end)()end,[24]=
-function()a(24)return(function(...)return function(aa)local ab={}ab.Paths=
+_unhandledRejectionCallbacks,as)end end end return ao end end)()end,[25]=
+function()a(25)return(function(...)return function(aa)local ab={}ab.Paths=
 setmetatable({},{__mode='k'})local ac,ad,ae,af,ag={Delimiter='/'},game.
 WaitForChild,game.FindFirstChild,function(ac,ad)local ae=ab.Paths[ac]if not ae
 then return nil end local af=ae[ad]return((af~=nil and af.Parent==ac)and{af}or{
@@ -2954,18 +2960,70 @@ nil})[1]end,function(ac,ad,ae)local af=ab.Paths[ac]if not af then ab.Paths[ac]={
 if ak then return ak end local al,am=string.split(ah,ac.Delimiter),ai for an,ao
 in al do am=ae(am,ao)or(aj and ad(am,ao,aj))or nil if not am then return nil end
 end ag(ai,ah,am)return am end ac.Find=function(ai,aj)return ah(aj,ai)end ac.
-Await=function(ai,aj,ak)return ah(aj,ai,ak)end return ac end end)()end,[25]=
-function()local aa,ab=a(25)return(function(...)return function(ac)return ac.new(
-ac):Extend(ac.Extensions.Children(ab))end end)()end,[26]=function()a(26)return(
-function(...)return function(aa)local ab=aa.Services local ac=ab.HttpService
-return function()return(ac:GenerateGUID(false):gsub('-','')):lower()end end end
-)()end,[27]=function()a(27)return(function(...)return function(aa)local ab=aa.
-Services local ac,ad,ae,af=ab.Workspace,aa:Get'Modules/t',aa:Get
-'RBXUtil/TableUtil',aa:Get'Functions/Numbers'local ag,ah,ai,aj=ad.numberMin(0),
-ad.tuple(ad.numberMin(0),ad.string),math.floor,{}aj.Constants={Second=1,Minute=
-60,Hour=3600,Day=86400,Month=2592000,Year=31536000}local ak={}for al,am in
-pairs(aj.Constants)do table.insert(ak,{Name=al,Value=am})end table.sort(ak,
-function(al,am)return al.Value>am.Value end)aj.now=function()return ac:
+Await=function(ai,aj,ak)return ah(aj,ai,ak)end return ac end end)()end,[26]=
+function()a(26)return(function(...)local aa=game:GetService'RunService'local ab,
+ac,ad=newproxy(),newproxy(),table.freeze{'Destroy','Disconnect','destroy',
+'disconnect'}local ae,af,ag,ah=function(ae,af)local ag=typeof(ae)if ag==
+'function'then return ab elseif ag=='thread'then return ac end if af then return
+af end if ag=='Instance'then return'Destroy'elseif ag=='RBXScriptConnection'then
+return'Disconnect'elseif ag=='table'then for ah,ai in ad do if typeof(ae[ai])==
+'function'then return ai end end end error(string.format(
+'failed to get cleanup function for object %s: %s',tostring(ag),tostring(ae)),3)
+end,function(ae)if typeof(ae)~='table'or typeof(ae.getStatus)~='function'or
+typeof(ae.finally)~='function'or typeof(ae.cancel)~='function'then error(
+'did not receive a promise as an argument',3)end end,function(ae)if typeof(ae)~=
+'RBXScriptSignal'and(typeof(ae)~='table'or typeof(ae.Connect)~='function'or
+typeof(ae.Once)~='function')then error('did not receive a signal as an argument'
+,3)end end,{}ah.__index=ah ah.new=function()local ai=setmetatable({},ah)ai.
+_objects={}ai._cleaning=false return(ai)end ah.Add=function(ai,aj,ak)if ai.
+_cleaning then error('cannot call trove:Add() while cleaning',2)end local al=ae(
+aj,ak)table.insert(ai._objects,{aj,al})return aj end ah.Clone=function(ai,aj)if
+ai._cleaning then error('cannot call trove:Clone() while cleaning',2)end return
+ai:Add(aj:Clone())end ah.Construct=function(ai,aj,...)if ai._cleaning then
+error('Cannot call trove:Construct() while cleaning',2)end local ak,al=(type(aj)
+)if ak=='table'then al=(aj).new(...)elseif ak=='function'then al=(aj)(...)end
+return ai:Add(al)end ah.Connect=function(ai,aj,ak)if ai._cleaning then error(
+'Cannot call trove:Connect() while cleaning',2)end ag(aj)local al=aj return ai:
+Add(al:Connect(ak))end ah.Once=function(ai,aj,ak)if ai._cleaning then error(
+'Cannot call trove:Connect() while cleaning',2)end ag(aj)local al,am=aj am=al:
+Once(function(...)ak(...)ai:Pop(am)end)return ai:Add(am)end ah.BindToRenderStep=
+function(ai,aj,ak,al)if ai._cleaning then error(
+'cannot call trove:BindToRenderStep() while cleaning',2)end aa:BindToRenderStep(
+aj,ak,al)ai:Add(function()aa:UnbindFromRenderStep(aj)end)end ah.AddPromise=
+function(ai,aj)if ai._cleaning then error(
+'cannot call trove:AddPromise() while cleaning',2)end af(aj)local ak=aj if ak:
+getStatus()=='Started'then ak:finally(function()if ai._cleaning then return end
+ai:_findAndRemoveFromObjects(ak,false)end)ai:Add(ak,'cancel')end return ak end
+ah.Remove=function(ai,aj)if ai._cleaning then error(
+'cannot call trove:Remove() while cleaning',2)end return ai:
+_findAndRemoveFromObjects(aj,true)end ah.Pop=function(ai,aj)if ai._cleaning then
+error('cannot call trove:Pop() while cleaning',2)end return ai:
+_findAndRemoveFromObjects(aj,false)end ah.Extend=function(ai)if ai._cleaning
+then error('cannot call trove:Extend() while cleaning',2)end return ai:
+Construct(ah)end ah.Clean=function(ai)if ai._cleaning then return end ai.
+_cleaning=true for aj,ak in ai._objects do ai:_cleanupObject(ak[1],ak[2])end
+table.clear(ai._objects)ai._cleaning=false end ah.WrapClean=function(ai)return
+function()ai:Clean()end end ah._findAndRemoveFromObjects=function(ai,aj,ak)local
+al=ai._objects for am,an in al do if an[1]==aj then local ao=#al al[am]=al[ao]al
+[ao]=nil if ak then ai:_cleanupObject(an[1],an[2])end return true end end return
+false end ah._cleanupObject=function(ai,aj,ak)if ak==ab then task.spawn(aj)
+elseif ak==ac then pcall(task.cancel,aj)else aj[ak](aj)end end ah.
+AttachToInstance=function(ai,aj)if ai._cleaning then error(
+'cannot call trove:AttachToInstance() while cleaning',2)elseif not aj:
+IsDescendantOf(game)then error(
+'instance is not a descendant of the game hierarchy',2)end return ai:Connect(aj.
+Destroying,function()ai:Destroy()end)end ah.Destroy=function(ai)ai:Clean()end
+return{new=ah.new}end)()end,[27]=function()local aa,ab=a(27)return(function(...)
+return function(ac)return ac.new(ac):Extend(ac.Extensions.Children(ab))end end)(
+)end,[28]=function()a(28)return(function(...)return function(aa)local ab=aa.
+Services local ac=ab.HttpService return function()return(ac:GenerateGUID(false):
+gsub('-','')):lower()end end end)()end,[29]=function()a(29)return(function(...)
+return function(aa)local ab=aa.Services local ac,ad,ae,af=ab.Workspace,aa:Get
+'Modules/t',aa:Get'RBXUtil/TableUtil',aa:Get'Functions/Numbers'local ag,ah,ai,aj
+=ad.numberMin(0),ad.tuple(ad.numberMin(0),ad.string),math.floor,{}aj.Constants={
+Second=1,Minute=60,Hour=3600,Day=86400,Month=2592000,Year=31536000}local ak={}
+for al,am in pairs(aj.Constants)do table.insert(ak,{Name=al,Value=am})end table.
+sort(ak,function(al,am)return al.Value>am.Value end)aj.now=function()return ac:
 GetServerTimeNow()end aj.FormatTime=function(al,am)assert(ah(al,am))return
 DateTime.fromUnixTimestamp(al):FormatLocalTime(am,'en-us')end aj.FormatDuration=
 function(al,am,an)assert(ah(al,am))local ao,ap,aq,ar,as=ai(al/86400),ai(al%86400
@@ -2975,94 +3033,126 @@ format(as,ao)):gsub('%%h',string.format(as,ap)):gsub('%%m',string.format(as,aq))
 al=ai(al)for am,an in ak do local ao,ap=an.Name,an.Value local aq=ai(al/ap)if aq
 ==0 then continue end return string.format('%s %s',tostring(af.Comma(aq)),
 tostring(ao..(aq>1 and's'or'')))end return'0 seconds'end return aj end end)()end
-,[28]=function()a(28)return(function(...)return function(aa)local ab=aa:Get
+,[30]=function()a(30)return(function(...)return function(aa)local ab=aa:Get
 'Modules/t'local ac,ad=ab.tuple(ab.number,ab.numberConstrained(0,8)),{}ad.Comma=
 function(ae)assert(ab.integer(ae))local af=tostring(ae)local ag,ah,ai=af:match
 '^([^%d]*%d)(%d*)(.-)$'return ag..ah:reverse():gsub('(%d%d%d)','%1,'):reverse()
 ..ai end ad.DecimalRound=function(ae,af)assert(ac(ae,af))if ae%1==0 then return
 ae end return string.format(string.format('%%.%sf',tostring(af)),ae)end return
-ad end end)()end,[29]=function()a(29)return(function(...)return function(aa)
+ad end end)()end,[31]=function()a(31)return(function(...)return function(aa)
 local ab=aa:Get'Modules/t'local ac,ad,ae=ab.tuple(ab.string,ab.numberMin(0),ab.
 optional(ab.string)),string.rep,{}ae.Truncate=function(af,ag,ah)assert(ac(af,ag,
 ah))return af:sub(1,ag)..(ah or'')end ae.LeadingSpace=function(af)assert(ab.
-numberPositive(af))return ad(' ',af)end return ae end end)()end,[30]=function()
-a(30)return(function(...)return function(aa)local ab,ac=(request or(http and
+numberPositive(af))return ad(' ',af)end return ae end end)()end,[32]=function()
+a(32)return(function(...)return function(aa)local ab,ac=(request or(http and
 http.request)or httprequest),aa.Services local ad=ac.HttpService return function
 (ae,af)if af then setclipboard('https://www.discord.gg/'..ae)end if(not ab)then
 return false end ab{Url='http://127.0.0.1:6463/rpc?v=1',Method='POST',Headers={[
 'Content-Type']='application/json',Origin='https://discord.com'},Body=ad:
 JSONEncode{cmd='INVITE_BROWSER',args={code=ae},nonce=ad:GenerateGUID(false)}}
-return true end end end)()end,[31]=function()a(31)return(function(...)return
+return true end end end)()end,[33]=function()a(33)return(function(...)return
 function(aa)local ab={Info='\u{1f535}',Warn='\u{1f7e0}',Success='\u{1f7e2}',
 Error='\u{1f534}'}local ac=function(ac,ad)local ae=os.date'*t'string.format(
 '%s:%s:%s',ae.hour,ae.min,ae.sec)print(string.format('%s | [Library]: %s',ab[ac]
-,ad))end return ac end end)()end,[32]=function()a(32)return(function(...)return
+,ad))end return ac end end)()end,[34]=function()a(34)return(function(...)return
 function(aa)local ab=aa.Services.Stats local ac=ab.Network.ServerStatsItem[
-'Data Ping']return function()return ac:GetValue()/1000 end end end)()end,[33]=
-function()a(33)return(function(...)return function(aa)local ab,ac,ad,ae=aa:Get
-'RBXUtil/TableUtil',aa:Get'Functions/Time',aa:Get'Modules/t',utf8.char local af=
-ac.Constants local ag={DiscordInviteCode='',Characters={Invisible=10240,
-BulletPoint=8226},Emojis={Unknown='<:letter_x:1305284794044776622>',Person=
-'<:person:1305298114265219094>'},LRM_Constants={Premium=LRM_IsUserPremium or
-false,DiscordUserId=LRM_LinkedDiscordID or 0,ScriptName=LRM_ScriptName or
-'generic',TotalExecutions=LRM_TotalExecutions or 1337,SecondsLeft=
-LRM_SecondsLeft or 60,UserNote=LRM_UserNote or'user note',ScriptVersion=
-LRM_ScriptVersion or'0001'},KeySystemAdProviders={{Name='Linkvertise',KeyLength=
-af.Hour*24,CompletionTime=af.Minute*3,Identifier='Linkvertise-EsllfgSWtQqg'},{
-Name='Another Provider',KeyLength=af.Hour*12,CompletionTime=af.Minute*2,
-Identifier='Something-ABCD'}},ProductionRoleInfo={developer={Color=Color3.
-fromRGB(2,116,255)},contributor={Color=Color3.fromRGB(255,255,127)},generic={
-Color=Color3.new(1,1,1)}}}for ah,ai in ag.Characters do if typeof(ai)~='number'
-then continue end ag.Characters[ah]=ae(ai)end setmetatable(ag.Emojis,{__index=
-function(ah,ai)local aj=rawget(ah,'Unknown')rawset(ah,ai,aj)return aj end})
-return ag end end)()end,[34]=function()local aa,ab,ac=a(34)return(function(...)
-local ad={}ad.__index=ad ad.Extensions={Children=function(ae)local af={}for ag,
-ah in ae:GetChildren()do af[ah.Name]=ah end return af end}local ae=cloneref or
-function(ae)return ae end ad.Services=setmetatable({},{__index=function(af,ag)
-local ah,ai=pcall(game.GetService,game,ag)if ah and ai then ai=ae(ai)rawset(af,
-ag,ai)return ai end return nil end})ad.new=function(af)local ag=setmetatable({
-__vinca=true,Loaded={},Loading={},Container={}},ad)ag.Root=af or ag return ag
-end ad.is=function(af)return af and typeof(af)=='table'and rawget(af,'__vinca')
-end ad.Add=function(af,ag,ah)assert(not af.Container[ag],'Index already exists')
-af.Container[ag]=ah return af end ad.Load=function(af,ag)if af.Loaded[ag]~=nil
-then return af.Loaded[ag]end local ah=af.Container[ag]assert(ah~=nil,string.
-format('Unknown dependency "%s"',tostring(ag)))assert(not af.Loading[ag],string.
-format('Circular dependency at "%s"',tostring(ag)))af.Loading[ag]=true if
-typeof(ah)=='table'and ah.ClassName=='ModuleScript'then ah=ac(ah)elseif typeof(
-ah)=='Instance'and ah.ClassName=='ModuleScript'then ah=ac(ah)end if typeof(ah)==
+'Data Ping']return function()return ac:GetValue()/1000 end end end)()end,[35]=
+function()a(35)return(function(...)return function(aa)local ab=aa:Get'Modules/t'
+local ac,ad=ab.tuple(ab.string,ab['function'],ab['function']),{List={}}ad.Add=
+function(ae,af,ag)assert(ac(ae,af,ag))if ad.List[ae]then ad.Release(ae)end local
+ah=hookfunction(af,newcclosure(ag))ad.List[ae]={af,ah}return ah end ad.Release=
+function(ae)assert(ab.string(ae))local af=ad.List[ae]if(not af)then return false
+end hookfunction(af[1],af[2])ad.List[ae]=nil return true end ad.Cleanup=function
+()for ae in ad.List do ad.Release(ae)end end return ad end end)()end,[36]=
+function()a(36)return(function(...)return function(aa)local ab=aa.Services local
+ac,ad,ae=ab.VirtualUser,ab.Players,ab.Workspace local af,ag,ah,ai=ad.LocalPlayer
+,Random.new(),Vector2.zero,{Connection=nil}ai.IsEnabled=function()return ai.
+Connection~=nil end ai.Enable=function()if ai.IsEnabled()then return true end ai
+.Connection=af.Idled:Connect(function(aj)local ak=ae.CurrentCamera ac:
+Button2Down(ah,ak.CFrame)task.wait(ag:NextNumber(0,1))ac:Button2Up(ah,ak.CFrame)
+end)return true end ai.Disable=function()if(not ai.IsEnabled())then return true
+end ai.Connection:Disconnect()ai.Connection=nil return true end return ai end
+end)()end,[37]=function()a(37)return(function(...)return function(aa)local ab={}
+ab.Find=function(ac,ad,ae)local af,ag=1,#ac while af<=ag do local ah=math.floor(
+(af+ag)/2)local ai=(ae and{(ae(ac[ah]))}or{(ac[ah])})[1]if ai==ad then return ah
+,ac[ah]elseif ai<ad then af=ah+1 else ag=ah-1 end end return nil end ab.Nearest=
+function(ac,ad,ae)local af,ag,ah,ai=1,#ac,(math.huge)while af<=ag do local aj=
+math.floor((af+ag)/2)local ak=(ae and{(ae(ac[aj]))}or{(ac[aj])})[1]local al=math
+.abs(ak-ad)if al<ah then ai=aj ah=al end if ak==ad then break elseif ak<ad then
+af=aj+1 else ag=aj-1 end end if ai then return ai,ac[ai]end return nil end
+return ab end end)()end,[38]=function()a(38)return(function(...)return function(
+aa)local ab=aa.Services local ac,ad,ae=ab.Players,ab.Workspace,ab.RunService
+local af,ag=(ac.LocalPlayer)local ah,ai=function(ah)local ai=af.Character if(not
+ai)then return end for aj,ak in ai:QueryDescendants'BasePart'do ak.CanCollide=ah
+end end,{}ai.Noclip=function()if ag then return end ag=ae.Stepped:Connect(
+function()ah(false)end)end ai.Clip=function()if ag then ag:Disconnect()ag=nil
+end ah(true)end return ai end end)()end,[39]=function()a(39)return(function(...)
+return function(aa)local ab,ac,ad,ae=aa:Get'RBXUtil/TableUtil',aa:Get
+'Functions/Time',aa:Get'Modules/t',utf8.char local af=ac.Constants local ag={
+DiscordInviteCode='',Characters={Invisible=10240,BulletPoint=8226},Emojis={
+Unknown='<:letter_x:1305284794044776622>',Person='<:person:1305298114265219094>'
+},LRM_Constants={Premium=LRM_IsUserPremium or false,DiscordUserId=
+LRM_LinkedDiscordID or 0,ScriptName=LRM_ScriptName or'generic',TotalExecutions=
+LRM_TotalExecutions or 1337,SecondsLeft=LRM_SecondsLeft or 60,UserNote=
+LRM_UserNote or'user note',ScriptVersion=LRM_ScriptVersion or'0001'},
+KeySystemAdProviders={{Name='Linkvertise',KeyLength=af.Hour*24,CompletionTime=af
+.Minute*3,Identifier='Linkvertise-EsllfgSWtQqg'},{Name='Another Provider',
+KeyLength=af.Hour*12,CompletionTime=af.Minute*2,Identifier='Something-ABCD'}},
+ProductionRoleInfo={developer={Color=Color3.fromRGB(2,116,255)},contributor={
+Color=Color3.fromRGB(255,255,127)},generic={Color=Color3.new(1,1,1)}}}for ah,ai
+in ag.Characters do if typeof(ai)~='number'then continue end ag.Characters[ah]=
+ae(ai)end setmetatable(ag.Emojis,{__index=function(ah,ai)local aj=rawget(ah,
+'Unknown')rawset(ah,ai,aj)return aj end})return ag end end)()end,[40]=function()
+local aa,ab,ac=a(40)return(function(...)local ad={}ad.__index=ad ad.Extensions={
+Children=function(ae)local af={}for ag,ah in ae:GetChildren()do af[ah.Name]=ah
+end return af end}local ae=cloneref or function(ae)return ae end ad.Services=
+setmetatable({},{__index=function(af,ag)local ah,ai=pcall(game.GetService,game,
+ag)if ah and ai then ai=ae(ai)rawset(af,ag,ai)return ai end return nil end})ad.
+new=function(af)local ag=setmetatable({__vinca=true,Loaded={},Loading={},
+Container={}},ad)ag.Root=af or ag return ag end ad.is=function(af)return af and
+typeof(af)=='table'and rawget(af,'__vinca')end ad.Add=function(af,ag,ah)assert(
+not af.Container[ag],'Index already exists')af.Container[ag]=ah return af end ad
+.Load=function(af,ag)if af.Loaded[ag]~=nil then return af.Loaded[ag]end local ah
+=af.Container[ag]assert(ah~=nil,string.format('Unknown dependency "%s"',
+tostring(ag)))assert(not af.Loading[ag],string.format(
+'Circular dependency at "%s"',tostring(ag)))af.Loading[ag]=true if typeof(ah)==
+'table'and ah.ClassName=='ModuleScript'then ah=ac(ah)elseif typeof(ah)==
+'Instance'and ah.ClassName=='ModuleScript'then ah=ac(ah)end if typeof(ah)==
 'function'then ah=ah(af.Root)end af.Loading[ag]=nil af.Loaded[ag]=ah return ah
 end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
 ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
 is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
 'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{33,2,{'Constants'}},{2,2,{'Modules'},{{17,2,{
-'Places'},{{18,2,{'Slime RNG'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{
-'Obsidian'},{{12,2,{'SaveManager'}},{16,2,{'ThemeManager'}},{11,2,{'Main'}},{13,
-2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{'Home'}}}}}}}}}},{7,2,{'t'}},{19,2,{
-'Preference'}},{6,2,{'Color'}},{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'
-}}}}}},{20,2,{'RBXUtil'},{{22,2,{'Signal'}},{23,2,{'Promise'}},{24,2,{'Tree'}},{
-21,2,{'TableUtil'}}}},{25,2,{'Functions'},{{30,2,{'PromptDiscord'}},{32,2,{
-'GetPing'}},{31,2,{'OutputMessage'}},{28,2,{'Numbers'}},{29,2,{'Strings'}},{27,2
-,{'Time'}},{26,2,{'CreateGUID'}}}},{34,2,{'Vinca'}}}}},'0.4.2','strelizia.cc',
-string,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,
-pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,
-aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as
-and ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=
-aC end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or
-function(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]
-='LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={
-{},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
-aN.Parent end return aM end},GetChildren={{},function(aL)local aM={}for aN in ai
-,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}
-for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)
-end end return aM end},FindFirstChild={{'string','boolean?'},function(aL,aM,aN)
-local aO=aK[aL]for aP in ai,aO do if aP.Name==aM then return aP end end if aN
-then for aP in ai,aO do return aP:FindFirstChild(aM,true)end end end},
-FindFirstAncestor={{'string'},function(aL,aM)local aN=aL.Parent while aN do if
-aN.Name==aM then return aN end aN=aN.Parent end end},WaitForChild={{'string',
-'number?'},function(aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO in ai,aL
-do local aP,aQ,aR=aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT,
-'^([^%?]+)(%??)')aR[aS]={aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
+ad end)()end},{{1,2,{'Shared'},{{21,2,{'RBXUtil'},{{25,2,{'Tree'}},{24,2,{
+'Promise'}},{23,2,{'Signal'}},{22,2,{'TableUtil'}},{26,2,{'Trove'}}}},{27,2,{
+'Functions'},{{33,2,{'OutputMessage'}},{30,2,{'Numbers'}},{34,2,{'GetPing'}},{32
+,2,{'PromptDiscord'}},{38,2,{'Noclip'}},{36,2,{'AntiAFK'}},{31,2,{'Strings'}},{
+37,2,{'BinarySearch'}},{35,2,{'Hooks'}},{28,2,{'CreateGUID'}},{29,2,{'Time'}}}},
+{40,2,{'Vinca'}},{39,2,{'Constants'}},{2,2,{'Modules'},{{3,2,{'TaskManager'},{{4
+,2,{'Task'}},{5,2,{'Lock'}}}},{6,2,{'Color'}},{17,2,{'Places'},{{18,2,{
+'Slime RNG'}},{19,2,{'Kick a Lucky Block'}}}},{8,2,{'Interface'},{{9,1,{'List'},
+{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{11,2,{'Main'}},{13,2,{'Tabs'},{{15
+,2,{'Settings'}},{14,2,{'Home'}}}},{12,2,{'SaveManager'}}}}}}}},{20,2,{
+'Preference'}},{7,2,{'t'}}}}}}},'0.4.2','strelizia.cc',string,task,setmetatable,
+error,next,table,unpack,coroutine,script,type,require,pcall,tostring,tonumber,
+_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.freeze or function(au
+)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and ay(as,1,4)=='Lune'
+then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC end end local aB=af
+and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or function(aC,...)ax(aC)(...)
+end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]='LocalScript',[5]=
+'StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={{},function(aL)
+local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=aN.Parent end
+return aM end},GetChildren={{},function(aL)local aM={}for aN in ai,aK[aL]do au(
+aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}for aN in ai,
+aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)end end return
+aM end},FindFirstChild={{'string','boolean?'},function(aL,aM,aN)local aO=aK[aL]
+for aP in ai,aO do if aP.Name==aM then return aP end end if aN then for aP in ai
+,aO do return aP:FindFirstChild(aM,true)end end end},FindFirstAncestor={{
+'string'},function(aL,aM)local aN=aL.Parent while aN do if aN.Name==aM then
+return aN end aN=aN.Parent end end},WaitForChild={{'string','number?'},function(
+aL,aM)return aL:FindFirstChild(aM)end}},{}for aN,aO in ai,aL do local aP,aQ,aR=
+aO[1],aO[2],{}for aS,aT in ai,aP do local aU,aV=az(aT,'^([^%?]+)(%??)')aR[aS]={
+aU,aV}end aM[aN]=function(aS,...)if not aK[aS]then ah(
 "Expected ':' not '.' calling member function "..aN,2)end local aT={...}for aU,
 aV in ai,aR do local aW=aT[aU]local aX,aY,aZ=an(aW),aV[1],aV[2]if aW==nil and
 not aZ then ah('Argument '..aW..' missing or nil',3)end if aY~='any'and aX~=aY
