@@ -3089,52 +3089,48 @@ function()ah(false)end)end ai.Clip=function()if ag then ag:Disconnect()ag=nil
 end ah(true)end return ai end end)()end,[39]=function()a(39)return(function(...)
 return function(aa)local ab,ac,ad,ae=aa:Get'RBXUtil/TableUtil',aa:Get
 'Functions/Time',aa:Get'Modules/t',utf8.char local af=ac.Constants local ag={
-DiscordInviteCode='',Characters={Invisible=10240,BulletPoint=8226},Emojis={
-Unknown='<:letter_x:1305284794044776622>',Person='<:person:1305298114265219094>'
-},LRM_Constants={Premium=LRM_IsUserPremium or false,DiscordUserId=
-LRM_LinkedDiscordID or 0,ScriptName=LRM_ScriptName or'generic',TotalExecutions=
-LRM_TotalExecutions or 1337,SecondsLeft=LRM_SecondsLeft or 60,UserNote=
-LRM_UserNote or'user note',ScriptVersion=LRM_ScriptVersion or'0001'},
-KeySystemAdProviders={{Name='Linkvertise',KeyLength=af.Hour*24,CompletionTime=af
-.Minute*3,Identifier='Linkvertise-EsllfgSWtQqg'},{Name='Another Provider',
-KeyLength=af.Hour*12,CompletionTime=af.Minute*2,Identifier='Something-ABCD'}},
-ProductionRoleInfo={developer={Color=Color3.fromRGB(2,116,255)},contributor={
-Color=Color3.fromRGB(255,255,127)},generic={Color=Color3.new(1,1,1)}}}for ah,ai
-in ag.Characters do if typeof(ai)~='number'then continue end ag.Characters[ah]=
-ae(ai)end setmetatable(ag.Emojis,{__index=function(ah,ai)local aj=rawget(ah,
-'Unknown')rawset(ah,ai,aj)return aj end})return ag end end)()end,[40]=function()
-local aa,ab,ac=a(40)return(function(...)local ad={}ad.__index=ad ad.Extensions={
-Children=function(ae)local af={}for ag,ah in ae:GetChildren()do af[ah.Name]=ah
-end return af end}local ae=cloneref or function(ae)return ae end ad.Services=
-setmetatable({},{__index=function(af,ag)local ah,ai=pcall(game.GetService,game,
-ag)if ah and ai then ai=ae(ai)rawset(af,ag,ai)return ai end return nil end})ad.
-new=function(af)local ag=setmetatable({__vinca=true,Loaded={},Loading={},
-Container={}},ad)ag.Root=af or ag return ag end ad.is=function(af)return af and
-typeof(af)=='table'and rawget(af,'__vinca')end ad.Add=function(af,ag,ah)assert(
-not af.Container[ag],'Index already exists')af.Container[ag]=ah return af end ad
-.Load=function(af,ag)if af.Loaded[ag]~=nil then return af.Loaded[ag]end local ah
-=af.Container[ag]assert(ah~=nil,string.format('Unknown dependency "%s"',
-tostring(ag)))assert(not af.Loading[ag],string.format(
-'Circular dependency at "%s"',tostring(ag)))af.Loading[ag]=true if typeof(ah)==
-'table'and ah.ClassName=='ModuleScript'then ah=ac(ah)elseif typeof(ah)==
-'Instance'and ah.ClassName=='ModuleScript'then ah=ac(ah)end if typeof(ah)==
-'function'then ah=ah(af.Root)end af.Loading[ag]=nil af.Loaded[ag]=ah return ah
-end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(ah,ai)end return af end
-ad.Get=function(af,ag)local ah=af for ai in string.gmatch(ag,'[^/]+')do if ad.
-is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah~=nil,string.format(
-'Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end return ah end return
-ad end)()end},{{1,2,{'Shared'},{{39,2,{'Constants'}},{40,2,{'Vinca'}},{2,2,{
-'Modules'},{{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{8,2,{
-'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{11,2,{'Main'}},{16,2,{
-'ThemeManager'}},{13,2,{'Tabs'},{{14,2,{'Home'}},{15,2,{'Settings'}}}},{12,2,{
-'SaveManager'}}}}}}}},{7,2,{'t'}},{20,2,{'Preference'}},{17,2,{'Places'},{{18,2,
-{'Slime RNG'}},{19,2,{'Kick a Lucky Block'}}}},{6,2,{'Color'}}}},{21,2,{
-'RBXUtil'},{{26,2,{'Trove'}},{22,2,{'TableUtil'}},{23,2,{'Signal'}},{25,2,{
-'Tree'}},{24,2,{'Promise'}}}},{27,2,{'Functions'},{{32,2,{'PromptDiscord'}},{34,
-2,{'GetPing'}},{31,2,{'Strings'}},{38,2,{'Noclip'}},{28,2,{'CreateGUID'}},{36,2,
-{'AntiAFK'}},{35,2,{'Hooks'}},{29,2,{'Time'}},{37,2,{'BinarySearch'}},{30,2,{
-'Numbers'}},{33,2,{'OutputMessage'}}}}}}},'0.4.2','strelizia.cc',string,task,
-setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
+DiscordInviteCode='mkPHtrSyWy',Characters={Invisible=10240,BulletPoint=8226},
+Emojis={Unknown='<:letter_x:1305284794044776622>',Person=
+'<:person:1305298114265219094>'},LRM_Constants={},KeySystemAdProviders={{Name=
+'Linkvertise',KeyLength=af.Hour*24,CompletionTime=af.Minute*3,Identifier=
+'Linkvertise-EsllfgSWtQqg'},{Name='Another Provider',KeyLength=af.Hour*12,
+CompletionTime=af.Minute*2,Identifier='Something-ABCD'}},ProductionRoleInfo={
+developer={Color=Color3.fromRGB(2,116,255)},contributor={Color=Color3.fromRGB(
+255,255,127)},generic={Color=Color3.new(1,1,1)}}}for ah,ai in ag.Characters do
+if typeof(ai)~='number'then continue end ag.Characters[ah]=ae(ai)end
+setmetatable(ag.Emojis,{__index=function(ah,ai)local aj=rawget(ah,'Unknown')
+rawset(ah,ai,aj)return aj end})return ag end end)()end,[40]=function()local aa,
+ab,ac=a(40)return(function(...)local ad={}ad.__index=ad ad.Extensions={Children=
+function(ae)local af={}for ag,ah in ae:GetChildren()do af[ah.Name]=ah end return
+af end}local ae=cloneref or function(ae)return ae end ad.Services=setmetatable({
+},{__index=function(af,ag)local ah,ai=pcall(game.GetService,game,ag)if ah and ai
+then ai=ae(ai)rawset(af,ag,ai)return ai end return nil end})ad.new=function(af)
+local ag=setmetatable({__vinca=true,Loaded={},Loading={},Container={}},ad)ag.
+Root=af or ag return ag end ad.is=function(af)return af and typeof(af)=='table'
+and rawget(af,'__vinca')end ad.Add=function(af,ag,ah)assert(not af.Container[ag]
+,'Index already exists')af.Container[ag]=ah return af end ad.Load=function(af,ag
+)if af.Loaded[ag]~=nil then return af.Loaded[ag]end local ah=af.Container[ag]
+assert(ah~=nil,string.format('Unknown dependency "%s"',tostring(ag)))assert(not
+af.Loading[ag],string.format('Circular dependency at "%s"',tostring(ag)))af.
+Loading[ag]=true if typeof(ah)=='table'and ah.ClassName=='ModuleScript'then ah=
+ac(ah)elseif typeof(ah)=='Instance'and ah.ClassName=='ModuleScript'then ah=ac(ah
+)end if typeof(ah)=='function'then ah=ah(af.Root)end af.Loading[ag]=nil af.
+Loaded[ag]=ah return ah end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(
+ah,ai)end return af end ad.Get=function(af,ag)local ah=af for ai in string.
+gmatch(ag,'[^/]+')do if ad.is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah
+~=nil,string.format('Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end
+return ah end return ad end)()end},{{1,2,{'Shared'},{{27,2,{'Functions'},{{32,2,
+{'PromptDiscord'}},{36,2,{'AntiAFK'}},{30,2,{'Numbers'}},{28,2,{'CreateGUID'}},{
+35,2,{'Hooks'}},{29,2,{'Time'}},{31,2,{'Strings'}},{38,2,{'Noclip'}},{37,2,{
+'BinarySearch'}},{34,2,{'GetPing'}},{33,2,{'OutputMessage'}}}},{21,2,{'RBXUtil'}
+,{{23,2,{'Signal'}},{25,2,{'Tree'}},{24,2,{'Promise'}},{22,2,{'TableUtil'}},{26,
+2,{'Trove'}}}},{39,2,{'Constants'}},{40,2,{'Vinca'}},{2,2,{'Modules'},{{8,2,{
+'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2,{'ThemeManager'}},{11,2,{
+'Main'}},{13,2,{'Tabs'},{{15,2,{'Settings'}},{14,2,{'Home'}}}},{12,2,{
+'SaveManager'}}}}}}}},{3,2,{'TaskManager'},{{5,2,{'Lock'}},{4,2,{'Task'}}}},{6,2
+,{'Color'}},{20,2,{'Preference'}},{7,2,{'t'}},{17,2,{'Places'},{{19,2,{
+'Kick a Lucky Block'}},{18,2,{'Slime RNG'}}}}}}}}},'0.4.2','strelizia.cc',string
+,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
 tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
 freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
 ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC
