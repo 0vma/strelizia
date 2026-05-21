@@ -2410,37 +2410,37 @@ Title='strelizia.cc',Description=string.format(
 =2}end end}aG:AddButton{Text='Copy Job Id',Tooltip=
 'copies the job id from the current server to clipboard',Func=function()
 setclipboard(game.JobId)aA.Main:Notify{Title='strelizia.cc',Description=
-'copied job id to clipboard',Duration=2}end}local aN,aO,aP=ay:AddGroupbox{Side=2
-,Name='Key Information',IconName='key'},(aC.SecondsLeft==-1)or(aC.SecondsLeft==
-math.huge),am.now()+aC.SecondsLeft aN:AddLabel{Text=string.format(
-'%s Key Expiry: <b>%s</b>',tostring(ah.BulletPoint),tostring((aO and{(aj.Paint(
-'Never!',au))}or{(am.FormatTime(aP,'MM/DD/YYYY HH:mm'))})[1])),DoesWrap=true}aN:
-AddLabel{Text=string.format('%s Total Executions: <b>%s</b>',tostring(ah.
-BulletPoint),tostring(an.Comma(aC.TotalExecutions))),DoesWrap=true}aN:AddLabel{
-Text=string.format('%s User Note: <b>%s</b>',tostring(ah.BulletPoint),tostring(
-aC.UserNote)),DoesWrap=true}aN:AddDivider{Text='key stuff'}aN:AddLabel{Text=
-string.format('%s Script Key: <b>...%s</b>',tostring(ah.BulletPoint),tostring(
-string.sub(av,-5))),DoesWrap=true}aN:AddButton{Text='Copy Script Key',Tooltip=
-'copies user key to clipboard',Func=function()setclipboard(av)aA.Main:Notify{
-Title='strelizia.cc',Description='copied script key to clipboard',Duration=2}end
-}local aQ,aR=ay:AddGroupbox{Side=2,Name='Credits',IconName='list'},{}for aS,aT
-in(aB.Credits or{})do local aU=ag.ProductionRoleInfo[aT.Role]or ag.
-ProductionRoleInfo.generic table.insert(aR,string.format('%s %s - <b>%s</b>',
-tostring(ah.BulletPoint),tostring(aT.Name),tostring(aj.Paint(aT.Role,aU.Color)))
-)end aQ:AddLabel('CreditsLabel',{Text=table.concat(aR,'\n'),DoesWrap=true})aQ:
-AddDivider{Text='discord (pls join)'}local aS=aQ:AddButton{Text=
-'Join Discord Server',Func=function()aq(ag.DiscordInviteCode,true)aA.Main:Notify
-{Title='strelizia.cc',Description=
+'copied job id to clipboard',Duration=2}end}if aC.Authenticated then local aN,aO
+,aP=ay:AddGroupbox{Side=2,Name='Key Information',IconName='key'},(aC.SecondsLeft
+==-1)or(aC.SecondsLeft==math.huge),am.now()+aC.SecondsLeft aN:AddLabel{Text=
+string.format('%s Key Expiry: <b>%s</b>',tostring(ah.BulletPoint),tostring((aO
+and{(aj.Paint('Never!',au))}or{(am.FormatTime(aP,'MM/DD/YYYY HH:mm'))})[1])),
+DoesWrap=true}aN:AddLabel{Text=string.format('%s Total Executions: <b>%s</b>',
+tostring(ah.BulletPoint),tostring(an.Comma(aC.TotalExecutions))),DoesWrap=true}
+aN:AddLabel{Text=string.format('%s User Note: <b>%s</b>',tostring(ah.BulletPoint
+),tostring(aC.UserNote)),DoesWrap=true}aN:AddDivider{Text='key stuff'}aN:
+AddLabel{Text=string.format('%s Script Key: <b>...%s</b>',tostring(ah.
+BulletPoint),tostring(string.sub(av,-5))),DoesWrap=true}aN:AddButton{Text=
+'Copy Script Key',Tooltip='copies user key to clipboard',Func=function()
+setclipboard(av)aA.Main:Notify{Title='strelizia.cc',Description=
+'copied script key to clipboard',Duration=2}end}end local aN,aO=ay:AddGroupbox{
+Side=2,Name='Credits',IconName='list'},{}for aP,aQ in(aB.Credits or{})do local
+aR=ag.ProductionRoleInfo[aQ.Role]or ag.ProductionRoleInfo.generic table.insert(
+aO,string.format('%s %s - <b>%s</b>',tostring(ah.BulletPoint),tostring(aQ.Name),
+tostring(aj.Paint(aQ.Role,aR.Color))))end aN:AddLabel('CreditsLabel',{Text=table
+.concat(aO,'\n'),DoesWrap=true})aN:AddDivider{Text='discord (pls join)'}local aP
+=aN:AddButton{Text='Join Discord Server',Func=function()aq(ag.DiscordInviteCode,
+true)aA.Main:Notify{Title='strelizia.cc',Description=
 'successfully copied/prompted discord join code!'}end}if(not aw:Read
 'PRESSED_JOIN_DISCORD')then print'mueheheh'task.spawn(function()task.wait(math.
-random(5,10))local aT=az:AddDialog('DiscordJoinDialog',{Title=
+random(5,10))local aQ=az:AddDialog('DiscordJoinDialog',{Title=
 'sorry for disturbing you',Description=
 [[would you please join our discord? it helps us grow and stay connected with our community. you also benefit from being able to make suggestions, bug reports and stay updated with latest features.]]
 ,FooterButtons={Confirm={Title='yes!',Variant='Primary',Callback=function()aw:
-Write('PRESSED_JOIN_DISCORD',true)aS.Func()end},Decline={Title='no, thanks',
-Variant='Secondary',WaitTime=3}}})aT:AddToggle('DontAskDiscord',{Text=
-"don't ask me again",Tooltip='okay :(',Callback=function(aU)aw:Write(
-'PRESSED_JOIN_DISCORD',aU)end})end)end end end end)()end,[15]=function()a(15)
+Write('PRESSED_JOIN_DISCORD',true)aP.Func()end},Decline={Title='no, thanks',
+Variant='Secondary',WaitTime=3}}})aQ:AddToggle('DontAskDiscord',{Text=
+"don't ask me again",Tooltip='okay :(',Callback=function(aR)aw:Write(
+'PRESSED_JOIN_DISCORD',aR)end})end)end end end end)()end,[15]=function()a(15)
 return(function(...)return function(aa)local ab=aa:Get'Modules/Places'return
 function(ac)local ad,ae=aa:Get'Modules/Interface'.GetInterface'Obsidian',ab.
 GetPlaceFromId(game.PlaceId)local af,ag,ah,ai=ad.Main,ad.SaveManager,ad.
@@ -3119,17 +3119,17 @@ Loaded[ag]=ah return ah end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(
 ah,ai)end return af end ad.Get=function(af,ag)local ah=af for ai in string.
 gmatch(ag,'[^/]+')do if ad.is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah
 ~=nil,string.format('Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end
-return ah end return ad end)()end},{{1,2,{'Shared'},{{40,2,{'Vinca'}},{21,2,{
-'RBXUtil'},{{23,2,{'Signal'}},{24,2,{'Promise'}},{25,2,{'Tree'}},{26,2,{'Trove'}
-},{22,2,{'TableUtil'}}}},{39,2,{'Constants'}},{27,2,{'Functions'},{{34,2,{
-'GetPing'}},{37,2,{'BinarySearch'}},{30,2,{'Numbers'}},{32,2,{'PromptDiscord'}},
-{38,2,{'Noclip'}},{29,2,{'Time'}},{35,2,{'Hooks'}},{28,2,{'CreateGUID'}},{36,2,{
-'AntiAFK'}},{31,2,{'Strings'}},{33,2,{'OutputMessage'}}}},{2,2,{'Modules'},{{8,2
-,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{11,2,{'Main'}},{13,2,{'Tabs'
-},{{15,2,{'Settings'}},{14,2,{'Home'}}}},{16,2,{'ThemeManager'}},{12,2,{
-'SaveManager'}}}}}}}},{20,2,{'Preference'}},{17,2,{'Places'},{{18,2,{'Slime RNG'
-}},{19,2,{'Kick a Lucky Block'}}}},{6,2,{'Color'}},{3,2,{'TaskManager'},{{5,2,{
-'Lock'}},{4,2,{'Task'}}}},{7,2,{'t'}}}}}}},'0.4.2','strelizia.cc',string,task,
+return ah end return ad end)()end},{{1,2,{'Shared'},{{40,2,{'Vinca'}},{2,2,{
+'Modules'},{{20,2,{'Preference'}},{7,2,{'t'}},{3,2,{'TaskManager'},{{5,2,{'Lock'
+}},{4,2,{'Task'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2
+,{'ThemeManager'}},{11,2,{'Main'}},{12,2,{'SaveManager'}},{13,2,{'Tabs'},{{14,2,
+{'Home'}},{15,2,{'Settings'}}}}}}}}}},{17,2,{'Places'},{{18,2,{'Slime RNG'}},{19
+,2,{'Kick a Lucky Block'}}}},{6,2,{'Color'}}}},{21,2,{'RBXUtil'},{{22,2,{
+'TableUtil'}},{23,2,{'Signal'}},{26,2,{'Trove'}},{25,2,{'Tree'}},{24,2,{
+'Promise'}}}},{27,2,{'Functions'},{{28,2,{'CreateGUID'}},{32,2,{'PromptDiscord'}
+},{29,2,{'Time'}},{34,2,{'GetPing'}},{38,2,{'Noclip'}},{33,2,{'OutputMessage'}},
+{31,2,{'Strings'}},{36,2,{'AntiAFK'}},{37,2,{'BinarySearch'}},{35,2,{'Hooks'}},{
+30,2,{'Numbers'}}}},{39,2,{'Constants'}}}}},'0.4.2','strelizia.cc',string,task,
 setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
 tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
 freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
