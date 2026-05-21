@@ -3119,17 +3119,17 @@ Loaded[ag]=ah return ah end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(
 ah,ai)end return af end ad.Get=function(af,ag)local ah=af for ai in string.
 gmatch(ag,'[^/]+')do if ad.is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah
 ~=nil,string.format('Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end
-return ah end return ad end)()end},{{1,2,{'Shared'},{{40,2,{'Vinca'}},{2,2,{
-'Modules'},{{20,2,{'Preference'}},{7,2,{'t'}},{3,2,{'TaskManager'},{{5,2,{'Lock'
-}},{4,2,{'Task'}}}},{8,2,{'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{16,2
-,{'ThemeManager'}},{11,2,{'Main'}},{12,2,{'SaveManager'}},{13,2,{'Tabs'},{{14,2,
-{'Home'}},{15,2,{'Settings'}}}}}}}}}},{17,2,{'Places'},{{18,2,{'Slime RNG'}},{19
-,2,{'Kick a Lucky Block'}}}},{6,2,{'Color'}}}},{21,2,{'RBXUtil'},{{22,2,{
-'TableUtil'}},{23,2,{'Signal'}},{26,2,{'Trove'}},{25,2,{'Tree'}},{24,2,{
-'Promise'}}}},{27,2,{'Functions'},{{28,2,{'CreateGUID'}},{32,2,{'PromptDiscord'}
-},{29,2,{'Time'}},{34,2,{'GetPing'}},{38,2,{'Noclip'}},{33,2,{'OutputMessage'}},
-{31,2,{'Strings'}},{36,2,{'AntiAFK'}},{37,2,{'BinarySearch'}},{35,2,{'Hooks'}},{
-30,2,{'Numbers'}}}},{39,2,{'Constants'}}}}},'0.4.2','strelizia.cc',string,task,
+return ah end return ad end)()end},{{1,2,{'Shared'},{{21,2,{'RBXUtil'},{{26,2,{
+'Trove'}},{22,2,{'TableUtil'}},{24,2,{'Promise'}},{23,2,{'Signal'}},{25,2,{
+'Tree'}}}},{2,2,{'Modules'},{{6,2,{'Color'}},{8,2,{'Interface'},{{9,1,{'List'},{
+{10,1,{'Obsidian'},{{12,2,{'SaveManager'}},{11,2,{'Main'}},{13,2,{'Tabs'},{{15,2
+,{'Settings'}},{14,2,{'Home'}}}},{16,2,{'ThemeManager'}}}}}}}},{17,2,{'Places'},
+{{18,2,{'Slime RNG'}},{19,2,{'Kick a Lucky Block'}}}},{3,2,{'TaskManager'},{{4,2
+,{'Task'}},{5,2,{'Lock'}}}},{7,2,{'t'}},{20,2,{'Preference'}}}},{39,2,{
+'Constants'}},{40,2,{'Vinca'}},{27,2,{'Functions'},{{32,2,{'PromptDiscord'}},{29
+,2,{'Time'}},{33,2,{'OutputMessage'}},{38,2,{'Noclip'}},{35,2,{'Hooks'}},{28,2,{
+'CreateGUID'}},{34,2,{'GetPing'}},{37,2,{'BinarySearch'}},{31,2,{'Strings'}},{30
+,2,{'Numbers'}},{36,2,{'AntiAFK'}}}}}}},'0.4.2','strelizia.cc',string,task,
 setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
 tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
 freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
