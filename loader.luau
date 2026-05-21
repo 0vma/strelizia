@@ -176,21 +176,21 @@ then i=i(g.Root)end g.Loading[h]=nil g.Loaded[h]=i return i end e.Extend=
 function(g,h)for i,j in h do g:Add(i,j)end return g end e.Get=function(g,h)local
 i=g for j in string.gmatch(h,'[^/]+')do if e.is(i)then i=i:Load(j)else i=i[j]end
 assert(i~=nil,string.format('Invalid path "%s" at "%s"',tostring(h),tostring(j))
-)end return i end return e end)()end},{{1,4,{'Loader'},{{9,2,{'Vinca'}},{2,2,{
-'Library'},{{3,2,{'Modules'},{{5,2,{'Luarmor'}},{4,2,{'KeyFile'}}}},{7,2,{
-'Shared'},{{8,2,{'Cache'}}}},{6,2,{'Interface'}}}}}}},'0.4.2','strelizia.cc',
-string,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,
-pcall,tostring,tonumber,_VERSION local A,B,C,D,E,F,G=k.insert,k.remove,k.freeze
-or function(A)return A end,q.wrap,f.sub,f.match,f.gmatch if y and E(y,1,4)==
-'Lune'then local H,I=v(u,'@lune/task')if H and I then g=I end end local H=g and
-g.defer local I,J,K,L,M,N,O,P,Q=H or function(I,...)D(I)(...)end,{[1]='Folder',[
-2]='ModuleScript',[3]='Script',[4]='LocalScript',[5]='StringValue'},{},{},{},{},
-{},{},{}local R,S={GetFullName={{},function(R)local S,T=R.Name,R.Parent while T
-do S=T.Name..'.'..S T=T.Parent end return S end},GetChildren={{},function(R)
-local S={}for T in j,Q[R]do A(S,T)end return S end},GetDescendants={{},function(
-R)local S={}for T in j,Q[R]do A(S,T)for U,V in j,T:GetDescendants()do A(S,V)end
-end return S end},FindFirstChild={{'string','boolean?'},function(R,S,T)local U=Q
-[R]for V in j,U do if V.Name==S then return V end end if T then for V in j,U do
+)end return i end return e end)()end},{{1,4,{'Loader'},{{2,2,{'Library'},{{7,2,{
+'Shared'},{{8,2,{'Cache'}}}},{3,2,{'Modules'},{{5,2,{'Luarmor'}},{4,2,{'KeyFile'
+}}}},{6,2,{'Interface'}}}},{9,2,{'Vinca'}}}}},'0.4.2','strelizia.cc',string,task
+,setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
+tostring,tonumber,_VERSION local A,B,C,D,E,F,G=k.insert,k.remove,k.freeze or
+function(A)return A end,q.wrap,f.sub,f.match,f.gmatch if y and E(y,1,4)=='Lune'
+then local H,I=v(u,'@lune/task')if H and I then g=I end end local H=g and g.
+defer local I,J,K,L,M,N,O,P,Q=H or function(I,...)D(I)(...)end,{[1]='Folder',[2]
+='ModuleScript',[3]='Script',[4]='LocalScript',[5]='StringValue'},{},{},{},{},{}
+,{},{}local R,S={GetFullName={{},function(R)local S,T=R.Name,R.Parent while T do
+S=T.Name..'.'..S T=T.Parent end return S end},GetChildren={{},function(R)local S
+={}for T in j,Q[R]do A(S,T)end return S end},GetDescendants={{},function(R)local
+S={}for T in j,Q[R]do A(S,T)for U,V in j,T:GetDescendants()do A(S,V)end end
+return S end},FindFirstChild={{'string','boolean?'},function(R,S,T)local U=Q[R]
+for V in j,U do if V.Name==S then return V end end if T then for V in j,U do
 return V:FindFirstChild(S,true)end end end},FindFirstAncestor={{'string'},
 function(R,S)local T=R.Parent while T do if T.Name==S then return T end T=T.
 Parent end end},WaitForChild={{'string','number?'},function(R,S)return R:
