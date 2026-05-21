@@ -141,9 +141,9 @@ then i=i(g.Root)end g.Loading[h]=nil g.Loaded[h]=i return i end e.Extend=
 function(g,h)for i,j in h do g:Add(i,j)end return g end e.Get=function(g,h)local
 i=g for j in string.gmatch(h,'[^/]+')do if e.is(i)then i=i:Load(j)else i=i[j]end
 assert(i~=nil,string.format('Invalid path "%s" at "%s"',tostring(h),tostring(j))
-)end return i end return e end)()end},{{1,4,{'Loader'},{{8,2,{'Vinca'}},{2,2,{
-'Library'},{{6,2,{'Interface'}},{7,2,{'Shared'}},{3,2,{'Modules'},{{5,2,{
-'Luarmor'}},{4,2,{'KeyFile'}}}}}}}}},'0.4.2','strelizia.cc',string,task,
+)end return i end return e end)()end},{{1,4,{'Loader'},{{2,2,{'Library'},{{3,2,{
+'Modules'},{{4,2,{'KeyFile'}},{5,2,{'Luarmor'}}}},{7,2,{'Shared'}},{6,2,{
+'Interface'}}}},{8,2,{'Vinca'}}}}},'0.4.2','strelizia.cc',string,task,
 setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
 tostring,tonumber,_VERSION local v,w,x,y,z,A,B=k.insert,k.remove,k.freeze or
 function(v)return v end,m.wrap,f.sub,f.match,f.gmatch if t and z(t,1,4)=='Lune'
