@@ -15,13 +15,13 @@ GetPlaceFromId(game.PlaceId)if not p then return h.Main:Notify{Title=
 Downtime.Status and p.Downtime.Message)if q then return h.Main:Notify{Title=
 'strelizia.cc',Description=string.format(
 [[unable to load %s script because it's currently experiencing a downtime! specificed downtime reason: %s]]
-,tostring(p.Name),tostring(q))}end local r=e:Get'Modules/KeyFile'print(p.Script)
-local s,t=e:Get'Modules/Luarmor':Init(p.Script),f.script_key or r:Read()if t
-then local u=s:Check(t)if u.code=='KEY_VALID'then h.Main:Notify{Title=
-'strelizia.cc',Description='saved key is valid! loading script!',Time=3}return s
-:LoadScript(t)end h.Main:Notify{Title='strelizia.cc',Description=
-'saved key is invalid! please enter a new key!',Time=4}r:Erase()end if p.Keyless
-then h.Main:Notify{Title='strelizia.cc',Description=
+,tostring(p.Name),tostring(q))}end local r,s=e:Get'Modules/KeyFile',e:Get
+'Modules/Luarmor':Init(p.Script)local t=f.script_key or r:Read()if t then local
+u=s:Check(t)if u.code=='KEY_VALID'then h.Main:Notify{Title='strelizia.cc',
+Description='saved key is valid! loading script!',Time=3}if f.script_key then r:
+Write(t)end return s:LoadScript(t)end h.Main:Notify{Title='strelizia.cc',
+Description='saved key is invalid! please enter a new key!',Time=4}r:Erase()end
+if p.Keyless then h.Main:Notify{Title='strelizia.cc',Description=
 [[script for this game is currently keyless, no key required! loading script...]]
 ,Time=3}return s:LoadScript()end local u=e:Get'Interface':Create()local v=u.
 Library.Buttons local w,x=v.CheckKeyButton,v.GetKeyButton local y=function(y)if
@@ -38,21 +38,20 @@ Library.Options.ScriptKeyInput.Value)end x.Func=function()local z,A,B={},{}for C
 Notify{Title='strelizia.cc',Description=string.format(
 [[you have selected the following provider: %s
 link to the ad provider has been copied to your clipboard!]]
-,tostring(D.Name))}if B then print'ha yes i am the sigma one.'o:Write(
-'SELECTED_AD_PROVIDER',D.Name)end end}table.insert(A,string.format(
-'%s %s: \n%s%s Key Length: %s\n%s%s Completion Time: %s',tostring(n),tostring(D.
-Name),tostring(k.LeadingSpace(5)),tostring(n),tostring(l.CompressTime(D.
-KeyLength)),tostring(k.LeadingSpace(5)),tostring(n),tostring(l.CompressTime(D.
-CompletionTime))))end local C=o:Read'SELECTED_AD_PROVIDER'if C then local D=z[C]
-if(D)then return D.Callback()end print'nope, not the sigma one'o:Write(
-'SELECTED_AD_PROVIDER',nil)end local D=u.Window:AddDialog('AdProviderSelection',
-{Title='Ad Provider Selection',Description=
+,tostring(D.Name))}if B then o:Write('SELECTED_AD_PROVIDER',D.Name)end end}table
+.insert(A,string.format('%s %s: \n%s%s Key Length: %s\n%s%s Completion Time: %s'
+,tostring(n),tostring(D.Name),tostring(k.LeadingSpace(5)),tostring(n),tostring(l
+.CompressTime(D.KeyLength)),tostring(k.LeadingSpace(5)),tostring(n),tostring(l.
+CompressTime(D.CompletionTime))))end local C=o:Read'SELECTED_AD_PROVIDER'if C
+then local D=z[C]if(D)then return D.Callback()end o:Write('SELECTED_AD_PROVIDER'
+,nil)end local D=u.Window:AddDialog('AdProviderSelection',{Title=
+'Ad Provider Selection',Description=
 'select your ad provider based on the information below',Icon='key',
 FooterButtons=z})D:AddLabel('AdProviderLabel',{Text=table.concat(A,'\n\n'),
 DoesWrap=true})D:AddToggle('RememberMyChoiceProvider',{Text='remember my choice'
-,Tooltip='wont ask you to pick providers again',Callback=function(E)print
-'oh yes we are save'B=E end})end v.JoinDiscordButton.Func=function()m(j.
-DiscordInviteCode,true)u.Library:Notify{Title='strelizia.cc',Description=
+,Tooltip='wont ask you to pick providers again',Callback=function(E)B=E end})end
+v.JoinDiscordButton.Func=function()m(j.DiscordInviteCode,true)u.Library:Notify{
+Title='strelizia.cc',Description=
 'successfully copied/prompted discord join code!'}end v.UnloadScript.Func=
 function()return u.Library:Unload()end end)()end,function()local b,c,d=a(2)
 return(function(...)local e=d(c.Parent.Vinca)return e.new():Extend(e.Extensions.
@@ -112,45 +111,39 @@ FormatTime(p.Update.Time,'MM/DD/YYYY HH:mm'))),DoesWrap=true,Alignment=Enum.
 TextXAlignment.Center})w:AddDivider{Text='update log'}w:AddLabel(
 'ScriptUpdateLog',{Text=table.concat(p.Update.Log,'\n'),DoesWrap=true,Alignment=
 Enum.TextXAlignment.Center})n.Tabs.Settings(r.Settings)return l end return l end
-end)()end,function()local b,c,d=a(7)return(function(...)return function(e)local
-f,g,h,i='0vma','strelizia','shared.luau',d(c.Reconcile)print
-'\u{2139}\u{fe0f} | fetching shared lib from cdn'local j,k=os.clock(),request{
-Url=string.format('https://cdn.jsdelivr.net/gh/%s/%s@main/%s',tostring(f),
-tostring(g),tostring(h)),Method='GET'}if(k.StatusMessage~='OK')then print(string
-.format('\u{274c} | failed to fetch shared lib from cdn: %s | %s',tostring(k.
-StatusCode),tostring(k.StatusMessage)))return nil end local l=tonumber(k.Headers
-.Age or 0)>0 and'hit'or'miss'print(string.format(
+end)()end,function()a(7)return(function(...)return function(b)local c,d,e='0vma'
+,'strelizia','shared.luau'print'\u{2139}\u{fe0f} | fetching shared lib from cdn'
+local f,g=os.clock(),request{Url=string.format(
+'https://cdn.jsdelivr.net/gh/%s/%s@main/%s',tostring(c),tostring(d),tostring(e))
+,Method='GET'}if(g.StatusMessage~='OK')then print(string.format(
+'\u{274c} | failed to fetch shared lib from cdn: %s | %s',tostring(g.StatusCode)
+,tostring(g.StatusMessage)))return nil end local h=tonumber(g.Headers.Age or 0)>
+0 and'hit'or'miss'print(string.format(
 '\u{2705} | successfully fetched shared lib in %sms (cache %s)',tostring(math.
-floor((os.clock()-j)*1000)),tostring(l)))local m,n=pcall(function()return
-loadstring(k.Body)()end)if(not m)then print(string.format(
-'\u{274c} | failed to exec shared lib: %s',tostring(n)))return nil end i(n)
-return n end end)()end,function()a(8)return(function(...)return function(b)local
-c=b:Get'Constants'c.LRM_Constants={Authenticated=LRM_IsUserPremium or false,
-DiscordUserId=LRM_LinkedDiscordID or 0,ScriptName=LRM_ScriptName or'generic',
-TotalExecutions=LRM_TotalExecutions or 1337,SecondsLeft=LRM_SecondsLeft or 60,
-UserNote=LRM_UserNote or'user note',ScriptVersion={table.concat(string.split(
-LRM_ScriptVersion or'0001',''),'.')}}return true end end)()end,function()local b
-,c,d=a(9)return(function(...)local e={}e.__index=e e.Extensions={Children=
-function(f)local g={}for h,i in f:GetChildren()do g[i.Name]=i end return g end}
-local f=cloneref or function(f)return f end e.Services=setmetatable({},{__index=
-function(g,h)local i,j=pcall(game.GetService,game,h)if i and j then j=f(j)
-rawset(g,h,j)return j end return nil end})e.new=function(g)local h=setmetatable(
-{__vinca=true,Loaded={},Loading={},Container={}},e)h.Root=g or h return h end e.
-is=function(g)return g and typeof(g)=='table'and rawget(g,'__vinca')end e.Add=
-function(g,h,i)assert(not g.Container[h],'Index already exists')g.Container[h]=i
-return g end e.Load=function(g,h)if g.Loaded[h]~=nil then return g.Loaded[h]end
-local i=g.Container[h]assert(i~=nil,string.format('Unknown dependency "%s"',
-tostring(h)))assert(not g.Loading[h],string.format('Circular dependency at "%s"'
-,tostring(h)))g.Loading[h]=true if typeof(i)=='table'and i.ClassName==
-'ModuleScript'then i=d(i)elseif typeof(i)=='Instance'and i.ClassName==
-'ModuleScript'then i=d(i)end if typeof(i)=='function'then i=i(g.Root)end g.
-Loading[h]=nil g.Loaded[h]=i return i end e.Extend=function(g,h)for i,j in h do
-g:Add(i,j)end return g end e.Get=function(g,h)local i=g for j in string.gmatch(h
-,'[^/]+')do if e.is(i)then i=i:Load(j)else i=i[j]end assert(i~=nil,string.
-format('Invalid path "%s" at "%s"',tostring(h),tostring(j)))end return i end
-return e end)()end},{{1,4,{'Loader'},{{2,2,{'Library'},{{3,2,{'Modules'},{{5,2,{
-'Luarmor'}},{4,2,{'KeyFile'}}}},{6,2,{'Interface'}},{7,2,{'Shared'},{{8,2,{
-'Reconcile'}}}}}},{9,2,{'Vinca'}}}}},'0.4.2','strelizia.cc',string,task,
+floor((os.clock()-f)*1000)),tostring(h)))local i,j=pcall(function()return
+loadstring(g.Body)()end)if(not i)then print(string.format(
+'\u{274c} | failed to exec shared lib: %s',tostring(j)))return nil end return j
+end end)()end,function()local b,c,d=a(8)return(function(...)local e={}e.__index=
+e e.Extensions={Children=function(f)local g={}for h,i in f:GetChildren()do g[i.
+Name]=i end return g end}local f=cloneref or function(f)return f end e.Services=
+setmetatable({},{__index=function(g,h)local i,j=pcall(game.GetService,game,h)if
+i and j then j=f(j)rawset(g,h,j)return j end return nil end})e.new=function(g)
+local h=setmetatable({__vinca=true,Loaded={},Loading={},Container={}},e)h.Root=g
+or h return h end e.is=function(g)return g and typeof(g)=='table'and rawget(g,
+'__vinca')end e.Add=function(g,h,i)assert(not g.Container[h],
+'Index already exists')g.Container[h]=i return g end e.Load=function(g,h)if g.
+Loaded[h]~=nil then return g.Loaded[h]end local i=g.Container[h]assert(i~=nil,
+string.format('Unknown dependency "%s"',tostring(h)))assert(not g.Loading[h],
+string.format('Circular dependency at "%s"',tostring(h)))g.Loading[h]=true if
+typeof(i)=='table'and i.ClassName=='ModuleScript'then i=d(i)elseif typeof(i)==
+'Instance'and i.ClassName=='ModuleScript'then i=d(i)end if typeof(i)=='function'
+then i=i(g.Root)end g.Loading[h]=nil g.Loaded[h]=i return i end e.Extend=
+function(g,h)for i,j in h do g:Add(i,j)end return g end e.Get=function(g,h)local
+i=g for j in string.gmatch(h,'[^/]+')do if e.is(i)then i=i:Load(j)else i=i[j]end
+assert(i~=nil,string.format('Invalid path "%s" at "%s"',tostring(h),tostring(j))
+)end return i end return e end)()end},{{1,4,{'Loader'},{{8,2,{'Vinca'}},{2,2,{
+'Library'},{{6,2,{'Interface'}},{7,2,{'Shared'}},{3,2,{'Modules'},{{5,2,{
+'Luarmor'}},{4,2,{'KeyFile'}}}}}}}}},'0.4.2','strelizia.cc',string,task,
 setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
 tostring,tonumber,_VERSION local v,w,x,y,z,A,B=k.insert,k.remove,k.freeze or
 function(v)return v end,m.wrap,f.sub,f.match,f.gmatch if t and z(t,1,4)=='Lune'
