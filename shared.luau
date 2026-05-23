@@ -2639,59 +2639,63 @@ CreateThemeManager(al)end ah.ApplyToGroupbox=function(aj,ak)assert(aj.Library,
 'Must set ThemeManager.Library first!')aj:CreateThemeManager(ak)end ah:
 BuildFolderTree()end getgenv().ObsidianThemeManager=ah return ah end end)()end,[
 17]=function()local aa,ab,ac=a(17)return(function(...)return function(ad)local
-ae={List={}}for af,ag in ab:GetChildren()do table.insert(ae.List,ac(ag)(ad))end
-ae.GetPlaceFromId=function(af)for ag,ah in ae.List do if not ah.Ids[tostring(af)
-]then continue end return ah end return nil end ae.IsExecutorBlacklisted=
-function(af)local ag=(getexecutorname or identifyexecutor)if not ag then return
-true end local ah=ag()for ai,aj in af.BlacklistedExecutors or{}do if(aj:find(ah,
-1,true)==nil)then continue end return true end return false end return ae end
-end)()end,[18]=function()a(18)return(function(...)return function(aa)local ab,ac
-,ad,ae=aa:Get'Modules/Color',Color3.new(0,1,0),Color3.new(1,0,0),Color3.new(0,0,
-1)return{Name='Slime RNG',Ids={['92416421522960']=true},Keyless=true,Downtime={
+ae={List={}}ae.RecommendedExecutors={{Name='Volt',Paid=true,Price='$20 monthly',
+Note='dev tested'},{Name='Potassium',Paid=true,Price='20$ lifetime',Note=
+'dev tested'},{Name='Velocity',Paid=false},{Name='Delta',Paid=false,Note=
+'emulator only'}}for af,ag in ab:GetChildren()do table.insert(ae.List,ac(ag)(ad)
+)end ae.GetPlaceFromId=function(af)for ag,ah in ae.List do if not ah.Ids[
+tostring(af)]then continue end return ah end return nil end ae.
+IsExecutorBlacklisted=function(af)local ag=(identifyexecutor or getexecutorname)
+if not ag then return true end local ah=ag()if not ah then return true end for
+ai,aj in af or{}do if ah:find(aj,1,true)~=nil then return true end end return
+false end return ae end end)()end,[18]=function()a(18)return(function(...)return
+function(aa)local ab,ac,ad,ae=aa:Get'Modules/Color',Color3.new(0,1,0),Color3.
+new(1,0,0),Color3.new(0,0,1)return{Name='Slime RNG',Ids={['92416421522960']=true
+},Keyless=true,Downtime={Status=false,Message='Placeholder'},
+BlacklistedExecutors={'Solara','Xeno'},Credits={{Name='vma',Role='developer'},{
+Name='felik',Role='contributor'}},Script='d0595bedc8bfc40178f522fe49b5285f',
+Update={Time=1763296128,Log={ab.Paint('[+] Released',ac)}}}end end)()end,[19]=
+function()a(19)return(function(...)return function(aa)local ab,ac,ad,ae=aa:Get
+'Modules/Color',Color3.new(0,1,0),Color3.new(1,0,0),Color3.new(0,0,1)return{Name
+='Kick a Lucky Block',Ids={['89469502395769']=true},Keyless=true,Downtime={
 Status=false,Message='Placeholder'},BlacklistedExecutors={'Solara','Xeno'},
-Credits={{Name='vma',Role='developer'},{Name='felik',Role='contributor'}},Script
-='d0595bedc8bfc40178f522fe49b5285f',Update={Time=1763296128,Log={ab.Paint(
-'[+] Released',ac)}}}end end)()end,[19]=function()a(19)return(function(...)
-return function(aa)local ab,ac,ad,ae=aa:Get'Modules/Color',Color3.new(0,1,0),
-Color3.new(1,0,0),Color3.new(0,0,1)return{Name='Kick a Lucky Block',Ids={[
-'89469502395769']=true},Keyless=true,Downtime={Status=false,Message=
-'Placeholder'},BlacklistedExecutors={'Solara','Xeno'},Credits={{Name='felix',
-Role='developer'}},Script='dbf4452a0cf919c7bad6aef8117e789f',Update={Time=
-1763296128,Log={ab.Paint('[+] Released',ac)}}}end end)()end,[20]=function()a(20)
-return(function(...)return function(aa)local ab=aa.Services local ac,ad,ae,af=ab
-.HttpService,aa:Get'Modules/t','strelizia/pref','generic'local ag,ah,ai=ad.
-union(ad.string,ad.number,ad.table,ad.boolean,ad['nil']),ad.optional(ad.string),
-{}ai.__index=ai ai.new=function(aj)aj=aj or af return setmetatable({Path=string.
-format('%s/%s.json',tostring(ae),tostring(aj))},ai)end ai.Read=function(aj,ak)
-assert(ah(ak))local al=(ak and{nil}or{{}})[1]if(not isfile(aj.Path))then return
-al end local am,an=pcall(ac.JSONDecode,ac,readfile(aj.Path))if(not am)then aj:
-Erase()return al end return(ak and{(an[ak])}or{an})[1]end ai.Write=function(aj,
-ak,al)assert(ad.string(ak))assert(ag(al))local am=aj:Read()am[ak]=al local an,ao
-=pcall(ac.JSONEncode,ac,am)if an then writefile(aj.Path,ao)end return aj end ai.
-Update=function(aj,ak,al)assert(ad.string(ak))assert(ad['function'](al))return
-aj:Write(ak,al(aj:Read(ak)))end ai.Erase=function(aj)writefile(aj.Path,'{}')
-return aj end return ai end end)()end,[21]=function()local aa,ab=a(21)return(
-function(...)return function(ac)return ac.new(ac):Extend(ac.Extensions.Children(
-ab))end end)()end,[22]=function()a(22)return(function(...)return function(aa)
-local ab={}ab.IsDict=function(ac)return ac[1]==nil end ab.Dictionary=function(ac
-)local ad={}for ae,af in ac do ad[af]=true end return ad end ab.Filter=function(
-ac,ad)local ae,af={},ab.IsDict(ac)for ag,ah in ac do local ai=ad(ah,ag)if(not ai
-)then continue end if af then ae[ag]=ah else table.insert(ae,ah)end end return
-ae end ab.Reconcile=function(ac,ad)for ae,af in ad do local ag,ah=ac[ae],typeof(
-af)if ag==nil or typeof(ag)~=ah then ac[ae]=af elseif ah=='table'then ab.
-Reconcile(ag,af)end end return ac end ab.FullMap=function(ac,ad)local ae,af={},
-ab.IsDict(ac)for ag,ah in ac do local ai,aj=ad(ah,ag)if not(ai)then continue end
-if af then ae[aj]=ai else table.insert(ae,ai)end end return ae end ab.JoinArrays
-=function(...)local ac={}for ad=1,select('#',...)do for ae,af in select(ad,...)
-do ac[#ac+1]=af end end return ac end return ab end end)()end,[23]=function()a(
-23)return(function(...)return function(aa)local ab local ac=function(ac,...)
-local ad=ab ab=nil ac(...)ab=ad end local ad,ae=function()while true do ac(
-coroutine.yield())end end,{}ae.__index=ae ae.new=function(af,ag)return
-setmetatable({_connected=true,_signal=af,_fn=ag,_next=false},ae)end ae.
-Disconnect=function(af)af._connected=false if af._signal._handlerListHead==af
-then af._signal._handlerListHead=af._next else local ag=af._signal.
-_handlerListHead while ag and ag._next~=af do ag=ag._next end if ag then ag.
-_next=af._next end end end setmetatable(ae,{__index=function(af,ag)error((
+Credits={{Name='felix',Role='developer'}},Script=
+'dbf4452a0cf919c7bad6aef8117e789f',Update={Time=1763296128,Log={ab.Paint(
+'[+] Released',ac)}}}end end)()end,[20]=function()a(20)return(function(...)
+return function(aa)local ab=aa.Services local ac,ad,ae,af=ab.HttpService,aa:Get
+'Modules/t','strelizia/pref','generic'local ag,ah,ai=ad.union(ad.string,ad.
+number,ad.table,ad.boolean,ad['nil']),ad.optional(ad.string),{}ai.__index=ai ai.
+new=function(aj)aj=aj or af return setmetatable({Path=string.format('%s/%s.json'
+,tostring(ae),tostring(aj))},ai)end ai.Read=function(aj,ak)assert(ah(ak))local
+al=(ak and{nil}or{{}})[1]if(not isfile(aj.Path))then return al end local am,an=
+pcall(ac.JSONDecode,ac,readfile(aj.Path))if(not am)then aj:Erase()return al end
+return(ak and{(an[ak])}or{an})[1]end ai.Write=function(aj,ak,al)assert(ad.
+string(ak))assert(ag(al))local am=aj:Read()am[ak]=al local an,ao=pcall(ac.
+JSONEncode,ac,am)if an then writefile(aj.Path,ao)end return aj end ai.Update=
+function(aj,ak,al)assert(ad.string(ak))assert(ad['function'](al))return aj:
+Write(ak,al(aj:Read(ak)))end ai.Erase=function(aj)writefile(aj.Path,'{}')return
+aj end return ai end end)()end,[21]=function()local aa,ab=a(21)return(function(
+...)return function(ac)return ac.new(ac):Extend(ac.Extensions.Children(ab))end
+end)()end,[22]=function()a(22)return(function(...)return function(aa)local ab={}
+ab.IsDict=function(ac)return ac[1]==nil end ab.Dictionary=function(ac)local ad={
+}for ae,af in ac do ad[af]=true end return ad end ab.Filter=function(ac,ad)local
+ae,af={},ab.IsDict(ac)for ag,ah in ac do local ai=ad(ah,ag)if(not ai)then
+continue end if af then ae[ag]=ah else table.insert(ae,ah)end end return ae end
+ab.Reconcile=function(ac,ad)for ae,af in ad do local ag,ah=ac[ae],typeof(af)if
+ag==nil or typeof(ag)~=ah then ac[ae]=af elseif ah=='table'then ab.Reconcile(ag,
+af)end end return ac end ab.FullMap=function(ac,ad)local ae,af={},ab.IsDict(ac)
+for ag,ah in ac do local ai,aj=ad(ah,ag)if not(ai)then continue end if af then
+ae[aj]=ai else table.insert(ae,ai)end end return ae end ab.JoinArrays=function(
+...)local ac={}for ad=1,select('#',...)do for ae,af in select(ad,...)do ac[#ac+1
+]=af end end return ac end return ab end end)()end,[23]=function()a(23)return(
+function(...)return function(aa)local ab local ac=function(ac,...)local ad=ab ab
+=nil ac(...)ab=ad end local ad,ae=function()while true do ac(coroutine.yield())
+end end,{}ae.__index=ae ae.new=function(af,ag)return setmetatable({_connected=
+true,_signal=af,_fn=ag,_next=false},ae)end ae.Disconnect=function(af)af.
+_connected=false if af._signal._handlerListHead==af then af._signal.
+_handlerListHead=af._next else local ag=af._signal._handlerListHead while ag and
+ag._next~=af do ag=ag._next end if ag then ag._next=af._next end end end
+setmetatable(ae,{__index=function(af,ag)error((
 'Attempt to get Connection::%s (not a valid member)'):format(tostring(ag)),2)end
 ,__newindex=function(af,ag,ah)error((
 'Attempt to set Connection::%s (not a valid member)'):format(tostring(ag)),2)end
@@ -3119,25 +3123,25 @@ Loaded[ag]=ah return ah end ad.Extend=function(af,ag)for ah,ai in ag do af:Add(
 ah,ai)end return af end ad.Get=function(af,ag)local ah=af for ai in string.
 gmatch(ag,'[^/]+')do if ad.is(ah)then ah=ah:Load(ai)else ah=ah[ai]end assert(ah
 ~=nil,string.format('Invalid path "%s" at "%s"',tostring(ag),tostring(ai)))end
-return ah end return ad end)()end},{{1,2,{'Shared'},{{21,2,{'RBXUtil'},{{26,2,{
-'Trove'}},{22,2,{'TableUtil'}},{24,2,{'Promise'}},{23,2,{'Signal'}},{25,2,{
-'Tree'}}}},{2,2,{'Modules'},{{6,2,{'Color'}},{8,2,{'Interface'},{{9,1,{'List'},{
-{10,1,{'Obsidian'},{{12,2,{'SaveManager'}},{11,2,{'Main'}},{13,2,{'Tabs'},{{15,2
-,{'Settings'}},{14,2,{'Home'}}}},{16,2,{'ThemeManager'}}}}}}}},{17,2,{'Places'},
-{{18,2,{'Slime RNG'}},{19,2,{'Kick a Lucky Block'}}}},{3,2,{'TaskManager'},{{4,2
-,{'Task'}},{5,2,{'Lock'}}}},{7,2,{'t'}},{20,2,{'Preference'}}}},{39,2,{
-'Constants'}},{40,2,{'Vinca'}},{27,2,{'Functions'},{{32,2,{'PromptDiscord'}},{29
-,2,{'Time'}},{33,2,{'OutputMessage'}},{38,2,{'Noclip'}},{35,2,{'Hooks'}},{28,2,{
-'CreateGUID'}},{34,2,{'GetPing'}},{37,2,{'BinarySearch'}},{31,2,{'Strings'}},{30
-,2,{'Numbers'}},{36,2,{'AntiAFK'}}}}}}},'0.4.2','strelizia.cc',string,task,
-setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
-tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,aj.
-freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as and
-ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=aC
-end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or function
-(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]=
-'LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={{
-},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
+return ah end return ad end)()end},{{1,2,{'Shared'},{{27,2,{'Functions'},{{33,2,
+{'OutputMessage'}},{30,2,{'Numbers'}},{37,2,{'BinarySearch'}},{31,2,{'Strings'}}
+,{38,2,{'Noclip'}},{34,2,{'GetPing'}},{29,2,{'Time'}},{36,2,{'AntiAFK'}},{35,2,{
+'Hooks'}},{32,2,{'PromptDiscord'}},{28,2,{'CreateGUID'}}}},{40,2,{'Vinca'}},{39,
+2,{'Constants'}},{21,2,{'RBXUtil'},{{26,2,{'Trove'}},{22,2,{'TableUtil'}},{24,2,
+{'Promise'}},{23,2,{'Signal'}},{25,2,{'Tree'}}}},{2,2,{'Modules'},{{8,2,{
+'Interface'},{{9,1,{'List'},{{10,1,{'Obsidian'},{{11,2,{'Main'}},{16,2,{
+'ThemeManager'}},{13,2,{'Tabs'},{{14,2,{'Home'}},{15,2,{'Settings'}}}},{12,2,{
+'SaveManager'}}}}}}}},{3,2,{'TaskManager'},{{4,2,{'Task'}},{5,2,{'Lock'}}}},{20,
+2,{'Preference'}},{17,2,{'Places'},{{18,2,{'Slime RNG'}},{19,2,{
+'Kick a Lucky Block'}}}},{7,2,{'t'}},{6,2,{'Color'}}}}}}},'0.4.2','strelizia.cc'
+,string,task,setmetatable,error,next,table,unpack,coroutine,script,type,require,
+pcall,tostring,tonumber,_VERSION local au,av,aw,ax,ay,az,aA=aj.insert,aj.remove,
+aj.freeze or function(au)return au end,al.wrap,ae.sub,ae.match,ae.gmatch if as
+and ay(as,1,4)=='Lune'then local aB,aC=ap(ao,'@lune/task')if aB and aC then af=
+aC end end local aB=af and af.defer local aC,aD,aE,aF,aG,aH,aI,aJ,aK=aB or
+function(aC,...)ax(aC)(...)end,{[1]='Folder',[2]='ModuleScript',[3]='Script',[4]
+='LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local aL,aM={GetFullName={
+{},function(aL)local aM,aN=aL.Name,aL.Parent while aN do aM=aN.Name..'.'..aM aN=
 aN.Parent end return aM end},GetChildren={{},function(aL)local aM={}for aN in ai
 ,aK[aL]do au(aM,aN)end return aM end},GetDescendants={{},function(aL)local aM={}
 for aN in ai,aK[aL]do au(aM,aN)for aO,aP in ai,aN:GetDescendants()do au(aM,aP)
