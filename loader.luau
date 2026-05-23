@@ -9,11 +9,17 @@ Get,e,'Shared'))then return end local g,h,i,j,k,l,m=e:Get'Shared/Modules/Places'
 GetPlaceFromId(game.PlaceId)if not p then return h.Main:Notify{Title=
 'strelizia.cc',Description=
 [[this game is currently not supported by strelizia! if you think that this is a mistake then join our discord server and report this issue!]]
-,Time=5}end if g.IsExecutorBlacklisted(p.BlacklistedExecutors)then return h.Main
-:Notify{Title='strelizia.cc',Description=
-'this script is not compatible with your executor!',Time=3}end local q=(p.
-Downtime.Status and p.Downtime.Message)if q then return h.Main:Notify{Title=
-'strelizia.cc',Description=string.format(
+,Time=5}end if g.IsExecutorBlacklisted(p.BlacklistedExecutors)then local q={}for
+r,s in g.RecommendedExecutors do table.insert(q,string.format('%s | %s%s',
+tostring(s.Name),tostring((s.Paid and{(s.Price)}or{'FREE'})[1]),tostring((s.Note
+and{string.format(' | %s',tostring(s.Note))}or{''})[1])))end return h.Main:
+Notify{Title='strelizia.cc',Description=string.format(
+[[script is not compatible with your executor! please check out some of the recommended options:
+
+%s]]
+,tostring(table.concat(q,'\n'))),Time=15}end local q=(p.Downtime.Status and p.
+Downtime.Message)if q then return h.Main:Notify{Title='strelizia.cc',Description
+=string.format(
 [[unable to load %s script because it's currently experiencing a downtime! specificed downtime reason: %s]]
 ,tostring(p.Name),tostring(q))}end local r,s=e:Get'Modules/KeyFile',e:Get
 'Modules/Luarmor':Init(p.Script)local t=f.script_key or r:Read()if t then local
@@ -141,30 +147,30 @@ then i=i(g.Root)end g.Loading[h]=nil g.Loaded[h]=i return i end e.Extend=
 function(g,h)for i,j in h do g:Add(i,j)end return g end e.Get=function(g,h)local
 i=g for j in string.gmatch(h,'[^/]+')do if e.is(i)then i=i:Load(j)else i=i[j]end
 assert(i~=nil,string.format('Invalid path "%s" at "%s"',tostring(h),tostring(j))
-)end return i end return e end)()end},{{1,4,{'Loader'},{{8,2,{'Vinca'}},{2,2,{
-'Library'},{{3,2,{'Modules'},{{4,2,{'KeyFile'}},{5,2,{'Luarmor'}}}},{7,2,{
-'Shared'}},{6,2,{'Interface'}}}}}}},'0.4.2','strelizia.cc',string,task,
-setmetatable,error,next,table,unpack,coroutine,script,type,require,pcall,
-tostring,tonumber,_VERSION local v,w,x,y,z,A,B=k.insert,k.remove,k.freeze or
-function(v)return v end,m.wrap,f.sub,f.match,f.gmatch if t and z(t,1,4)=='Lune'
-then local C,D=q(p,'@lune/task')if C and D then g=D end end local C=g and g.
-defer local D,E,F,G,H,I,J,K,L=C or function(D,...)y(D)(...)end,{[1]='Folder',[2]
-='ModuleScript',[3]='Script',[4]='LocalScript',[5]='StringValue'},{},{},{},{},{}
-,{},{}local M,N={GetFullName={{},function(M)local N,O=M.Name,M.Parent while O do
-N=O.Name..'.'..N O=O.Parent end return N end},GetChildren={{},function(M)local N
-={}for O in j,L[M]do v(N,O)end return N end},GetDescendants={{},function(M)local
-N={}for O in j,L[M]do v(N,O)for P,Q in j,O:GetDescendants()do v(N,Q)end end
-return N end},FindFirstChild={{'string','boolean?'},function(M,N,O)local P=L[M]
-for Q in j,P do if Q.Name==N then return Q end end if O then for Q in j,P do
-return Q:FindFirstChild(N,true)end end end},FindFirstAncestor={{'string'},
-function(M,N)local O=M.Parent while O do if O.Name==N then return O end O=O.
-Parent end end},WaitForChild={{'string','number?'},function(M,N)return M:
-FindFirstChild(N)end}},{}for O,P in j,M do local Q,R,S=P[1],P[2],{}for T,U in j,
-Q do local V,W=A(U,'^([^%?]+)(%??)')S[T]={V,W}end N[O]=function(T,...)if not L[T
-]then i("Expected ':' not '.' calling member function "..O,2)end local U={...}
-for V,W in j,S do local X=U[V]local Y,Z,_=o(X),W[1],W[2]if X==nil and not _ then
-i('Argument '..X..' missing or nil',3)end if Z~='any'and Y~=Z and not(Y=='nil'
-and _)then i('Argument '..V..' expects type "'..Z..'", got "'..Y..'"',2)end end
+)end return i end return e end)()end},{{1,4,{'Loader'},{{2,2,{'Library'},{{3,2,{
+'Modules'},{{4,2,{'KeyFile'}},{5,2,{'Luarmor'}}}},{6,2,{'Interface'}},{7,2,{
+'Shared'}}}},{8,2,{'Vinca'}}}}},'0.4.2','strelizia.cc',string,task,setmetatable,
+error,next,table,unpack,coroutine,script,type,require,pcall,tostring,tonumber,
+_VERSION local v,w,x,y,z,A,B=k.insert,k.remove,k.freeze or function(v)return v
+end,m.wrap,f.sub,f.match,f.gmatch if t and z(t,1,4)=='Lune'then local C,D=q(p,
+'@lune/task')if C and D then g=D end end local C=g and g.defer local D,E,F,G,H,I
+,J,K,L=C or function(D,...)y(D)(...)end,{[1]='Folder',[2]='ModuleScript',[3]=
+'Script',[4]='LocalScript',[5]='StringValue'},{},{},{},{},{},{},{}local M,N={
+GetFullName={{},function(M)local N,O=M.Name,M.Parent while O do N=O.Name..'.'..N
+O=O.Parent end return N end},GetChildren={{},function(M)local N={}for O in j,L[M
+]do v(N,O)end return N end},GetDescendants={{},function(M)local N={}for O in j,L
+[M]do v(N,O)for P,Q in j,O:GetDescendants()do v(N,Q)end end return N end},
+FindFirstChild={{'string','boolean?'},function(M,N,O)local P=L[M]for Q in j,P do
+if Q.Name==N then return Q end end if O then for Q in j,P do return Q:
+FindFirstChild(N,true)end end end},FindFirstAncestor={{'string'},function(M,N)
+local O=M.Parent while O do if O.Name==N then return O end O=O.Parent end end},
+WaitForChild={{'string','number?'},function(M,N)return M:FindFirstChild(N)end}},
+{}for O,P in j,M do local Q,R,S=P[1],P[2],{}for T,U in j,Q do local V,W=A(U,
+'^([^%?]+)(%??)')S[T]={V,W}end N[O]=function(T,...)if not L[T]then i(
+"Expected ':' not '.' calling member function "..O,2)end local U={...}for V,W in
+j,S do local X=U[V]local Y,Z,_=o(X),W[1],W[2]if X==nil and not _ then i(
+'Argument '..X..' missing or nil',3)end if Z~='any'and Y~=Z and not(Y=='nil'and
+_)then i('Argument '..V..' expects type "'..Z..'", got "'..Y..'"',2)end end
 return R(T,...)end end local O=function(O,P,Q)local R,S,T,U,V,W=h({},{__mode='k'
 }),function(R)i(R..' is not a valid (virtual) member of '..O..' "'..P..'"',3)end
 ,function(R)i('Unable to assign (virtual) property '..R..
